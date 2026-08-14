@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse (reader) · Thu Aug 14</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --surface:#ffffff; --ink:#14171f; --sub:#3d4351;
+    --muted:#8a919e; --line:#e6e8ec; --accent:#1a56db; --band:#eef1f6;
+  }
+  :root:not([data-theme=light]) @media (prefers-color-scheme:dark){}
+  @media (prefers-color-scheme:dark){
+    :root{ --bg:#0d0f14; --surface:#14171e; --ink:#e8eaed; --sub:#aab1bd;
+           --muted:#7b828f; --line:#232733; --accent:#6ea0ff; --band:#171b24; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.6}
+  a{color:var(--accent);text-decoration:none}
+  .wrap{max-width:680px;margin:0 auto;padding:0 18px 64px}
+  header.top{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:12px 0 10px;margin-bottom:6px}
+  .top .in{max-width:680px;margin:0 auto;padding:0 18px}
+  .ttl{font-weight:700;font-size:17px;letter-spacing:-.01em}
+  .ttl .dot{color:var(--muted);margin:0 4px}
+  .cnt{color:var(--muted);font-size:12.5px;margin-top:2px}
+
+  nav.tldr{background:var(--surface);border:1px solid var(--line);border-radius:14px;
+    padding:14px 16px;margin:12px 0 22px}
+  .tldr-h{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--muted);margin-bottom:8px}
+  nav.tldr ol{list-style:none;margin:0;padding:0}
+  nav.tldr li{margin:0}
+  nav.tldr a{display:flex;gap:8px;padding:5px 0;color:var(--sub);font-size:14px;
+    border-bottom:1px solid color-mix(in srgb,var(--line) 60%,transparent)}
+  nav.tldr li:last-child a{border-bottom:0}
+  nav.tldr a:hover{color:var(--accent)}
+  .tn{color:var(--muted);font-variant-numeric:tabular-nums;min-width:20px;text-align:right;font-size:12.5px}
+
+  h2.date{position:sticky;top:52px;z-index:3;margin:26px -18px 10px;padding:6px 18px;
+    font-size:12px;font-weight:700;letter-spacing:.1em;color:var(--muted);
+    background:var(--band);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .grp{margin:0 0 18px}
+  .grp h3{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;
+    color:var(--ink);margin:16px 0 6px}
+  .badge{font-size:11px;font-weight:600;color:var(--muted);background:var(--band);
+    border:1px solid var(--line);border-radius:999px;padding:1px 8px;font-variant-numeric:tabular-nums}
+
+  .item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+  .item:last-child{border-bottom:0}
+  .num{color:var(--muted);font-variant-numeric:tabular-nums;font-size:12.5px;min-width:20px;
+    text-align:right;padding-top:2px}
+  .txt{flex:1;min-width:0}
+  .body{font-size:15px;color:var(--sub)}
+  .item.lead .body{font-size:17px;line-height:1.5;color:var(--ink);font-weight:450}
+  .body strong{color:var(--ink);font-weight:680}
+  .src{display:inline-block;margin-top:7px;font-size:12.5px;color:var(--muted);
+    border:1px solid var(--line);border-radius:999px;padding:2px 10px}
+  .src:hover{color:var(--accent);border-color:var(--accent)}
+
+  footer{color:var(--muted);font-size:12px;text-align:center;margin-top:34px}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="top"><div class="in"><div class="ttl">Pulse<span class="dot">·</span>Thu Aug 14</div>
+<div class="cnt">50 stories · reader prototype (A+B+D)</div></div></header>
+<div class="wrap">
+  <nav class="tldr"><div class="tldr-h">TL;DR — tap to jump</div><ol>
+<li><a href="#i1"><span class="tn">1</span>SpaceXAI shipped Grok 4.6, and it lands at number three on the Artificial Analysis intel…</a></li>
+<li><a href="#i2"><span class="tn">2</span>Google announced its 2026 hardware: Pixel 11, Pixel Watch 5, and Pixel Tag, its first ow…</a></li>
+<li><a href="#i3"><span class="tn">3</span>Tens of thousands of workers in India are being paid to film their own jobs from a first…</a></li>
+<li><a href="#i4"><span class="tn">4</span>An argument doing the rounds: AI is wiping out the middle of the software engineering jo…</a></li>
+<li><a href="#i5"><span class="tn">5</span>Ramp&#x27;s spending data shows the AI thesis wobbling a bit.</a></li>
+<li><a href="#i6"><span class="tn">6</span>A long piece on why nobody manages to clone Palantir.</a></li>
+<li><a href="#i7"><span class="tn">7</span>Small JPEGs look subtly different in Chrome, and it turns out that is deliberate.</a></li>
+<li><a href="#i8"><span class="tn">8</span>DeepSeek is openly gunning for Claude Code.</a></li>
+<li><a href="#i9"><span class="tn">9</span>A short essay pushing back on autopilot AI use: decide deliberately when to reach for it…</a></li>
+<li><a href="#i10"><span class="tn">10</span>Anthropic turned the Claude side panel in Chrome into a full Cowork session.</a></li>
+<li><a href="#i11"><span class="tn">11</span>DeepSeek released V4-Pro-0813 at $0.435 per million input tokens and $0.87 per million o…</a></li>
+<li><a href="#i12"><span class="tn">12</span>Alibaba put Qwen3.8 on Hugging Face, aimed at coding and tasks that run for a long time…</a></li>
+<li><a href="#i13"><span class="tn">13</span>A good framing of what Nvidia is quietly becoming: not a chip vendor but a hyperscaler i…</a></li>
+<li><a href="#i14"><span class="tn">14</span>OpenAI published two studies on how companies actually use its models, and the direction…</a></li>
+<li><a href="#i15"><span class="tn">15</span>Microsoft had a busy day with two models.</a></li>
+<li><a href="#i16"><span class="tn">16</span>Lovable, the vibe-coding startup, is now worth $13 billion and should hit a roughly $600…</a></li>
+<li><a href="#i17"><span class="tn">17</span>Geoffrey Hinton, Fei-Fei Li, and Andrew Ng are making a joint case for keeping AI open,…</a></li>
+<li><a href="#i18"><span class="tn">18</span>Wes McKinney wrote up how a three-person team at Kenn Software merges hundreds of pull r…</a></li>
+<li><a href="#i19"><span class="tn">19</span>Mathematician Tim Gowers on where LLMs actually stand at maths.</a></li>
+<li><a href="#i20"><span class="tn">20</span>A practical writeup on exposing Postgres through MCP safely.</a></li>
+<li><a href="#i21"><span class="tn">21</span>Agents are easy to hire and hard to manage.</a></li>
+<li><a href="#i22"><span class="tn">22</span>Tailscale spent six months chasing database corruption before finding the cause: a SQLit…</a></li>
+<li><a href="#i23"><span class="tn">23</span>The Astro team drove their GitHub issue backlog from over 200 down to about 30 by handin…</a></li>
+<li><a href="#i24"><span class="tn">24</span>Zed launched Delta, a coding environment where people and agents work in the same room i…</a></li>
+<li><a href="#i25"><span class="tn">25</span>A case for building real-time apps by sending HTML over a WebSocket instead of JSON to a…</a></li>
+<li><a href="#i26"><span class="tn">26</span>Yelp finished a three-year migration off Flow onto TypeScript, one package at a time, wi…</a></li>
+<li><a href="#i27"><span class="tn">27</span>A rethink of the usual plan-then-build workflow now that agents make the building cheap.</a></li>
+<li><a href="#i28"><span class="tn">28</span>Someone is running a coordinated campaign against Salesforce and ServiceNow deployments,…</a></li>
+<li><a href="#i29"><span class="tn">29</span>Databricks bought Electric, the team behind PGlite and its sync layer, which lets an age…</a></li>
+<li><a href="#i30"><span class="tn">30</span>Ed Zitron makes an uncomfortable point about the cloud business.</a></li>
+<li><a href="#i31"><span class="tn">31</span>Two-thirds of surveyed enterprises are running AI in production and a lot of them cannot…</a></li>
+<li><a href="#i32"><span class="tn">32</span>Cloudera found that 95% of organisations delayed or killed an AI project in the past yea…</a></li>
+<li><a href="#i33"><span class="tn">33</span>IBM is standing up a $240 million Nvidia HGX B300 cluster on IBM Cloud for Together AI,…</a></li>
+<li><a href="#i34"><span class="tn">34</span>Nvidia and six financial firms are setting up financing pools worth around half a trilli…</a></li>
+<li><a href="#i35"><span class="tn">35</span>Data centres take years to build and power is already tight, while AI demand is here now.</a></li>
+<li><a href="#i36"><span class="tn">36</span>A survey of 101 enterprises found that agents giving confidently wrong answers is usuall…</a></li>
+<li><a href="#i37"><span class="tn">37</span>Cloudflare launched Cloudflare Wallets, a programmable wallet aimed at agents rather tha…</a></li>
+<li><a href="#i38"><span class="tn">38</span>Adyen is bringing its Toast partnership to the US.</a></li>
+<li><a href="#i39"><span class="tn">39</span>Klarna is now built into JP Morgan&#x27;s Commerce Platform, so US merchants can offer pay-in…</a></li>
+<li><a href="#i40"><span class="tn">40</span>Monzo passed a million business customers, the first British digital bank to do it.</a></li>
+<li><a href="#i41"><span class="tn">41</span>The FDIC is working with banking and fintech trade groups on a voluntary certification b…</a></li>
+<li><a href="#i42"><span class="tn">42</span>Robinhood is adding over 50 digital assets to its UK app through Bitstamp with no tradin…</a></li>
+<li><a href="#i43"><span class="tn">43</span>Uber invested in Chilean fintech Galgo, which will build cheaper motorbike loans exclusi…</a></li>
+<li><a href="#i44"><span class="tn">44</span>Ben tried Grok Bot and came away liking it, which surprised him after bouncing off OpenC…</a></li>
+<li><a href="#i45"><span class="tn">45</span>Bob Iger and Josh Kushner are buying control of the Lakers for $12.5 billion, the highes…</a></li>
+<li><a href="#i46"><span class="tn">46</span>Stocks rallied after last month&#x27;s inflation reading came in cooler than expected, with A…</a></li>
+<li><a href="#i47"><span class="tn">47</span>Gurugram wealth management firm Centricity raised Rs 280 crore (about $30 million) in a…</a></li>
+<li><a href="#i48"><span class="tn">48</span>Yatra Online&#x27;s Q1 FY27 profit fell 98% even though bookings kept growing.</a></li>
+<li><a href="#i49"><span class="tn">49</span>India just changed the rules on free UPI payments, and it matters more than it sounds.</a></li>
+<li><a href="#i50"><span class="tn">50</span>A deep dive on API composition: the unglamorous job of stitching four service responses…</a></li>
+  </ol></nav>
+<h2 class="date">THU AUG 13</h2>
+<div class="grp"><h3>TLDR<span class="badge">9</span></h3>
+<article id="i1" class="item lead"><span class="num">1</span><div class="txt"><div class="body">SpaceXAI shipped Grok 4.6, and it lands at number three on the Artificial Analysis intelligence rankings. It beats Kimi K3 and ties GPT-5.6 Sol, but costs less than half as much to run at $2 per million input tokens and $6 per million output. The pitch is long-running agents and coding work. Ben&#x27;s Bites called it a genuinely good model, and Elon says 4.7 is three to four weeks out, trained partly on SpaceX engineering data. (also in TLDR AI, TLDR Dev)</div><a class="src" href="https://venturebeat.com/technology/spacexai-debuts-grok-4-6-overtaking-kimi-k3s-performance-and-matching-gpt-5-6-sol-for-worlds-third-best-on-artificial-analysis?utm_source=tldrnewsletter" target="_blank" rel="noopener">venturebeat.com ↗</a></div></article>
+<article id="i2" class="item"><span class="num">2</span><div class="txt"><div class="body">Google announced its 2026 hardware: Pixel 11, Pixel Watch 5, and Pixel Tag, its first own-brand tracker. Mostly small tweaks over last year plus more Gemini everywhere. The fun bit is that the notification LED is back on the Pro phones, hidden in the flash assembly, and it only lights up when Gemini is doing something.</div><a class="src" href="https://arstechnica.com/gadgets/2026/08/google-reveals-2026-hardware-lineup-pixel-11-pixel-watch-5-and-pixel-tag/?utm_source=tldrnewsletter" target="_blank" rel="noopener">arstechnica.com ↗</a></div></article>
+<article id="i3" class="item"><span class="num">3</span><div class="txt"><div class="body">Tens of thousands of workers in India are being paid to film their own jobs from a first-person view. That footage goes into training robots to do the same tasks. Robotics companies are starved of real-world data because nobody bothered recording ordinary manual work until it suddenly became valuable.</div><a class="src" href="https://links.tldrnewsletter.com/qUxBXp" target="_blank" rel="noopener">links.tldrnewsletter.com ↗</a></div></article>
+<article id="i4" class="item"><span class="num">4</span><div class="txt"><div class="body">An argument doing the rounds: AI is wiping out the middle of the software engineering job market. Weak engineers were always a cost, but the pace of change used to give someone a chance to catch bad decisions before they spread. Now the mess compounds faster than anyone can review it, so the money concentrates on a smaller group of people you can actually trust.</div><a class="src" href="https://blog.florianherrengt.com/ai-removing-middle-class-software-engineering.html?utm_source=tldrnewsletter" target="_blank" rel="noopener">blog.florianherrengt.com ↗</a></div></article>
+<article id="i5" class="item"><span class="num">5</span><div class="txt"><div class="body">Ramp&#x27;s spending data shows the AI thesis wobbling a bit. Growth at OpenAI and, to a lesser degree, Anthropic has slowed, because new revenue now has to come from existing customers spending more. Those customers are increasingly putting that money into open source and model-serving platforms instead.</div><a class="src" href="https://ramp.com/data/ai-index-august-2026?utm_source=tldrnewsletter" target="_blank" rel="noopener">ramp.com ↗</a></div></article>
+<article id="i6" class="item"><span class="num">6</span><div class="txt"><div class="body">A long piece on why nobody manages to clone Palantir. It sells outcomes rather than software licences or consulting hours, and it insists on using its own stack end to end while competitors happily mix and match. That combination is hard to copy without rebuilding the whole company around it.</div><a class="src" href="https://ethanding.substack.com/p/why-you-cant-copy-palantir?utm_source=tldrnewsletter" target="_blank" rel="noopener">ethanding.substack.com ↗</a></div></article>
+<article id="i7" class="item"><span class="num">7</span><div class="txt"><div class="body">Small JPEGs look subtly different in Chrome, and it turns out that is deliberate. Chrome hands decoding to Skia, which decodes the image at the nearest eighth-scale fraction rather than decompressing it fully and shrinking afterwards, then does a normal downsample the rest of the way. That shortcut is why tiny images can look a bit heavier on some machines.</div><a class="src" href="https://guillaumetech.github.io/posts/jpg-scaling-chrome/?utm_source=tldrnewsletter" target="_blank" rel="noopener">guillaumetech.github.io ↗</a></div></article>
+<article id="i8" class="item"><span class="num">8</span><div class="txt"><div class="body">DeepSeek is openly gunning for Claude Code. It set up an official social account and started advertising jobs for a team dedicated to AI agents.</div><a class="src" href="https://links.tldrnewsletter.com/Rbhlff" target="_blank" rel="noopener">links.tldrnewsletter.com ↗</a></div></article>
+<article id="i9" class="item"><span class="num">9</span><div class="txt"><div class="body">A short essay pushing back on autopilot AI use: decide deliberately when to reach for it and when not to, and be honest with yourself about what you give up each time.</div><a class="src" href="https://brentfitzgerald.com/posts/the-human-is-the-loop/?utm_source=tldrnewsletter" target="_blank" rel="noopener">brentfitzgerald.com ↗</a></div></article>
+</div>
+<div class="grp"><h3>TLDR AI<span class="badge">12</span></h3>
+<article id="i10" class="item lead"><span class="num">10</span><div class="txt"><div class="body">Anthropic turned the Claude side panel in Chrome into a full Cowork session. Whatever you start in the browser now saves to your account and picks up again on desktop, web, or phone. Your existing skills and connectors just work there with no extra setup.</div><a class="src" href="https://claude.com/claude-in-chrome?utm_source=tldrai" target="_blank" rel="noopener">claude.com ↗</a></div></article>
+<article id="i11" class="item"><span class="num">11</span><div class="txt"><div class="body">DeepSeek released V4-Pro-0813 at $0.435 per million input tokens and $0.87 per million output, which is startlingly cheap for what it does. The company claims it beats Opus 4.8 on Terminal Bench 2.1, Cybergym, DeepSWE, and AutomationBench. In July, DeepSeek burned through more tokens than anyone except Anthropic.</div><a class="src" href="https://wccftech.com/deepseek-prices-its-new-v4-pro-0813-model-at-0-87-per-1-million-output-tokens-as-the-high-flying-chinese-ai-lab-wows-with-its-soaring-token-consumption/?utm_source=tldrai" target="_blank" rel="noopener">wccftech.com ↗</a></div></article>
+<article id="i12" class="item"><span class="num">12</span><div class="txt"><div class="body">Alibaba put Qwen3.8 on Hugging Face, aimed at coding and tasks that run for a long time without falling apart. It runs on the usual serving stacks like vLLM and SGLang, and you can dial how hard it thinks with a reasoning effort setting.</div><a class="src" href="https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B?utm_source=tldrai" target="_blank" rel="noopener">huggingface.co ↗</a></div></article>
+<article id="i13" class="item"><span class="num">13</span><div class="txt"><div class="body">A good framing of what Nvidia is quietly becoming: not a chip vendor but a hyperscaler in all but name. It already sells the hardware, the software that makes the hardware easy to run, and now the financing that smooths out how customers pay for it. That is the same bundle AWS and Azure built.</div><a class="src" href="https://taekim.substack.com/p/nvidia-is-speedrunning-the-creation?utm_source=tldrai" target="_blank" rel="noopener">taekim.substack.com ↗</a></div></article>
+<article id="i14" class="item"><span class="num">14</span><div class="txt"><div class="body">OpenAI published two studies on how companies actually use its models, and the direction is toward delegation rather than assistance. The heaviest users generate many times more output per person than an average company, and they are the ones wiring models into real tools and workflows.</div><a class="src" href="https://links.tldrnewsletter.com/CnBxe1" target="_blank" rel="noopener">links.tldrnewsletter.com ↗</a></div></article>
+<article id="i15" class="item"><span class="num">15</span><div class="txt"><div class="body">Microsoft had a busy day with two models. MAI-Thinking-1 is a mid-sized reasoning model pitched at enterprises who want decent coding and maths without paying frontier prices. MAI-Image-2.6 landed at number two on the Arena text-to-image leaderboard.</div><a class="src" href="https://microsoft.ai/news/introducing-mai-thinking-1/?utm_source=tldrai" target="_blank" rel="noopener">microsoft.ai ↗</a></div></article>
+<article id="i16" class="item"><span class="num">16</span><div class="txt"><div class="body">Lovable, the vibe-coding startup, is now worth $13 billion and should hit a roughly $600 million annual revenue run rate by the end of this month.</div><a class="src" href="https://links.tldrnewsletter.com/XDnvrN" target="_blank" rel="noopener">links.tldrnewsletter.com ↗</a></div></article>
+<article id="i17" class="item"><span class="num">17</span><div class="txt"><div class="body">Geoffrey Hinton, Fei-Fei Li, and Andrew Ng are making a joint case for keeping AI open, arguing the real risk is a handful of companies owning all the progress.</div><a class="src" href="https://techcrunch.com/2026/08/12/as-ai-safety-concerns-mount-three-pioneers-make-the-case-for-staying-open/?utm_source=tldrai" target="_blank" rel="noopener">techcrunch.com ↗</a></div></article>
+<article id="i18" class="item"><span class="num">18</span><div class="txt"><div class="body">Wes McKinney wrote up how a three-person team at Kenn Software merges hundreds of pull requests a week with agents doing most of the typing, and still keeps production bugs low. Worth reading for the workflow rather than the headline number.</div><a class="src" href="https://wesmckinney.com/blog/agentic-engineering-aug-2026/?utm_source=tldrai" target="_blank" rel="noopener">wesmckinney.com ↗</a></div></article>
+<article id="i19" class="item"><span class="num">19</span><div class="txt"><div class="body">Mathematician Tim Gowers on where LLMs actually stand at maths. He&#x27;s genuinely impressed by OpenAI&#x27;s recent results, but points out that if models were beating every human at every kind of maths, we&#x27;d be drowning in new theorems by now. We aren&#x27;t.</div><a class="src" href="https://gowers.wordpress.com/2026/08/12/what-sort-of-maths-are-llms-good-at/?utm_source=tldrai" target="_blank" rel="noopener">gowers.wordpress.com ↗</a></div></article>
+<article id="i20" class="item"><span class="num">20</span><div class="txt"><div class="body">A practical writeup on exposing Postgres through MCP safely. You can let the agent write its own SQL, or give it a handful of narrow typed queries, and the choice is a straight trade between flexibility and blast radius.</div><a class="src" href="https://blog.pamelafox.org/2026/08/building-safe-mcp-servers-for-your.html?utm_source=tldrai" target="_blank" rel="noopener">blog.pamelafox.org ↗</a></div></article>
+<article id="i21" class="item"><span class="num">21</span><div class="txt"><div class="body">Agents are easy to hire and hard to manage. The bottleneck isn&#x27;t whether they can do the work, it&#x27;s whether you can tell if they did it well. That means company-specific evals, someone who owns the feedback, and a clear answer on who&#x27;s liable when it goes wrong.</div><a class="src" href="https://links.tldrnewsletter.com/tlTCN1" target="_blank" rel="noopener">links.tldrnewsletter.com ↗</a></div></article>
+</div>
+<div class="grp"><h3>TLDR Dev<span class="badge">6</span></h3>
+<article id="i22" class="item lead"><span class="num">22</span><div class="txt"><div class="body">Tailscale spent six months chasing database corruption before finding the cause: a SQLite bug that had been sitting there for sixteen years. Tracking it down took dozens of people across Tailscale&#x27;s engineering and support teams plus the SQLite maintainers themselves. They&#x27;ve since reworked their backup and recovery process.</div><a class="src" href="https://tailscale.com/blog/sqlite-wal-reset-bug?utm_source=tldrdev" target="_blank" rel="noopener">tailscale.com ↗</a></div></article>
+<article id="i23" class="item"><span class="num">23</span><div class="txt"><div class="body">The Astro team drove their GitHub issue backlog from over 200 down to about 30 by handing triage to isolated AI agents running in GitHub Actions. The agents reproduce the bug, work out the cause, and ship a preview release the reporter can test. When an agent fails, they treat that as a hint that something in the codebase is confusing or untested.</div><a class="src" href="https://blog.cloudflare.com/astro-issue-triage/?utm_source=tldrdev" target="_blank" rel="noopener">blog.cloudflare.com ↗</a></div></article>
+<article id="i24" class="item"><span class="num">24</span><div class="txt"><div class="body">Zed launched Delta, a coding environment where people and agents work in the same room in real time. Comments on code stay attached and stay meaningful as the code around them changes.</div><a class="src" href="https://zed.dev/blog/introducing-delta?utm_source=tldrdev" target="_blank" rel="noopener">zed.dev ↗</a></div></article>
+<article id="i25" class="item"><span class="num">25</span><div class="txt"><div class="body">A case for building real-time apps by sending HTML over a WebSocket instead of JSON to a JavaScript frontend. You keep all the rendering on the server, so there&#x27;s one codebase instead of two.</div><a class="src" href="https://en.andros.dev/blog/ef4968f5/html-over-websockets-real-time-spas-with-barely-any-javascript/?utm_source=tldrdev" target="_blank" rel="noopener">en.andros.dev ↗</a></div></article>
+<article id="i26" class="item"><span class="num">26</span><div class="txt"><div class="body">Yelp finished a three-year migration off Flow onto TypeScript, one package at a time, without losing type safety along the way.</div><a class="src" href="https://engineeringblog.yelp.com/2026/08/migrating-a-large-flow-monorepo-to-typescript.html?utm_source=tldrdev" target="_blank" rel="noopener">engineeringblog.yelp.com ↗</a></div></article>
+<article id="i27" class="item"><span class="num">27</span><div class="txt"><div class="body">A rethink of the usual plan-then-build workflow now that agents make the building cheap. Build broadly first, demo it before anyone reviews code, then chop the result into small pull requests people can actually review.</div><a class="src" href="https://adapt.com/blog/build-wide-ship-narrow?utm_source=tldrdev" target="_blank" rel="noopener">adapt.com ↗</a></div></article>
+</div>
+<div class="grp"><h3>TLDR IT<span class="badge">9</span></h3>
+<article id="i28" class="item lead"><span class="num">28</span><div class="txt"><div class="body">Someone is running a coordinated campaign against Salesforce and ServiceNow deployments, specifically the guest-accessible ones. The attacker pulls records out of Salesforce Experience Cloud sites using Aura and some previously undocumented LWR UI-API tricks, plus a ServiceNow search endpoint. All of it traces back to infrastructure at 158.220.87[.]79.</div><a class="src" href="https://www.reco.ai/blog/city-forum-campaign-salesforce-servicenow?utm_source=tldrit" target="_blank" rel="noopener">reco.ai ↗</a></div></article>
+<article id="i29" class="item"><span class="num">29</span><div class="txt"><div class="body">Databricks bought Electric, the team behind PGlite and its sync layer, which lets an agent keep a fast local Postgres in step with a central database. The team is joining Neon to build database infrastructure aimed squarely at agents.</div><a class="src" href="https://www.theregister.com/ai-ml/2026/08/12/oh-no-not-another-one-databricks-buys-electric/5286721?utm_source=tldrit" target="_blank" rel="noopener">theregister.com ↗</a></div></article>
+<article id="i30" class="item"><span class="num">30</span><div class="txt"><div class="body">Ed Zitron makes an uncomfortable point about the cloud business. Growth at Microsoft, Google, and Amazon now leans heavily on Anthropic and OpenAI continuing to spend enormous amounts on compute, most of it venture money. Those two may need over $200 billion of compute in 2027 and have to raise something like $250 to $300 billion to pay for it. If end customers don&#x27;t eventually cover that, a lot of the cloud growth story goes with it.</div><a class="src" href="https://www.wheresyoured.at/dont-look-up/?utm_source=tldrit" target="_blank" rel="noopener">wheresyoured.at ↗</a></div></article>
+<article id="i31" class="item"><span class="num">31</span><div class="txt"><div class="body">Two-thirds of surveyed enterprises are running AI in production and a lot of them cannot say what it costs. That was survivable when inference was a pilot. It isn&#x27;t now that it&#x27;s a permanent line item.</div><a class="src" href="https://venturebeat.com/resources/infrastructure-and-compute-enterprises-are-buying-ai-compute-for-speed-while-flying-blind-on-what-it-costs?utm_source=tldrit" target="_blank" rel="noopener">venturebeat.com ↗</a></div></article>
+<article id="i32" class="item"><span class="num">32</span><div class="txt"><div class="body">Cloudera found that 95% of organisations delayed or killed an AI project in the past year, with governance and compliance among the top reasons. Nearly three-quarters said AI has made data governance harder, not easier.</div><a class="src" href="https://www.cloudera.com/about/news-and-blogs/press-releases/2026-08-11-ninety-five-percent-of-enterprises-have-delayed-ai-projects-as-infrastructure-limitations-spark-the-great-ai-re-architecture.html?utm_source=tldrit" target="_blank" rel="noopener">cloudera.com ↗</a></div></article>
+<article id="i33" class="item"><span class="num">33</span><div class="txt"><div class="body">IBM is standing up a $240 million Nvidia HGX B300 cluster on IBM Cloud for Together AI, built specifically for serving open models at scale. It should be available in the first quarter of 2027.</div><a class="src" href="https://newsroom.ibm.com/2026-08-11-IBM-and-Together-AI-Sign-Multi-Year-Agreement-to-Scale-Open-Source-AI-Inference-with-NVIDIA-AI-Infrastructure-on-IBM-Cloud?utm_source=tldrit" target="_blank" rel="noopener">newsroom.ibm.com ↗</a></div></article>
+<article id="i34" class="item"><span class="num">34</span><div class="txt"><div class="body">Nvidia and six financial firms are setting up financing pools worth around half a trillion dollars to help customers buy AI infrastructure. Handy if you&#x27;re buying, less handy if it tightens chip supply for everyone else.</div><a class="src" href="https://www.networkworld.com/article/4208360/nvidias-half-trillion-dollar-ai-investment-fund-could-impact-enterprise-chip-pricing-availability.html?utm_source=tldrit" target="_blank" rel="noopener">networkworld.com ↗</a></div></article>
+<article id="i35" class="item"><span class="num">35</span><div class="txt"><div class="body">Data centres take years to build and power is already tight, while AI demand is here now. The practical takeaway is to stop assuming you can just buy more GPU capacity whenever you need it, and plan for hybrid instead.</div><a class="src" href="https://www.infoworld.com/article/4207475/navigating-the-ai-data-center-capacity-crisis.html?utm_source=tldrit" target="_blank" rel="noopener">infoworld.com ↗</a></div></article>
+<article id="i36" class="item"><span class="num">36</span><div class="txt"><div class="body">A survey of 101 enterprises found that agents giving confidently wrong answers is usually a context problem, not a model problem. Companies with a governed semantic layer caught roughly twice as many of those failures.</div><a class="src" href="https://venturebeat.com/resources/agent-context-layers-enterprises-governing-their-ai-data-are-catching-twice-as-many-bad-answers-as-the-ones-who-arent?utm_source=tldrit" target="_blank" rel="noopener">venturebeat.com ↗</a></div></article>
+</div>
+<div class="grp"><h3>TLDR Fintech<span class="badge">7</span></h3>
+<article id="i37" class="item lead"><span class="num">37</span><div class="txt"><div class="body">Cloudflare launched Cloudflare Wallets, a programmable wallet aimed at agents rather than people. You can claim a wallet handle for your account today, and later use it to pay for APIs and content directly.</div><a class="src" href="https://blog.cloudflare.com/wallets/?utm_source=tldrfintech" target="_blank" rel="noopener">blog.cloudflare.com ↗</a></div></article>
+<article id="i38" class="item"><span class="num">38</span><div class="txt"><div class="body">Adyen is bringing its Toast partnership to the US. Toast handled more than $215 billion in payments across roughly 180,000 locations last year, and the two already work together in Ireland, the UK, Canada, and Australia.</div><a class="src" href="https://www.adyen.com/press-and-media/adyen-expands-global-toast-partnership-into-us?utm_source=tldrfintech" target="_blank" rel="noopener">adyen.com ↗</a></div></article>
+<article id="i39" class="item"><span class="num">39</span><div class="txt"><div class="body">Klarna is now built into JP Morgan&#x27;s Commerce Platform, so US merchants can offer pay-in-full, interest-free instalments, or longer financing without a separate integration. That plugs Klarna into the biggest merchant acquirer in the country, which processes $2.6 trillion a year.</div><a class="src" href="https://www.klarna.com/international/press/klarna-goes-live-with-j-p-morgan-payments-opening-flexible-checkout-to-u-s-merchants/?utm_source=tldrfintech" target="_blank" rel="noopener">klarna.com ↗</a></div></article>
+<article id="i40" class="item"><span class="num">40</span><div class="txt"><div class="body">Monzo passed a million business customers, the first British digital bank to do it. The number has doubled in two years, which is starting to look like a real problem for Barclays, HSBC, NatWest, and Lloyds.</div><a class="src" href="https://links.tldrnewsletter.com/wRBPpX" target="_blank" rel="noopener">links.tldrnewsletter.com ↗</a></div></article>
+<article id="i41" class="item"><span class="num">41</span><div class="txt"><div class="body">The FDIC is working with banking and fintech trade groups on a voluntary certification body for bank-fintech partnerships, after years of banking-as-a-service blowups. Same piece covers Chime&#x27;s second profitable quarter in a row and the OCC rejecting Bunq&#x27;s US banking licence over capital and management concerns.</div><a class="src" href="https://www.fintechbrainfood.com/p/fintech-rulebook?utm_source=tldrfintech" target="_blank" rel="noopener">fintechbrainfood.com ↗</a></div></article>
+<article id="i42" class="item"><span class="num">42</span><div class="txt"><div class="body">Robinhood is adding over 50 digital assets to its UK app through Bitstamp with no trading, account, or custody fees. It also ships Cortex Digests, which explains market moves in plain English.</div><a class="src" href="https://fintech.global/2026/08/10/robinhood-brings-zero-fee-digital-asset-trading-to-uk/?utm_source=tldrfintech" target="_blank" rel="noopener">fintech.global ↗</a></div></article>
+<article id="i43" class="item"><span class="num">43</span><div class="txt"><div class="body">Uber invested in Chilean fintech Galgo, which will build cheaper motorbike loans exclusively for Uber&#x27;s delivery riders. Galgo has already lent over $400 million, is profitable, and runs at about $100 million annualised revenue.</div><a class="src" href="https://links.tldrnewsletter.com/lk22Qi" target="_blank" rel="noopener">links.tldrnewsletter.com ↗</a></div></article>
+</div>
+<div class="grp"><h3>ben&#x27;s bites<span class="badge">1</span></h3>
+<article id="i44" class="item lead"><span class="num">44</span><div class="txt"><div class="body">Ben tried Grok Bot and came away liking it, which surprised him after bouncing off OpenClaw and Hermes. You give each agent a persona and a system prompt, they message each other, and each gets its own virtual computer you can watch them use. The appeal is that it feels like Slack-ing a teammate rather than operating a tool, though connecting accounts was fiddly. It needs the $200 Cursor or Grok plan.</div><a class="src" href="https://links.tldrnewsletter.com/RWIRHZ" target="_blank" rel="noopener">links.tldrnewsletter.com ↗</a></div></article>
+</div>
+<div class="grp"><h3>Morning Brew<span class="badge">2</span></h3>
+<article id="i45" class="item lead"><span class="num">45</span><div class="txt"><div class="body">Bob Iger and Josh Kushner are buying control of the Lakers for $12.5 billion, the highest price ever paid for a sports team. That record was set about a year ago by the last Lakers sale, when Mark Walter paid roughly $10 billion. Walter is flipping it while under federal investigation for alleged tax fraud tied to billions in loans to his companies.</div></div></article>
+<article id="i46" class="item"><span class="num">46</span><div class="txt"><div class="body">Stocks rallied after last month&#x27;s inflation reading came in cooler than expected, with AI infrastructure names leading. Supermicro, CoreWeave, and Nebius all posted upbeat earnings.</div></div></article>
+</div>
+<div class="grp"><h3>Entrackr<span class="badge">2</span></h3>
+<article id="i47" class="item lead"><span class="num">47</span><div class="txt"><div class="body">Gurugram wealth management firm Centricity raised Rs 280 crore (about $30 million) in a Series A led by SMBC Asia Rising Fund.</div></div></article>
+<article id="i48" class="item"><span class="num">48</span><div class="txt"><div class="body">Yatra Online&#x27;s Q1 FY27 profit fell 98% even though bookings kept growing. Separately, IndiQube is still loss-making a year after its IPO, with a Rs 24 crore loss, though revenue is up 37% and losses narrowed by 35%.</div></div></article>
+</div>
+<div class="grp"><h3>Finshots<span class="badge">1</span></h3>
+<article id="i49" class="item lead"><span class="num">49</span><div class="txt"><div class="body">India just changed the rules on free UPI payments, and it matters more than it sounds. Parliament passed a bill letting the government pick which payment types stay free, replacing the blanket ban on merchant fees that has held since 2020. Banks have been eating the cost of running UPI for years, and the subsidy meant to cover it fell from Rs 3,631 crore in FY24 to Rs 435 crore in FY26, covering barely 11% of what the industry actually spent. Consumers are still promised free UPI, but Jefferies reckons even a 0.15-0.3% fee on transactions above Rs 2,000 could raise Rs 5,000-10,000 crore by FY28.</div></div></article>
+</div>
+<div class="grp"><h3>ByteByteGo<span class="badge">1</span></h3>
+<article id="i50" class="item lead"><span class="num">50</span><div class="txt"><div class="body">A deep dive on API composition: the unglamorous job of stitching four service responses into one screen. The surprising bit is that adding a server in the middle usually makes things faster, because one slow round trip from a phone plus four cheap ones inside the datacenter beats four slow ones. Where you put that merge also decides what happens when a service goes down, what you can cache, and which team has to sign off before the screen ships.</div></div></article>
+</div>
+  <footer>Reader-layout prototype · compare against the carousel</footer>
+</div>
+</body>
+</html>
