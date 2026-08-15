@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card[data-url]{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card[data-url]:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:14px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+  .hint{font-size:10.5px;color:var(--muted)}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">25 stories</div></header>
+<main>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1voojjz/megathread_qwen_38_27b_release_day/"><div class="meta">Models &amp; Research · Sat Aug 15</div><div class="body">Qwen 3.8 27B landed and it has taken over the local-model world. Nearly every top post on r/LocalLLaMA today is about it, with people calling it a genuine step change and one user describing it as &quot;local Opus 4.6 at home&quot; once an uncensored community fine-tune appeared. The odd part: someone diffed the config and found the architecture is byte-for-byte identical to Qwen 3.6 27B, so all the gains came from better training rather than any new model design. It fits on a 22GB RTX 2080 Ti at 4-bit, and the jump between &quot;medium&quot; and &quot;xhigh&quot; reasoning effort is reportedly dramatic.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://huggingface.co/blog/state-of-open-models-summer-2026"><div class="meta">Models &amp; Research · Sat Aug 15</div><div class="body">Hugging Face published its state-of-open-models report for summer 2026, and the numbers are stark. In almost every month this year the biggest, best open model came from a Chinese lab, with ceilings between 754B and 2.78 trillion parameters while US labs mostly stayed under 130B. Qwen has quietly become the community&#x27;s default base model with 151,448 derivative repos, about 2.6x Meta&#x27;s. Also notable: 81% of Chinese models above 20B ship under Apache 2.0 or MIT with no commercial restrictions, and in the US it&#x27;s now AMD and NVIDIA doing the open publishing while Google and Meta pull back.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arxiv.org/abs/2608.12426"><div class="meta">Models &amp; Research · Sat Aug 15</div><div class="body">A new paper finds language models hit a sharp wall when you pile on instructions. They handle a few constraints fine, then performance collapses rather than degrading gradually, which the authors describe as a phase transition. Useful to know if you write prompts with long requirement lists.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arxiv.org/abs/2608.12385"><div class="meta">Models &amp; Research · Sat Aug 15</div><div class="body">Dual-Flow Transformers propose splitting the prefill path from the extra decode computation, aimed at cutting the cumulative cost of serving lots of requests.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arxiv.org/abs/2608.12395"><div class="meta">Models &amp; Research · Sat Aug 15</div><div class="body">AstraZeneca published a writeup of Research Assistant, the internal agent system its scientists actually use for R&amp;D. Real industrial deployment detail is rare, so it&#x27;s worth a skim if you&#x27;re building agents for a specialist audience.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/cactus-compute/needle"><div class="meta">Open Source &amp; Tools · Sat Aug 15</div><div class="body">Needle 2 is a 45-million-parameter model built for tool calling and structured extraction, and the whole thing is a single 14MB binary that runs in about 28MB of RAM. The team claims it trades wins with small models like FunctionGemma 270M and Apple&#x27;s on-device model while being 5x to 70x smaller. Aimed at phones, wearables, and robots. MIT licensed, 5.7K stars.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/NVIDIA-NeMo/Switchyard"><div class="meta">Open Source &amp; Tools · Sat Aug 15</div><div class="body">NVIDIA open-sourced Switchyard, a Rust proxy for LLM traffic that routes across providers and translates between the OpenAI and Anthropic API formats. The pitch is pointing Claude Code or Codex at an open model without the client knowing the difference. Apache 2.0, 1.5K stars.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/denoland/celld"><div class="meta">Open Source &amp; Tools · Sat Aug 15</div><div class="body">Deno released celld, a daemon that runs Cloudflare Workers and Durable Objects on your own machines. Each object gets its own SQLite database and nodes coordinate through an S3-compatible bucket, so there&#x27;s no control plane or consensus layer to run. Apache 2.0, 3.6K stars.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/podcast/metas-open-ai-and-a-250m-deal-gone-very-wrong/"><div class="meta">Models &amp; Research · Fri Aug 14</div><div class="body">Meta released Glimmer, an open-weight model you can download and run yourself, which is a notable shift given the company&#x27;s recent move toward closed flagships. Its moment at the top was short, though. A LocalLLaMA post pointed out that Glimmer led the roughly 30B class for exactly four days before Qwen 3.8 27B arrived.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1voh6tx/a_150m_param_recurrent_model_scores_295_on/"><div class="meta">Models &amp; Research · Fri Aug 14</div><div class="body">Someone got a 150M-parameter model to score 29.5% on ARC-AGI-1 at $0.0007 per task. It isn&#x27;t a transformer at all. It&#x27;s a recurrent setup that keeps reasoning in latent space before it answers, which puts it well outside the usual scaling story.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vokrcy/qwen3827b_is_now_up_to_3_faster_on_apple_silicon/"><div class="meta">Models &amp; Research · Fri Aug 14</div><div class="body">Qwen 3.8 27B now runs up to 3x faster on Apple Silicon thanks to mlx-dspark, an MLX port of DeepSeek&#x27;s speculative-decoding drafters with a lossless verification loop. Free speedup on Macs, no quality tradeoff claimed.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://blog.google/security/how-google-is-making-private-ai-practical-with-homomorphic-encryption/"><div class="meta">Models &amp; Research · Fri Aug 14</div><div class="body">Google open-sourced HEIR, a compiler that converts trained models to run on encrypted data, so a server can compute on your input and hand back an encrypted result without ever seeing the contents. Google demoed it on fraud detection, network intrusion detection, recommendations, and voice hotword spotting, all on a single CPU thread. Hardware acceleration benchmarks are promised separately, which is the number that will decide whether this is practical.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arstechnica.com/ai/2026/08/openai-and-anthropic-in-price-war-as-chinese-ai-rivals-gain-ground/"><div class="meta">Industry &amp; Business · Fri Aug 14</div><div class="body">OpenAI and Anthropic are in an outright price war, both shipping cheaper models to stop cost-sensitive customers defecting to Chinese alternatives. It&#x27;s the clearest sign yet that cheap capable open models from China are reshaping frontier lab pricing, not just benchmark leaderboards. Good news if you buy tokens.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/14/google-will-now-allow-users-to-remove-visible-watermark-from-its-ai-generations/"><div class="meta">Industry &amp; Business · Fri Aug 14</div><div class="body">Google will let you turn off the visible watermark on AI-generated images, video, and music from Nano Banana, Omni, and Lyria, via a new toggle in Gemini and Flow. The invisible SynthID mark and C2PA metadata stay put regardless. Google framed it as balancing creative control against safety, since a stamped corner makes output unusable for professional work.  (also in The Verge)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/ai-artificial-intelligence/980160/apple-intelligence-china-custom-ai-model-alibaba"><div class="meta">Industry &amp; Business · Fri Aug 14</div><div class="body">Apple trained a custom AI model for the Chinese market with help from Alibaba, ahead of rolling out on-device generative AI there. A US-China AI partnership of this shape is unusual right now.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www-cdn.anthropic.com/f61d49fa5596956a5dec75fea0e973bf6a6a8378/Redacted%20Risk%20Report%20August%202026%20.pdf"><div class="meta">Industry &amp; Business · Fri Aug 14</div><div class="body">Anthropic published a redacted risk report for August 2026. Worth reading directly if you care how a frontier lab documents and grades its own risks.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/14/kog-is-going-deeper-to-squeeze-more-inference-out-of-gpus/"><div class="meta">Industry &amp; Business · Fri Aug 14</div><div class="body">French startup Kog argues the common belief that GPUs are a bad fit for agentic workloads is wrong, and is going lower in the stack to squeeze more inference throughput out of them.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/14/hyperscalers-might-regret-embracing-natural-gas-if-new-forecast-proves-correct/"><div class="meta">Industry &amp; Business · Fri Aug 14</div><div class="body">A new forecast says US natural gas prices could triple in some regions, which would leave the hyperscalers that leaned on gas to power AI data centers holding very large bills.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arstechnica.com/security/2026/08/vulnerability-giving-attackers-full-control-of-macs-is-under-active-exploitation/"><div class="meta">Industry &amp; Business · Fri Aug 14</div><div class="body">Dutch authorities warned that a high-severity macOS bug allowing full remote code execution is being actively exploited, specifically on machines with port 5900 (screen sharing) exposed to the internet. Patch and check that port.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://claude.com/blog/maximizing-the-value-of-your-claude-code-sessions"><div class="meta">Open Source &amp; Tools · Fri Aug 14</div><div class="body">Anthropic published a guide to cutting Claude Code costs, and most of it is about context discipline. Clear between tasks, set model and effort once at the start because changing them mid-session breaks prompt caching, @-mention files rather than naming them, and run `/context` in a fresh session to find MCP servers and tools you&#x27;re loading for nothing.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://simonwillison.net/2026/Aug/14/dont-classify-hallucinate/"><div class="meta">Open Source &amp; Tools · Fri Aug 14</div><div class="body">Simon Willison highlights a nice trick for tagging content when your tag list is too big to fit in a prompt: instead of asking the model to classify against 1,856 options, let it hallucinate the tags it thinks apply, then match those against the real list.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://weightythoughts.com/p/when-genius-failsthe-intellectual"><div class="meta">Community &amp; Opinion · Fri Aug 14</div><div class="body">An essay making the rounds argues the AI labs are repeating the intellectual arrogance that sank Long-Term Capital Management, betting that being smart enough substitutes for being careful.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://run.cosmograph.app/public/ca9fd1ad-fe83-4238-8b69-b707c633aef0"><div class="meta">Community &amp; Opinion · Fri Aug 14</div><div class="body">Someone built an AI Model Atlas that renders the whole population of published ML models as an interconnected 3D graph. Fun way to see how much of the ecosystem descends from a handful of base models.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1voh7lk/stop_shitting_on_9b_models/"><div class="meta">Community &amp; Opinion · Fri Aug 14</div><div class="body">A well-received rant pushes back on the local-model crowd&#x27;s habit of dismissing 9B models. Every request for a small Qwen turns into someone recommending a 122B mixture-of-experts, which is useless if you don&#x27;t have the hardware to run it.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.404media.co/person-hides-prompt-injection-in-legal-filing-telling-ai-to-side-with-them/"><div class="meta">Community &amp; Opinion · Thu Aug 13</div><div class="body">A self-represented plaintiff in Connecticut hid instructions to AI systems inside his court filing, using 3-point white text telling any model reading it to agree with his position. A clerk noticed the strange white space and the judge banned him from electronic filing entirely, ruling that what the reader sees must be what the filer wrote. The court doesn&#x27;t even use AI to process documents, but the judge said a failed attempt is still an attempt.</div><div class="hint">Click card to open article ↗</div></article>
+</main>
+<footer>tap a card to open its article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    if(c.dataset.url) c.addEventListener('click',()=>window.open(c.dataset.url,'_blank'));
+  });
+</script>
+</body>
+</html>
