@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card[data-url]{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card[data-url]:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:14px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+  .hint{font-size:10.5px;color:var(--muted)}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">13 stories</div></header>
+<main>
+<article class="card"><div class="meta">Finshots · Sun Aug 16</div><div class="body">Gen Z has a new name for job hopping: &quot;lily padding&quot;, jumping to whichever role pays best right now. The math backs them up. More than half of Indian professionals got an appraisal under 10% this year, while switching jobs typically lands a 20-35% hike. A Foundit survey found 96% of professionals are open to moving, and some firms now pay an extra 10-15% just for candidates who can join in 30 days instead of 90.</div></article>
+<article class="card"><div class="meta">Morning Brew · Sat Aug 15</div><div class="body">American shoppers are pulling back. Retail sales fell 0.6% in July, the first drop in nine months and the steepest since May 2025. Part of it is Amazon moving Prime Day to June, which pulled spending forward, but the rest looks like genuine weakness: consumer sentiment down about 8% this month, 23,000 jobs lost, and inflation still around 3.4% against the Fed&#x27;s 2% target. Kevin Warsh and the Fed will probably sit on rates in September.</div></article>
+<article class="card"><div class="meta">Morning Brew · Sat Aug 15</div><div class="body">Luigi Mangione pleaded guilty to federal stalking charges over the killing of UnitedHealthcare CEO Brian Thompson. He told the court plainly, &quot;I shot Mr. Thompson in Manhattan, and he died,&quot; and acknowledged he could spend the rest of his life in prison. Sentencing is in December. His lawyers are separately trying to get the state murder charges thrown out on double jeopardy grounds.</div></article>
+<article class="card"><div class="meta">Morning Brew · Sat Aug 15</div><div class="body">Jeff Bezos is buying into Liverpool FC. He&#x27;s part of a group taking roughly a third of the club from Fenway Sports Group, in a deal valuing Liverpool north of $7 billion. It&#x27;s his first sports team. The group is led by Amit Bhatia and also includes Facebook co-founder Eduardo Saverin.</div></article>
+<article class="card"><div class="meta">Morning Brew · Sat Aug 15</div><div class="body">Italian police recovered three paintings worth over $10 million, months after a night-time heist at a private museum near Parma. The haul included a Cézanne watercolour worth $7 million and a Renoir oil worth $3.5 million. Five people were detained.</div></article>
+<article class="card"><div class="meta">Morning Brew · Sat Aug 15</div><div class="body">Investors are suing Selena Gomez and the co-founders of her beauty brand over alleged fraud.</div></article>
+<article class="card"><div class="meta">Entrackr · Sat Aug 15</div><div class="body">PhonePe handled nearly 11 billion UPI transactions in July, about 45.89% of everything moving through the network, worth Rs 14.44 lakh crore. CRED has slid down to 10th place.</div></article>
+<article class="card"><div class="meta">Entrackr · Sat Aug 15</div><div class="body">Fourteen Indian startups raised $151.5 million this week across two growth-stage rounds, 11 early-stage deals and one undisclosed one.</div></article>
+<article class="card"><div class="meta">Entrackr · Sat Aug 15</div><div class="body">PhysicsWallah&#x27;s revenue grew 24.4% year on year in Q1 FY27 to Rs 1,054 crore, and its loss shrank about 31%.</div></article>
+<article class="card"><div class="meta">ByteByteGo · Sat Aug 15</div><div class="body">A short explainer on Google&#x27;s TPU, the chip it built specifically for the huge matrix multiplications that AI models run on, unlike GPUs which started life doing graphics. At Cloud Next &#x27;26 Google showed off the 8th generation, and for the first time it comes in two versions: 8t for training where throughput matters, and 8i for inference where latency matters. Same CPUs and software stack, so code moves between them.</div></article>
+<article class="card"><div class="meta">ByteByteGo · Sat Aug 15</div><div class="body">A rundown of nine kinds of API testing and what each one actually catches, from smoke tests after a deploy through contract, regression, load, stress, security and fuzz testing.</div></article>
+<article class="card"><div class="meta">ByteByteGo · Sat Aug 15</div><div class="body">The guardrails people actually put around production AI agents: screening inputs for prompt injection before the model sees them, verifying context, checking every response for groundedness and safety before it ships, and routing low-confidence calls to a human.</div></article>
+<article class="card"><div class="meta">ByteByteGo · Sat Aug 15</div><div class="body">Forward proxy vs reverse proxy vs API gateway, explained by which side each one represents. A forward proxy stands in for the client, a reverse proxy stands in for the server, and an API gateway is the reverse proxy you reach for when ten services all need the same auth and rate limiting.</div></article>
+</main>
+<footer>tap a card to open its article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    if(c.dataset.url) c.addEventListener('click',()=>window.open(c.dataset.url,'_blank'));
+  });
+</script>
+</body>
+</html>
