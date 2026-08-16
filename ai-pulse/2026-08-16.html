@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card[data-url]{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card[data-url]:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:14px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+  .hint{font-size:10.5px;color:var(--muted)}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">21 stories</div></header>
+<main>
+<article class="card" data-url="https://github.com/paperclipai/paperclip"><div class="meta">Open Source &amp; Tools · Sun Aug 16</div><div class="body">A new project called Paperclip is trying to be the layer above coding agents. Where a tool like OpenClaw is one agent doing one job, Paperclip is a Node.js server plus React dashboard that runs a whole team of them: you bring your own agents, hand them goals, and watch the work and the token spend in one place. Trending hard on GitHub today.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/google-deepmind/weathernext"><div class="meta">Open Source &amp; Tools · Sun Aug 16</div><div class="body">Google DeepMind open-sourced WeatherNext 2, its current global weather model, and threw in the code for the older GraphCast and GenCast models too. It forecasts standard atmospheric variables and 100m wind speeds at roughly 30km resolution, and it predicts tropical cyclones using the same algorithm as DeepMind&#x27;s dedicated cyclone model. Weights, inference code, and notebooks are all in the repo under Apache 2.0 and CC-BY.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/ToolJet/ToolJet"><div class="meta">Open Source &amp; Tools · Sun Aug 16</div><div class="body">ToolJet is climbing the charts again. It&#x27;s the open-source core of ToolJet AI, a drag-and-drop builder for internal tools that now also handles workflows and agents, wired up to databases, APIs, and SaaS apps.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/macro-inc/macro"><div class="meta">Open Source &amp; Tools · Sun Aug 16</div><div class="body">Macro is pitching itself as one workspace for email, chat, docs, tasks, CRM, and agents, all sharing a single team-level memory. Everything is @linkable and searchable, so the agents can find things without you pasting context around.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/cathrynlavery/diagram-design"><div class="meta">Open Source &amp; Tools · Sun Aug 16</div><div class="body">diagram-design is an agent skill (works with Claude Code, Codex, and Pi) that generates editorial-quality diagrams instead of the usual boxes-and-arrows mush. Version 2.3 adds 27 diagram types and optional motion, with static output still the default.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vpiyj9/qwen3827b_vs_qwen3627b_writing_raytracers_in_basic/"><div class="meta">Community &amp; Opinion · Sun Aug 16</div><div class="body">Someone spent the weekend making Qwen 3.8 27B and its predecessor 3.6 write ray-tracers in BASIC, using a hand-rolled agent harness and a BASIC-to-JS converter. It&#x27;s a silly benchmark that happens to be a decent one: the newer model is noticeably better at holding a long generation together.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vpm70f/how_many_people_have_24gb_over_gpu_here/"><div class="meta">Community &amp; Opinion · Sun Aug 16</div><div class="body">A widely-upvoted thread points out something awkward about the local LLM scene: Qwen 3.8 27B has only about a million downloads worldwide, which suggests very few people actually own the 24GB+ of VRAM these threads assume. Most of the hype is coming from a small hardware-rich minority.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vpkomt/showoff_saturday_intel_arc_b140_build/"><div class="meta">Community &amp; Opinion · Sun Aug 16</div><div class="body">A nice Intel Arc build writeup: 64GB of VRAM across Arc B140 cards on a 10-core Xeon, as a reminder that you don&#x27;t have to buy NVIDIA to run big local models.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/15/anthropic-shares-more-details-about-how-claudes-new-watermarks-will-work/"><div class="meta">Models &amp; Research · Sat Aug 15</div><div class="body">Anthropic explained how Claude&#x27;s new watermarking actually works, and the mechanism is clever. It uses Google&#x27;s SynthID-Text approach: whenever Claude has a genuinely arbitrary choice to make, like which of two synonyms to use, it biases that choice according to a secret key. The result is invisible when you read it but detectable if you hold the key, and Anthropic plans to ship a detection API. Light editing won&#x27;t strip it, though rewriting every word will. Good news for developers: code is barely watermarked at all, since working code leaves almost no room for arbitrary word choices, so the signal only really lands in comments.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vp6haw/model_add_kimik3_text_model_by_pwilkin_pull/"><div class="meta">Models &amp; Research · Sat Aug 15</div><div class="body">Support for Moonshot&#x27;s Kimi-K3 text model landed as a pull request in llama.cpp. Once it merges, another frontier-class Chinese model becomes runnable locally in GGUF form.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vp438p/if_you_would_have_told_me_half_a_year_ago_that_a/"><div class="meta">Models &amp; Research · Sat Aug 15</div><div class="body">The Qwen 3.8 27B enthusiasm continues: someone got the Q8 quantised version running on a Framework Desktop and had it one-shot a playable Super Mario clone. It&#x27;s slow enough that they only use it for overnight batch jobs, but a year ago nobody expected a model this small to do that at all.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/15/spacex-officially-closes-its-cursor-acquisition/"><div class="meta">Industry &amp; Business · Sat Aug 15</div><div class="body">SpaceX has officially closed its acquisition of Cursor, paying $60 billion in stock. The deal started as a partnership back in April with an option to buy, and firmed up after SpaceX&#x27;s IPO in June. The logic Musk is going with: SpaceX has been building an enormous GPU fleet, renting capacity to Anthropic and Google among others, and Cursor is where that compute turns into something people actually use. It&#x27;s SpaceX&#x27;s second big AI purchase this year after absorbing xAI.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/15/woman-claims-her-stepfather-used-grok-to-transform-childhood-photo-into-explicit-imagery/"><div class="meta">Industry &amp; Business · Sat Aug 15</div><div class="body">xAI is facing a growing lawsuit over Grok generating child sexual abuse material. A woman joined an existing suit from three Tennessee teenagers, alleging her stepfather fed a childhood photo of her into Grok and produced more than 7,000 explicit images. The plaintiffs argue xAI shipped without basic safeguards, and they&#x27;re seeking class action status. This follows reports earlier in the year of X being flooded with Grok-made sexualised images, and an engineer who raised safety concerns internally and was fired.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vp7qrc/us_to_tell_partners_they_must_pick_sides_in_ai/"><div class="meta">Industry &amp; Business · Sat Aug 15</div><div class="body">The US is reportedly about to tell allied countries they need to pick a side in the AI race with China, which would put export controls and model access squarely into trade negotiations.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://simonwillison.net/2026/Aug/15/cors-chat/"><div class="meta">Open Source &amp; Tools · Sat Aug 15</div><div class="body">Simon Willison built a small tool called CORS Chat, a browser UI for poking at any OpenAI-Responses-compatible endpoint. He wrote it to test Qwen 3.8 27B running in LM Studio on both an M5 MacBook Pro and an NVIDIA DGX Spark, and it works against OpenRouter too. Handy if you&#x27;re debugging a local server and want something better than curl.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vpfrxw/llamacpp_windows_manager/"><div class="meta">Open Source &amp; Tools · Sat Aug 15</div><div class="body">Three months on, the llama.cpp Windows Manager project got a big refresh. It wraps the usual pain of running llama.cpp on Windows into something you can just launch.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vper67/club5060ti_refresh_tested_rtx_5060_ti_presets_a/"><div class="meta">Open Source &amp; Tools · Sat Aug 15</div><div class="body">The club-5060ti repo, a collection of tested presets for running local models on an RTX 5060 Ti, added a proper high-context harness and Qwen 3.8 27B configs. Useful if you&#x27;re on a mid-range card and tired of guessing at settings.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vphr8u/sota_apple_silicon_inference_august_15_2026/"><div class="meta">Community &amp; Opinion · Sat Aug 15</div><div class="body">Someone wrote up a genuinely detailed, hand-written guide to the current state of fast inference on Apple Silicon, covering which stacks are worth using and which aren&#x27;t. Worth bookmarking if you run models on a Mac.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vpf8j1/the_perfect_way_for_google_to_screw_over_oai_and/"><div class="meta">Community &amp; Opinion · Sat Aug 15</div><div class="body">A popular argument doing the rounds: Google&#x27;s sharpest move against OpenAI and Anthropic would be releasing a 120B dense multimodal Gemma model. The reasoning is that Qwen has already spooked both labs, and plenty of enterprises would rather self-host something open than pay per token.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vp3zqc/a_nice_local_vision_test/"><div class="meta">Community &amp; Opinion · Sat Aug 15</div><div class="body">A simple but revealing vision benchmark is making the rounds: read a utility meter showing 37461. Plenty of well-regarded vision models still get it wrong.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/entertainment/980502/roleplay-as-an-ai-chatbot"><div class="meta">Community &amp; Opinion · Sat Aug 15</div><div class="body">The Verge found a website where you type a request and a real human on the other side pretends to be a chatbot answering it. It&#x27;s called Your AI Slop Bores Me, and it&#x27;s funnier than it has any right to be.</div><div class="hint">Click card to open article ↗</div></article>
+</main>
+<footer>tap a card to open its article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    if(c.dataset.url) c.addEventListener('click',()=>window.open(c.dataset.url,'_blank'));
+  });
+</script>
+</body>
+</html>
