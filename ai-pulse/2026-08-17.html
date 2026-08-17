@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card[data-url]{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card[data-url]:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:14px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+  .hint{font-size:10.5px;color:var(--muted)}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">27 stories</div></header>
+<main>
+<article class="card" data-url="https://arxiv.org/abs/2608.13573"><div class="meta">Models &amp; Research · Mon Aug 17</div><div class="body">Researchers published a year&#x27;s worth of real production traces from a large LLM serving fleet, covering how workloads shifted, how well prefix caching actually worked, and which load-balancing strategies held up. If you run inference infrastructure, this is the rare paper with data from a real system rather than a synthetic benchmark.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arxiv.org/abs/2608.13607"><div class="meta">Models &amp; Research · Mon Aug 17</div><div class="body">A new paper looks at what happens when a model provider ships a version bump. Aggregate scores go up, but individual prompts quietly regress, and the authors found no reliable signal that predicts which ones will break. Practical takeaway: keep your own eval set pinned, because the vendor&#x27;s benchmark won&#x27;t warn you.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/Lightricks/LTX-2"><div class="meta">Open Source &amp; Tools · Mon Aug 17</div><div class="body">Lightricks open-sourced LTX-2, a video model that generates picture and sound together instead of bolting audio on afterwards. It&#x27;s a 22B transformer, roughly 66GB to download in full, with a distilled version for faster runs and FP8 quantization if you&#x27;re short on VRAM. 9.1K+ stars.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/unslothai/unsloth"><div class="meta">Open Source &amp; Tools · Mon Aug 17</div><div class="body">Unsloth is trending again on the back of a native desktop app for running and fine-tuning models locally, which lowers the bar a lot for people who don&#x27;t want to live in a terminal.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vq6fdj/qwen3827b_on_rtx_3090_82_tps_single_request_up_to/"><div class="meta">Community &amp; Opinion · Mon Aug 17</div><div class="body">The whole local-model community spent the weekend stress-testing Qwen 3.8 27B and posting results. Highlights: 82 tokens/sec on a single RTX 3090 (peaking at 672 under batching), usable Q2 and Q3 quants squeezed into a 12GB laptop GPU, and side-by-side runs where it beat GPT-5.6 Sol on hard animated SVG prompts.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/16/stripe-will-reportedly-acquire-ai-gateway-startup-openrouter-for-7b/"><div class="meta">Industry &amp; Business · Sun Aug 16</div><div class="body">Stripe is buying OpenRouter for over $7 billion, per Bloomberg. OpenRouter is the routing layer a lot of teams use to hit 400+ models through one API, and it raised a Series B in May at a $1.3 billion valuation, so this is more than five times that number three months later. The pitch was always &quot;Stripe for AI&quot;, and now it&#x27;s literally Stripe.  (also in Bloomberg, Hacker News)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reuters.com/business/nvidia-scales-back-250-billion-openai-data-center-guarantee-wsj-reports-2026-08-14/"><div class="meta">Industry &amp; Business · Sun Aug 16</div><div class="body">Nvidia has sharply cut back how much of OpenAI&#x27;s data centre financing it&#x27;s willing to guarantee, down from a $250 billion commitment. That guarantee was part of what made OpenAI&#x27;s buildout numbers pencil out for lenders, so a smaller backstop makes the whole thing more expensive to finance.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/ai-artificial-intelligence/980817/openai-disbands-preparedness-team"><div class="meta">Industry &amp; Business · Sun Aug 16</div><div class="body">OpenAI disbanded its preparedness team at the end of July, according to the FT. That was the group whose job was to measure catastrophic-risk scenarios before a model ships. It&#x27;s the latest in a run of safety reshuffles as the company moves toward an IPO.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/ai-artificial-intelligence/980742/chatgpts-computer-history-tracks-your-clicks-and-keystrokes"><div class="meta">Industry &amp; Business · Sun Aug 16</div><div class="body">The ChatGPT desktop app on macOS now has a feature called Computer History that watches your clicks and keystrokes to learn how you work and suggest actions. No screenshots, unlike Windows Recall, but it&#x27;s still your whole workday turned into training signal.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://vectoral.com/blog/who-are-the-token-brokers"><div class="meta">Industry &amp; Business · Sun Aug 16</div><div class="body">A small resale market has grown up around unused AI credits. Brokers buy leftover balances off startups at a discount and sell them on, which is a decent sign that inference credits are now traded like a commodity rather than a product.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://simonwillison.net/2026/Aug/16/qwen-38-27b/"><div class="meta">Models &amp; Research · Sun Aug 16</div><div class="body">Simon Willison&#x27;s verdict on Qwen 3.8 27B: genuinely excellent, and a good fit for a laptop at about 17GB quantized under an Apache 2 licence. The catch is that it ships with reasoning cranked to maximum by default. He asked it for simple SVG code and it burned 22,276 reasoning tokens over 21 minutes. Turn the effort setting down to low before you use it for anything.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vq3ssg/qwen_38_24t_at_288k_tokenss_on_nvidia_gb300_nvl72/"><div class="meta">Models &amp; Research · Sun Aug 16</div><div class="body">Nvidia published numbers for serving the giant Qwen 3.8 2.4T model on a GB300 NVL72 rack: 288,000 tokens per second aggregate. Interesting mostly as a datapoint on what a full rack of current-generation hardware actually delivers on a frontier-size model.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://littlelearner-ll.github.io/"><div class="meta">Models &amp; Research · Sun Aug 16</div><div class="body">Someone trained a 5B model on nothing but material a US fifth-grader would encounter, an 88 billion token filtered corpus, and put it online to chat with. The point is to separate skills a model genuinely learned from skills that were simply sitting in the training data waiting to be triggered.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vqasuk/audiocpp_release_06_dotstts_minimaxh3_text2audio/"><div class="meta">Open Source &amp; Tools · Sun Aug 16</div><div class="body">audio.cpp 0.6 landed with support for several new audio models, including dots.tts and MiniMax-H3 text-to-audio running at up to 3x realtime, plus a preview of MiniMax-Music3. Same spirit as llama.cpp, just for sound.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vqa7qh/llamacpp_rocm_72714_upgrade_radeon_780m_igpu/"><div class="meta">Open Source &amp; Tools · Sun Aug 16</div><div class="body">llama.cpp jumped from ROCm 7.2 to 7.14, which matters if you&#x27;re running models on AMD hardware. Fresh benchmarks on a Radeon 780m integrated GPU compare the ROCm and Vulkan backends head to head.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://platform.claude.com/docs/en/release-notes/system-prompts"><div class="meta">Open Source &amp; Tools · Sun Aug 16</div><div class="body">Anthropic now publishes the system prompts for its Claude models in the release notes, so you can read exactly what the model is told before your own prompt arrives.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://daringfireball.net/2026/08/anthropics_watermark_text_adulteration_in_claude_is_a_perversion_of_writing"><div class="meta">Community &amp; Opinion · Sun Aug 16</div><div class="body">John Gruber tore into Anthropic&#x27;s plan to watermark all Claude text output. The technique nudges the model toward a secret &quot;green list&quot; of words so the output is statistically detectable later. His objection is that this deliberately makes the model pick worse words, it applies to private chats and proofreading where nobody&#x27;s being deceived, and calling it imperceptible is a stretch when the whole mechanism is biased word choice. It&#x27;s driven by an EU transparency rule covering AI text over 200 tokens, applied worldwide.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/16/anthropic-ceo-says-ai-backlash-is-fundamentally-a-crisis-of-trust/"><div class="meta">Community &amp; Opinion · Sun Aug 16</div><div class="body">Dario Amodei argues the public backlash against AI isn&#x27;t because he and other CEOs keep warning about risks. He calls it &quot;fundamentally a crisis of trust&quot; in institutions generally, and says the fix is delivering real results rather than talking about curing cancer. He also pushed back on open weights as a decentralizing force, saying they mostly shift power to whoever has the most compute.  (also on Simon Willison&#x27;s blog, r/LocalLLaMA)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://futurism.com/artificial-intelligence/young-people-ai-ceos-executives-poll"><div class="meta">Community &amp; Opinion · Sun Aug 16</div><div class="body">New polling finds young adults hold AI company executives in remarkably low regard, a sharp reversal from a decade ago when Google and Apple were the aspirational places to work. Worth watching if you&#x27;re hiring.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://peterbloem.nl/blog/craft-coding"><div class="meta">Community &amp; Opinion · Sun Aug 16</div><div class="body">A good piece on using AI to write code without falling into vibe-coding, framed around teaching students who could just take the shortcut. The argument is about keeping the craft while still using the tool.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/16/why-people-arent-buying-mark-zuckerbergs-ai-future/"><div class="meta">Community &amp; Opinion · Sun Aug 16</div><div class="body">TechCrunch&#x27;s Equity podcast digs into why Zuckerberg&#x27;s pitch for Meta&#x27;s AI future keeps failing to land with people.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://lists.debian.org/debian-devel-announce/2026/08/msg00002.html"><div class="meta">Open Source &amp; Tools · Sat Aug 15</div><div class="body">Debian has started voting on how to handle AI and LLM contributions to the project. Whatever they land on will set a reference point that other large open-source projects will get compared against.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://spectrum.ieee.org/ai-designed-virus"><div class="meta">Models &amp; Research · Sat Aug 15</div><div class="body">A team used a genomic language model to design 16 working bacteriophages, viruses that infect bacteria, and they actually functioned in the lab. The medical upside is real and so is the obvious dual-use problem, which the piece doesn&#x27;t dodge.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arxiv.org/abs/2608.13122"><div class="meta">Models &amp; Research · Sat Aug 15</div><div class="body">A paper documents porting 250,000 lines of legacy weather simulation code to GPUs with AI assistance. This is the kind of grinding modernization work that nobody wants to do by hand, and it&#x27;s a decent case study for whether the tooling is ready for it.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.science.org/content/blog-post/so-how-ai-drug-discovery-doing-really"><div class="meta">Models &amp; Research · Sat Aug 15</div><div class="body">Derek Lowe takes an honest look at where AI in drug discovery actually stands versus where the press releases say it stands. Short version: real progress in narrow places, much less than advertised overall.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://opensauce.it/cloudflare-ai-psychosis/"><div class="meta">Community &amp; Opinion · Sat Aug 15</div><div class="body">A pointed critique of Cloudflare&#x27;s recent moves around AI crawlers and bot traffic, arguing the company has drifted from making the internet better to sitting in judgment over who gets to access it.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.bbc.co.uk/news/articles/cp3rprx2wl4o"><div class="meta">Community &amp; Opinion · Sat Aug 15</div><div class="body">Independent booksellers noticed large batches of secondhand novels being shipped to distant warehouses and can&#x27;t get a straight answer about who&#x27;s buying. The suspicion is AI training data collection, which would make physical books the next scraping frontier.</div><div class="hint">Click card to open article ↗</div></article>
+</main>
+<footer>tap a card to open its article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    if(c.dataset.url) c.addEventListener('click',()=>window.open(c.dataset.url,'_blank'));
+  });
+</script>
+</body>
+</html>
