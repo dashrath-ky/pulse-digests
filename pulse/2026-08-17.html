@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card[data-url]{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card[data-url]:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:14px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+  .hint{font-size:10.5px;color:var(--muted)}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">6 stories</div></header>
+<main>
+<article class="card"><div class="meta">Finshots · Mon Aug 17</div><div class="body">Finshots ran its post-Independence Day special on how the Indian rupee actually became the rupee. Before 1935 there was no RBI, and Indian notes were printed in Britain until a press opened in Nashik in 1928. The odd bit is what came after 1947: the rupee was still split into 16 annas until the 1957 Coinage Act moved it to 100 paise, and shops quietly rounded 25-paise items up to 26, which was enough to start fights at the counter.</div></article>
+<article class="card"><div class="meta">Finshots · Mon Aug 17</div><div class="body">The messiest chapter was splitting the money at Partition. The RBI had to keep printing currency for Pakistan for a while, and of the roughly ₹75 crore Pakistan was owed, ₹55 crore got held back as the Kashmir dispute heated up. Pakistan cut the RBI loose early, in April 1948, and India only released the money after Gandhi went on a fast unto death over it.</div></article>
+<article class="card"><div class="meta">Morning Brew · Sun Aug 16</div><div class="body">Raw milk is having a real moment in the US despite doctors telling people not to drink it. Farmers report growing sales at $20+ a gallon, dozens of states are trying to loosen the rules, and a bipartisan House bill would let it cross state lines. The CDC counted 2,600 people sickened and 225 hospitalisations from raw milk between 1998 and 2019.</div></article>
+<article class="card"><div class="meta">Morning Brew · Sun Aug 16</div><div class="body">The dairy industry is still fighting over who gets to say &quot;milk&quot;. The UK Supreme Court told Oatly it can&#x27;t use the word, a Swiss court struck down Alpro&#x27;s &quot;Shhh…This Is Not M*lk&quot;, and the FDA is fine with it as long as the label is clear. Meanwhile plant-based milk sales by volume have fallen more than 5% three years running.</div></article>
+<article class="card"><div class="meta">Morning Brew · Sun Aug 16</div><div class="body">Milk is turning up in skincare too, in creams, soaps and serums, sometimes from goats, buffalo, or donkeys. Cleopatra&#x27;s milk baths get the credit; Hailey Bieber&#x27;s Rhode is the modern version.</div></article>
+<article class="card"><div class="meta">Lenny&#x27;s Newsletter · Sun Aug 16</div><div class="body">Lenny interviewed Ian Silber, OpenAI&#x27;s head of product design, who&#x27;s run design for ChatGPT and Codex for three years. His argument is that this is the best time in history to be a designer, but he&#x27;s also blunt that AI has made engineers roughly 10x more productive while design teams haven&#x27;t seen anything close to that. His advice to his own designers is just to do less.</div></article>
+</main>
+<footer>tap a card to open its article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    if(c.dataset.url) c.addEventListener('click',()=>window.open(c.dataset.url,'_blank'));
+  });
+</script>
+</body>
+</html>
