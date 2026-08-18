@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card[data-url]{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card[data-url]:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:14px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+  .hint{font-size:10.5px;color:var(--muted)}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">26 stories</div></header>
+<main>
+<article class="card" data-url="https://simonwillison.net/2026/Aug/17/qwen-38-27b-scores-52/"><div class="meta">Models &amp; Research · Tue Aug 18</div><div class="body">Qwen 3.8 27B is the story of the week for anyone running models locally. It scored 52 on the Artificial Analysis intelligence index, which ties GPT-5.6 Luna and sits one point behind GLM-5.2 and DeepSeek V4 Pro. Those two are 753 billion and 1.6 trillion parameters; this one is 27 billion and fits on a single consumer card. Simon Willison called it &quot;a truly astonishing model.&quot;  (also on r/LocalLLaMA)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vr4bs4/local_agentic_coding_benchmark_qwen_38_27b_in/"><div class="meta">Models &amp; Research · Tue Aug 18</div><div class="body">The catch with Qwen 3.8 is that it thinks a lot. It ships with reasoning effort set to &quot;xhigh&quot; by default, and people on r/LocalLLaMA reckon that&#x27;s tuned for benchmark scores rather than everyday use. One agentic coding test found the medium setting still beat the older 3.6 model while using roughly half the requests and a third fewer tokens, so turning the dial down is probably the right move.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vrdetw/qwen_dev_says_not_to_wait_for_35ba3b/"><div class="meta">Models &amp; Research · Tue Aug 18</div><div class="body">A Qwen developer told people not to hold out for the 35B-A3B variant everyone&#x27;s been asking for, which set off a round of speculation about what the lab is shipping instead.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vr643w/we_benchmark_models_nobody_actually_runs/"><div class="meta">Models &amp; Research · Tue Aug 18</div><div class="body">Worth remembering when you read those benchmark numbers: they&#x27;re measured on the full unquantised model, and almost nobody runs that at home. A good thread digs into how much you actually lose to quantisation.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arxiv.org/abs/2608.14558"><div class="meta">Models &amp; Research · Tue Aug 18</div><div class="body">A new benchmark called The Unwritten Benchmark tests whether multimodal models can work out the rules of a situation nobody told them about, which is closer to what agents actually have to do than most evals.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vrbct8/cdw_has_bumped_the_msrp_of_the_rtx_pro_6000_from/"><div class="meta">Industry &amp; Business · Tue Aug 18</div><div class="body">GPU prices are climbing fast. CDW quietly moved the RTX Pro 6000&#x27;s list price from $16,000 to $19,999, and people are reporting eBay sellers cancelling DGX Spark orders to relist them thousands higher. If you were planning a local rig, the window is closing.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/anthropics/skills"><div class="meta">Open Source &amp; Tools · Tue Aug 18</div><div class="body">Anthropic&#x27;s `skills` repo, which holds the reference implementation of Agent Skills, is now at 170K stars. Skills are just folders of instructions and scripts that Claude pulls in when it needs them, and they&#x27;ve become the standard way to teach an agent a specialised workflow.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/lightningpixel/modly"><div class="meta">Open Source &amp; Tools · Tue Aug 18</div><div class="body">Modly turns a photo into a 3D mesh, entirely on your own GPU with no cloud round-trip. Desktop app for Windows, Linux and Apple Silicon. 6.4K stars.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vqzud4/llamacpp_adaptive_mtp_pr27210/"><div class="meta">Open Source &amp; Tools · Tue Aug 18</div><div class="body">Someone filed a llama.cpp pull request adding adaptive multi-token prediction, which speeds up generation by guessing several tokens ahead and only falling back when it&#x27;s wrong. Worth a look if you&#x27;re squeezing throughput out of local inference.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arxiv.org/abs/2608.14580"><div class="meta">Open Source &amp; Tools · Tue Aug 18</div><div class="body">OGX is a new open-source, vendor-neutral application server for building generative AI apps in Python, aimed at people who don&#x27;t want their stack welded to one model provider.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/17/anthropics-annualized-revenue-surges-to-65b/"><div class="meta">Industry &amp; Business · Mon Aug 17</div><div class="body">Anthropic&#x27;s annualised revenue hit $65 billion, up from $47 billion in May and just $9 billion at the end of 2025. That&#x27;s $18 billion added in two months. Investors now expect the year to close somewhere between $100 and $120 billion, and there&#x27;s talk of an IPO this autumn at a $2 trillion valuation, which would be the biggest market debut ever. For comparison, OpenAI is at $40 billion.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/17/groq-raises-350m-to-fuel-its-pivot-from-ai-chips-to-neocloud/"><div class="meta">Industry &amp; Business · Mon Aug 17</div><div class="body">Groq raised $350 million and gave up on being a chip company. After Nvidia hired founder Jonathan Ross and much of the senior team as part of a $20 billion licensing deal, building its own LPU silicon stopped being realistic. It&#x27;s now a neocloud renting out Nvidia GPUs, and the valuation fell from $6.9 billion to $3.5 billion. Plan is to grow from 54 megawatts to over 200 by 2027.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/17/nvidia-investing-1-5b-in-softbank-data-center-developer-behind-openai-project/"><div class="meta">Industry &amp; Business · Mon Aug 17</div><div class="body">Nvidia is putting $1.5 billion into the SoftBank subsidiary building OpenAI&#x27;s data centre, which conveniently locks in Nvidia chips for the site.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arstechnica.com/information-technology/2026/08/nvidia-discloses-21b-stake-in-spacex/"><div class="meta">Industry &amp; Business · Mon Aug 17</div><div class="body">An SEC filing revealed Nvidia holds nearly $21 billion of SpaceX stock. Another entry in the growing list of cases where Nvidia owns a slice of the companies buying its chips.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/17/wispr-raises-280m-at-2b-valuation-as-it-looks-beyond-dictation/"><div class="meta">Industry &amp; Business · Mon Aug 17</div><div class="body">Wispr raised $280 million at a $2 billion valuation and is expanding past voice dictation into meeting notes.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/17/ai-automation-startup-relay-shuts-down-staff-joins-googles-chrome-team/"><div class="meta">Industry &amp; Business · Mon Aug 17</div><div class="body">Relay, an AI automation startup, shut down and its team went to Google&#x27;s Chrome group. Founder Jacob Bank hinted at plans to build AI-driven task automation directly into the browser.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/17/amazon-once-an-online-bookseller-is-destroying-rare-books-to-train-ai-models/"><div class="meta">Industry &amp; Business · Mon Aug 17</div><div class="body">404 Media hid a tracker inside a rare book and followed it to an Amazon facility in Las Vegas, where books are being debound and scanned to train AI models. Out-of-print texts are valuable precisely because they were never online, so they&#x27;re clean of AI-generated slop. Amazon&#x27;s response was that it &quot;purchases books through commercial channels to improve the products and services customers use.&quot;  (also covered by Simon Willison)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/ai-artificial-intelligence/980869/anthropic-claude-watermarks-synthid-text-system"><div class="meta">Models &amp; Research · Mon Aug 17</div><div class="body">Anthropic explained how it will watermark Claude&#x27;s text output, using a version of Google&#x27;s open-source SynthID-Text system. The invisible markers are there to satisfy Europe&#x27;s AI transparency rules.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://huggingface.co/blog/Dharma-AI/gpu-management-pt2"><div class="meta">Models &amp; Research · Mon Aug 17</div><div class="body">A Hugging Face post reports getting 33 percentage points more GPU utilisation out of the same cluster purely by reordering how jobs were scheduled. No new hardware, just better queueing.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://jack-clark.net/2026/08/17/import-ai-469-science-ai-rsi-simulator-and-zucks-technological-pessimism/"><div class="meta">Models &amp; Research · Mon Aug 17</div><div class="body">Import AI 469 covers DiG-bench, which measures whether a model can infer the unwritten rules of an environment by poking at it rather than being told. Jack Clark reports Fable shows real creative intuition here. Also in the issue: an RSI simulator and Zuckerberg&#x27;s turn toward technological pessimism.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://openai.com/index/the-defenders-window"><div class="meta">Models &amp; Research · Mon Aug 17</div><div class="body">OpenAI published a piece on how AI is changing the security balance between attackers and defenders, including what it&#x27;s doing internally and what security teams should do now.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.technologyreview.com/2026/08/17/1141568/moxie-when-kids-robot-best-friend-dies/"><div class="meta">Community &amp; Opinion · Mon Aug 17</div><div class="body">MIT Tech Review has a genuinely affecting story about what happens when a child&#x27;s robot friend dies. Moxie is a small companion robot that taught a boy called Xander breathing exercises for anxiety; six years on, the company behind it is winding down. Worth reading if you build consumer AI products.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.technologyreview.com/2026/08/17/1142200/what-flocks-defenders-are-missing/"><div class="meta">Community &amp; Opinion · Mon Aug 17</div><div class="body">Flock, the police tech firm running around 120,000 licence plate readers across the US, announced changes meant to stop officers using the system to stalk people. MIT Tech Review argues the fixes miss the point.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arxiv.org/abs/2608.14565"><div class="meta">Community &amp; Opinion · Mon Aug 17</div><div class="body">A paper argues AI lock-in is already happening and that we should be planning for it now, rather than treating it as a future alignment problem.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://openai.com/index/new-policy-ideas-for-the-intelligence-age"><div class="meta">Community &amp; Opinion · Mon Aug 17</div><div class="body">OpenAI is funding 14 independent research projects on AI policy, focused on economic opportunity and social resilience.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/15/how-to-tell-if-your-ai-platforms-accounts-have-been-hacked/"><div class="meta">Community &amp; Opinion · Sat Aug 15</div><div class="body">Practical guide to checking whether someone has broken into your accounts on the major AI platforms. Worth ten minutes if you&#x27;ve got API keys sitting in a few of them.</div><div class="hint">Click card to open article ↗</div></article>
+</main>
+<footer>tap a card to open its article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    if(c.dataset.url) c.addEventListener('click',()=>window.open(c.dataset.url,'_blank'));
+  });
+</script>
+</body>
+</html>
