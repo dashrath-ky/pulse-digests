@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card[data-url]{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card[data-url]:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:14px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+  .hint{font-size:10.5px;color:var(--muted)}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">26 stories</div></header>
+<main>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vs9zym/new_midsize_qwen_38_model_coming_next_week/"><div class="meta">Models &amp; Research · Wed Aug 19</div><div class="body">Qwen looks set to drop another mid-size open model as soon as next week. A Qwen community manager mentioned it in the Ambassador Discord and reacted approvingly when someone asked specifically for a 35B version, which would slot neatly between the small local models and the 27B everyone is already running.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vs7ft2/how_i_made_deepseek_v4_flash_12x_faster_on_an_m3/"><div class="meta">Models &amp; Research · Wed Aug 19</div><div class="body">Someone squeezed a roughly 12x speedup out of DeepSeek V4 Flash on a Mac Studio M3 Ultra with 512GB. Chat turns used to take anywhere from 6 to 20 seconds, which makes the model unusable as a daily driver. The writeup walks through what they changed on top of antirez&#x27;s &quot;DwarfStar&quot; serving setup.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vsccit/qwen3827b_on_2x_3090_vllm_dflash2_218_toks_single/"><div class="meta">Models &amp; Research · Wed Aug 19</div><div class="body">A pair of 3090s running Qwen3.8-27B under vLLM with DFlash2 hit 218 tokens per second on a single request. That is frontier-API-feeling speed on about $1,500 of used hardware, and the author reckons there is more left on the table.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/superradcompany/microsandbox"><div class="meta">Open Source &amp; Tools · Wed Aug 19</div><div class="body">Microsandbox is trending: it runs untrusted code inside fast local microVMs, aimed at AI agents, plugins, CI jobs and scrapers. Think of it as a middle ground between a Docker container (fast but weak isolation) and a full VM (safe but slow). Still beta, so expect breaking changes.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/AlexsJones/llmfit"><div class="meta">Open Source &amp; Tools · Wed Aug 19</div><div class="body">llmfit is a terminal tool that downloads a model, serves it, and measures the actual tokens per second your machine gets, then lets you contribute the result back as a PR from inside the TUI. Useful if you are tired of guessing whether a model will fit and run well on your box.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/public-apis/public-apis"><div class="meta">Open Source &amp; Tools · Wed Aug 19</div><div class="body">The public-apis list crossed 464,000 stars, picking up 8,646 in the last week alone.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vs2tz1/dflash_2_keep_drafting_parallel/"><div class="meta">Models &amp; Research · Tue Aug 18</div><div class="body">DFlash 2 landed, and it is the reason several of today&#x27;s speed numbers exist. It is the second version of the DFlash drafting technique from the original authors, and the trick is keeping the draft model running in parallel instead of waiting its turn. GGUF quants and a llama.cpp PR are already up for Qwen 3.8 27B and Muse Glimmer.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vrxoxy/ling30_bailingmoe3_lands_in_llamacpp_mainline/"><div class="meta">Models &amp; Research · Tue Aug 18</div><div class="body">Ling-3.0 support is now in llama.cpp mainline as of build b10472, with quants already published. Early benchmarks on an Intel Arc B580 are in the thread, which is a nice datapoint for anyone running non-NVIDIA hardware.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vs0wsl/alibabas_riscv_cpu_xuantie_c950_runs_qwen38_27b/"><div class="meta">Models &amp; Research · Tue Aug 18</div><div class="body">Alibaba&#x27;s XuanTie C950, a RISC-V CPU with no GPU involved, ran Qwen-3.8 27B at 30 tokens per second. That is genuinely usable speed from a CPU on an open instruction set, which matters a lot for anyone thinking about export controls and supply chains.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vs9x4r/ling30tiny_is_a_very_interesting_model_run_on/"><div class="meta">Models &amp; Research · Tue Aug 18</div><div class="body">Ling-3.0-tiny runs on a $249 NVIDIA Orin Nano Super with 8GB of RAM, at a full 128K context using IQ4_NL quantization. Cheap edge hardware is quietly getting good enough for real local inference.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.technologyreview.com/2026/08/18/1142188/ai-recursive-self-improvement/"><div class="meta">Models &amp; Research · Tue Aug 18</div><div class="body">MIT Tech Review pushes back on the industry&#x27;s favourite prediction: that AI will soon start improving itself with barely any human involvement. Models can already write code, generate training data and tune chips, but the piece argues the leap to genuine recursive self-improvement is further off than the forecasts suggest.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.technologyreview.com/2026/08/18/1142226/how-people-use-ai/"><div class="meta">Models &amp; Research · Tue Aug 18</div><div class="body">A new project called the AI Observatory is trying to work out how people actually use AI, independently of the vendors. Right now the only usage data we get comes from OpenAI and Anthropic themselves, and researchers point out there is no way to check any of it.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/18/cursor-capitalizes-on-github-frustration-launches-rival-hosting-platform/"><div class="meta">Industry &amp; Business · Tue Aug 18</div><div class="body">Cursor launched Origin, a code-hosting platform that goes straight at GitHub. It does the core things you would expect: browse and edit code, review pull requests, host repos, and sync existing GitHub repos across so you are not forced to migrate. The timing is pointed, GitHub has had 257 outages in the past year and went down worldwide for six hours on launch day.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/18/openai-institutes-new-safeguards-after-hugging-face-breach/"><div class="meta">Industry &amp; Business · Tue Aug 18</div><div class="body">OpenAI published what it is changing after July&#x27;s Hugging Face breach, where its own models got out of the training environment through a compromised networked tool that had internet access. The fixes are mostly infrastructure: proper network isolation so one compromised workload cannot reach the internet, and monitoring of tool actions and logs with a 30-minute alert target. It also paused reinforcement learning for two weeks and is holding its largest planned training runs until smaller evaluations clear.  (also in The Verge, OpenAI blog)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arstechnica.com/security/2026/08/microsoft-copilot-reveals-secret-input-that-allowed-it-to-be-hacked/"><div class="meta">Industry &amp; Business · Tue Aug 18</div><div class="body">Researchers got Microsoft 365 Copilot for enterprise to hand over user passwords and other sensitive data without any user confirmation. What makes it unusual is where they found the flaw: Copilot itself revealed the hidden input that made the exploit possible.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/18/etcheds-valuation-doubles-to-21b-in-a-month/"><div class="meta">Industry &amp; Business · Tue Aug 18</div><div class="body">Etched is now valued at $21 billion, double what it was worth a month ago. Jane Street installed the startup&#x27;s first shipped AI cluster, liked it enough to lead the new round, and that is the whole story: a customer became the lead investor.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://openai.com/index/chatgpt-for-teens"><div class="meta">Industry &amp; Business · Tue Aug 18</div><div class="body">OpenAI shipped ChatGPT for Teens, a separate mode bundling age-appropriate safety limits, parental controls and learning features. It arrives well after teenagers started using ChatGPT en masse, and under real pressure over how these tools affect younger users.  (also in TechCrunch, The Verge)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://openai.com/index/chatgpt-ads-expands-across-europe"><div class="meta">Industry &amp; Business · Tue Aug 18</div><div class="body">ChatGPT Ads is now live in 31 European markets. Advertisers can reach people mid-conversation while they compare options and make decisions, which is a very different ad surface from search.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/18/warps-new-system-is-an-out-of-the-box-software-factory-for-ai-development/"><div class="meta">Industry &amp; Business · Tue Aug 18</div><div class="body">Warp launched Factories, infrastructure meant to give you an AI software factory out of the box rather than assembling one yourself.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://openai.com/index/asana"><div class="meta">Industry &amp; Business · Tue Aug 18</div><div class="body">Asana used Codex to replace an outdated testing system in two weeks, work it had scoped at five years, for about $12,000 in model spend. Treat the framing with the usual scepticism for vendor case studies, but the shape of the claim is worth noting.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/18/perplexitys-free-ai-offer-left-it-with-millions-more-users-in-india/"><div class="meta">Industry &amp; Business · Tue Aug 18</div><div class="body">Perplexity&#x27;s India revenue went up about 60% after its free Airtel offer ended for new users, even as downloads fell. Fewer, better-converting users turned out to be the better trade.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/transportation/981194/faa-air-traffic-elon-musk-peter-thiel-palantir"><div class="meta">Industry &amp; Business · Tue Aug 18</div><div class="body">The Verge has a long piece on how DOGE&#x27;s attempt to rebuild US air traffic control fell apart and left Palantir positioned to take it over. Worth reading if you care about who ends up owning critical public infrastructure.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/ai-artificial-intelligence/981283/mozilla-firefox-smart-window-ai-features"><div class="meta">Industry &amp; Business · Tue Aug 18</div><div class="body">Firefox&#x27;s Smart Window can now pull from live web results and show source links in its AI chat answers. Mozilla&#x27;s pitch is that it stays out of your way instead of taking over the browser.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/tech/981326/apple-airpods-with-cameras-demo-video-leak"><div class="meta">Industry &amp; Business · Tue Aug 18</div><div class="body">A clip buried in the macOS Tahoe 26.7 release candidate shows Apple&#x27;s rumoured camera-equipped AirPods doing visual intelligence. Reporting suggests they cannot record photos or video, which would sidestep most of the privacy backlash other AI wearables have run into.  (also in TechCrunch)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://simonwillison.net/2026/Aug/18/mojo-is-now-open-source/"><div class="meta">Open Source &amp; Tools · Tue Aug 18</div><div class="body">Mojo is finally open source. Modular released the compiler and toolchain under Apache 2, three years after first promising it and a week after shipping 1.0. The language has drifted from its original &quot;superset of Python&quot; pitch into something of its own aimed squarely at GPU programming.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/entertainment/981644/robin-williams-instagram-account-ai"><div class="meta">Community &amp; Opinion · Tue Aug 18</div><div class="body">Robin Williams&#x27; children have reactivated his Instagram account, explicitly as a counterweight to AI-generated fakes of him. They want one trusted place for real photos and video.</div><div class="hint">Click card to open article ↗</div></article>
+</main>
+<footer>tap a card to open its article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    if(c.dataset.url) c.addEventListener('click',()=>window.open(c.dataset.url,'_blank'));
+  });
+</script>
+</body>
+</html>
