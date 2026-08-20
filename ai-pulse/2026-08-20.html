@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card[data-url]{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card[data-url]:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:14px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+  .hint{font-size:10.5px;color:var(--muted)}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">30 stories</div></header>
+<main>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vt78xd/qwen3827b_has_the_highest_level_of_agency_ive/"><div class="meta">Models &amp; Research · Thu Aug 20</div><div class="body">Qwen3.8-27B is the model everyone is testing right now, and the verdict is split. People say it&#x27;s the most genuinely agentic local model they&#x27;ve used: one person handed it their university login and a single prompt, and it went and pulled their class schedule off a badly built site on its own. The catch is that raw world knowledge went backwards compared to 3.6, so it&#x27;s better at doing things and worse at knowing things.  (also r/LocalLLaMA knowledge regression thread)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vsx94f/we_quantized_the_new_ornith_15_9b_and_35ba3b/"><div class="meta">Models &amp; Research · Thu Aug 20</div><div class="body">A lab called Ornith released two new open models, a 9B dense one that can see images and a 35B mixture-of-experts model that only activates about 3B parameters per token. Both are MIT licensed, and the interesting bit is the training setup: the models generate their own practice tasks in a loop rather than learning from a fixed dataset. Early reports say the 9B runs usably on a 4GB laptop GPU.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vsuaoj/dflash2_speeds_qwen_38_27b_up_to_4_times/"><div class="meta">Open Source &amp; Tools · Thu Aug 20</div><div class="body">A new decoding trick called DFlash2 landed in llama.cpp (PR #27342) and makes Qwen3.8-27B roughly four times faster. One person got 138 tokens a second out of a single RTX 3090 that was power-limited to 250 watts, which is the kind of number that used to need much more expensive hardware.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/volcengine/OpenViking"><div class="meta">Open Source &amp; Tools · Thu Aug 20</div><div class="body">ByteDance&#x27;s Volcengine open-sourced OpenViking, a memory store for AI agents that pretends to be a filesystem. Instead of querying a vector database and hoping the right chunk comes back, the agent browses its own memories and skills with `ls`, `tree`, and `find`.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/jundot/omlx"><div class="meta">Open Source &amp; Tools · Thu Aug 20</div><div class="body">omlx is a local LLM server that lives in your Mac menu bar, with continuous batching and tiered KV caching so it behaves more like a real inference server than a toy.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/19/stripe-didnt-really-buy-openrouter-because-of-the-singularity/"><div class="meta">Industry &amp; Business · Wed Aug 19</div><div class="body">Stripe bought OpenRouter for $7.5 billion, which is nearly six times the $1.3 billion the company was worth back in May. OpenRouter is the service most developers use to send prompts to whichever model is cheapest or best at that moment, so Stripe now sits in the middle of a lot of AI spending. Stripe joked in an internal letter that it did the deal because of &quot;the singularity&quot;, but the real reason is simpler: 88% of the Forbes AI 50 already use Stripe, and this turns AI usage into something Stripe can bill and manage. OpenRouter keeps running independently.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/19/cognition-ceo-denies-report-that-spacex-tried-to-acquire-the-startup/"><div class="meta">Industry &amp; Business · Wed Aug 19</div><div class="body">Cognition&#x27;s CEO Scott Wu shot down a Bloomberg report that SpaceX tried to buy the AI coding startup, saying the two sides were never in talks and the company isn&#x27;t for sale. Worth noting the report wasn&#x27;t crazy: SpaceX just closed a $60 billion purchase of Cursor last week, and the two have already shipped Grok 4.6 together.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/ai-artificial-intelligence/981668/nvidias-goldman-blackrock-gpu-compute-asset"><div class="meta">Industry &amp; Business · Wed Aug 19</div><div class="body">Jensen Huang is pitching GPUs as a new asset class that banks like Goldman and BlackRock can lend against. The Verge&#x27;s read is that this is a nicer way of saying GPU-backed loans, which is the kind of financial engineering that tends to show up late in a boom.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/19/researchers-complain-that-openai-revoked-their-access-to-limited-cyber-program/"><div class="meta">Industry &amp; Business · Wed Aug 19</div><div class="body">OpenAI cut off several security researchers from its Trusted Access for Cyber program, which gives vetted defenders less-restricted models for finding vulnerabilities. The researchers say they were removed without a clear explanation.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://openai.com/index/replit"><div class="meta">Industry &amp; Business · Wed Aug 19</div><div class="body">Replit launched a Free Mode built on GPT-5.6 Luna, so you can build working software without watching a token meter. It&#x27;s a direct bet that getting people in the door beats charging them per prompt.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/19/google-launches-new-study-tools-for-students-across-search-and-gemini/"><div class="meta">Industry &amp; Business · Wed Aug 19</div><div class="body">Google is pushing hard on students, adding a dedicated study hub to Gemini plus homework-checking through Google Lens and new study tools in Search.  (also in The Verge)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/tech/982270/meta-ai-mac-app"><div class="meta">Industry &amp; Business · Wed Aug 19</div><div class="body">Meta shipped a Mac app for its AI assistant. It can watch a window you share with it and hook into Google Workspace.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/19/amazon-makes-its-ai-powered-alexa-free-on-fire-tv-no-prime-required/"><div class="meta">Industry &amp; Business · Wed Aug 19</div><div class="body">Amazon made Alexa+ free on every compatible Fire TV in the US, no Prime needed, and is upgrading people automatically.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/19/relativity-networks-raises-22-million-to-bring-a-faster-kind-of-fiber-to-data-centers/"><div class="meta">Industry &amp; Business · Wed Aug 19</div><div class="body">Relativity Networks raised $22 million for hollow-core fiber, a cable design that sends light through air instead of glass and moves data about 30% faster. Data center operators care because that&#x27;s latency they can&#x27;t buy any other way.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://openai.com/index/offering-zero-data-retention-for-frontier-models"><div class="meta">Models &amp; Research · Wed Aug 19</div><div class="body">OpenAI is making a privacy play at Anthropic&#x27;s expense. It reaffirmed zero data retention for eligible API customers and previewed something called Private Safety Processing, where an automated system watches for abuse across sessions but keeps none of your data. The jab is aimed squarely at Anthropic, which holds user data for 30 days on its top models for safety review. If you work at a company that was nervous about sending sensitive data to a model provider, this is the pitch you&#x27;ll hear from your OpenAI rep next quarter.  (also in TechCrunch)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://huggingface.co/blog/LiquidAI/qad"><div class="meta">Models &amp; Research · Wed Aug 19</div><div class="body">Liquid AI put out Q4 checkpoints of LFM2.5 trained with quantization-aware distillation, so the small quantized version keeps more of the full model&#x27;s quality instead of degrading the usual way.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.technologyreview.com/2026/08/19/1140195/the-download-ai-recursive-self-improvement-problem-heatwave-causes/"><div class="meta">Models &amp; Research · Wed Aug 19</div><div class="body">A new study pours cold water on the idea that AI is about to start improving itself. The industry&#x27;s loudest promise right now is recursive self-improvement with humans out of the loop, and the research suggests we&#x27;re further from that than the pitch decks imply.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://simonwillison.net/2026/Aug/19/smolmachines-untrusted-sandbox/"><div class="meta">Open Source &amp; Tools · Wed Aug 19</div><div class="body">Simon Willison put smolmachines through its paces as a sandbox for running untrusted Python and JavaScript, including hard limits on RAM and CPU so a `while true` can&#x27;t take the box down. He had Claude Fable 5 do the research inside Claude Code for web, and the writeup doubles as a decent guide to sandboxing agent-generated code.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/ai-artificial-intelligence/982323/openai-hit-brakes-voluntary-pacing-ai"><div class="meta">Community &amp; Opinion · Wed Aug 19</div><div class="body">OpenAI deliberately slowed down, and The Verge asks what that actually buys anyone when AI safety is still the industry grading its own homework. There&#x27;s an IPO coming, Anthropic is pushing hard, and open-weight Chinese models keep landing.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/19/ai-was-supposed-to-win-people-over-by-now-it-hasnt/"><div class="meta">Community &amp; Opinion · Wed Aug 19</div><div class="body">AI was supposed to have won the public over by now and it hasn&#x27;t. As the tech becomes harder to avoid, ordinary users are getting more suspicious of it, not less.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://simonwillison.net/2026/Aug/19/conceptual-integrity-and-counting-lines-of-code/"><div class="meta">Community &amp; Opinion · Wed Aug 19</div><div class="body">Simon Willison on why counting lines of code is a worse idea than ever, and why conceptual integrity is the thing that actually degrades when an AI writes most of your code.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://linear.app/data"><div class="meta">Community &amp; Opinion · Tue Aug 18</div><div class="body">Linear published six years of data on how product teams actually work, spanning before and after AI adoption. It&#x27;s a rare look past the usual token-count and lines-of-code stats into whether the work itself changed shape.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://cdn.kuber.studio/chat/hp-laser-1008a-driver"><div class="meta">Community &amp; Opinion · Tue Aug 18</div><div class="body">Someone got Claude Code to write a working macOS printer driver for an HP Laser 1008a, a cheap printer HP only ever shipped Windows software for. It&#x27;s a small thing that says a lot about where the long tail of unsupported hardware is heading.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://support.claude.com/en/articles/15910845-claude-code-may-august-2026-weekly-limits-promotion"><div class="meta">Industry &amp; Business · Tue Aug 18</div><div class="body">Anthropic extended its Claude Code promotion that bumps weekly usage limits by 50%. It now runs through August 31 for Pro, Max, Team, and legacy seat-based Enterprise users.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.wiz.io/blog/red-agent-snowflake-copilot-cicd-bug"><div class="meta">Industry &amp; Business · Mon Aug 17</div><div class="body">This is the AI security story of the week. An autonomous security agent built by Wiz found a command injection hole in one of Snowflake&#x27;s public GitHub Actions workflows and exploited it within five days, walking off with Jira API credentials that could read Snowflake&#x27;s engineering, security compliance, and bug bounty systems. The bug got introduced when a PR swapped a safe pattern (passing user input through an env var and parsing it with `jq --arg`) for direct template expansion of an issue title straight into a shell command. Copilot Autofix had touched a sibling file in the same PR, human review passed it, and automated scanning missed it. If you let AI tools edit your CI workflows, this is the failure mode to go look for today.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://openrouter.ai/openai/gpt-5.6-sol"><div class="meta">Industry &amp; Business · Mon Aug 17</div><div class="body">OpenRouter halved the price of GPT-5.6 Sol. Worth re-running your cost math if you routed traffic away from it.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arstechnica.com/tech-policy/2026/08/hidden-airtag-reveals-amazon-is-trashing-rare-books-to-train-ai/"><div class="meta">Industry &amp; Business · Mon Aug 17</div><div class="body">A hidden AirTag confirmed what rare book dealers have suspected for a year: Amazon is buying up rare books, scanning them for training data, and then destroying them. 404 Media tracked one book straight to the shredder.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://reason.com/volokh/2026/08/17/judges-allegedly-relying-wholly-on-ai-in-order-is-covered-by-judicial-immunity-court-rules/"><div class="meta">Industry &amp; Business · Mon Aug 17</div><div class="body">A federal judge ruled that a state court judge who allegedly relied entirely on AI to write an order is still protected by judicial immunity. The plaintiff argued that outsourcing the decision meant she wasn&#x27;t really acting as a judge. The court disagreed.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://responsiblestatecraft.org/israel-influence-chatgpt/"><div class="meta">Industry &amp; Business · Mon Aug 17</div><div class="body">Israel set up a fake think tank in what researchers believe was an attempt to seed AI chatbots with favorable talking points. Poisoning the training and retrieval layer is a lot cheaper than buying ads.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://speko.ai/"><div class="meta">Open Source &amp; Tools · Mon Aug 17</div><div class="body">Speko launched out of YC as an OpenRouter for voice. One API in front of every speech model, with routing decided by published per-language benchmarks rather than a vendor&#x27;s English-only leaderboard.</div><div class="hint">Click card to open article ↗</div></article>
+</main>
+<footer>tap a card to open its article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    if(c.dataset.url) c.addEventListener('click',()=>window.open(c.dataset.url,'_blank'));
+  });
+</script>
+</body>
+</html>
