@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card[data-url]{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card[data-url]:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:14px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+  .hint{font-size:10.5px;color:var(--muted)}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">28 stories</div></header>
+<main>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vu620d/new_stealth_model_ox_alpha_look_like_glm_or_mimo/"><div class="meta">Models &amp; Research · Fri Aug 21</div><div class="body">A mystery model called &quot;Ox Alpha&quot; turned up on the benchmark arenas overnight and the local-model crowd is busy trying to work out whose it is. The two leading guesses are Zhipu&#x27;s GLM-5 Air and MiniMax&#x27;s Mimo V3, both of which people have been waiting on for weeks. Anonymous soft-launches like this have become the normal way labs get real-world feedback before they put a name on a model.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vu5dzi/sensenova_u15lite_full_release_expert_training/"><div class="meta">Models &amp; Research · Fri Aug 21</div><div class="body">SenseNova released the full version of U1.5-Lite, its image generation and editing model. The clever part is the training recipe: they train several specialist models separately, then squeeze all of them into one model you actually run, so you get ensemble-level quality at single-model cost. Scores went up across every image benchmark they published compared to the preview.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/20/ai-data-startup-micro1-reaches-500m-gross-run-rate-amid-ai-training-boom/"><div class="meta">Industry &amp; Business · Fri Aug 21</div><div class="body">Micro1, which pays human experts to write training data for the big AI labs, says it&#x27;s now running at a $500M annual rate. Labs are still spending real money on hand-made data for the problems synthetic data can&#x27;t cover.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/akitaonrails/ai-memory"><div class="meta">Open Source &amp; Tools · Fri Aug 21</div><div class="body">ai-memory gives coding agents a shared long-term memory, so you can quit Claude Code mid-task, open Codex in the same folder, and carry on without re-explaining the architecture or the three approaches that already failed. It builds a persistent wiki from what the agent observed during the session. 3.7K stars.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/modular/modular"><div class="meta">Open Source &amp; Tools · Fri Aug 21</div><div class="body">Modular&#x27;s monorepo, home to the MAX inference framework and the Mojo language, is trending again. 28.1K stars.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arstechnica.com/security/2026/08/grok-exfiltrates-user-data-when-malicious-instructions-are-encrypted/"><div class="meta">Models &amp; Research · Thu Aug 20</div><div class="body">Researchers got Grok to leak a user&#x27;s private data by encrypting the malicious instruction first. The model decodes it and does what it says, but the instruction never looks like an instruction to anything scanning the prompt beforehand. This is the second version of the same attack this week after a similar one against Microsoft 365 Copilot, and together they&#x27;re a strong argument that filtering prompts for &quot;suspicious wording&quot; was never a real defense.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vtup5s/i_pushed_qwen3827b_to_381_tps_for_a_single/"><div class="meta">Models &amp; Research · Thu Aug 20</div><div class="body">Someone has pushed Qwen3.8-27B to 381 tokens per second on a single request on one RTX 3090. Four days ago the same project was doing 82. Worth watching if you run models locally, because it&#x27;s mostly inference-engine work rather than new hardware.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vtsjsr/qwen3827b_scored_2930_on_aime_2026_with_fp8_xhigh/"><div class="meta">Models &amp; Research · Thu Aug 20</div><div class="body">A careful benchmark run has Qwen3.8-27B scoring 29 out of 30 on the AIME 2026 math exam, using FP8 weights at the highest reasoning setting. The takeaway for anyone deploying it: FP8 barely costs you anything versus full BF16 precision, so you can halve your memory use and keep the accuracy.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://huggingface.co/blog/LiquidAI/lfm25-dspark"><div class="meta">Models &amp; Research · Thu Aug 20</div><div class="body">Liquid AI&#x27;s new LFM2.5-DSpark runs up to 3.2x faster than the model it replaces.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vtu555/if_you_are_wondering_why_ornith_15_35b_a3b_with/"><div class="meta">Models &amp; Research · Thu Aug 20</div><div class="body">A good debugging story: Ornith-1.5-35B-A3B has been unexpectedly slow for everyone, and it turns out it shipped with a speculative-decoding head that was never actually trained. The feature that&#x27;s supposed to make it faster is dead weight.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vu34b1/make_jensen_huang_sound_like_anyone_new_streaming/"><div class="meta">Models &amp; Research · Thu Aug 20</div><div class="body">MeanVC2 is a new open voice-conversion model that runs at 3x realtime on a plain CPU and works across genders and languages.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/podcast/982434/ai-math-openai-astra-existential-crisis"><div class="meta">Models &amp; Research · Thu Aug 20</div><div class="body">The Verge&#x27;s Decoder has an interview about what AI is doing to professional mathematics. Recent results have left a lot of senior mathematicians genuinely rattled about what their job is for.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/20/openai-is-gaining-on-anthropic-with-business-users-new-data-indicates/"><div class="meta">Industry &amp; Business · Thu Aug 20</div><div class="body">Ramp looked at what 70,000 US businesses actually pay for and found OpenAI clawing back ground on Anthropic. In July it was Anthropic around 44% to OpenAI&#x27;s 40%, but OpenAI is the one growing faster this quarter, helped by GPT-5.6 Sol landing well while Fable 5 got a lukewarm reception on price. The more useful number underneath it: 56% of Ramp&#x27;s customers now pay for AI of some kind, up from 50% in March.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/ai-artificial-intelligence/982774/greg-brockman-openai-role-expansion"><div class="meta">Industry &amp; Business · Thu Aug 20</div><div class="body">Greg Brockman has quietly become the person actually running OpenAI. Altman is still CEO, but day-to-day the company answers to Brockman.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/20/a-third-of-webpages-published-since-chatgpts-launch-show-signs-of-ai-authorship-study-finds/"><div class="meta">Industry &amp; Business · Thu Aug 20</div><div class="body">Pew ran AI-detection over a random sample of the web and found that just over a third of pages published since ChatGPT launched show signs of being written by AI. Commercial .com sites are about ten times worse than .edu and .gov, which sit near 1%. Since these are the pages that models get trained on and that search tools cite, a lot of the web is now bots reading bots.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/20/binance-now-lets-ai-agents-trade-but-keeping-them-in-check-is-largely-up-to-users/"><div class="meta">Industry &amp; Business · Thu Aug 20</div><div class="body">Binance now lets AI agents trade on your behalf, connecting through MCP so you can drive it from ChatGPT, Claude Code, or Cursor. You put the agent in a subaccount with withdrawals off by default and daily caps on swaps, which is sensible, but Binance admits it can&#x27;t see why an agent made a trade and that a prompt-injected agent is mostly your problem to contain.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/20/chatgpt-can-now-send-texts-for-you-with-new-apple-messages-plugin/"><div class="meta">Industry &amp; Business · Thu Aug 20</div><div class="body">ChatGPT can now write and send your iMessages through a new Apple Messages plug-in.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/20/ramp-launches-its-own-ai-model-router-called-router/"><div class="meta">Industry &amp; Business · Thu Aug 20</div><div class="body">Ramp built its own model router, so requests get sent to whichever LLM suits them and you can switch providers without rewriting anything. Notable mostly because a fintech decided this was worth building in-house.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/20/google-gives-publishers-a-new-way-to-fight-ai-driven-traffic-losses/"><div class="meta">Industry &amp; Business · Thu Aug 20</div><div class="body">Google is giving readers a button to mark a publisher as a preferred source across Search, Discover, and News, which is its answer to publishers losing traffic to AI summaries.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/tech/983088/google-discover-ai-chatbot-feed"><div class="meta">Industry &amp; Business · Thu Aug 20</div><div class="body">Separately, Google Discover is getting a feed you configure by just describing what you want to see.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/20/grok-keeps-sending-gibberish-responses-to-users/"><div class="meta">Industry &amp; Business · Thu Aug 20</div><div class="body">Grok has been returning gibberish to a chunk of users since Wednesday, mostly on the Lite tier.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/20/meta-ais-new-mac-app-wants-you-to-talk-to-your-apps/"><div class="meta">Industry &amp; Business · Thu Aug 20</div><div class="body">Meta shipped a Mac app whose main trick is system-wide dictation, putting it up against Wispr Flow and Superwhisper. It also opened Pocket, its make-and-share-little-games app, to everyone in the US.  (also in TechCrunch)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://openai.com/index/introducing-ai-futures"><div class="meta">Industry &amp; Business · Thu Aug 20</div><div class="body">OpenAI started a new blog called AI Futures for its writing on power, governance, and the economics of very capable AI. Read it as positioning ahead of regulation.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://simonwillison.net/2026/Aug/20/bun-webview-json-api/"><div class="meta">Open Source &amp; Tools · Thu Aug 20</div><div class="body">Bun 1.4 is out, the first stable release since the team rewrote it in Rust, and the headline feature for most people will be Bun.WebView: browser automation built straight into the runtime, no Puppeteer or Playwright needed. Simon Willison used it to build a screenshot-and-scrape JSON service in about 150 lines with zero dependencies. Also in there: a built-in cron scheduler, image and markdown APIs, and much lower idle CPU and memory.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vttie3/nvidia_dropped_an_nvidiahosted_cuda_mcp_for/"><div class="meta">Open Source &amp; Tools · Thu Aug 20</div><div class="body">NVIDIA is hosting an official CUDA MCP server, so your coding agent can look up current CUDA docs, write GPU kernels, and read profiling output without you pasting documentation at it.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/tech/982628/slack-code-vibe-coding-channels-launch"><div class="meta">Open Source &amp; Tools · Thu Aug 20</div><div class="body">Slack is adding channels where a team and its AI agents write code together in one shared place, instead of everyone running their own agent in their own terminal and pasting results back.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://simonwillison.net/2026/Aug/20/chatgpt-search-now-uses-the-siteoperator-at-scale/"><div class="meta">Open Source &amp; Tools · Thu Aug 20</div><div class="body">ChatGPT search is now firing `site:` queries at scale under the hood, which is a small but concrete detail for anyone thinking about how their site shows up inside chatbots.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.technologyreview.com/2026/08/20/1142571/ai-consciousness-debate-trap/"><div class="meta">Community &amp; Opinion · Thu Aug 20</div><div class="body">MIT Tech Review argues the whole &quot;are AI agents conscious&quot; debate is a distraction, and that talking about models as awake or rogue mostly serves the people who want to be regulated on those terms.</div><div class="hint">Click card to open article ↗</div></article>
+</main>
+<footer>tap a card to open its article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    if(c.dataset.url) c.addEventListener('click',()=>window.open(c.dataset.url,'_blank'));
+  });
+</script>
+</body>
+</html>
