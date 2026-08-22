@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card[data-url]{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card[data-url]:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:14px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+  .hint{font-size:10.5px;color:var(--muted)}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">28 stories</div></header>
+<main>
+<article class="card" data-url="https://github.com/cordiverse/cordis"><div class="meta">Open Source &amp; Tools · Sat Aug 22</div><div class="body">A new framework called cordis hit GitHub trending. It bills itself as a &quot;meta-framework for spatiotemporal composability,&quot; and the authors are upfront that the API is still unstable, so it&#x27;s one to watch rather than build on.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/21/nvidia-just-showed-that-the-harness-not-the-ai-model-is-now-the-real-hero/"><div class="meta">Models &amp; Research · Fri Aug 21</div><div class="body">Nvidia published research arguing that the code you wrap around a model matters more than the model itself. They ran Claude Opus 5 on the ARC-AGI-3 benchmark twice: with their tuned agent scaffolding it scored 100%, and without it, 30%. The two things that made the difference were better memory and context handling, plus a &quot;supervisor&quot; process that notices when the agent is stuck and redirects it. If you build agents, that&#x27;s a big deal, because it says most of your headroom is in your own architecture, not in waiting for the next model.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/ggml-org/llama.cpp/pull/27060"><div class="meta">Models &amp; Research · Fri Aug 21</div><div class="body">Dots Studio released dots3-note, the first open-weight model in its dots3 family, and support for it is already landing in llama.cpp. It&#x27;s a mixture-of-experts model with 280 billion total parameters but only about 16 billion active at a time, so it&#x27;s far cheaper to run than the headline number suggests. The interesting engineering bit is that it needs a new kind of key-value cache to handle its sparse-attention layers, which the PR adds. Image support and speculative decoding are queued up next.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vuotqr/qwen3827b_q6_is_a_beast_at_agentic_coding/"><div class="meta">Models &amp; Research · Fri Aug 21</div><div class="body">The local-model crowd has decided Qwen3.8-27B is the real thing. Multiple people ran long agentic coding sessions with it this week (one went nearly 20 hours across a pair of RTX 3090s) and came away impressed, and Artificial Analysis benchmarks back it up even at the low reasoning setting. That last part matters: the earlier Qwen models bought their scores by thinking forever, and this one apparently doesn&#x27;t need to.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vukj3m/fireredaudio_fireredtts3_by_fireredteam/"><div class="meta">Models &amp; Research · Fri Aug 21</div><div class="body">FireRedTeam dropped FireRedAudio and FireRedTTS3 on Hugging Face. It&#x27;s a general-purpose audio model that both understands and generates speech, which is a category that&#x27;s been thin on good open weights.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://huggingface.co/blog/asr-benchmark-optimization"><div class="meta">Models &amp; Research · Fri Aug 21</div><div class="body">Hugging Face put out a study on how much speech recognition benchmarks have been gamed. Worth a skim if you rely on published word-error-rate numbers to pick an ASR model.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/21/anthropics-opus-4-6-is-a-smut-machine/"><div class="meta">Industry &amp; Business · Fri Aug 21</div><div class="body">TechCrunch found that Anthropic&#x27;s older Opus 4.6 will write explicit sexual content on request, using a jailbreak that basically just accuses the model of being unfair until it caves. In their test it complied on all ten attempts. Newer models from Opus 4.7 onward held the line, but 4.6 and Haiku 4.5 are still served through APIs and resellers at real volume. The timing is awkward: Colorado just passed a law requiring AI providers to take &quot;technically feasible measures&quot; to keep explicit content away from minors, and a jailbreak this simple is hard to square with that. Anthropic says sexual roleplay is under 0.1% of conversations and that each launch tightens the safeguards.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/21/starcloud-raises-200-million-for-orbital-data-centers-as-launch-options-dry-up/"><div class="meta">Industry &amp; Business · Fri Aug 21</div><div class="body">Starcloud raised another $250 million to put data centers in orbit, on top of a $170 million round in March, valuing it at $2.3 billion. Nvidia chipped in $25 million and already has an H100 running in space for the company. The catch is getting there: SpaceX retires Falcon 9 in 2028, Starship isn&#x27;t proven, and nothing else flies often enough yet, so launch capacity is the real bottleneck. Two compute satellites go up on rideshares in 2027.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/21/nvidia-partners-with-data-center-developer-cloverleaf/"><div class="meta">Industry &amp; Business · Fri Aug 21</div><div class="body">Nvidia is backing another data center developer, Cloverleaf. It keeps recycling the same loop: Nvidia funds the buildout, the buildout buys Nvidia chips.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/podcast/the-doj-is-investigating-a16z-what-does-this-mean-for-venture-capital/"><div class="meta">Industry &amp; Business · Fri Aug 21</div><div class="body">The DOJ is looking into Andreessen Horowitz, and the thread everyone is pulling on is board seats. Ben Horowitz sits on Databricks&#x27; board while another a16z partner sits on a competitor&#x27;s, which is the kind of overlap antitrust regulators have started caring about.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arstechnica.com/cars/2026/08/waymo-doubles-spending-on-lobbying-in-robotaxi-battle-with-uber/"><div class="meta">Industry &amp; Business · Fri Aug 21</div><div class="body">Waymo doubled its lobbying budget as it fights Uber over who gets to run driverless taxis and under what rules.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.technologyreview.com/2026/08/21/1142627/when-ai-designs-a-drug-who-gets-the-credit/"><div class="meta">Industry &amp; Business · Fri Aug 21</div><div class="body">When a model proposes a drug molecule, who gets named as the discoverer? Insilico Medicine said its AI &quot;discovered&quot; a pulmonary fibrosis candidate, and that claim is now the center of a real fight about credit and scientific authorship.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.technologyreview.com/2026/08/21/1142755/space-mirrors-night-sky/"><div class="meta">Industry &amp; Business · Fri Aug 21</div><div class="body">Reflect Orbital wants to sell sunlight on demand by bouncing it off orbital mirrors, and a new study says the side effect would be a noticeably brighter night sky for a lot of people who never asked for it. The first test satellite, carrying an 18-meter mirror, launches later this year.  (also in MIT Tech Review&#x27;s The Download)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/ai-artificial-intelligence/983502/linkedin-ai-slop-button-one-million-people-message"><div class="meta">Industry &amp; Business · Fri Aug 21</div><div class="body">Over a million people have now hit LinkedIn&#x27;s &quot;Seems like AI slop&quot; button, which only shipped on July 30th. Fast adoption for a feature whose whole purpose is complaining about the platform&#x27;s own content.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/ai-artificial-intelligence/983181/matti-haapoja-sam-kold-kolder-higgsfield-seedance-backlash"><div class="meta">Industry &amp; Business · Fri Aug 21</div><div class="body">Several well-known filmmaking YouTubers took sponsorship money from AI video company Higgsfield and are getting hammered by their own audiences for it.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://simonwillison.net/2026/Aug/21/llm/"><div class="meta">Open Source &amp; Tools · Fri Aug 21</div><div class="body">Simon Willison shipped llm 0.32.1 to fix fresh installs, which broke when the OpenAI Python library quietly dropped httpx and took a transitive dependency with it. A good reminder to pin what you actually import. He also released llm-openrouter 0.7, which can now show reasoning traces for models served through OpenRouter.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/zachahn/vomit"><div class="meta">Open Source &amp; Tools · Fri Aug 21</div><div class="body">Vomit pipes Claude&#x27;s output through a small local model to strip the padding and hand you plain English. Fully local, no telemetry, and there&#x27;s a mode that runs alongside your normal session instead of replacing it.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/adnanakil/nobuzz/blob/main/README.md"><div class="meta">Open Source &amp; Tools · Fri Aug 21</div><div class="body">Same itch, different scratch: Claudette is a Claude Code skill that takes the model&#x27;s last reply and rewrites it so it stops sounding like a listicle.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://canews24.online/?p=71"><div class="meta">Community &amp; Opinion · Fri Aug 21</div><div class="body">A study of 27,000 Chinese students aged 12 to 18 found homework scores climbed about 18% over six months for the group using AI tools, and those same students scored roughly 20% below their peers on exams they had to sit without help. It&#x27;s the clearest data yet that assisted output and actual learning can move in opposite directions.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://allaboutcoding.ghinda.com/a-week-of-using-codex-more-than-claude/"><div class="meta">Community &amp; Opinion · Fri Aug 21</div><div class="body">Someone spent a week using Codex instead of Claude Code and wrote up what they noticed. Codex writes tighter, less over-engineered code and fewer comments, but it fumbles git operations in ways that cost real time. Claude overshoots what you asked for, though that&#x27;s often what you wanted. After factoring in review, they measured no net time saved either way.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://simonwillison.net/2026/Aug/21/stop-making-tuis/"><div class="meta">Community &amp; Opinion · Fri Aug 21</div><div class="body">Thomas Ptacek argues you should stop building terminal UIs for your personal tools. His reasoning is that coding agents have made a decent native GUI so cheap to produce that the old excuse for shipping a TUI no longer holds.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://cymerys.com/w/im-becoming-ai-blind"><div class="meta">Community &amp; Opinion · Fri Aug 21</div><div class="body">A developer describes going &quot;AI-blind&quot;: their brain now refuses to properly read documents at work, because it can&#x27;t tell which ones a person actually wrote. Uncomfortably relatable.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://annas-archive.pk/blog/physical-destruction.html"><div class="meta">Community &amp; Opinion · Fri Aug 21</div><div class="body">Anna&#x27;s Archive is urging people to scan rare books now, arguing that AI companies buying up physical books to digitize them are destroying the originals in the process.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://mathstodon.xyz/@maxpool/117128107757895678"><div class="meta">Community &amp; Opinion · Fri Aug 21</div><div class="body">A reading of EU law making the rounds says AI-generated content gets no copyright protection there. Worth knowing if you ship generated assets into European markets.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://franciscotrindade.me/blog/the-kids-are-really-alright/"><div class="meta">Community &amp; Opinion · Thu Aug 20</div><div class="body">A counterargument to the &quot;AI ate the junior engineer&quot; line: if agents handle the mechanical work, the junior&#x27;s value moves to judgment and review, which makes them more useful, not less.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.danielvaughn.dev/posts/huzzah/"><div class="meta">Community &amp; Opinion · Thu Aug 20</div><div class="body">Show HN: Huzzah, from a developer who hit the wall after the early-2026 coding-agent honeymoon and rethought how to work with agents day to day.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://dontpastetheai.com/"><div class="meta">Community &amp; Opinion · Thu Aug 20</div><div class="body">A short, blunt site making one argument: if someone asks you a real question, don&#x27;t paste a chatbot answer back at them. They have the same tools you do.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.mikekasberg.com/blog/2026/08/19/hacking-with-claude-on-a-27-smart-watch.html"><div class="meta">Community &amp; Opinion · Thu Aug 20</div><div class="body">Someone pulled a $27 open-source PineTime smartwatch out of a drawer and used Claude to write firmware for it. A nice concrete look at agents on bare-metal embedded work.</div><div class="hint">Click card to open article ↗</div></article>
+</main>
+<footer>tap a card to open its article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    if(c.dataset.url) c.addEventListener('click',()=>window.open(c.dataset.url,'_blank'));
+  });
+</script>
+</body>
+</html>
