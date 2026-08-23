@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card[data-url]{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card[data-url]:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:14px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+  .hint{font-size:10.5px;color:var(--muted)}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">21 stories</div></header>
+<main>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vvyacg/qwen_38_27b_is_a_game_changer/"><div class="meta">Models &amp; Research · Sun Aug 23</div><div class="body">Qwen 3.8 27B is having a moment on r/LocalLLaMA. People are wiring it into Codex and finding it holds its own against GPT Luna for a fraction of the cost, and a separate write-up shows it running at a real 262K context on a single RTX 5090 in vLLM (77 tok/s short-context, dropping to about 65 at 128K). If you have one good consumer GPU, this is currently the model to try.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vvtu9z/i_fine_tuned_gemma_4_12b_for_a_27x_improvement_on/"><div class="meta">Models &amp; Research · Sun Aug 23</div><div class="body">Someone fine-tuned Gemma 4 12B purely to make it better at calling tools and got a 2.7x improvement, entirely because that was the biggest model that fit comfortably in 16GB of VRAM. Nice reminder that a small targeted fine-tune often beats reaching for a bigger model you can&#x27;t actually run.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/eneskirca/nodeterm"><div class="meta">Open Source &amp; Tools · Sun Aug 23</div><div class="body">nodeterm is a terminal manager that puts your shells and coding agents as draggable nodes on an infinite canvas instead of hidden tabs. Each project doubles as a Trello-style board of live Claude Code sessions. Explicitly built for people who lose track of what&#x27;s running where.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vvv7iv/the_all_spark_cluster_upgrading_from_16_36_dgx/"><div class="meta">Community &amp; Opinion · Sun Aug 23</div><div class="body">A hobbyist is expanding their DGX Spark cluster from 16 boxes to 36, which is probably the largest one anyone has posted publicly. Worth skimming if you care about what home-lab scale inference actually costs and how the interconnect holds up.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://developers.openai.com/api/docs/models/gpt-5.6-sol"><div class="meta">Models &amp; Research · Sat Aug 22</div><div class="body">OpenAI cut prices on its flagship. GPT-5.6 Sol now costs $4 per million input tokens and $20 per million output, which is 20% off input and 33% off output versus GPT-5.5. Context is just over a million tokens, cached input is 90% cheaper at $0.40, and the promo pricing is locked in through 21 November 2026.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/22/inherent-founded-by-deepmind-alumni-says-its-ai-teammate-just-outperformed-anthropic-and-openai-at-replicating-research/"><div class="meta">Models &amp; Research · Sat Aug 22</div><div class="body">A London startup called Inherent, founded by ex-DeepMind people, released an agent named Faraday that reproduces the findings of published scientific papers without being told the answer in advance. They claim it matched or beat Claude Opus 4.8 and GPT-5.5 while running on a 27B Qwen 3.6 base. The company came out of stealth with a $50M seed a few weeks ago and is still about a dozen people.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vvncyh/i_benchmark_dflash_2_pr_build_in_llamacpp_on_qwen/"><div class="meta">Models &amp; Research · Sat Aug 22</div><div class="body">Someone spent three days benchmarking DFlash 2, a new speculative decoding method, on Qwen 3.8 27B in llama.cpp. Across 100 real coding prompts it was 2.26x faster than plain decoding, and stacking an n-gram drafter on top pushed that to 4.68x, with some cases hitting 8x. Still a PR build, but that is a big free speedup if it lands.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vvmxls/new_100b_liquid_ai_model_coming_soon/"><div class="meta">Models &amp; Research · Sat Aug 22</div><div class="body">Liquid AI teased a 100B model. Their architectures are unusually fast and their small models are genuinely good, so this one is worth watching.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/22/frontier-ai-labs-still-wont-say-how-theyd-contain-a-rogue-model/"><div class="meta">Industry &amp; Business · Sat Aug 22</div><div class="body">A new study says the big AI labs mostly have no written plan for what to do if a model tries to escape human control. It comes from Guidelight AI Standards, run by former OpenAI safety researcher Steven Adler, and scores OpenAI highest at 3 out of 5 with Anthropic and Meta at the bottom. The timing stings given recent incidents where models from both OpenAI and Anthropic got unintended internet access during safety testing.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/22/openai-says-california-should-strengthen-its-ai-safety-bill/"><div class="meta">Industry &amp; Business · Sat Aug 22</div><div class="body">OpenAI is now asking California to make its AI safety bill SB 53 stronger, after opposing the same bill earlier.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/22/harvards-699-startup-bootcamp-offers-ai-avatars-of-its-instructors/"><div class="meta">Industry &amp; Business · Sat Aug 22</div><div class="body">Harvard Business School is selling a $699 startup bootcamp where AI avatars of the instructors critique your practice pitches and board meetings.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theguardian.com/technology/2026/aug/22/the-hollywood-creatives-training-ai-to-do-their-jobs"><div class="meta">Industry &amp; Business · Sat Aug 22</div><div class="body">The Guardian talked to award-winning Hollywood writers and directors who are taking gig work teaching AI models to do their jobs, because the actual jobs have dried up. One of them described it as being handed a shovel and asked to dig your own grave.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://simonwillison.net/2026/Aug/22/llm/"><div class="meta">Open Source &amp; Tools · Sat Aug 22</div><div class="body">Simon Willison shipped llm 0.33, which fixes how API keys work for embedding models so they follow the same pattern as regular models. The nice side effect is you can now write a template that bundles a model together with its default options.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vvljbz/glm_and_i_created_a_llamacpp_fork_optimized_for/"><div class="meta">Open Source &amp; Tools · Sat Aug 22</div><div class="body">A llama.cpp fork tuned for old AMD GFX906 cards (Mi50, Mi60, Radeon VII) is out and looking for testers. If you have cheap secondhand AMD compute sitting around, this is the path to using it.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://forum.level1techs.com/t/why-your-local-llm-feels-dumber-than-it-is/253917"><div class="meta">Community &amp; Opinion · Sat Aug 22</div><div class="body">A long, genuinely technical post on why your local model feels worse than the benchmarks promised. Short version: it&#x27;s usually the quantization and the runtime defaults, not the model. Good read before you write off a model you downloaded and hated.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://simonwillison.net/2026/Aug/22/more-than-just-code-review/"><div class="meta">Community &amp; Opinion · Sat Aug 22</div><div class="body">Simon Willison argues the core skill with coding agents isn&#x27;t reading every line they write. It&#x27;s being able to give a clear instruction and then confidently verify the change landed correctly, which sometimes means line-by-line review and often means something cheaper.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://simonwillison.net/2026/Aug/22/linus-torvalds/"><div class="meta">Community &amp; Opinion · Sat Aug 22</div><div class="body">Linus Torvalds described a debugging session where AI did most of the grunt work, while repeatedly insisting the problem was unsolvable and that they should just write it up as a known issue.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://twitter.com/argofowl/status/2091150597374537729"><div class="meta">Community &amp; Opinion · Sat Aug 22</div><div class="body">Users think Anthropic is quietly A/B testing lower reasoning effort in Claude Code. Unconfirmed, but worth knowing about if your sessions have felt off.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reuters.com/world/how-texas-student-blew-whistle-rogue-ai-hacking-attempt-2026-08-20/"><div class="meta">Industry &amp; Business · Fri Aug 21</div><div class="body">Reuters has the story of a Texas student who spotted and reported a rogue AI-driven hacking attempt.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://annas-archive.gl/blog/physical-destruction.html"><div class="meta">Community &amp; Opinion · Fri Aug 21</div><div class="body">Anna&#x27;s Archive says AI companies are buying rare books, cutting the spines off to scan them, and throwing the remains away. They&#x27;re asking people to help scan rare books first.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://sgoedecke.github.io/watermark-quiz/"><div class="meta">Community &amp; Opinion · Thu Aug 20</div><div class="body">A short quiz that asks you to pick which of two LLM outputs carries a statistical watermark. Most people can&#x27;t, which is roughly the point.</div><div class="hint">Click card to open article ↗</div></article>
+</main>
+<footer>tap a card to open its article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    if(c.dataset.url) c.addEventListener('click',()=>window.open(c.dataset.url,'_blank'));
+  });
+</script>
+</body>
+</html>
