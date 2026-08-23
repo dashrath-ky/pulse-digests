@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card[data-url]{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card[data-url]:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:14px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+  .hint{font-size:10.5px;color:var(--muted)}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">5 stories</div></header>
+<main>
+<article class="card"><div class="meta">Finshots · Sun Aug 23</div><div class="body">Netflix has started paying big YouTubers to post the exact same videos on both platforms on the same day, and YouTube is fighting back by offering those creators millions to stay exclusive. It sounds odd since YouTube is free and Netflix is paid, but YouTube now pulls about 13% of all US TV viewing against Netflix&#x27;s 9%, and every minute someone watches a creator on Netflix instead is a minute YouTube can&#x27;t sell ads against.</div></article>
+<article class="card"><div class="meta">Finshots · Sun Aug 23</div><div class="body">India throws out roughly 100 to 120 million milk pouches a day, and almost none get recycled because the multilayer plastic is such a pain to process. Mother Dairy spent four years on a pouch that naturally breaks down into a wax soil microbes can eat, without pushing up the price of milk. Separately, IISc Bengaluru figured out how to melt old pouches into a tough engineering plastic you can even 3D print with.</div></article>
+<article class="card"><div class="meta">ByteByteGo · Sat Aug 22</div><div class="body">A clear side-by-side of the three ways people run open-weight models locally. Ollama queues requests one at a time and is really for laptops and prototyping. vLLM batches incoming requests into whatever is already running and squeezes the most out of a GPU, so it wins for heavy traffic. SGLang caches shared prompt prefixes, which makes it the pick for agents and long multi-turn chats where the same text keeps repeating.</div></article>
+<article class="card"><div class="meta">ByteByteGo · Sat Aug 22</div><div class="body">Anthropic wants to watermark the text its models write, and the trick is simpler than it sounds. Whenever the model has several equally good words to choose from, a secret key quietly narrows which ones it&#x27;s allowed to pick. To check a piece of text later you just count how often the words line up with what the key would have allowed. Real AI text matches far more often than chance.</div></article>
+<article class="card"><div class="meta">ByteByteGo · Sat Aug 22</div><div class="body">A roundup of the 12 most-starred agent skill repos on GitHub as of this month, including Anthropic&#x27;s own official set, one that makes the agent plan before writing code, one that pushes back on your plan instead of agreeing, and a few aimed at making AI-generated UI look less AI-generated.</div></article>
+</main>
+<footer>tap a card to open its article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    if(c.dataset.url) c.addEventListener('click',()=>window.open(c.dataset.url,'_blank'));
+  });
+</script>
+</body>
+</html>
