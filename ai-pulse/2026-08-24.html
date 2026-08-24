@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card[data-url]{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card[data-url]:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:14px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+  .hint{font-size:10.5px;color:var(--muted)}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">17 stories</div></header>
+<main>
+<article class="card" data-url="https://techcrunch.com/2026/08/23/whos-behind-the-new-stealth-model-ox-alpha/"><div class="meta">Models &amp; Research · Mon Aug 24</div><div class="body">A stealth model called Ox Alpha showed up on OpenRouter and the internet immediately lost its mind trying to work out who made it. The listing only says it comes from a third-party provider who wants to stay anonymous during the preview, and it&#x27;s pitched as a reasoning model for coding and long agentic runs. Stripe&#x27;s Patrick Collison called it very impressive; the guessing has swung between Z.ai&#x27;s GLM line and an unreleased Microsoft MAI model, with no answer yet.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vwsjut/deepseekv4flash0731_surprisingly_usable/"><div class="meta">Models &amp; Research · Mon Aug 24</div><div class="body">Someone on r/LocalLLaMA got DeepSeek&#x27;s V4-Flash running usefully on a home rig, an Epyc 7663 with 256GB of DDR4 and a single RTX 5090. Worth reading if you&#x27;re sizing a local box, because it&#x27;s a real data point on what a big MoE model actually needs rather than a benchmark table.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vwrc6i/i_trained_a_157bparameter_dreamer_4_world_model/"><div class="meta">Models &amp; Research · Mon Aug 24</div><div class="body">A hobbyist trained a 1.57B-parameter Dreamer 4 world model from scratch for under $150. The interesting part is the failure they had to fix: their first Genie-style build produced beautiful video where the controls did almost nothing, which is the classic world-model trap of learning to predict pixels instead of learning what your actions do.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vwt6m7/i_developed_my_own_quantized_llm_from_scratch/"><div class="meta">Models &amp; Research · Mon Aug 24</div><div class="body">Another from-scratch project: a quantized LLM trained on 30B tokens that ships in 60MB. Small enough to be interesting for on-device work.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/apache/maka"><div class="meta">Open Source &amp; Tools · Mon Aug 24</div><div class="body">Apache Maka hit GitHub trending at 2.4K stars. It&#x27;s a local-first agent workspace, now incubating at the Apache Software Foundation, that runs tools inside a sandbox and writes every model message and tool call to an append-only log on your own machine. Bring your own model, nothing leaves the box, and you get a replayable record of what the agent actually did.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/anthropics/claude-plugins-community"><div class="meta">Open Source &amp; Tools · Mon Aug 24</div><div class="body">Anthropic published a read-only mirror of the community plugin marketplace for Claude Code and Cowork. The marketplace.json in that repo is the actual install list, synced nightly from their internal review pipeline, so it&#x27;s the place to look if you want to see what&#x27;s available or get your own plugin listed.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vwoseh/convrot_quant_method_now_in_llamacppturboquant/"><div class="meta">Open Source &amp; Tools · Mon Aug 24</div><div class="body">The ConvRot quantization method landed in llama-cpp-turboquant. The pitch is a Q6 quant that gets close to Q8 quality on perplexity and KL divergence, which matters if you&#x27;re squeezing a model onto a card that can&#x27;t quite hold the bigger quant.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vwtdbg/the_cursor_team_shipped_grok_bot_0180_with/"><div class="meta">Community &amp; Opinion · Mon Aug 24</div><div class="body">Cursor shipped its Grok bot (0.18.0) with runtime source maps left on, so someone reconstructed the source and posted it. A good reminder to check your build config before release.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://simonwillison.net/2026/Aug/23/anthropics-best-ai-model-struggles-to-attract-users-as-cheaper-t/"><div class="meta">Industry &amp; Business · Sun Aug 23</div><div class="body">An FT story says Anthropic&#x27;s best model isn&#x27;t where the money is going, and the numbers are striking. Anthropic&#x27;s annualized revenue jumped from $47B in May to $65B in July, with 6,000 enterprise customers spending over $100K a year, but Ramp&#x27;s billing data from 70,000 companies shows Opus 4.8 taking 28% of spend while the newer Opus 5 sits at 3.5%. Fable 5 is only 8%, about the same as the far cheaper Sonnet 4.6, which suggests price is driving model choice more than capability is.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vwdsx8/nvidia_customers_notified_about_airelated_price/"><div class="meta">Industry &amp; Business · Sun Aug 23</div><div class="body">Nvidia has told customers to expect price increases above 15%, blamed on AI demand. If you&#x27;re planning hardware spend for training or inference, budget for it now.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/23/is-it-legal-to-train-ai-models-on-copyrighted-books-its-complicated/"><div class="meta">Industry &amp; Business · Sun Aug 23</div><div class="body">Where the law actually stands on training models on copyrighted books: courts have mostly said the training itself is fine, and the trouble comes from how you got the books. Judge Alsup made Anthropic pay $1.5B to writers but explicitly held that training was lawful, comparing it to a writer studying literature; the penalty was for pulling books from pirate libraries. The counter-example is Thomson Reuters v. Ross, where training on Reuters content to build a rival legal product was not fair use because it served the same purpose as the original.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/23/flock-ceo-calls-for-compromise-as-surveillance-company-faces-growing-backlash/"><div class="meta">Industry &amp; Business · Sun Aug 23</div><div class="body">Flock Safety&#x27;s CEO is asking for &quot;compromise&quot; as the backlash against its camera network keeps building, with the core worry being how the surveillance data gets used.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://simonwillison.net/2026/Aug/23/drew-breunig/"><div class="meta">Community &amp; Opinion · Sun Aug 23</div><div class="body">Drew Breunig makes a point worth sitting with: before Fable, tuning your coding harness and context strategy felt like wasted effort, because the next model would land at the same price and paper over your problems anyway. Fable broke that pattern, and the implication is that harness engineering is now real work rather than a stopgap.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vwh3u7/we_quantized_qwen_38_27b_and_compared_the_quants/"><div class="meta">Community &amp; Opinion · Sun Aug 23</div><div class="body">A long thread on getting Qwen 3.8 27B working locally, including someone who ditched OpenWebUI to get there, plus a companion post comparing Atomic Dynamic GGUF quants of the same model on an RTX 6000. Useful if you&#x27;re picking a quant level.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vwhj0l/you_can_now_use_mtp_in_glmair/"><div class="meta">Community &amp; Opinion · Sun Aug 23</div><div class="body">GLM-4.5-Air now supports multi-token prediction in llama.cpp, which is a free speedup on a 106B MoE that only activates 12B parameters.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arxiv.org/abs/2608.20342"><div class="meta">Models &amp; Research · Sun Aug 23</div><div class="body">Two arXiv papers this week poke at the same weak spot in coding agents: every session starts with an empty context window and throws away what it learned last time. One proposes memory-primed agent spawning, the other a spec-driven development flow. Early work, but it&#x27;s the right problem.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arxiv.org/abs/2608.20485"><div class="meta">Models &amp; Research · Sun Aug 23</div><div class="body">A survey of terminal agents, cataloguing how LLM agents actually behave when they act through a shell. Handy reading if you build or debug this kind of tooling.</div><div class="hint">Click card to open article ↗</div></article>
+</main>
+<footer>tap a card to open its article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    if(c.dataset.url) c.addEventListener('click',()=>window.open(c.dataset.url,'_blank'));
+  });
+</script>
+</body>
+</html>
