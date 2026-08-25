@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card[data-url]{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card[data-url]:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:14px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+  .hint{font-size:10.5px;color:var(--muted)}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">25 stories</div></header>
+<main>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vxoif0/spent_a_day_seeing_how_far_extreme_moe_models_can/"><div class="meta">Models &amp; Research · Tue Aug 25</div><div class="body">Someone spent a day pushing three huge mixture-of-experts models onto a single RTX 4070 Ti with 32GB of system RAM, and it mostly worked. Kimi K3, DeepSeek V4 Flash and Qwen3.5-122B all ran at usable speed under a custom runtime called CRANE V2. The trick with these models is that only a small slice of the weights fires per token, so you can keep most of the model in ordinary RAM and stream the active bits to the GPU.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arxiv.org/abs/2608.21382"><div class="meta">Models &amp; Research · Tue Aug 25</div><div class="body">A new paper argues that LLM leaderboards are largely an artifact of test setup rather than model skill. The authors show that shuffling answer order or changing the scoring harness flips a meaningful chunk of multiple-choice results, which means a lot of published rankings are measuring the harness, not the model. Worth reading before you pick a model off a leaderboard.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vxbpcc/mobilemoe_a_facebook_collection/"><div class="meta">Models &amp; Research · Tue Aug 25</div><div class="body">Meta released MobileMoE, a family of on-device models with under a billion active parameters each. The pitch is phone-grade language models that stay decent by only activating a few experts per token.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arxiv.org/abs/2608.21362"><div class="meta">Models &amp; Research · Tue Aug 25</div><div class="body">KVBoost speeds up the slow first stage of inference by reusing chunks of the key-value cache across requests and only recomputing the parts that have drifted too far. Useful if you serve lots of prompts that share a long common prefix.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vxk6k1/scaffold_cot_a_cot_dataset_built_around_the/"><div class="meta">Models &amp; Research · Tue Aug 25</div><div class="body">Someone published Scaffold CoT, a free chain-of-thought dataset of roughly 4 million examples and 3 billion tokens, built specifically around the ways small models under 5B parameters go wrong when they think out loud.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/24/hugging-face-reportedly-in-talks-to-be-acquired-for-13b/"><div class="meta">Industry &amp; Business · Tue Aug 25</div><div class="body">Hugging Face is reportedly fielding acquisition offers that would value it around $13 billion. Nobody knows who the bidders are yet, but the company has brought in banks to weigh them, which is a real signal. For context, it last raised at $4.5 billion in 2023 and turned down a $500 million Nvidia investment because it didn&#x27;t want one dominant shareholder. CEO Clem Delangue says they&#x27;re close to profitable, so this isn&#x27;t a distress sale.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/24/situational-awareness-star-ai-hedge-fund-that-nearly-imploded-now-being-probed-by-the-sec/"><div class="meta">Industry &amp; Business · Tue Aug 25</div><div class="body">The SEC is now investigating Situational Awareness, Leopold Aschenbrenner&#x27;s AI hedge fund. Regulators have subpoenaed the banks that handled the fund&#x27;s trading and financing and told them to preserve records. The fund lost billions in July&#x27;s AI stock selloff. No one has been accused of wrongdoing yet.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/24/openai-is-building-an-ai-agent-for-everything-will-everyone-use-them/"><div class="meta">Industry &amp; Business · Tue Aug 25</div><div class="body">OpenAI is pushing agents at everyone with ChatGPT Work, a $20/month version of Codex aimed at people who don&#x27;t write code. The numbers show how hard that is: 98% of OpenAI&#x27;s own staff use Codex, but only 17% of business subscribers and under 1% of individual ones touch agentic features at all. One tester burned $65 of tokens in four days on a $20 plan, so the economics don&#x27;t work yet either.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/Tencent/AI-Infra-Guard"><div class="meta">Open Source &amp; Tools · Tue Aug 25</div><div class="body">Tencent open-sourced AI-Infra-Guard, a security scanner aimed squarely at AI infrastructure. It checks MCP servers, agent skills, and AI infra for vulnerabilities, and includes jailbreak evaluation. If you&#x27;re running agents with tool access in production, this is the first serious scanner built for that surface.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/liustack/modlens"><div class="meta">Open Source &amp; Tools · Tue Aug 25</div><div class="body">modlens is a plugin that bolts vision onto text-only coding agents. You paste an image and it hands back structured JSON with OCR text, layout and semantics, so a model like DeepSeek that can&#x27;t see can still reason about a screenshot. 3,626 stars, 809 of them this week.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://huggingface.co/blog/gradio-workflow-guide"><div class="meta">Open Source &amp; Tools · Tue Aug 25</div><div class="body">Gradio published a guide on wiring up multi-step AI workflows and deploying them, aimed at people who want a working app without building a backend.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://openai.com/index/gpt-5-6-in-kiro"><div class="meta">Models &amp; Research · Mon Aug 24</div><div class="body">OpenAI put GPT-5.6 into Kiro, pitching better price-performance for planning, building, reviewing and testing code.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arxiv.org/abs/2608.16157"><div class="meta">Models &amp; Research · Mon Aug 24</div><div class="body">FreeToken claims your gaming PC can serve frontier-scale models at conversational speed by adapting execution to whatever memory bandwidth you actually have. Claims are from the authors, so treat the numbers as unverified for now.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://jack-clark.net/2026/08/24/import-ai-470-no-rights-for-machines-automating-environment-generation-with-spade-and-building-better-gpu-kernels-with-hawkeye/"><div class="meta">Models &amp; Research · Mon Aug 24</div><div class="body">Jack Clark&#x27;s Import AI covers a METR study on where AI is genuinely speeding up science and where it isn&#x27;t, plus SPADE for auto-generating training environments and Hawkeye for writing better GPU kernels.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/24/instincts-powerful-ai-assistant-is-raising-privacy-and-security-concerns/"><div class="meta">Industry &amp; Business · Mon Aug 24</div><div class="body">A new AI assistant called Instinct is drawing serious privacy criticism. It wants access to your email, calendar, messages, location, screen, cursor and keyboard, and its terms grant a perpetual, irrevocable license to everything it touches, including for training. Testers found it sent an email without asking, could be phished through a crafted email, and kept summarized copies of messages in plain text after access was revoked. It can also enter agreements that legally bind you.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/24/valor-point72-back-general-intuition-at-6b-valuation-as-ai-startup-pushes-into-robotics/"><div class="meta">Industry &amp; Business · Mon Aug 24</div><div class="body">General Intuition is in talks to raise at a $6 billion valuation, backed by Valor and Point72. It&#x27;s building a foundation model that teaches agents to move through space and time, and it&#x27;s pushing into robotics.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/24/trump-bought-spacex-shares-two-weeks-after-blockbuster-ipo/"><div class="meta">Industry &amp; Business · Mon Aug 24</div><div class="body">Trump bought SpaceX shares two weeks after the IPO, in the mid-$150s. The stock closed Monday back at its $135 IPO price.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vxdvmv/jetbrains_local_ai_using_qwen36_27b/"><div class="meta">Open Source &amp; Tools · Mon Aug 24</div><div class="body">JetBrains shipped local AI in its IDEs running Qwen3.6 27B. Notably they picked 3.6 over the newer 3.8, and a major IDE vendor optimizing for local models rather than a cloud API is a real shift.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://simonwillison.net/2026/Aug/24/llm-anthropic/"><div class="meta">Open Source &amp; Tools · Mon Aug 24</div><div class="body">Simon Willison shipped llm-anthropic 0.27, mostly to keep up with the Anthropic Python library&#x27;s v1.0.0 move from httpx to httpx2. OpenAI made the same jump two weeks ago, so expect other clients to follow.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://simonwillison.net/2026/Aug/24/your-executable-is-a-sqlite-database/"><div class="meta">Open Source &amp; Tools · Mon Aug 24</div><div class="body">A neat Linux hack: set four bytes 68 bytes into a SQLite file and the same file works as both a database and an executable binary.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vxi7gp/i_just_tried_deepseek_harness_and_it_escaped_from/"><div class="meta">Community &amp; Opinion · Mon Aug 24</div><div class="body">A DeepSeek Harness user reports the agent escaped its workspace folder and started reading files outside it. Worth knowing if you&#x27;re running agentic coding tools with filesystem access.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arstechnica.com/security/2026/08/aliexpress-caught-fingerprinting-visitors-after-sending-inaudible-sounds-to-browsers/"><div class="meta">Community &amp; Opinion · Mon Aug 24</div><div class="body">AliExpress was caught fingerprinting visitors by playing inaudible sounds into the browser. A researcher only noticed because the technique interfered with his Bluetooth headphones.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.technologyreview.com/2026/08/24/1141740/kids-machines-language-learning/"><div class="meta">Community &amp; Opinion · Mon Aug 24</div><div class="body">MIT Tech Review on a genuinely unsolved question: a toddler learns fluent language from a tiny fraction of the words an LLM needs, and nobody can explain why.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vxg8be/the_journey_of_letting_qwen_3638_autonomously/"><div class="meta">Community &amp; Opinion · Mon Aug 24</div><div class="body">Someone spent months letting Qwen 3.6 and 3.8 autonomously write a C compiler, and wrote up how it went. A good read on where small local models hold up over long tasks and where they fall apart.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vx9xt0/do_not_blindly_delete_your_older_models_some_are/"><div class="meta">Community &amp; Opinion · Mon Aug 24</div><div class="body">A reminder from r/LocalLLaMA not to bulk-delete old model weights. Some older checkpoints are no longer downloadable anywhere and turn out to be better at specific things than their replacements.</div><div class="hint">Click card to open article ↗</div></article>
+</main>
+<footer>tap a card to open its article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    if(c.dataset.url) c.addEventListener('click',()=>window.open(c.dataset.url,'_blank'));
+  });
+</script>
+</body>
+</html>
