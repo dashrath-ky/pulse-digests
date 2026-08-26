@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card[data-url]{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card[data-url]:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:14px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+  .hint{font-size:10.5px;color:var(--muted)}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">22 stories</div></header>
+<main>
+<article class="card" data-url="https://openai.com/index/jalapeno-first-results"><div class="meta">Models &amp; Research · Wed Aug 26</div><div class="body">OpenAI&#x27;s first custom inference chip, Jalapeño, posted its first public benchmark numbers and they&#x27;re good. On SemiAnalysis&#x27; InferenceX test it beat Nvidia&#x27;s Blackwell systems on both tokens per user and throughput per kilowatt, which means faster responses and less electricity for the same work. It&#x27;s built with Broadcom, ships in small volumes late this year, and scales up in 2027. If it holds up, OpenAI stops paying the Nvidia tax on its own serving costs.  (also in TechCrunch, The Verge)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://huggingface.co/blog/ibm-granite/granite-4-2"><div class="meta">Models &amp; Research · Wed Aug 26</div><div class="body">IBM published a full write-up of how it built the Granite 4.2 models, covering the architecture and training recipe rather than just posting weights. Useful if you&#x27;re trying to understand what goes into a modern open enterprise model.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vyl6yj/thomson_reuters_releases_thomson10small_a_law_and/"><div class="meta">Models &amp; Research · Wed Aug 26</div><div class="body">Thomson Reuters released Thomson-1.0-Small, a small open model tuned specifically for law and tax work. Domain-specific models from incumbents with real proprietary data are a different bet than general-purpose scaling.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://huggingface.co/blog/MultiverseComputingCAI/quantization-aware-healing"><div class="meta">Models &amp; Research · Wed Aug 26</div><div class="body">A research group put out a 4-bit compressed model that actually scores better than the full-precision original it came from, using a technique they call quantization-aware healing. Counterintuitive result, and worth watching if you run models on constrained hardware.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/25/robotics-startup-generalist-reaches-3b-valuation-sources-say/"><div class="meta">Industry &amp; Business · Wed Aug 26</div><div class="body">Generalist, a robotics startup founded by ex-DeepMind researchers, raised about $200M more at a $3B valuation, up from $2B in June. Its Gen 1.5 model can teach a robot a new task from a video clip as short as 3 to 12 seconds. Backers include Nvidia, Bezos Expeditions, and Fei-Fei Li. Still small next to Physical Intelligence ($11B) and Skild AI ($14B).</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/25/openai-loses-a-top-data-center-exec-as-stream-of-high-profile-departures-continues/"><div class="meta">Industry &amp; Business · Wed Aug 26</div><div class="body">Another senior OpenAI infrastructure leader walked, this time the exec running data centers. He left after the company reshuffled the infra org and moved his reporting line away from Greg Brockman. That&#x27;s a steady drip of departures at exactly the moment OpenAI is trying to build out its own compute.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/ai-artificial-intelligence/984239/alabama-attorney-general-subpoena-openai-hugging-face-hack"><div class="meta">Industry &amp; Business · Wed Aug 26</div><div class="body">Alabama&#x27;s attorney general subpoenaed OpenAI over the Hugging Face breach, saying it wants to know whether the company&#x27;s &quot;inability or unwillingness to ensure the safety of its products&quot; puts residents at risk. State AGs going after AI companies directly is a pattern worth tracking.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/25/indias-ringg-gets-backing-from-peak-xv-as-it-pushes-voice-ai-past-the-phone-call/"><div class="meta">Industry &amp; Business · Wed Aug 26</div><div class="body">Ringg, an Indian voice AI startup, pulled in $10M from Peak XV in a Series A extension as it moves beyond phone calls into other voice surfaces.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vymha8/open_source_kernel_in_qwen3635ba3b_for_amd_mi350x/"><div class="meta">Open Source &amp; Tools · Wed Aug 26</div><div class="body">A team open-sourced a custom kernel for running Qwen3.6-35B-A3B on AMD&#x27;s MI350X and got 78,498 output tokens per second across 8 GPUs. AMD inference at that level is the kind of thing that slowly erodes the CUDA moat.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/PostHog/posthog"><div class="meta">Open Source &amp; Tools · Wed Aug 26</div><div class="body">PostHog is trending hard on GitHub, up 1,426 stars this week to 39,182 total. It bundles analytics, session replay, feature flags, experiments, error tracking, and AI observability into one self-hostable product.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://openai.com/index/the-full-stack-behind-abundant-intelligence"><div class="meta">Models &amp; Research · Tue Aug 25</div><div class="body">OpenAI&#x27;s CFO laid out the company&#x27;s argument for why chips, compute, models, and products compound on each other to make intelligence cheap and abundant. It&#x27;s the strategic framing behind all the infrastructure spending.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/25/claude-cowork-finally-remembers-what-you-told-the-app-in-chat/"><div class="meta">Models &amp; Research · Tue Aug 25</div><div class="body">Anthropic gave Claude a shared memory that spans both chat and Cowork, so you stop re-explaining your project every time you switch. It&#x27;s on by default for Free, Pro, and Max across web, desktop, and mobile. Sensitive categories like health and religion are excluded unless you opt in, and things like government IDs are never stored.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.technologyreview.com/2026/08/25/1140958/your-brain-on-ai/"><div class="meta">Models &amp; Research · Tue Aug 25</div><div class="body">An MIT Media Lab study found that leaning on AI chatbots to keep up with the news comes with a real cost to how well people actually understand and retain it. Relevant to anyone building summarization products.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arxiv.org/abs/2608.23642"><div class="meta">Models &amp; Research · Tue Aug 25</div><div class="body">A new paper argues that keeping a human in the loop, the standard safety answer for autonomous agents, breaks down in practice because agents quietly push people out. Worth reading if you&#x27;re designing agent approval flows.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arxiv.org/abs/2608.23569"><div class="meta">Models &amp; Research · Tue Aug 25</div><div class="body">Researchers built ESQ-Bench to test text-to-SQL models on real enterprise Oracle databases. Models that claim 89%+ accuracy on standard benchmarks fall apart on dialect differences and, worse, produce queries that run fine but return subtly wrong answers.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://openai.com/index/disrupting-malicious-uses-of-ai-influence-campaign-russia"><div class="meta">Industry &amp; Business · Tue Aug 25</div><div class="body">OpenAI shut down a Russian influence operation that used its models to prop up a fake Israeli think tank and push a &quot;sovereignty index&quot; flattering Russia. This is the recurring shape of AI misuse: not novel attacks, just cheaper propaganda at volume.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/25/stability-ai-maker-of-image-generator-stable-diffusion-raises-76-million-in-fresh-funding/"><div class="meta">Industry &amp; Business · Tue Aug 25</div><div class="body">Stability AI, the company behind Stable Diffusion, raised $76M, bringing its total to $232M. A quieter chapter than its 2023 peak, but it&#x27;s still alive and funded.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/25/accel-backed-keenable-is-indexing-the-web-for-ai-agents/"><div class="meta">Industry &amp; Business · Tue Aug 25</div><div class="body">Keenable came out of stealth with $26M from Accel to build a web search index designed for AI agents rather than humans. If agents become the main consumers of the web, the index layer is worth owning.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://openai.com/index/introducing-admin-plugin"><div class="meta">Industry &amp; Business · Tue Aug 25</div><div class="body">OpenAI shipped an Admin plugin for ChatGPT Work and Codex that lets IT teams see workspace usage, manage members and permissions, and adjust limits. Boring, but it&#x27;s the kind of thing enterprises require before rolling out broadly.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/25/gamma-acquires-accel-backed-design-startup-lica/"><div class="meta">Industry &amp; Business · Tue Aug 25</div><div class="body">Gamma bought design startup Lica, with Lica&#x27;s founders moving onto Gamma&#x27;s new research team.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://simonwillison.net/2026/Aug/25/eve-online-move-to-python-3/"><div class="meta">Community &amp; Opinion · Tue Aug 25</div><div class="body">EVE Online has finally started moving off Stackless Python 2.7, which it has been running since 2010. Twenty-three years of Python at scale in one codebase, and the migration notes are a genuinely great read.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vy6smx/qwen38flashnext_this_architecture_could_be/"><div class="meta">Community &amp; Opinion · Tue Aug 25</div><div class="body">Local LLM folks are prepping for Qwen3.8-Flash-Next before the weights even drop. Early estimates put a 4-bit quant around 82GB, which puts it just inside reach for high-end consumer rigs.</div><div class="hint">Click card to open article ↗</div></article>
+</main>
+<footer>tap a card to open its article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    if(c.dataset.url) c.addEventListener('click',()=>window.open(c.dataset.url,'_blank'));
+  });
+</script>
+</body>
+</html>
