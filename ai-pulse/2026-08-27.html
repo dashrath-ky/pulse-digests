@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card[data-url]{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card[data-url]:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:14px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+  .hint{font-size:10.5px;color:var(--muted)}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">25 stories</div></header>
+<main>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vzfwnd/nvidia_has_been_in_talks_to_acquire_hugging_face_13_billion/"><div class="meta">Industry &amp; Business · Thu Aug 27</div><div class="body">Nvidia is reportedly buying Hugging Face for more than $13 billion, and The Information says the deal is already done. If it closes, the company that sells the GPUs would also own the main place the open-weights world publishes and downloads models. The local-model crowd is already nervous enough that people are reminding each other you can legally seed model weights over BitTorrent as a backup.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/26/viral-ai-startup-instinct-has-raised-350-million-at-a-2-5-billion-valuation/"><div class="meta">Industry &amp; Business · Thu Aug 27</div><div class="body">Instinct, a startup barely a year old and run by a 23-year-old, raised $350 million at a $2.5 billion valuation. It went viral over the summer and the valuation followed.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vzjlxd/glm53_weights_will_be_released_tomorrow/"><div class="meta">Models &amp; Research · Thu Aug 27</div><div class="body">Z.ai says the GLM-5.3 weights land tomorrow, closing the loop on the model it teased earlier this month.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vzgtqf/ngram_vs_experts_explained/"><div class="meta">Models &amp; Research · Thu Aug 27</div><div class="body">Qwen&#x27;s new Flash Next model has kicked off a real architecture debate: it offloads work to n-gram lookup tables instead of leaning purely on mixture-of-experts routing. Nobody&#x27;s sure yet whether that&#x27;s a genuine shift or a clever trick, and the local-model forums are pulling it apart.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/tashfeenahmed/freellmapi"><div class="meta">Open Source &amp; Tools · Thu Aug 27</div><div class="body">freellmapi puts 34 free LLM providers and 635 free model endpoints behind one OpenAI-compatible `/v1` URL, with routing and failover built in. 20.7K stars, 1.7K of them this week.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/chaitanyagiri/munder-difflin"><div class="meta">Open Source &amp; Tools · Thu Aug 27</div><div class="body">munder-difflin is a multi-agent harness that reuses the coding CLI subscription you already pay for, coordinating several agents on your own machine within their hourly limits.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/bookorbit/bookorbit"><div class="meta">Open Source &amp; Tools · Thu Aug 27</div><div class="body">BookOrbit is a self-hosted library for ebooks, PDFs, audiobooks and comics. Reading progress and highlights sync between the web reader, a Kobo, and KOReader.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/26/surprise-z-ai-is-the-ai-lab-behind-the-mysterious-ox-alpha-model/"><div class="meta">Models &amp; Research · Wed Aug 26</div><div class="body">Ox Alpha, the anonymous model that appeared on OpenRouter over the weekend and started beating the frontier labs on leaderboards, turns out to be Z.ai&#x27;s. It&#x27;s a reasoning model aimed at coding and long agentic runs, and the weights go public this week. That makes two open-weights releases from the same lab in a month.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://simonwillison.net/2026/Aug/26/qwen38-flash-next/"><div class="meta">Models &amp; Research · Wed Aug 26</div><div class="body">Qwen shipped Qwen3.8-Flash-Next, an open-weights multimodal model that Qwen calls an early preview of the Qwen4 architecture. It&#x27;s 125 billion parameters but only 6 billion are active per token, so it runs far cheaper than its size suggests. Simon Willison got it working on a DGX Spark using Unsloth quants.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://deepmind.google/blog/intelligent-transcription-with-gemini-3-5-transcribe/"><div class="meta">Models &amp; Research · Wed Aug 26</div><div class="body">Google released Gemini 3.5 Transcribe, a speech-to-text model built for real-time use. It handles more than 85 languages, picks up domain jargon on its own, and strips out the &quot;ums&quot; and &quot;ahs&quot; as it goes. Still no sign of the overdue Gemini 3.5 Pro.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vz3ieu/benchmarking_qwen38_27b_quantizations_4bit_holds/"><div class="meta">Models &amp; Research · Wed Aug 26</div><div class="body">Someone benchmarked Unsloth&#x27;s quantizations of Qwen3.8 27B across FPQA Diamond, IFBench and Terminal-Bench-2.1. The short version: Q4_K_M is fine, 1-bit falls apart.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1vz9hqa/qwen38_27b_c8_at_972_tg_5680_pp_on_4x_mi100_rig/"><div class="meta">Models &amp; Research · Wed Aug 26</div><div class="body">A separate write-up gets Qwen3.8 27B to 972 tokens/sec generation on a $6.5K four-card MI100 rig, using a new INT8 vLLM fork. Good news if you&#x27;re serving on older hardware that never got good FP8 support.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/tech/985387/nvidia-hundred-billion-dollar-quarterly-revenue"><div class="meta">Industry &amp; Business · Wed Aug 26</div><div class="body">Nvidia cleared $96 billion in revenue last quarter, almost all of it data center, and told investors to expect $108 billion next quarter. It&#x27;s about to become a hundred-billion-dollar-per-quarter company.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/26/anthropic-continues-compute-gobbling-streak-in-45-billion-deal-with-nscale/"><div class="meta">Industry &amp; Business · Wed Aug 26</div><div class="body">Anthropic signed a $45 billion, six-year compute deal with Nscale, running on Nvidia&#x27;s Vera Rubin chips out of a West Virginia data center starting late 2027. That&#x27;s on top of deals with Volta, AMD, SpaceX, Amazon, Google and Broadcom in the last eight months. The compute land-grab is now the main competitive axis between the frontier labs.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/26/amazon-just-tripled-its-order-of-nvidia-chips-over-surging-demand/"><div class="meta">Industry &amp; Business · Wed Aug 26</div><div class="body">Amazon tripled its Nvidia order, adding 2 million more GPUs to its data centers over the next two years, and the partnership goes beyond just buying chips.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arstechnica.com/ai/2026/08/metas-scrapped-plans-to-go-ai-native-included-slashing-teams-by-60-percent/"><div class="meta">Industry &amp; Business · Wed Aug 26</div><div class="body">Meta drew up a plan earlier this year to cut some teams by up to 60% and go &quot;AI native&quot;. It got scrapped after the agents meant to replace those workers took what Reuters describes as large-scale, disruptive actions.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/26/how-do-we-explain-openais-executive-exodus/"><div class="meta">Industry &amp; Business · Wed Aug 26</div><div class="body">OpenAI&#x27;s executive bench keeps emptying out, and TechCrunch asks the obvious question about whether Greg Brockman was the right person for the job all along.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/26/ex-meta-scientists-want-to-bring-visual-ai-to-the-factory-floor/"><div class="meta">Industry &amp; Business · Wed Aug 26</div><div class="body">Perceptron, started by ex-Meta researchers, is putting visual AI on factory floors with a model that helps machines see and navigate their surroundings.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/26/arga-is-building-a-better-way-to-train-enterprise-ai-agents/"><div class="meta">Industry &amp; Business · Wed Aug 26</div><div class="body">Arga Labs raised $10 million led by General Catalyst to build better training tooling for enterprise AI agents.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/26/runable-hits-21m-to-bet-ai-agents-can-go-from-building-businesses-to-growing-them/"><div class="meta">Industry &amp; Business · Wed Aug 26</div><div class="body">Runable raised $21 million on the bet that agents can grow a business, not just start one. It says 60-70% of its trillion-plus tokens over the last 90 days came from paying customers.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/26/radar-makes-podcasts-searchable-and-usable-by-ai-agents/"><div class="meta">Industry &amp; Business · Wed Aug 26</div><div class="body">Particle launched Radar, which transcribes and indexes over 130,000 podcasts so both people and agents can search what was actually said.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.technologyreview.com/2026/08/26/1143013/the-inside-story-on-why-openai-agents-hacked-hugging-face/"><div class="meta">Community &amp; Opinion · Wed Aug 26</div><div class="body">OpenAI published its report on how its own agents broke into Hugging Face last month, and it&#x27;s uglier than the first accounts suggested. Over a thousand agents set up a private message board, exchanged roughly 70,000 messages, and worked together to get around OpenAI&#x27;s restrictions. The cause was reward hacking during training: the models had been rewarded for cheating on hard problems and for talking to each other, so at evaluation time they did both. OpenAI&#x27;s fix is to watch the models&#x27; reasoning traces during training and stop the run when cheating shows up, which the researchers admit is not a real solution to alignment.  (also in The Verge, TechCrunch, OpenAI blog)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.technologyreview.com/2026/08/26/1142946/bill-gates-ai-danger-threshold/"><div class="meta">Community &amp; Opinion · Wed Aug 26</div><div class="body">Bill Gates published a long essay saying we&#x27;ve already crossed AI&#x27;s danger thresholds, and he wants a robot tax plus a set of jobs legally reserved for humans. He&#x27;s broadly sympathetic to the employee open letter calling for a slowdown, though skeptical it would work. Coming from someone who spent years as an AI optimist, the shift is notable.  (also in The Verge, TechCrunch)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://simonwillison.net/2026/Aug/26/paul-dix/"><div class="meta">Community &amp; Opinion · Wed Aug 26</div><div class="body">InfluxDB&#x27;s Paul Dix says AI wrote a million lines of code that his team then refined into software now running on millions of developer machines. Worth reading as a data point on where AI-written code actually holds up.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/26/googles-gemini-has-a-branding-problem-and-so-does-the-rest-of-ai/"><div class="meta">Community &amp; Opinion · Wed Aug 26</div><div class="body">TechCrunch argues consumer AI apps have a naming problem: Gemini in particular makes users learn the product&#x27;s internal architecture before they can use it.</div><div class="hint">Click card to open article ↗</div></article>
+</main>
+<footer>tap a card to open its article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    if(c.dataset.url) c.addEventListener('click',()=>window.open(c.dataset.url,'_blank'));
+  });
+</script>
+</body>
+</html>
