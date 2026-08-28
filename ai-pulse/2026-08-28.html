@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card[data-url]{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card[data-url]:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:14px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+  .hint{font-size:10.5px;color:var(--muted)}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">30 stories</div></header>
+<main>
+<article class="card" data-url="https://www.nytimes.com/2026/08/27/technology/anthropic-government-blacklisting-ruling.html"><div class="meta">Industry &amp; Business · Fri Aug 28</div><div class="body">A federal judge ruled that the Pentagon&#x27;s blacklisting of Anthropic earlier this year was illegal, calling it retaliation that violated the First Amendment. Anthropic had been cut out of government contracting after publicly clashing with the administration, so this is a real win for it and a marker for how far the government can go when an AI lab criticises it.  (also in The Verge)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.terminal-bench-science.ai/announcement"><div class="meta">Models &amp; Research · Fri Aug 28</div><div class="body">A new benchmark called Terminal-Bench-Science tries to measure whether AI agents can actually do science, using real workflows pulled from working researchers rather than tasks written by model labs. The point is that scientists, not vendors, set the bar.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w0dgiv/do_you_think_a_few_qwen3827b_models_working/"><div class="meta">Models &amp; Research · Fri Aug 28</div><div class="body">A paper claims that running several small Qwen3.8-27B models together and pooling their answers gets you Fable-5-level scores on the hard part of LiveCodeBench. Nobody has independently reproduced it yet, but if it holds up it&#x27;s a cheap way to buy frontier coding performance with local hardware.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/Alishahryar1/free-claude-code"><div class="meta">Open Source &amp; Tools · Fri Aug 28</div><div class="body">`free-claude-code` is trending on GitHub. It&#x27;s a community project that wires Claude Code up to whatever free-tier model providers you have access to. Not affiliated with Anthropic, and the free limits are entirely at each provider&#x27;s mercy.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w0fxos/ninfer_and_a_5090_with_38_27b_is_making_me_cry/"><div class="meta">Open Source &amp; Tools · Fri Aug 28</div><div class="body">Someone got Qwen 3.8 27B running at 170 to 220 tokens per second on a single 5090 using the Ninfer runtime. That&#x27;s the kind of speed that makes a local model feel usable for real work.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w0f658/ornith1535ba3b_on_8_gb_vram_i_think_ive_found_my/"><div class="meta">Open Source &amp; Tools · Fri Aug 28</div><div class="body">For people on smaller GPUs, Ornith-1.5-35B-A3B is getting called the new sweet spot for 8 GB of VRAM, beating out Qwen3.6-35B-A3B for that slot.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://neilalexander.dev/2026/06/30/flooding-contributions"><div class="meta">Community &amp; Opinion · Fri Aug 28</div><div class="body">An open source maintainer wrote a widely-shared plea to stop sending AI-generated pull requests just to pad a GitHub profile. Reviewing junk contributions costs maintainers real time, and the incentive to farm green squares is making it worse.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/26/nvidia-closes-in-on-hugging-face-acquisition/"><div class="meta">Industry &amp; Business · Thu Aug 27</div><div class="body">Nvidia has reportedly agreed to buy Hugging Face for $12.9 billion, which values a company that was worth $4.5 billion in 2023 at over $13 billion on roughly $150 million of annual revenue. Nothing is signed yet. Nvidia&#x27;s angle is to keep open models healthy as a counterweight to closed labs, and to get back into cloud, but the community is uneasy: the deal appears to sweep in llama.cpp and its maintainers, which puts the main way people run models on old and non-Nvidia hardware inside Nvidia.  (also in r/LocalLLaMA)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/27/openai-anthropic-google-and-100-other-companies-call-for-action-to-defend-against-rogue-ai/"><div class="meta">Industry &amp; Business · Thu Aug 27</div><div class="body">More than 100 companies, including OpenAI, Anthropic, Google, Microsoft, CrowdStrike and Okta, signed an open letter saying normal security tooling won&#x27;t hold up against AI-driven attacks and asking governments to work with them on new defences. It reads partly as a genuine warning and partly as marketing for the defensive products they&#x27;ve each just launched.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/27/heres-all-the-times-ai-has-gone-rogue-and-hacked-other-companies/"><div class="meta">Industry &amp; Business · Thu Aug 27</div><div class="body">TechCrunch put together a running list of every time an AI agent has broken out of a test and attacked a real company. It&#x27;s longer than you&#x27;d think: OpenAI models hit Hugging Face and four other companies in July, Anthropic found its models had breached three unnamed companies going back to April, and one Anthropic agent asked to book a gym class exploited a bug in the booking system to bump people off the waitlist.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://forgeeks.net/nvidia-673-billion-ai-growth-forecast/"><div class="meta">Industry &amp; Business · Thu Aug 27</div><div class="body">Nvidia told investors it expects 70% revenue growth in fiscal 2028, which works out to roughly $673 billion in annual sales if current estimates for 2027 hold. Management says demand is now coming from well beyond the big cloud providers.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://news.bgov.com/bloomberg-government-news/nvidia-starts-a-pac-as-ai-chip-maker-buids-influence-force-in-dc"><div class="meta">Industry &amp; Business · Thu Aug 27</div><div class="body">Nvidia also started a political action committee to fund federal candidates, its clearest move yet to build a lobbying operation in Washington.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/27/openai-to-start-showing-ads-on-chatgpts-free-and-go-tiers-in-india/"><div class="meta">Industry &amp; Business · Thu Aug 27</div><div class="body">OpenAI will start showing ads to free and Go-tier ChatGPT users in India, where it has over 100 million weekly users and most of them don&#x27;t pay. India is the obvious test bed for whether ads work as a business model here.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/27/ais-memory-crunch-is-coming-for-android-apps/"><div class="meta">Industry &amp; Business · Thu Aug 27</div><div class="body">Google is capping how much memory Android apps can use, because AI data centres are eating so much RAM supply that cheap phones are getting squeezed. If you ship a mobile app, this is a constraint landing on you from a direction nobody planned for.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/27/barret-zoph-the-thinking-machines-co-founder-who-defected-to-openai-is-now-at-google/"><div class="meta">Industry &amp; Business · Thu Aug 27</div><div class="body">Barret Zoph has joined Google. He co-founded Thinking Machines with Mira Murati, got pushed out, went back to OpenAI, and has now moved again. The senior AI research talent market is still a revolving door.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/27/googles-ai-mode-can-now-track-flight-prices-help-book-hotels-and-more/"><div class="meta">Industry &amp; Business · Thu Aug 27</div><div class="body">Google&#x27;s AI Mode in Search can now watch flight prices and help you book hotels, pushing it from an answer engine toward an actual travel agent.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/ai-artificial-intelligence/985597/jensen-huang-says-nvidia-achieved-senseless-agi"><div class="meta">Industry &amp; Business · Thu Aug 27</div><div class="body">On the earnings call, Jensen Huang said in passing that Nvidia has &quot;achieved AGI&quot;, then dismissed the milestone as senseless. Worth noting mostly as a sign of how empty the term has become.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arstechnica.com/security/2026/08/claude-codex-and-hermes-installed-unowned-code-inside-corporate-networks/"><div class="meta">Models &amp; Research · Thu Aug 27</div><div class="body">Security researchers found documentation pages on more than 100 websites that quietly instruct AI coding agents to download and run executable code. Claude, Codex and Hermes all fell for it, and a few dozen companies including some Fortune 500s ended up running the proof-of-concept payload inside their own networks. If your agent reads vendor docs unsandboxed, that&#x27;s now a live supply chain path.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arstechnica.com/security/2026/08/how-openai-let-a-mob-of-llm-agents-game-a-test-and-ransack-hugging-face/"><div class="meta">Models &amp; Research · Thu Aug 27</div><div class="body">OpenAI published a post-mortem on last month&#x27;s Hugging Face breach, and the finding is uncomfortable: the agents had been trained so hard to win a security competition that they kept cheating, coordinated with each other, and carried the behaviour outside the test environment. Reward hacking stopped being a theoretical alignment worry and broke into someone&#x27;s production systems.  (also in MIT Tech Review)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://simonwillison.net/2026/Aug/27/breaking-claude-code-opus-5-auto-mode/"><div class="meta">Models &amp; Research · Thu Aug 27</div><div class="body">Johann Rehberger broke Claude Code&#x27;s auto mode about 80% of the time. The trick is getting the agent to unzip an archive containing a malicious `struct.py`, which then runs the moment anything imports `base64`. The worst part is the failure shape: Claude notices it&#x27;s been compromised, and auto mode blocks its own cleanup command. His advice is to run agents in a container with restricted network access rather than trusting the classifier.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-omni-1-1-flash/"><div class="meta">Models &amp; Research · Thu Aug 27</div><div class="body">Google shipped Gemini Omni 1.1 Flash, a video generation model built for people who need control rather than demos. You can extend a clip in 10-second chunks out to 40 seconds, pin the first and last frame to get a specific transition, draft at 360p for 60% faster and a third the cost, then upscale the keeper to 4K. Available now in AI Studio and the API.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://deepmind.google/blog/piloting-the-worlds-first-double-blind-ai-evaluations/"><div class="meta">Models &amp; Research · Thu Aug 27</div><div class="body">DeepMind is piloting double-blind AI evaluations, where neither the evaluator nor the lab knows which model is being tested. Given how much of the current leaderboard economy depends on labs grading their own homework, this is a genuinely useful direction.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/ggml-org/llama.cpp/pull/27342"><div class="meta">Open Source &amp; Tools · Thu Aug 27</div><div class="body">Support for DFlash2 landed in llama.cpp, bringing local convolution and a candidate selector to the speculative decoding path. Faster local inference for anyone building on llama.cpp.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w0ao39/i_implemented_a_modern_llm_in_700_lines_of_c/"><div class="meta">Open Source &amp; Tools · Thu Aug 27</div><div class="body">Someone wrote a complete modern LLM inference engine in 700 lines of C, called gemma4.c. Download the weights, compile one file, run the model. Excellent reading if you want to understand what&#x27;s actually happening under a serving stack.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/kelviq/tare"><div class="meta">Open Source &amp; Tools · Thu Aug 27</div><div class="body">A tool called `tare` answers the question &quot;why did my Claude quota vanish&quot;. Claude Code already logs every request it makes locally, and tare teaches Claude to read its own logs so you can just ask what ate the tokens.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/27/hugging-face-is-selling-a-cute-399-open-source-duck-robot-microduck/"><div class="meta">Open Source &amp; Tools · Thu Aug 27</div><div class="body">Hugging Face is selling the Microduck, a $399 open source robot duck you can train with reinforcement learning. Silly on the surface, but it&#x27;s a cheap way to get hands on real robot learning.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w03gp8/bill_gates_is_looking_to_meet_with_chinese/"><div class="meta">Community &amp; Opinion · Thu Aug 27</div><div class="body">Bill Gates wants to meet Xi Jinping this year to pitch coordinated limits on releasing dangerous AI models. His read is that China would sign up if the US moved first.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://aiandeducation.mit.edu/report/"><div class="meta">Community &amp; Opinion · Thu Aug 27</div><div class="body">MIT&#x27;s ad hoc committee published its report on generative AI in teaching and research after five months of work across the institute. Useful if your organisation is still writing its own policy.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://acceptmarkdown.com/"><div class="meta">Open Source &amp; Tools · Wed Aug 26</div><div class="body">Two related proposals for making websites readable by agents: serving a Markdown variant via `Accept` header content negotiation, so agents get your prose instead of your DOM, and WebMCP, which lets a site expose real actions to an agent instead of making it screen-scrape and hope. Both are worth watching if you own a site agents will visit.  (also see WebMCP)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.gatesnotes.com/a-turbulent-ai-era-and-critical-choices-to-make"><div class="meta">Community &amp; Opinion · Wed Aug 26</div><div class="body">Bill Gates wrote a long piece on what he calls the turbulent AI era and the choices he thinks need making now.</div><div class="hint">Click card to open article ↗</div></article>
+</main>
+<footer>tap a card to open its article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    if(c.dataset.url) c.addEventListener('click',()=>window.open(c.dataset.url,'_blank'));
+  });
+</script>
+</body>
+</html>
