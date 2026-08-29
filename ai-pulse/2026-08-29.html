@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card[data-url]{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card[data-url]:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:14px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+  .hint{font-size:10.5px;color:var(--muted)}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">22 stories</div></header>
+<main>
+<article class="card" data-url="https://github.com/VoltAgent/awesome-agent-skills"><div class="meta">Open Source &amp; Tools · Sat Aug 29</div><div class="body">A repo called awesome-agent-skills has exploded to 33K stars. It collects over a thousand agent skills, and the pitch is that these are real ones written by actual engineering teams (Anthropic, Google Labs, Vercel, Stripe, Cloudflare, Sentry, Trail of Bits) rather than the AI-generated filler that&#x27;s flooded similar lists. They work across Claude Code, Codex, Gemini CLI and Cursor.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w1996t/50_tg_increase_with_offloading_hot_experts_to_vram/"><div class="meta">Open Source &amp; Tools · Sat Aug 29</div><div class="body">Someone found a neat trick for running big mixture-of-experts models on a GPU that can&#x27;t hold the whole thing. Instead of offloading experts at random, you figure out which ones get used most and pin those to VRAM. They went from 20 to 30 tokens per second on Qwen 3.8 Flash Next in llama.cpp, a 50% speedup for free.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w18b1k/qwen_38_flash_next_ngram_look_up_table_offloaded/"><div class="meta">Open Source &amp; Tools · Sat Aug 29</div><div class="body">A related experiment pushes Qwen 3.8 Flash Next&#x27;s n-gram lookup table onto SSD and streams it into SGLang, apparently with no performance hit. Still unverified, but worth watching if you&#x27;re memory-constrained.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w18v86/use_llms_to_auto_annotation_your_dataset_locally/"><div class="meta">Open Source &amp; Tools · Sat Aug 29</div><div class="body">llmog is a small local tool that uses an LLM to auto-label datasets and reclassify existing YOLO datasets. Useful if you&#x27;re doing vision work and don&#x27;t want to pay for annotation.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w18pu9/tenstorrent_quietbox_2_arrived/"><div class="meta">Community &amp; Opinion · Sat Aug 29</div><div class="body">Tenstorrent&#x27;s Quietbox 2 is landing in people&#x27;s hands. Early owners are figuring out which models actually suit the architecture, so if you&#x27;ve been curious whether Tenstorrent is a real alternative to stacking 3090s, the next few weeks of posts should tell you.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex"><div class="meta">Industry &amp; Business · Fri Aug 28</div><div class="body">OpenAI is cutting Cursor off. After SpaceX closed its $60B all-stock buy of Cursor&#x27;s parent Anysphere and folded it into a new SpaceXAI division, OpenAI said it will wind down the contract that supplies its models to Cursor, with a proposed shutoff on November 12. OpenAI&#x27;s stated reason is blunt: given how Musk&#x27;s companies have handled contracts before, it can&#x27;t be confident SpaceX will stay inside its terms of service. Awkward all round, since OpenAI was an investor in Cursor&#x27;s Series D and had twice tried to buy the company itself. If you use Cursor with GPT models, plan for that to stop working.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/28/anthropic-gets-its-first-court-win-over-the-pentagons-supply-chain-risk-label/"><div class="meta">Industry &amp; Business · Fri Aug 28</div><div class="body">Anthropic won its first round against the Pentagon. Judge Rita Lin ruled that the Defense Department&#x27;s decision to brand Anthropic a supply-chain risk, which told every federal agency to stop working with them, was unlawful retaliation under the First Amendment and arbitrary besides. The fight started when Anthropic refused to strip safety guardrails that block Claude from being used for autonomous weapons and mass surveillance of Americans. A second suit is still pending in DC.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/28/open-weight-ai-companies-are-the-valleys-hottest-acquisition-targets/"><div class="meta">Industry &amp; Business · Fri Aug 28</div><div class="body">Open-weight AI companies have become the hottest thing to buy in the Valley. Nvidia is reportedly circling Hugging Face at $13B, already bought poolside for $6B, and Stripe picked up OpenRouter for over $7B. The logic: chipmakers don&#x27;t want to depend on OpenAI and Google, who are building their own inference silicon, so owning the open-model distribution layer means owning where those workloads run. Only about 6% of companies use open-weight models today, which is exactly why the land grab is happening now.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/28/neocloud-lambda-secures-1b-in-debt-to-buy-more-chips/"><div class="meta">Industry &amp; Business · Fri Aug 28</div><div class="body">Lambda borrowed another $1B to buy Nvidia chips, arranged by JP Morgan, and will lease them to Microsoft. This is short-dated debt, meaning Lambda has to deploy the hardware and start earning fast to pay it back. It follows a $1B credit facility in May and a $926M loan announced the same week. Roughly $400B in AI-related debt has been raised globally this year.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/28/meta-executive-leaves-for-openai-as-the-social-media-giant-faces-growing-scrutiny-in-india/"><div class="meta">Industry &amp; Business · Fri Aug 28</div><div class="body">Sandhya Devanathan is leaving Meta for OpenAI, where she&#x27;ll run operations across Southeast Asia and Australia. The move lands while Meta is under growing regulatory pressure in India.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/ai-artificial-intelligence/986176/data-center-pollution-epa-rule-change-air-permit"><div class="meta">Industry &amp; Business · Fri Aug 28</div><div class="body">The EPA wants to scrap an air pollution rule in a way that would let data centre developers avoid disclosing their emissions publicly. Given how much new capacity is being built for AI, this is the sort of thing that quietly shapes where the next wave of GPUs gets plugged in.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://openai.com/index/supporting-next-generation-ai-startups-thailand"><div class="meta">Industry &amp; Business · Fri Aug 28</div><div class="body">OpenAI and Thailand&#x27;s science ministry are running an eight-week accelerator for ten health, wellness and education startups.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/28/an-anthropic-researcher-just-gave-us-a-peek-at-self-improving-ai/"><div class="meta">Models &amp; Research · Fri Aug 28</div><div class="body">An Anthropic researcher showed an AI system that improves AI alignment on its own. The setup, called the Automated Alignment Researcher, does what a human researcher does: read the literature, propose a method, train a model, repeat. Across ten benchmarks for specific bad behaviours it improved every single one without hurting general performance, and the paper claims its best proposals beat what experienced humans came up with, usually within six hours. The catch is that it only works when your benchmark actually measures the thing you care about, so the hard human work just moves to writing better evals.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w11ob5/i_audited_443_gguf_quants_across_25_repos_64_of/"><div class="meta">Models &amp; Research · Fri Aug 28</div><div class="body">If you download GGUF quants, check what you&#x27;re actually getting. Someone audited 443 quantised model files across 25 repos and found 64 that can&#x27;t be the format their filename claims. The cause is a quiet failure mode: k-quants need tensor rows divisible by 256, and when they aren&#x27;t, llama-quantize silently substitutes a roughly 4.5 bit-per-weight type while keeping the low-bit name on the file. So your &quot;2-bit&quot; model may be much larger and slower than you planned for.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w13vse/release_sota_ggufs_for_qwen3827b_gsqrco_at_25_to/"><div class="meta">Models &amp; Research · Fri Aug 28</div><div class="body">New Qwen3.8-27B quants are out using a method called GSQ plus RCO, landing between 2.5 and 3.0 bits per weight. The claim is better quality at the same file size, and the quantiser itself was released alongside.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w11epf/glm53_on_hf_viewer/"><div class="meta">Models &amp; Research · Fri Aug 28</div><div class="body">GLM-5.3 is now browsable in the Hugging Face viewer. The interesting detail is that the architecture hasn&#x27;t changed at all since GLM-5.2, so the gains this time came purely from better training.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w1002h/breezetts2_initial_impressions_genuinely_frontier/"><div class="meta">Models &amp; Research · Fri Aug 28</div><div class="body">Breeze-TTS-2 is getting early reviews as genuinely frontier-quality text to speech, and it&#x27;s only about 7GB, so it runs locally without much fuss.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w0zl5q/i_benchmarked_9_open_models_on_spotting_fake/"><div class="meta">Models &amp; Research · Fri Aug 28</div><div class="body">A new benchmark called EchoNet tests whether models can spot fabricated sources while doing agentic search. The agent gets a question, searches a synthetic web that&#x27;s been deliberately seeded with fake pages, then answers. Nine open models were tested including DeepSeek V4, Qwen 3.8 and Nemotron 3 Ultra. Worth a look if you&#x27;re building anything that lets a model browse.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://huggingface.co/blog/open-asr-leaderboard-global-south"><div class="meta">Models &amp; Research · Fri Aug 28</div><div class="body">The Open ASR Leaderboard added its first Global South language, a small but overdue step for speech recognition benchmarks that have long been dominated by English and a handful of European languages.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://simonwillison.net/2026/Aug/28/just-a-rumour-of-a-bug/"><div class="meta">Community &amp; Opinion · Fri Aug 28</div><div class="body">Simon Willison flags something that should worry anyone who maintains software. A Cambridge professor who helps maintain the OCaml compiler found that simply discussing a security patch in public drew automated probes within ten minutes. He then showed that a coding agent can turn a vague hint about a bug into a working exploit, using DeepSeek V4 Pro after Claude Fable refused. Meanwhile rclone&#x27;s maintainer reports 40 security disclosures in a single month against 20 in the previous ten years. The usual embargo window, where you get days or weeks between patch and disclosure, no longer exists.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arstechnica.com/security/2026/08/authorities-arrest-2-alleged-members-of-prolific-hacking-group-teampcp/"><div class="meta">Community &amp; Opinion · Fri Aug 28</div><div class="body">Australian police arrested two alleged members of TeamPCP, a hacking group that spent nine months running supply-chain attacks and infected more than 1,000 organisations worldwide.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.technologyreview.com/2026/08/28/1142956/how-to-sign-up-for-a-virtual-power-plant-and-decide-whether-you-should/"><div class="meta">Community &amp; Opinion · Fri Aug 28</div><div class="body">Utilities increasingly want to treat your thermostat, EV and home battery as part of a virtual power plant. MIT Tech Review has a practical guide on how to sign up and whether it&#x27;s actually worth it.</div><div class="hint">Click card to open article ↗</div></article>
+</main>
+<footer>tap a card to open its article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    if(c.dataset.url) c.addEventListener('click',()=>window.open(c.dataset.url,'_blank'));
+  });
+</script>
+</body>
+</html>
