@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card[data-url]{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card[data-url]:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:14px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+  .hint{font-size:10.5px;color:var(--muted)}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">18 stories</div></header>
+<main>
+<article class="card" data-url="https://simonwillison.net/2026/Aug/30/understanding-chatgpt-work/"><div class="meta">Models &amp; Research · Mon Aug 31</div><div class="body">Simon Willison spent weeks poking at ChatGPT Work and wrote up what he actually found, because OpenAI&#x27;s own docs describe it by use case rather than by what it can do. The cloud version is the interesting one: code execution with unrestricted internet access, a headless Chrome for browser automation, a filesystem that persists across sessions, and scheduled prompts that run on their own. He counts 223 tools and 44 skills behind it, and calls the open internet access in the sandbox the biggest gap versus Claude, which sticks to an allowlist.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arxiv.org/abs/2608.27548"><div class="meta">Models &amp; Research · Mon Aug 31</div><div class="body">NVIDIA released a small safety model that checks images as well as text. Nemotron 3.5 Content Safety Moderator is a 4B vision-language model that grades a user&#x27;s prompt, any attached image, and the assistant&#x27;s reply together, in 12 languages, and can explain its reasoning against a policy you supply. They also open-sourced the dataset, which covers real-image moderation, jailbreak attempts, and rare-risk cases. Small enough to sit inline in a request path without wrecking latency.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w2z5qw/r9v_a_designer_set_of_kernels_ive_been_working_on/"><div class="meta">Models &amp; Research · Mon Aug 31</div><div class="body">Someone on r/LocalLLaMA wrote a custom kernel set called R9V for AMD&#x27;s RDNA4 cards, and the numbers are hard to ignore. Running Qwen3.8-Flash-Next on two R9700s, they report generation at 78 tokens/sec, roughly triple what the stock path does, and prompt processing at 1510 tokens/sec, about 30x faster. AMD&#x27;s local inference story has been the weak link for years, so this is worth watching if you were only considering NVIDIA.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w317fn/snkiisori1b_audiogrounded_lm_trained_from_scratch/"><div class="meta">Models &amp; Research · Mon Aug 31</div><div class="body">A 1B audio model trained without any text-only pretraining. Sori-1B comes out of a single Seoul National University researcher, and the claim is that the decoder learned from audio from the very start rather than being a text model with ears bolted on. Interesting mostly as an architecture bet: nearly every speech model today starts from a text base.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w2v97w/i_collected_every_single_llm_coding_benchmark_and/"><div class="meta">Models &amp; Research · Mon Aug 31</div><div class="body">Someone pulled together every LLM coding benchmark they could find (SWE-bench Pro and friends) into one aggregate they call the Agentic Coding Index, then divided by model size to get what they call intelligence density. Useful as a sanity check when a vendor waves a single benchmark at you.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arxiv.org/abs/2608.27506"><div class="meta">Models &amp; Research · Mon Aug 31</div><div class="body">A paper on when chain-of-thought actually pays for itself. &quot;Thinking Costs Tokens&quot; measures the extra structure you add to let a model search, verify, and revise against what it costs you in tokens, and finds the tradeoff swings a lot by task. Worth a skim if you&#x27;re picking reasoning budgets for a production agent.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/30/musks-faster-path-to-more-gas-turbines-comes-with-pollution-problem/"><div class="meta">Industry &amp; Business · Mon Aug 31</div><div class="body">Elon Musk is building a metal foundry in Bastrop, Texas so SpaceX can cast its own gas turbine blades. Only four companies in the world can do this today: the blades have to be cast as one unbroken crystal in a vacuum furnace, and they run at 3,000 to 3,600°F, hundreds of degrees hotter than the metal&#x27;s own melting point. His pitch is that doing it in house gets gas power online up to 18 months sooner, which matters because the IEA expects data center power draw to double by 2030 and the grid can&#x27;t keep up. The catch is pollution: gas turbines throw off smog precursors and formaldehyde, the NAACP has accused SpaceX of running turbines in Memphis without permits or controls, and a Virginia study estimated eight turbines at one site could cause three to six extra deaths a year.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/30/the-u-s-is-building-barriers-around-drones-and-robots-china-still-has-scale/"><div class="meta">Industry &amp; Business · Mon Aug 31</div><div class="body">The U.S. is walling off Chinese drones and robots, and it may not work. The FCC added foreign-made robotic systems to its Covered List in July, and tariffs on imported drones kick in this September with component tariffs following in 2027. The problem is scale: five Chinese makers (AgiBot, Unitree, Galbot, UBTECH, Leju) shipped 86% of the world&#x27;s humanoid robots in the first half of 2026, out of 22,000 units total. Cheaper units mean more real-world data, which means better robots, which drives cost down further. Regulation doesn&#x27;t break that loop.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arstechnica.com/ai/2026/08/inside-metas-push-to-put-robots-to-work-in-data-centers/"><div class="meta">Industry &amp; Business · Mon Aug 31</div><div class="body">Meta is testing robots inside its data centers that plug in cables and reset servers, per current and former workers. The physical grunt work of running AI infrastructure is finally getting automated, and it&#x27;s happening at the company with some of the largest fleets.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/30/caterpillar-is-bringing-to-ai-deployment-what-it-learned-from-automating-mining/"><div class="meta">Industry &amp; Business · Mon Aug 31</div><div class="body">Caterpillar is applying what it learned automating remote mining sites to AI deployment. Decades of running autonomous machines in places with bad connectivity and no staff turns out to transfer reasonably well to edge AI.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/ai-artificial-intelligence/986541/texas-governor-abbott-flock-cameras"><div class="meta">Industry &amp; Business · Mon Aug 31</div><div class="body">Texas Governor Greg Abbott froze state funding for Flock&#x27;s AI surveillance cameras as bipartisan pushback grows. Notable because the opposition to automated license plate readers is no longer coming from one side of the aisle.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w2q1ug/nvidia_dgx_station_delivering_datacenterclass/"><div class="meta">Industry &amp; Business · Mon Aug 31</div><div class="body">NVIDIA is pitching the DGX Station as a data-center-class box that sits on a desk, with 7.1 TB/s of memory bandwidth. If the price lands anywhere sane it&#x27;s a real option for small shops that want to run big models without renting cloud GPUs.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/abi/screenshot-to-code"><div class="meta">Open Source &amp; Tools · Mon Aug 31</div><div class="body">screenshot-to-code turns a screenshot, mockup, Figma file, or screen recording into working front-end code. It&#x27;s at 76.5K stars and has a hosted version if you don&#x27;t want to run it yourself.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/THU-MAIC/OpenMAIC"><div class="meta">Open Source &amp; Tools · Mon Aug 31</div><div class="body">OpenMAIC, out of Tsinghua&#x27;s MAIC lab, generates a whole interactive course from one prompt: slides, quizzes, HTML simulations, plus AI teachers and classmates that narrate, draw on a whiteboard, and discuss in real time. Built on LangGraph and Next.js with swappable storage (browser, Postgres, S3). 24.7K stars.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w2wdeq/which_llm_is_actually_best_at_pentesting/"><div class="meta">Community &amp; Opinion · Mon Aug 31</div><div class="body">A new benchmark tries to answer which LLM is actually best at penetration testing, since everyone&#x27;s been using agents for it without much evidence either way.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w2ujys/qwen_38_27b_fantastic_german_capabilities/"><div class="meta">Community &amp; Opinion · Mon Aug 31</div><div class="body">Qwen 3.8 27B is getting praise for German translation specifically, with one heavy translation user calling it well ahead of GPT for that language. A reminder that non-English quality varies a lot more between models than the headline benchmarks suggest.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w2q1hx/whatever_happened_to_openclaw_and_its_derivatives/"><div class="meta">Community &amp; Opinion · Mon Aug 31</div><div class="body">Someone asked whether OpenClaw and its forks are still being used, and the answer seems to be that the hype cooled fast. Useful signal on how quickly agent frameworks churn.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w2r37q/are_there_any_interesting_architectural/"><div class="meta">Community &amp; Opinion · Mon Aug 31</div><div class="body">An open thread on which architecture changes might actually matter next, deliberately excluding the ones everyone already talks about like N-gram tricks and quantization. Worth a read if you want a sense of what practitioners are betting on.</div><div class="hint">Click card to open article ↗</div></article>
+</main>
+<footer>tap a card to open its article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    if(c.dataset.url) c.addEventListener('click',()=>window.open(c.dataset.url,'_blank'));
+  });
+</script>
+</body>
+</html>
