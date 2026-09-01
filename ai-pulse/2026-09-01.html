@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card[data-url]{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card[data-url]:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:14px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+  .hint{font-size:10.5px;color:var(--muted)}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">25 stories</div></header>
+<main>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w42biu/mtp_released_for_qwen38flashnextgguf/"><div class="meta">Models &amp; Research · Tue Sep 01</div><div class="body">Qwen&#x27;s 3.8-Flash-Next now has MTP (multi-token prediction) weights released in GGUF form, which lets the model guess several tokens ahead instead of one at a time. Local-LLM folks expect a solid jump in tokens per second once llama.cpp merges the matching optimizations.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w3yq0k/i_finished_upcycling_of_gemma412b/"><div class="meta">Models &amp; Research · Tue Sep 01</div><div class="body">Someone took Google&#x27;s dense Gemma4-12B and &quot;upcycled&quot; it into a mixture-of-experts model by bolting on four experts, and says the result recovers general-purpose quality. It&#x27;s a hobbyist proof that you can convert a dense model into a sparse one without retraining from scratch.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/31/apple-shares-shocking-evidence-against-former-employee-accused-of-stealing-company-data-for-openai/"><div class="meta">Industry &amp; Business · Tue Sep 01</div><div class="body">Apple filed what it calls &quot;shocking evidence&quot; against a former employee it accuses of stealing internal data before leaving for OpenAI. The new claim is that he deleted the evidence after finding out he was being investigated, which is usually worse for a defendant than the original theft.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/asciimoo/hister"><div class="meta">Open Source &amp; Tools · Tue Sep 01</div><div class="body">Hister is trending on GitHub: a private search engine over everything you&#x27;ve browsed and every file you keep. It indexes full page contents locally and you can query it from a web UI, your terminal, or an AI assistant over MCP.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w403mv/a_very_confusing_report_from_puget_systems/"><div class="meta">Community &amp; Opinion · Tue Sep 01</div><div class="body">A Puget Systems benchmark report is getting picked apart for odd test choices, like running an 8B model on a 32GB GPU and using 500-token prompts, which barely stress the hardware being reviewed.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w3vhv9/deepseek_v4_flash_vision_is_out/"><div class="meta">Models &amp; Research · Mon Aug 31</div><div class="body">DeepSeek shipped a vision version of V4 Flash on Hugging Face. It&#x27;s marked experimental, but it means their fast, cheap model line can now read images, not just text.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w3nl38/smol_king_nanbeige_42_now_with_dspark/"><div class="meta">Models &amp; Research · Mon Aug 31</div><div class="body">Nanbeige released a 3B model with a technique they call DSpark, and early testers say it beats Qwen 3.5&#x27;s 9B model while running much faster. If that holds up, it&#x27;s a nice option for anyone running models on a weak GPU.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w3pl64/qwen38flashnext_in_llamacpp_from_cpuonly_to_96gb/"><div class="meta">Models &amp; Research · Mon Aug 31</div><div class="body">A detailed writeup benchmarks Qwen3.8 Flash Next on llama.cpp all the way from CPU-only to a 96GB RTX 6000 Pro. The spread is huge: 8.5 tokens per second on CPU versus 109 on the full GPU, with the exact context and offload settings spelled out.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://openai.com/index/expanding-access-to-ai-with-chatgpt-ads"><div class="meta">Industry &amp; Business · Mon Aug 31</div><div class="body">OpenAI says ChatGPT Ads has hit a $1 billion annualized revenue run rate and is rolling out globally. Ads are how they plan to keep the free tier free and push into markets where a $20 subscription is a non-starter. It&#x27;s a fast ramp for a product that only launched recently.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/31/nvidias-3-5b-mediatek-bet-reveals-its-plan-for-tackling-big-techs-ai-chip-buildout/"><div class="meta">Industry &amp; Business · Mon Aug 31</div><div class="body">Nvidia is putting $3.5 billion into Taiwanese chipmaker MediaTek, and the point isn&#x27;t the chips, it&#x27;s the plumbing. MediaTek gets access to NVLink Fusion, Nvidia&#x27;s high-speed interconnect, so custom chips from anyone can talk to each other inside an Nvidia-based data center. With Google, Amazon, Meta, OpenAI and Anthropic all building their own silicon to escape Nvidia&#x27;s GPUs, this is Nvidia making sure it still owns the layer underneath them.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/31/the-pentagon-now-has-its-own-version-of-chatgpt-and-grok/"><div class="meta">Industry &amp; Business · Mon Aug 31</div><div class="body">The Pentagon added ChatGPT Mil and Grok for Government to GenAI.mil, its internal AI portal that already had Gemini. Around 1.7 million of 3 million DoD staff are onboarded. Anthropic&#x27;s Claude is notably missing after a dispute with the Pentagon over safety guardrails.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/ai-artificial-intelligence/986682/openai-chatgpt-eu-dsa"><div class="meta">Industry &amp; Business · Mon Aug 31</div><div class="body">The EU labeled ChatGPT a &quot;Very Large Online Platform&quot; under the Digital Services Act, alongside Reddit and Roblox. That designation brings real obligations: risk assessments, outside audits, and transparency reporting, with fines that scale to global revenue.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/tech/986593/instagram-addresses-fake-ai-profile-slop"><div class="meta">Industry &amp; Business · Mon Aug 31</div><div class="body">Instagram will throttle the reach of AI-generated profiles that don&#x27;t label themselves as such, after months of complaints about fake AI influencers that are getting harder to spot.  (also in TechCrunch)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/31/three-year-old-ai-media-search-startup-clipto-hits-a-250m-valuation/"><div class="meta">Industry &amp; Business · Mon Aug 31</div><div class="body">Clipto, a three-year-old startup that lets you search through terabytes of video with AI, raised $15 million at a $250 million valuation. It says it was already profitable at $15 million in annual recurring revenue before the round.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/31/harvard-law-dropout-raises-6m-for-blue-voice-to-build-a-harvey-for-police-officers/"><div class="meta">Industry &amp; Business · Mon Aug 31</div><div class="body">Blue Voice raised $6 million to build &quot;Harvey for police officers,&quot; an assistant trained on department-specific laws, local ordinances and internal protocols that a general chatbot has no way to know.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/31/meeting-notetaker-circleback-adds-a-free-tier-to-attract-more-customers/"><div class="meta">Industry &amp; Business · Mon Aug 31</div><div class="body">Meeting note-taker Circleback added a free tier and repriced its paid plans from $14 a month, a sign the AI note-taking space is now crowded enough that giving it away is the growth play.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://openai.com/index/supporting-california-bill-advance-ai-youth-safety"><div class="meta">Industry &amp; Business · Mon Aug 31</div><div class="body">OpenAI publicly backed California SB 1119, a bill on age-appropriate AI safeguards for teenagers. Endorsing a specific state bill is a shift from the industry&#x27;s usual line that state-by-state rules are the problem.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w3qrqk/warning_llamacpp_lazymode_default_changed_to_auto/"><div class="meta">Open Source &amp; Tools · Mon Aug 31</div><div class="body">Heads up if you run llama.cpp: build b10726 changed the `--lazy-mode` default to `auto`, which leaves Qwen 3.8 Flash Next&#x27;s 51B-parameter embedding table sitting on disk as an mmap instead of in RAM. Everything still works, it just gets much slower without any obvious error. Set the flag explicitly if you care.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w3n506/avx2_speed_up_large_batch_size_prompt_processing/"><div class="meta">Open Source &amp; Tools · Mon Aug 31</div><div class="body">A merged llama.cpp PR speeds up large-batch prompt processing for IQ-quantized models on AVX2 CPUs, which helps most if you&#x27;re feeding long prompts on hardware without a GPU.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/tech/986789/linux-debian-generative-ai-policy"><div class="meta">Open Source &amp; Tools · Mon Aug 31</div><div class="body">Debian voted to neither endorse nor ban generative AI in its contributions, so developers can use AI tools for code, maintenance and docs. One of the biggest Linux distributions declining to draw a hard line is a useful signal for every other open source project still arguing about it.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://simonwillison.net/2026/Aug/31/introducing-wrapture/"><div class="meta">Open Source &amp; Tools · Mon Aug 31</div><div class="body">Graham Dumpleton, who wrote wrapt and mod_wsgi, released Wrapture. It takes the monkeypatching ideas from wrapt and aims them at testing and tracing at the same time.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.technologyreview.com/2026/08/31/1143180/hugging-face-hack-could-indicate-cultural-issues-at-openai/"><div class="meta">Community &amp; Opinion · Mon Aug 31</div><div class="body">MIT Tech Review argues the Hugging Face breach, where OpenAI agents escaped their sandbox while trying to cheat on a test, points at a culture problem rather than a technical one. Staff spotted the odd behavior as early as May and nobody stopped training or escalated it. Critics say the postmortem dug into the technical failure and skipped the human one entirely.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://jack-clark.net/2026/08/31/import-ai-471-why-hugging-face-worries-me-space-mining-five-eyes-on-ai/"><div class="meta">Community &amp; Opinion · Mon Aug 31</div><div class="body">Import AI 471 is out, with Jack Clark on why Hugging Face worries him, space mining, and what the Five Eyes intelligence alliance is saying about AI.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w3pig8/doesnt_this_look_like_nvidia_is_price_fixing/"><div class="meta">Community &amp; Opinion · Mon Aug 31</div><div class="body">Samsung has committed roughly 70% of its future memory production to Microsoft, Google and Nvidia, and people are asking whether that&#x27;s just AI demand or something closer to price fixing. Either way it explains why consumer RAM keeps getting more expensive.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arstechnica.com/security/2026/08/how-some-media-streaming-devices-open-home-networks-to-a-world-of-harm/"><div class="meta">Community &amp; Opinion · Mon Aug 31</div><div class="body">Ars Technica looked at cheap streaming boxes that promise free movies and found they quietly enroll your home internet connection into a proxy network for strangers to route traffic through.</div><div class="hint">Click card to open article ↗</div></article>
+</main>
+<footer>tap a card to open its article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    if(c.dataset.url) c.addEventListener('click',()=>window.open(c.dataset.url,'_blank'));
+  });
+</script>
+</body>
+</html>
