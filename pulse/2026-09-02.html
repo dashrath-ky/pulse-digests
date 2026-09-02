@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card[data-url]{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card[data-url]:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:14px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+  .hint{font-size:10.5px;color:var(--muted)}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">32 stories</div></header>
+<main>
+<article class="card"><div class="meta">Entrackr · Wed Sep 02</div><div class="body">Mokobara, the Bengaluru luggage brand you&#x27;ve probably seen all over Instagram, is raising Rs 90.66 crore (about $9.5 million) in a Series C. It&#x27;s their first raise in over two years, and they&#x27;re getting a valuation 2.8 times higher than last time.</div></article>
+<article class="card"><div class="meta">Entrackr · Wed Sep 02</div><div class="body">DocPharma raised $2 million in a pre-Series A led by Equentis. It runs quick-commerce supply chain for prescription medicines.</div></article>
+<article class="card"><div class="meta">Entrackr · Wed Sep 02</div><div class="body">JioHotstar launched its streaming service in the UK, Canada and Singapore.</div></article>
+<article class="card"><div class="meta">Finshots · Wed Sep 02</div><div class="body">Happiest Minds agreed to merge with ITC Infotech, and its stock promptly dropped 11%. Investors are annoyed because the deal values Happiest Minds at roughly Rs 6,167 crore with almost no premium, and the merger won&#x27;t finish until around mid-FY28. That means a year or more of waiting on approvals, integration, and even a decision on who runs the combined company. For ITC it&#x27;s a clean shortcut to a third listed company, plus instant reach into healthcare, hi-tech and edtech clients it never had.</div></article>
+<article class="card" data-url="https://links.tldrnewsletter.com/oKnthc"><div class="meta">TLDR IT · Tue Sep 01</div><div class="body">Microsoft had a rough Monday. An outage that started in Exchange Online spread to Teams, OneDrive, SharePoint, Purview and Defender, so a lot of people simply couldn&#x27;t get their email. Microsoft blamed a broken authentication configuration at the core of the platform and things came back gradually through the evening.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.cio.com/article/4216508/cursor-customers-will-lose-access-to-openai-coding-models-in-november-2.html?utm_source=tldrit"><div class="meta">TLDR IT · Tue Sep 01</div><div class="body">OpenAI is cutting Cursor off from its coding models on November 12, leaving customers about ten weeks to move. The reason is apparently SpaceX: OpenAI says it isn&#x27;t confident SpaceX will stay inside its terms, and Cursor also won&#x27;t get any future models. Worth noting for anyone betting a workflow on a single model provider inside a single tool. (also in ben&#x27;s bites)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/08/31/hackers-claim-millions-of-patient-records-stolen-during-data-breach-at-healthcare-giant-mckesson/?utm_source=tldrit"><div class="meta">TLDR IT · Tue Sep 01</div><div class="body">Healthcare giant McKesson got breached and the stolen data is ugly. Attackers phished their way into several cloud accounts and pulled millions of rows out of Snowflake and Salesforce, including personal and health information tied to its oncology and multispecialty businesses. The group behind it, ShinyHunters, reportedly wants $55 million.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theregister.com/virtualization/2026/08/31/the-balkanization-of-virtualization-will-de-throne-vmware-which-doesnt-mind-a-bit/5292488?utm_source=tldrit"><div class="meta">TLDR IT · Tue Sep 01</div><div class="body">VMware&#x27;s grip on server virtualization is slipping, and Broadcom seems fine with it. The plan is to keep a smaller set of high-paying customers on VMware Cloud Foundation while everyone else drifts to alternatives. Three contract deadlines between November 2026 and October 2027 will likely push more customers out the door.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.networkworld.com/article/4215616/tailscale-expands-from-vpn-into-a-full-connectivity-platform.html?utm_source=tldrit"><div class="meta">TLDR IT · Tue Sep 01</div><div class="body">Tailscale is trying to become more than a VPN. At its Tailscale Up conference it added DNS filtering, privileged access management, browser-based access and controls for AI agents. Its AI gateway, Aperture, is now generally available with guardrails and logging built in.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.thehindubusinessline.com/info-tech/atlassian-bets-big-on-india-as-ai-changes-software-development/article71408192.ece?utm_source=tldrit"><div class="meta">TLDR IT · Tue Sep 01</div><div class="body">Atlassian is turning its India office into a proper R&amp;D hub. It&#x27;s past 2,700 employees there and still hiring, with the pitch being that AI agents write more of the code while engineers spend their time directing agents and making the architecture calls.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://workspaceupdates.googleblog.com/2026/08/introducing-data-import-for-microsoft-OneDrive-An-easier-faster-and-higher-fidelity-migration-to-Google-Workspace.html?utm_source=tldrit"><div class="meta">TLDR IT · Tue Sep 01</div><div class="body">Google made its OneDrive-to-Workspace migration tool free and generally available in the Admin console. It keeps file permissions intact, runs batches in parallel, and can estimate how long a move will take before you commit to it.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.cncf.io/blog/2026/08/31/opentelemetry-has-graduated-now-what-2/?utm_source=tldrit"><div class="meta">TLDR IT · Tue Sep 01</div><div class="body">OpenTelemetry, the open standard for collecting traces and metrics from your services, hit CNCF graduated status back in May. The short version: it&#x27;s officially considered production-ready, and if you haven&#x27;t adopted it yet you&#x27;re behind.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.cio.com/article/4215089/why-it-projects-still-fail-3.html?utm_source=tldrit"><div class="meta">TLDR IT · Tue Sep 01</div><div class="body">Nearly a third of complex IT projects still fail to deliver what they promised, per PMI. The causes are the boring ones: fuzzy success metrics, no real business owner, too many priorities and too few people. The twist is that AI can make it worse by producing work faster than anyone can review it.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://internals-for-interns.com/posts/linux-kernel-network-subsystem?utm_source=tldrit"><div class="meta">TLDR IT · Tue Sep 01</div><div class="body">A nice deep dive that follows a single TCP packet through the Linux 7.1 network stack, from the network card all the way to a program sitting in recv(), and back out.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://luke.geek.nz/azure/agent-package-manager/?utm_source=tldrit"><div class="meta">TLDR IT · Tue Sep 01</div><div class="body">Agent Package Manager (APM) is a dependency manager for AI agents. You declare your skills, prompts, instructions, plugins and MCP servers in an apm.yml file instead of scattering them around.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.macrumors.com/2026/08/31/apple-retina-macbook-air-obsolete/?utm_source=tldrit"><div class="meta">TLDR IT · Tue Sep 01</div><div class="body">Apple added the 2018 Retina MacBook Air and two 13-inch MacBook Pros from 2017 and 2018 to its obsolete list, so no more repairs.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://substack.com/redirect/c40b011c-439f-4b2c-8aa6-615c059112d7?j=eyJ1IjoiN3l6cTB4In0.df8WKEr391QQFAlb8tCPhBUOdLneIglBki0LB1Av95U"><div class="meta">ben&#x27;s bites · Tue Sep 01</div><div class="body">Anthropic&#x27;s Claude Code limits are changing on September 14, and it&#x27;s a bit of a shell game. The 50% bonus usage promo ends, but the baseline goes up 25% permanently. So if you had 100 units before May, you&#x27;ve been on 150 since, and you&#x27;ll land on 125. People are also grumbling that the &quot;5x&quot; and &quot;20x&quot; plan labels only describe the 5-hour cap, while actual total usage works out closer to 3.5x and 6-8x.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://substack.com/redirect/87879779-828c-4343-83a4-220e05c7841f?j=eyJ1IjoiN3l6cTB4In0.df8WKEr391QQFAlb8tCPhBUOdLneIglBki0LB1Av95U"><div class="meta">ben&#x27;s bites · Tue Sep 01</div><div class="body">Pieter Levels launched Infinite Slop, basically Twitch except an AI generates whatever the chat asks for next. 37,000 people showed up on day one. It runs on Fal&#x27;s H3 Max model, which makes video faster than you can watch it.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://substack.com/redirect/2e44c6fa-8d19-4dfc-ad35-d14b2ecaf739?j=eyJ1IjoiN3l6cTB4In0.df8WKEr391QQFAlb8tCPhBUOdLneIglBki0LB1Av95U"><div class="meta">ben&#x27;s bites · Tue Sep 01</div><div class="body">OpenClaw 2.0 shipped with easier setup, a browser app, and shared cloud sessions so a teammate can jump into your live agent run without losing the context. The team built the release using a shared agent themselves.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://substack.com/redirect/f325a03f-cc13-4efe-bcce-725288de6d8b?j=eyJ1IjoiN3l6cTB4In0.df8WKEr391QQFAlb8tCPhBUOdLneIglBki0LB1Av95U"><div class="meta">ben&#x27;s bites · Tue Sep 01</div><div class="body">The &quot;did three AI civilisations form inside OpenAI&quot; story is doing the rounds, and it&#x27;s mostly a fight over framing. Dwarkesh argues they&#x27;re early civilisations even if they don&#x27;t look like it; Chamath warns the framing will get weaponised against open source. Ethan Mollick&#x27;s take is the practical one: what agents actually need is to know when to stop and ask a human.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://substack.com/redirect/38d51717-aa26-432f-8d19-2df3ad8f77e6?j=eyJ1IjoiN3l6cTB4In0.df8WKEr391QQFAlb8tCPhBUOdLneIglBki0LB1Av95U"><div class="meta">ben&#x27;s bites · Tue Sep 01</div><div class="body">Codex and ChatGPT can now connect to more than one Gmail account.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://substack.com/redirect/8de50d91-d794-4b0a-b03c-51b746318d3a?j=eyJ1IjoiN3l6cTB4In0.df8WKEr391QQFAlb8tCPhBUOdLneIglBki0LB1Av95U"><div class="meta">ben&#x27;s bites · Tue Sep 01</div><div class="body">OpenClaw also has a friendlier consumer app now, on both iOS and Android.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card"><div class="meta">Morning Brew · Tue Sep 01</div><div class="body">Tim Cook handed the Apple CEO job to John Ternus, who joined in 2001 and ran hardware. He inherits a great business and a real problem: Apple is behind on AI, hundreds of its people have left for OpenAI, and the chip crunch is making memory expensive. His first public test is next week&#x27;s event, where he&#x27;ll introduce a foldable iPhone. Cook isn&#x27;t leaving, he becomes executive chairman.</div></article>
+<article class="card"><div class="meta">Morning Brew · Tue Sep 01</div><div class="body">The FTC and 22 states sued Amazon in Seattle federal court, claiming it quietly overcharged advertisers for sponsored listings and that shoppers ended up paying for it. Amazon says the FTC misunderstands how advertisers work and has no evidence of higher consumer prices.</div></article>
+<article class="card"><div class="meta">Morning Brew · Tue Sep 01</div><div class="body">A Nevada jury convicted Duane &quot;Keffe D&quot; Davis of murder in Tupac Shakur&#x27;s 1996 killing, the first conviction in a case that sat cold for decades. It only moved because Davis publicly described his own involvement in interviews and a 2019 memoir. He pleaded not guilty anyway, saying he&#x27;d made it up for money, and plans to appeal.</div></article>
+<article class="card"><div class="meta">Morning Brew · Tue Sep 01</div><div class="body">The Met scrapped its planned 2027 Costume Institute exhibition and Gala on John Galliano after pushback from Jewish community groups, local politicians and donors. Galliano was fired from Dior and convicted in France over antisemitic remarks in 2011.</div></article>
+<article class="card"><div class="meta">Morning Brew · Tue Sep 01</div><div class="body">Markets slipped after the US struck Iran on Sunday, though all three major indexes still closed out a winning August. PG&amp;E and Edison International dropped hard after California lawmakers killed a bill that would have capped what people can recover from utilities whose equipment starts wildfires.</div></article>
+<article class="card"><div class="meta">Entrackr · Tue Sep 01</div><div class="body">Insurtech rivals InsuranceDekho and RenewBuy, both out of Gurugram, are merging into one insurance distribution business.</div></article>
+<article class="card"><div class="meta">Entrackr · Tue Sep 01</div><div class="body">Kepler Aerospace, a space infrastructure and mission operations startup, raised $8 million in seed funding led by Blue Ashva Capital.</div></article>
+<article class="card"><div class="meta">Entrackr · Tue Sep 01</div><div class="body">UPI set another record in August with 24.51 billion transactions worth Rs 29.82 lakh crore.</div></article>
+<article class="card"><div class="meta">ByteByteGo · Tue Sep 01</div><div class="body">A good walkthrough of why you can&#x27;t just run a 70-billion-parameter model on a normal GPU, and what people do about it. The model is 140 GB of weights while a very good graphics card has 48 GB, and models have grown roughly 100x while consumer GPU memory has only doubled. The fix is shrinking the model three ways: store each weight in fewer bits, cut the pathways that barely fire, or train a smaller model to imitate the big one.</div></article>
+<article class="card"><div class="meta">Lenny&#x27;s Newsletter · Tue Sep 01</div><div class="body">Anshu Chimala, who led design R&amp;D at Apple for 12 years, argues AI isn&#x27;t bad at design, we just prompt it badly. Models are trained to pick the most likely next token, which is the opposite of good design, so you get safe, bland output by default. His process is to push the model past its comfortable patterns first, chain different models together, then polish the rough edges.</div></article>
+</main>
+<footer>tap a card to open its article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    if(c.dataset.url) c.addEventListener('click',()=>window.open(c.dataset.url,'_blank'));
+  });
+</script>
+</body>
+</html>
