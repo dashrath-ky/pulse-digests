@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card[data-url]{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card[data-url]:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:14px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+  .hint{font-size:10.5px;color:var(--muted)}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">23 stories</div></header>
+<main>
+<article class="card"><div class="meta">Entrackr · Thu Sep 03</div><div class="body">Aakash still can&#x27;t shake off the Byju&#x27;s years. Back in early 2023 the coaching chain thought it would end the year around Rs 3,000 crore in revenue with 320 centres and over 4 lakh students. Three years later the topline has basically flatlined.</div></article>
+<article class="card"><div class="meta">Entrackr · Thu Sep 03</div><div class="body">Alpha Wave has walked away from Pine Labs. The investment firm sold off nearly its whole stake in the fintech through a Rs 550 crore block deal on Wednesday.</div></article>
+<article class="card"><div class="meta">Entrackr · Thu Sep 03</div><div class="body">Adobe bought Rilo, an India-based marketing intelligence startup, picking up its team and licensing the tech. That&#x27;s Adobe&#x27;s second India acquisition.</div></article>
+<article class="card"><div class="meta">Finshots · Thu Sep 03</div><div class="body">Japan may finally be out of the hole it fell into in the early 90s. After three decades of flat or falling prices, inflation is now running above target, wages are actually going up, and the 10-year government bond yield has climbed to roughly 3%, the highest in decades. The catch is that this kills the yen carry trade, where investors borrowed cheaply in yen to buy higher-yielding assets abroad, and that unwinding ripples into markets like India.</div></article>
+<article class="card" data-url="https://9to5google.com/2026/09/01/google-meet-hardware-chromeos-android/?utm_source=tldrit"><div class="meta">TLDR IT · Wed Sep 02</div><div class="body">Google is moving new Meet room hardware off ChromeOS and onto Android, which opens the door to more device types and gear that could run more than one conferencing platform. Existing ChromeOS Meet devices keep getting support, with the newer ones covered through September 2030.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://azure.microsoft.com/en-us/blog/introducing-azure-multicloud-interconnect-for-aws/?utm_source=tldrit"><div class="meta">TLDR IT · Wed Sep 02</div><div class="body">Microsoft and AWS are making it easier to wire the two clouds together privately. Azure Multicloud Interconnect now pairs with AWS Interconnect so customers can set up high-speed links between them without the usual networking gymnastics.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://digital-strategy.ec.europa.eu/en/news/commission-designates-chatgpt-reddit-roblox-under-digital-services-act?utm_source=tldrit"><div class="meta">TLDR IT · Wed Sep 02</div><div class="body">The EU has pulled ChatGPT into its big-platform rulebook. The European Commission designated it a Very Large Online Search Engine under the Digital Services Act, and put Reddit and Roblox in the platform category. All three have four months to comply with rules on risk assessments, transparency, and outside audits.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.networkworld.com/article/4217170/palo-alto-networks-buys-console-to-boost-agentic-security.html?utm_source=tldrit"><div class="meta">TLDR IT · Wed Sep 02</div><div class="body">Palo Alto Networks bought Console, a startup building AI-native IT service management. Console plugs into identity systems, SaaS apps, and security tools so AI agents can pull context, run workflows, and log what they did. It folds into Palo Alto&#x27;s Cortex platform.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.mitiga.io/blog/j-space-ai-agent-detection?utm_source=tldrit"><div class="meta">TLDR IT · Wed Sep 02</div><div class="body">Researchers say Claude has a small internal scratchpad, nicknamed the J-space, where you can spot concepts the model is working with before they show up in its actual output. If that were exposed as telemetry, security teams would get a third way to watch what AI agents are doing. The tool for reading it is imperfect and not available to enterprises today.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.citrix.com/blogs/2026/09/01/citrix-acquires-numecent/?utm_source=tldrit"><div class="meta">TLDR IT · Wed Sep 02</div><div class="body">Citrix acquired Numecent, whose Cloudpaging tech wraps Windows apps in isolated containers and streams them to machines without touching the underlying OS image. The pitch is less app packaging work and fewer custom images to maintain.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.computerworld.com/article/4216413/qa-serval-ceo-describes-building-an-ai-native-alternative-to-servicenow.html?utm_source=tldrit"><div class="meta">TLDR IT · Wed Sep 02</div><div class="body">Serval&#x27;s CEO makes the case that a fresh IT service desk built around AI can automate a repetitive request faster than a human can just do the ticket. His argument against the incumbents is architectural: ServiceNow can bolt agents on, but it still drags along years of custom tables and workflows.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-and-google-announce-falcon-platform-google-cloud?utm_source=tldrit"><div class="meta">TLDR IT · Wed Sep 02</div><div class="body">CrowdStrike is putting its Falcon platform on Google Cloud, aimed at organisations that want more control over where sensitive data gets processed and stored.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.cio.com/article/4216532/who-gets-to-decide-the-cio-and-the-new-architecture-of-enterprise-authority.html?utm_source=tldrit"><div class="meta">TLDR IT · Wed Sep 02</div><div class="body">A good argument that as AI moves from suggesting things to actually doing them, the CIO&#x27;s job shifts. It&#x27;s no longer just security and reliability, it&#x27;s deciding how much authority a machine gets and who answers for what it does.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://petri.com/microsoft-intune-os-version-assignment-filters/?utm_source=tldrit"><div class="meta">TLDR IT · Wed Sep 02</div><div class="body">Microsoft Intune&#x27;s 2608 release lets admins target devices by specific OS version when rolling out apps and policies, plus unattended Remote Help on Windows.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://workspaceupdates.googleblog.com/2026/08/add-co-presenters-in-google-meet-with-one-click.html?utm_source=tldrit"><div class="meta">TLDR IT · Wed Sep 02</div><div class="body">Gemini can now notice when someone in a Google Meet needs to present and offer to make them a co-presenter in one click.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card"><div class="meta">Morning Brew · Wed Sep 02</div><div class="body">The bond selloff went global. Investors dumped government debt across several countries, worried about debt levels and inflation that could force central banks to hike. Average G7 yields hit their highest since 2000, the UK 30-year touched a 1998 high, and Japan&#x27;s 10-year crossed 3% for the first time since 1996 (Finshots covers the Japan side above). Odds of a Fed hike at the next meeting nearly doubled to around 70% in a week.</div></article>
+<article class="card"><div class="meta">Morning Brew · Wed Sep 02</div><div class="body">The US struck Iran near the Strait of Hormuz, saying it was answering recent Iranian attacks on commercial ships. Trump warned that any retaliation gets hit &quot;much harder&quot;; Iran promised &quot;crushing and devastating blows.&quot; This ends about a month of relative calm, six months into the war, and helped push oil up nearly 6% this week.</div></article>
+<article class="card"><div class="meta">Morning Brew · Wed Sep 02</div><div class="body">Trump backed a federal tax break for US film and TV production, an idea California lawmakers have pushed for years. Adam Schiff said he&#x27;s in strong agreement. Roughly 73,000 US film jobs have gone since 2022, two-thirds of them in LA, as productions chase cheaper incentives abroad.</div></article>
+<article class="card"><div class="meta">Morning Brew · Wed Sep 02</div><div class="body">Canada&#x27;s PM Mark Carney said he&#x27;s willing to restart trade talks, but only once the Americans &quot;stop doing memes, stop throwing shade, stop trying to be tough and start being serious.&quot; Talks stalled after the US hit Canada with 50% tariffs on $20 billion of goods.</div></article>
+<article class="card"><div class="meta">Entrackr · Wed Sep 02</div><div class="body">Flipkart is getting into microdramas. The app now has a Drama section with short-form titles like CEO Se Romeo, Contract Marriage, and Nakli Pati Asli Crorepati.</div></article>
+<article class="card"><div class="meta">Entrackr · Wed Sep 02</div><div class="body">Bengaluru sneaker brand Comet is raising Rs 98.75 crore at more than 3x its previous valuation, as India&#x27;s new-age footwear market gets more crowded.</div></article>
+<article class="card"><div class="meta">Entrackr · Wed Sep 02</div><div class="body">Investors pulled $2.77 billion out of Indian new-age tech stocks in August through 17 block and bulk deals across 12 companies.</div></article>
+<article class="card"><div class="meta">ByteByteGo · Wed Sep 02</div><div class="body">A good explainer on why RAG chatbots confidently give wrong answers. The culprit is usually the embedding model, the piece that turns text into numbers so the system can search by meaning rather than keywords. If it retrieves the wrong passage, no amount of upgrading the language model will save you, and swapping the embedding model later is expensive because everything has to be re-indexed.</div></article>
+</main>
+<footer>tap a card to open its article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    if(c.dataset.url) c.addEventListener('click',()=>window.open(c.dataset.url,'_blank'));
+  });
+</script>
+</body>
+</html>
