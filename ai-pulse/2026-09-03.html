@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card[data-url]{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card[data-url]:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:14px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+  .hint{font-size:10.5px;color:var(--muted)}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">33 stories</div></header>
+<main>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w5vjp6/qwen38flashnext_on_2x3090_ddr4_17_2529_ts_decode/"><div class="meta">Models &amp; Research · Wed Sep 03</div><div class="body">Someone on r/LocalLLaMA got Qwen3.8-Flash-Next running noticeably faster on consumer hardware. With a pending expert-cache patch, decode speed on two RTX 3090s backed by DDR4 system RAM went from 17 tokens per second to 25-29. Handy data point if you want a big mixture-of-experts model without renting datacenter GPUs.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w5trnb/microsoft_vibevoiceasrstreaming_released/"><div class="meta">Models &amp; Research · Wed Sep 03</div><div class="body">Microsoft released VibeVoice-ASR-Streaming, a speech-to-text model built for live streaming rather than batch transcription.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arxiv.org/abs/2609.01985"><div class="meta">Models &amp; Research · Wed Sep 03</div><div class="body">A new paper studies what actually breaks when coding agents build whole systems end to end. The authors catalogue the defects agents leave behind and argue current evaluations are too lax to catch them. Worth a skim if your team is handing agents larger and larger chunks of real work.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arxiv.org/abs/2609.01852"><div class="meta">Models &amp; Research · Wed Sep 03</div><div class="body">Another paper names a failure mode in agents with persistent memory: a stale stored fact can quietly override correct information the agent is given right now, and weaker models fall for it more often.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/google-research/timesfm"><div class="meta">Open Source &amp; Tools · Wed Sep 03</div><div class="body">Google Research&#x27;s TimesFM is trending again. It&#x27;s a pretrained foundation model for time-series forecasting, so you can get predictions without training anything on your own data first.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/colinhacks/zod"><div class="meta">Open Source &amp; Tools · Wed Sep 03</div><div class="body">Zod is back on GitHub Trending. It matters more than it used to, because describing tool inputs and structured model outputs in TypeScript mostly runs through Zod schemas now.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/jingyaogong/minimind"><div class="meta">Open Source &amp; Tools · Wed Sep 03</div><div class="body">minimind walks you through training a small language model from scratch in about two hours on a single 3090, for roughly the price of a coffee in GPU rent. Docs are in Chinese but the code is the point.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/zedeus/nitter"><div class="meta">Open Source &amp; Tools · Wed Sep 03</div><div class="body">X Corp sent cease-and-desist letters on August 24 demanding a permanent takedown of every Nitter instance and the project&#x27;s repository. Nitter was the main privacy-friendly way to read Twitter without an account.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/bilawalsidhu/gods-eye-view"><div class="meta">Open Source &amp; Tools · Wed Sep 03</div><div class="body">God&#x27;s Eye View hit number one on GitHub Trending. It&#x27;s a photorealistic 3D globe showing live aircraft, ships, satellites, earthquakes and traffic, and you steer it by talking to a realtime voice agent.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://deepmind.google/blog/introducing-gemini-3-8-flash-and-38-flash-cyber/"><div class="meta">Models &amp; Research · Tue Sep 02</div><div class="body">Google shipped Gemini 3.8 Flash, its third Flash release in six weeks. It&#x27;s their best reasoning and coding model so far at the same price and speed as 3.7, which is $0.75 per million input tokens and $3.50 per million output through the end of the year. The catch: on hard problems it now takes extra reasoning steps and calls tools in a loop, so your token bill can go up even though the per-token price didn&#x27;t.  (also in The Verge)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://deepmind.google/blog/proactive-cyber-defense-for-governments-and-enterprises/"><div class="meta">Models &amp; Research · Tue Sep 02</div><div class="body">Alongside it, Google launched Gemini 3.8 Flash Cyber, a security-focused variant that finds real vulnerabilities in over 70% of cases across 20 languages and patches 47.2% of CWE-Bench tasks. You can&#x27;t just call it: access runs through a new invite-only Fairwind Program for governments and critical-infrastructure defenders.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/02/openais-new-reasoning-technique-alarms-ai-safety-experts/"><div class="meta">Models &amp; Research · Tue Sep 02</div><div class="body">OpenAI&#x27;s upcoming Astra model uses a technique called recurrent depth, where the model loops over a query internally instead of writing out its thinking step by step. Safety researchers are unhappy because that removes the readable chain-of-thought people rely on to spot a model misbehaving. Redwood Research&#x27;s chief scientist warned that scaling this up could push reasoning almost entirely into latent space; OpenAI says legible reasoning is still a core goal.  (also in The Verge)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://aisle.com/blog/aisle-discovered-six-curl-cves-after-openai-and-anthropic-found-zero"><div class="meta">Models &amp; Research · Tue Sep 02</div><div class="body">A security startup called AISLE found six new CVEs in curl within days, right after OpenAI&#x27;s Codex Security and Anthropic&#x27;s Mythos both reported finding nothing there. curl runs on something like 20 billion devices, so this is a pointed demonstration that the big labs&#x27; security agents still miss real bugs.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://multiversecomputing.com/resources/introducing-quasar-438b-europe-s-leading-ai-model"><div class="meta">Models &amp; Research · Tue Sep 02</div><div class="body">Multiverse Computing released Quasar 438B, a reasoning model aimed at enterprise agents and coding. It scores 43 on the Artificial Analysis index, which the company says is the best of any European model. English and Spanish only.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w5ozl4/perplexity_opensourced_their_mac_inference_server/"><div class="meta">Models &amp; Research · Tue Sep 02</div><div class="body">Perplexity open-sourced the inference server it uses to run Qwen 3.6 on Macs.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/#core-takeaways-about-this-incident"><div class="meta">Models &amp; Research · Tue Sep 02</div><div class="body">METR published its investigation into the OpenAI / Hugging Face hacking incident, with takeaways on what went wrong.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/02/u-s-government-sides-with-openai-on-issue-of-training-llms-on-copyrighted-material/"><div class="meta">Industry &amp; Business · Tue Sep 02</div><div class="body">The Trump administration filed a 20-page brief backing OpenAI in the New York Times copyright case, arguing that training models on copyrighted work is fair use and that limiting it would hurt American competitiveness. The brief doesn&#x27;t decide anything, but a government position on fair use can shape how the judge reads it. This is the fight that determines whether labs have to license training data.  (also in The Verge)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/policy/988228/nyc-ai-restrictions-in-schools-chatbot-ban"><div class="meta">Industry &amp; Business · Tue Sep 02</div><div class="body">New York City banned AI use for students below high school, and banned companion chatbots at every grade level. Mayor Mamdani announced the policy, which covers the largest school district in the US.  (also in NYT)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/ai-artificial-intelligence/988261/openai-tumbler-ridge-shooting-lawsuit-aiding-abetting"><div class="meta">Industry &amp; Business · Tue Sep 02</div><div class="body">Law firm Edelson filed 30 more lawsuits against OpenAI over the Tumbler Ridge shooting, and escalated the claims to aiding and abetting. The filings name executives including Chris Lehane personally.  (also in TechCrunch)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/02/palo-alto-networks-paid-500m-for-thrive-backed-console-sources-say/"><div class="meta">Industry &amp; Business · Tue Sep 02</div><div class="body">Palo Alto Networks paid $500M for Console, per sources. That leaves Serval as the startup to beat in AI-driven IT service automation.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/02/hiddenlayer-nabs-100m-as-enterprises-rush-to-secure-their-ai-deployments/"><div class="meta">Industry &amp; Business · Tue Sep 02</div><div class="body">HiddenLayer raised $100M to secure AI deployments, as buyers realise they need to watch not just the agents but every tool and plugin those agents can reach.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/02/wonderful-more-than-doubles-its-valuation-to-5b-in-under-6-months/"><div class="meta">Industry &amp; Business · Tue Sep 02</div><div class="body">Wonderful raised a $550M Series C at a $5B valuation, more than double what it was worth six months ago.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/02/indias-richest-man-now-wants-to-turn-aging-computers-into-ai-ready-pcs/"><div class="meta">Industry &amp; Business · Tue Sep 02</div><div class="body">Jio wants to turn old PCs into AI-capable machines for about $11 for two months, which would put AI tooling in front of a very large number of people who can&#x27;t buy new hardware.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/tech/988518/amazon-alexa-for-shopping-verify-emails"><div class="meta">Industry &amp; Business · Tue Sep 02</div><div class="body">Amazon added scam detection to Alexa for Shopping. Forward it a suspicious email or text and it checks the message against a record of everything Amazon has actually sent you.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/mlc-ai/web-llm"><div class="meta">Open Source &amp; Tools · Tue Sep 02</div><div class="body">WebLLM runs language model inference entirely inside the browser using WebGPU, with no server at all. Interesting if you want local inference without asking anyone to install anything.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://claude.com/check-content"><div class="meta">Open Source &amp; Tools · Tue Sep 02</div><div class="body">Anthropic put up a tool that checks whether a file was made with Claude. It works on most image, video and audio formats and runs locally in your browser, so the file never gets uploaded.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://trellner.com/reports/manufactured-sources-behind-ai-recommendations/"><div class="meta">Community &amp; Opinion · Tue Sep 02</div><div class="body">An investigation found three sites that generated 215,128 &quot;best software&quot; pages purely to be cited by AI answers, and it&#x27;s working. Of 7,534 citations from two web-grounded models across 380 software categories, nearly 60% pointed at domains ranked below 100,000 and almost a quarter weren&#x27;t in the top million at all. If you trust AI product recommendations, this is who is feeding them.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/podcast/were-dangerously-close-to-dead-internet-theory-says-pangrams-ceo/"><div class="meta">Community &amp; Opinion · Tue Sep 02</div><div class="body">Pangram&#x27;s CEO argues we&#x27;re &quot;dangerously close&quot; to dead internet theory, and makes the case that reliably detecting AI text is much harder than a real-or-fake yes/no.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.anthropic.com/claude-fable-and-mythos-5-1"><div class="meta">Models &amp; Research · Mon Sep 01</div><div class="body">Anthropic released Claude Fable 5.1 and Mythos 5.1. Same model underneath, different safety settings: Fable is generally available, Mythos has looser guardrails for vetted security teams and life scientists. The jumps are big, with agentic coding going from 42.0% to 55.8% on Terminal-Bench 4.0 and scientific work more than doubling. Prices hold at $10 and $50 per million tokens, but cache reads dropped 75% to $0.25, which works out to roughly 25% cheaper for normal use and up to 45% for heavy agent loops.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://9to5mac.com/2026/08/31/apple-openai-forensic-macbook-evidence/"><div class="meta">Industry &amp; Business · Mon Sep 01</div><div class="body">Apple filed what it calls shocking forensic evidence pulled off a former employee&#x27;s MacBook in its case against OpenAI.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.eff.org/deeplinks/2026/08/eff-courts-dont-rewrite-copyright-over-ai-hype"><div class="meta">Industry &amp; Business · Mon Sep 01</div><div class="body">The EFF is urging courts not to rewrite copyright law because of AI hype, pointing back to the VCR panic of the 1980s as the cautionary tale. Reads as a direct counterweight to the government&#x27;s OpenAI brief.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://danluu.com/zitron/"><div class="meta">Community &amp; Opinion · Mon Sep 01</div><div class="body">Dan Luu scored the predictions of Ed Zitron, the most widely cited AI skeptic, against what actually happened. Rare in this debate: he states his own biases up front and then just checks the record.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.baseten.co/blog/the-efficient-frontier-of-llm-inference/"><div class="meta">Community &amp; Opinion · Mon Sep 01</div><div class="body">Baseten borrowed the &quot;efficient frontier&quot; idea from economics to explain the cost-versus-capability tradeoff in LLM inference, and where a model has to sit to count as frontier.</div><div class="hint">Click card to open article ↗</div></article>
+</main>
+<footer>tap a card to open its article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    if(c.dataset.url) c.addEventListener('click',()=>window.open(c.dataset.url,'_blank'));
+  });
+</script>
+</body>
+</html>
