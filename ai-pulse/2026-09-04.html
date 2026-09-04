@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card[data-url]{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card[data-url]:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:14px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+  .hint{font-size:10.5px;color:var(--muted)}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">30 stories</div></header>
+<main>
+<article class="card" data-url="https://deepmind.google/blog/introducing-weathernext-3-our-most-advanced-and-accurate-global-weather-ai-model/"><div class="meta">Models &amp; Research · Fri Sep 04</div><div class="body">Google shipped WeatherNext 3, its best weather model yet. It now pulls in live satellite data and refreshes hourly instead of a few times a day, at higher resolution and with better rain forecasting. It&#x27;s already wired into Search, Gemini, Maps and Cloud, so most people will get it without knowing the model changed.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w6hlpt/google_released_timesfm3_a_330mparameter_time/"><div class="meta">Models &amp; Research · Fri Sep 04</div><div class="body">Google put out TimesFM-3, a small 330M-parameter model for forecasting time series with no training needed. The big change from 2.5 is that it now handles multiple related series at once instead of one at a time. License is non-commercial, so it&#x27;s research and side projects only.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w6bb0b/antling_open_sourced_ling30flashfin_a/"><div class="meta">Models &amp; Research · Fri Sep 04</div><div class="body">Ant Group open-sourced Ling-3.0-flash-Fin, a finance-tuned model built with actual financial institutions. It&#x27;s 124B total parameters but only activates about 5B per token, with a 256K context window.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/03/crusoe-reportedly-raises-3b-at-a-30b-valuation/"><div class="meta">Industry &amp; Business · Fri Sep 04</div><div class="body">Crusoe raised $3 billion at a $30 billion valuation, per Bloomberg. It builds data centers for Meta, Microsoft and OpenAI, and the round is co-led by Atreides and Valor with money from Abu Dhabi&#x27;s Mubadala.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/03/the-sameness-problem-behind-those-unappetizing-ai-generated-menus/"><div class="meta">Industry &amp; Business · Fri Sep 04</div><div class="body">Restaurant menus generated by AI all look the same, and diners can tell something&#x27;s off even when they can&#x27;t say why. A decent look at the sameness problem that shows up whenever a whole industry reaches for the same model.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/JetBrains/go-modern-guidelines"><div class="meta">Open Source &amp; Tools · Fri Sep 04</div><div class="body">JetBrains published go-modern-guidelines, a set of rules you hand your coding agent so it writes current Go instead of 2015 Go. Things like using `max(a, b)` instead of an if-else, or `slices.Contains` instead of hand-rolling a loop.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/Gitlawb/openclaude"><div class="meta">Open Source &amp; Tools · Fri Sep 04</div><div class="body">OpenClaude is trending: an open-source coding-agent CLI that talks to whatever backend you want. OpenAI-compatible APIs, Gemini, GitHub Models, Codex, Ollama, all behind one terminal workflow with tools, agents, MCP and slash commands.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/debpalash/VoiceStudio"><div class="meta">Open Source &amp; Tools · Fri Sep 04</div><div class="body">VoiceStudio bundles 16 text-to-speech engines and 11 speech recognition engines covering 646 languages, and runs locally on Mac, Windows, Linux or Docker with no account or API key. Still in beta.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/fmtlib/fmt"><div class="meta">Open Source &amp; Tools · Fri Sep 04</div><div class="body">fmt, the C++ formatting library that became `std::format`, is trending again. Fast, safe, catches bad format strings at compile time in C++20.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w6lmmg/i_released_sanotts_smallest_complete_tts_stack_in/"><div class="meta">Open Source &amp; Tools · Fri Sep 04</div><div class="body">Someone squeezed a complete text-to-speech stack into 294K parameters (337 KB) that runs on a $3 microcontroller with half a megabyte of RAM and no neural accelerator. A larger 1.46M version reportedly beats models three to ten times its size.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://huggingface.co/blog/funes"><div class="meta">Open Source &amp; Tools · Fri Sep 04</div><div class="body">Hugging Face published a guide to giving your coding agent a memory you actually control and can inspect, rather than whatever the vendor stores for you.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.cnbc.com/2026/09/03/open-ai-astra-gpt-6-cyber.html"><div class="meta">Models &amp; Research · Thu Sep 03</div><div class="body">OpenAI launched GPT-6 Astra, and it&#x27;s the biggest release of the year so far. OpenAI calls it the best model for software engineering yet and a step change in driving a computer or browser on its own. It&#x27;s also the first model the company has rated &quot;Critical&quot; for cybersecurity under its own preparedness rules, meaning it can find and write zero-day exploits. It went to Daybreak cybersecurity customers first, with Pro, Plus, Enterprise, Business and the API following over the week.  (also in TechCrunch, The Verge)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/03/openai-launches-astra-its-powerful-and-controversial-new-model/"><div class="meta">Models &amp; Research · Thu Sep 03</div><div class="body">The controversial part of Astra is a technique OpenAI calls opaque recurrence, which makes the model&#x27;s chain of thought much harder to read. Chain-of-thought monitoring is one of the main tools researchers have for catching a model doing something it shouldn&#x27;t, and OpenAI admits monitorability is getting harder as capability goes up. Asked whether this is AGI, president Greg Brockman said he personally thinks we&#x27;re there.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arcprize.org/blog/astra"><div class="meta">Models &amp; Research · Thu Sep 03</div><div class="body">ARC Prize ran Astra on ARC-AGI-3 and got 99.9% for about $19K of compute using a provider-adapter harness, or 62.7% for $26K on the standard one. The more interesting number: Astra solved 96% of levels using fewer moves than the human baseline, averaging about half as many actions per level. Humans cost roughly $12.78 per game attempt.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://openai.com/index/daybreak-for-frontline-defenders"><div class="meta">Models &amp; Research · Thu Sep 03</div><div class="body">OpenAI committed $1 billion to a program called Daybreak for Frontline Defenders, giving hospitals, utilities and other essential services access to its frontier cyber models plus training and support. The timing isn&#x27;t a coincidence: it&#x27;s the counterweight to shipping a model that can write zero-days.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w6lk6z/increasing_active_parameters_per_token_in_moe/"><div class="meta">Models &amp; Research · Thu Sep 03</div><div class="body">A short paper found you can cut reasoning tokens by 8.5% on sparse mixture-of-experts models like Qwen 35B A4B just by activating more experts per token at inference. No retraining, no fine-tuning, just a serving-time knob.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/03/nvidia-confirms-it-will-buy-hugging-face-for-12-9-billion/"><div class="meta">Industry &amp; Business · Thu Sep 03</div><div class="body">Nvidia is buying Hugging Face for $12.93 billion. Hugging Face hosts 3 million models, 500,000 datasets and a million apps for 18 million developers, and it turned down a $500 million offer from Nvidia just last year on $150 million of annualized revenue. Jensen Huang says it stays an open platform where you can pick any model, framework or cloud, but Nvidia now owns the front door to open-source AI, and almost everything hosted there runs on its chips anyway.  (also in The Verge)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.sanders.senate.gov/press-releases/news-sanders-casar-introduce-legislation-to-ban-artificial-superintelligence-and-temporarily-pause-advanced-ai-development/"><div class="meta">Industry &amp; Business · Thu Sep 03</div><div class="body">Bernie Sanders and Greg Casar introduced a bill to permanently ban superintelligent AI and pause frontier development until a new cabinet-level regulator exists. Penalties are severe: up to 20 years in prison for individuals and what the bill calls the corporate death penalty for companies, explicitly modeled on nuclear weapons law. The definition is broad enough that people are already arguing plenty of models on Hugging Face today would technically fall under it.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/03/accel-reportedly-in-talks-to-lead-1b-round-for-thinking-machines-at-40b-valuation/"><div class="meta">Industry &amp; Business · Thu Sep 03</div><div class="body">Thinking Machines, Mira Murati&#x27;s lab, is in talks to raise $1 billion at a $40 billion valuation, with existing investor Accel likely leading. The company is not yet two years old.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.macrumors.com/2026/09/03/chatgpt-claude-and-grok-are-down/"><div class="meta">Industry &amp; Business · Thu Sep 03</div><div class="body">ChatGPT, Claude and Grok all went down at roughly the same time, which is a first. Nobody has explained why three supposedly independent services failed together, and all three status pages just said &quot;investigating&quot; before recovery. Worth watching for a postmortem, because a shared dependency would be a real problem for anyone building on top of these.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/03/meta-is-paying-to-peek-at-how-you-use-their-latest-ai-model/"><div class="meta">Industry &amp; Business · Thu Sep 03</div><div class="body">Meta is offering roughly 95% off its new Muse Spark coding-agent model in exchange for being allowed to look at how you use it. Cheap tokens for training data, stated plainly.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/03/abliteration-ai-is-making-a-business-out-of-removing-ai-guardrails/"><div class="meta">Industry &amp; Business · Thu Sep 03</div><div class="body">Abliteration.AI has turned stripping guardrails off open models into an actual business, arguing defenders should have the same tools attackers already do.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://claude.com/blog/claude-for-commerce-agents"><div class="meta">Industry &amp; Business · Thu Sep 03</div><div class="body">Anthropic launched Claude for Commerce Agents, aimed at shopping and transaction flows.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/ai-artificial-intelligence/989435/nvidia-pair-personal-ai-router-home-local-llm-compute-tool-rtx-macbook"><div class="meta">Open Source &amp; Tools · Thu Sep 03</div><div class="body">Nvidia released PAIR, a free tool that pools the idle machines around your house into one local AI cluster. Your desktop and laptop split the work when you&#x27;re not using them.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/tech/989508/google-gmail-docs-keep-live-voice-modes-gemini"><div class="meta">Open Source &amp; Tools · Thu Sep 03</div><div class="body">Google added voice modes to Gmail, Docs and Keep, so you can ask them to fetch, summarize or transcribe things hands-free.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w6ccgs/qwen38flashnext_mtp_merged_in_ik_llamacpp/"><div class="meta">Open Source &amp; Tools · Thu Sep 03</div><div class="body">Qwen3.8-Flash-Next got multi-token prediction merged into ik_llama.cpp, roughly doubling decode speed from 45 to 90 tokens/sec on a 5090, and it works down to a 12GB 4070. A separate write-up gets 37-41 t/s on two 3090s using expert caching.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://armature.tech/blog/which-tools-coding-agents-install"><div class="meta">Community &amp; Opinion · Thu Sep 03</div><div class="body">Someone measured 17,000 agent runs to see which tools Claude, Codex and Cursor actually reach for when left alone. Useful if you&#x27;re deciding what to preinstall in an agent&#x27;s environment.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://babyloniantwins.com/blog/porting-a-1993-amiga-game-to-godot/"><div class="meta">Community &amp; Opinion · Thu Sep 03</div><div class="body">A developer ported his 1993 Amiga game to Godot by pointing an LLM at the original 68000 assembly and having it read the code back to him. Written in Baghdad under sanctions on a 512KB machine, which makes the whole thing a lot more interesting than a typical porting story.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.kedglobal.com/artificial-intelligence/newsView/ked202607210007"><div class="meta">Community &amp; Opinion · Thu Sep 03</div><div class="body">Go grandmaster Shin Jin-seo, the top-ranked player in the world, beat KataGo while spotting it a two-stone handicap.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w6e6u2/micron_explores_neargpu_nand_flash_to_run_bigger/"><div class="meta">Community &amp; Opinion · Thu Sep 03</div><div class="body">Micron is looking at putting NAND flash right next to the GPU so you can run larger models than fit in VRAM. Early exploration, but it&#x27;s the kind of thing that changes what&#x27;s runnable at home.</div><div class="hint">Click card to open article ↗</div></article>
+</main>
+<footer>tap a card to open its article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    if(c.dataset.url) c.addEventListener('click',()=>window.open(c.dataset.url,'_blank'));
+  });
+</script>
+</body>
+</html>
