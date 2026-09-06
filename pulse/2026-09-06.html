@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card[data-url]{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card[data-url]:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:14px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+  .hint{font-size:10.5px;color:var(--muted)}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">14 stories</div></header>
+<main>
+<article class="card"><div class="meta">Finshots · Sun Sep 06</div><div class="body">Researchers are using data to figure out which foods taste good together, and the answers are strange. A team at IIIT-Delhi built FlavorDB, a database of 936 ingredients and roughly 26,000 flavour molecules. It turns out coffee and capsicum share 78 molecules, and coffee even shares some with crab. The practical angle is cost: one food entrepreneur used it to hit a raisin-like flavour in a ragi biscuit using cardamom oil instead of actual raisins, skipping rounds of expensive trial and error.</div></article>
+<article class="card"><div class="meta">Finshots · Sun Sep 06</div><div class="body">American sunscreen is genuinely worse than what you can buy in Europe or Asia, and the reason is regulatory. The US treats sunscreen as an over-the-counter drug, so every UV-blocking ingredient needs FDA approval, and the last new one was cleared in 1999. The US has 16 approved filters versus 29 in Europe and 30-plus in Japan and South Korea. On average, US sunscreens deliver only about 24% of the UVA protection their SPF number implies, in a country where skin cancer is the most common cancer and costs the health system around $8.9 billion a year.</div></article>
+<article class="card"><div class="meta">Morning Brew · Sat Sep 05</div><div class="body">The US jobs report blew past expectations. The economy added 162,000 jobs in August, more than triple what economists polled by Dow Jones had forecast, and unemployment held at 4.1%. Restaurants and bars led with 59,000 hires, but the information sector, which covers tech, lost 23,000 jobs, which some analysts read as AI eating white-collar work.</div></article>
+<article class="card"><div class="meta">Morning Brew · Sat Sep 05</div><div class="body">Because the labour market looks healthy, the Fed now has more room to worry about inflation instead. Odds of a rate hike at the Sept 16 meeting jumped from 49% to 59% in a day. Trump responded by threatening to cut off trade with any country running a trade surplus with the US, including the EU and China, if the Fed doesn&#x27;t cut instead.</div></article>
+<article class="card"><div class="meta">Morning Brew · Sat Sep 05</div><div class="body">Stocks fell on the good jobs news, the classic &quot;good news is bad news&quot; reaction. Lululemon dropped after cutting its revenue and profit guidance on weak Q2 sales.</div></article>
+<article class="card"><div class="meta">Morning Brew · Sat Sep 05</div><div class="body">US diesel hit an all-time high of $5.85 a gallon as the Iran war keeps pushing energy costs up. That feeds straight into groceries and delivered goods, since diesel moves most freight. Petrol averaged $4.15, the first time it has ever been above $4 on Labor Day.</div></article>
+<article class="card"><div class="meta">Morning Brew · Sat Sep 05</div><div class="body">The Lindsay Clancy murder trial ended in a mistrial after the jury deadlocked on day seven. Prosecutors now have to decide whether to retry her.</div></article>
+<article class="card"><div class="meta">Morning Brew · Sat Sep 05</div><div class="body">WNBA commissioner Cathy Engelbert is retiring at the end of the year after seven years. Franchise values went from an average of $10 million in 2019 to $460 million today, though players criticised her on pay and on how the league handled harassment.</div></article>
+<article class="card"><div class="meta">Entrackr · Sat Sep 05</div><div class="body">Sugar Cosmetics raised Rs 144.5 crore from existing backer A91 Partners at a Rs 755 crore valuation. That&#x27;s a rough moment for one of the better-known names from India&#x27;s D2C beauty boom, and early investors are reportedly looking to exit at steep discounts as revenue and profit stay under pressure.</div></article>
+<article class="card"><div class="meta">Entrackr · Sat Sep 05</div><div class="body">Sneaker brand Comet raised Rs 100 crore in a Series B led by Verlinvest, earmarked for retail expansion, product work, and R&amp;D.</div></article>
+<article class="card"><div class="meta">Entrackr · Sat Sep 05</div><div class="body">Rentomojo filed its RHP for a Rs 1,256 crore IPO, targeting a Rs 4,200 crore valuation. The Accel-backed company rents out furniture and appliances.</div></article>
+<article class="card"><div class="meta">ByteByteGo · Sat Sep 05</div><div class="body">A clean explainer on how MCP, RAG, and AI agents differ, since they get lumped together constantly. MCP is a standard protocol for wiring models to tools and data so you don&#x27;t hand-build every integration. RAG fetches fresh documents at query time so the model doesn&#x27;t invent answers. An agent is the thing that actually decides and acts on its own, rather than just replying.</div></article>
+<article class="card"><div class="meta">ByteByteGo · Sat Sep 05</div><div class="body">A refresher on nine distributed systems patterns worth knowing: replication, sharding, consistent hashing, pub/sub, circuit breakers, retry with backoff, leader election, quorum reads and writes, and sagas for undoing multi-service transactions when one step fails.</div></article>
+<article class="card"><div class="meta">ByteByteGo · Sat Sep 05</div><div class="body">VMs versus containers, explained by what actually differs. A VM boots a whole operating system with its own kernel, so it&#x27;s heavy but takes minutes to start and can run Windows and Linux side by side. Containers share the host kernel, so they start in milliseconds, but every container has to be compatible with that one kernel.</div></article>
+</main>
+<footer>tap a card to open its article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    if(c.dataset.url) c.addEventListener('click',()=>window.open(c.dataset.url,'_blank'));
+  });
+</script>
+</body>
+</html>
