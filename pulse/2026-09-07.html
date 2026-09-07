@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card[data-url]{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card[data-url]:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:14px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+  .hint{font-size:10.5px;color:var(--muted)}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">10 stories</div></header>
+<main>
+<article class="card"><div class="meta">Entrackr · Mon Sep 07</div><div class="body">Pixxel, the Bengaluru space-tech startup that builds hyperspectral imaging satellites, raised $100 million in a Series C co-led by Temasek and Seraphim Space. That&#x27;s a big cheque for an Indian space company, and it puts Pixxel in a small club of startups getting sovereign-wealth-scale money for satellite hardware.</div></article>
+<article class="card"><div class="meta">Entrackr · Mon Sep 07</div><div class="body">Nua, the women&#x27;s wellness brand, picked up $50 million in a Series C led by Peak XV Partners and Filter Capital, with its existing backers also chipping in.</div></article>
+<article class="card"><div class="meta">Entrackr · Mon Sep 07</div><div class="body">Ola Electric approved a fresh Rs 1,500 crore fundraise, and its COO Hyun Shik Park resigned. The timing is awkward. Ola only just raised Rs 780 crore in June through a share sale to institutions, at Rs 35.86 apiece, so coming back to the market three months later suggests cash is going out faster than planned.</div></article>
+<article class="card"><div class="meta">Finshots · Mon Sep 07</div><div class="body">Sugar Cosmetics is now worth about 80% less than it was at its peak, and the numbers explain why. It raised roughly Rs 145 crore from A91 Partners last week at a valuation of Rs 550 to 600 crore, down from around Rs 2,700 crore in 2022. Revenue fell 20% to Rs 404 crore in FY25 while losses nearly doubled to Rs 135 crore.</div></article>
+<article class="card"><div class="meta">Finshots · Mon Sep 07</div><div class="body">The deeper problem is the math of Indian D2C beauty. Industry estimates put the cost of buying a new customer at around Rs 1,850, while the average order is only about Rs 890. So a brand spends roughly twice the first order just to land the customer, and lipstick isn&#x27;t something people rebuy every month. Sugar also spread itself across skincare, teen products, and a mass-market line instead of dominating one category.</div></article>
+<article class="card"><div class="meta">Morning Brew · Sun Sep 06</div><div class="body">Private equity has quietly turned American youth sports into a $40 billion a year business, which is more than the NFL and NBA make combined. Family spending on kids&#x27; sports jumped 46% between 2019 and 2024. One Florida parent who paid $80 a season as a kid now spends $8,000 a year on her 12-year-old&#x27;s club baseball.</div></article>
+<article class="card"><div class="meta">Morning Brew · Sun Sep 06</div><div class="body">The squeeze is pushing families out. One in five parents say they&#x27;ve had to cut back or stop their kids playing entirely because of cost. It may become a political fight too: Senator Chris Murphy is pushing a bill to limit private equity&#x27;s role in kids&#x27; sports.</div></article>
+<article class="card"><div class="meta">Morning Brew · Sun Sep 06</div><div class="body">Girls flag football is growing fast. About 102,000 US high school girls played last year, up from under 16,000 four years earlier, and participation among 6 to 12 year olds rose 283% between 2015 and 2024. The sport debuts at the Los Angeles Olympics in 2028.</div></article>
+<article class="card"><div class="meta">Morning Brew · Sun Sep 06</div><div class="body">You can bet on the Little League World Series, just not from inside the US. Offshore sportsbooks take wagers on games played by 12-year-olds, which American books won&#x27;t touch.</div></article>
+<article class="card"><div class="meta">Lenny&#x27;s Newsletter · Sun Sep 06</div><div class="body">a16z general partner Anish Acharya argues companies are becoming &quot;a series of loops&quot; rather than fixed org charts, as AI takes over more of the execution. He also makes the case that moats get discovered by shipping, not designed upfront, and that distribution matters more than ever. Acharya founded and sold SocialDeck to Google and Snowball to Credit Karma, where he ran the consumer product and credit card business.</div></article>
+</main>
+<footer>tap a card to open its article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    if(c.dataset.url) c.addEventListener('click',()=>window.open(c.dataset.url,'_blank'));
+  });
+</script>
+</body>
+</html>
