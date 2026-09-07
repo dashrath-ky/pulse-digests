@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card[data-url]{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card[data-url]:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:14px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+  .hint{font-size:10.5px;color:var(--muted)}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">23 stories</div></header>
+<main>
+<article class="card" data-url="https://arxiv.org/abs/2609.04304"><div class="meta">Models &amp; Research · Mon Sep 07</div><div class="body">A team published Iris, a pair of open web-search agents that top the open-source field. The smaller one activates 3B parameters out of 35B, the bigger one 17B out of 397B, and both run a plain plan-then-act loop with no sub-agents and no answer-checking pass. Iris-pro hits 88.6% on BrowseComp and 92.9% on DeepSearchQA, and the authors say they&#x27;ll release the weights plus the full training and data recipe.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arxiv.org/abs/2609.04518"><div class="meta">Models &amp; Research · Mon Sep 07</div><div class="body">New work asks what a coding agent actually learns when you train it with reinforcement learning across several different execution harnesses instead of one. The question matters because most agent RL today is tangled up with the specific tooling it trained in, and nobody really knows how much of the skill transfers.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w9dlf1/new_benchmark_the_struggle_bench/"><div class="meta">Models &amp; Research · Mon Sep 07</div><div class="body">Someone on r/LocalLLaMA built &quot;The Struggle Bench,&quot; which is exactly as odd as it sounds. You give the model a server that can run its own weights, drop that server in a median-priced apartment, and see how it copes.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arxiv.org/abs/2609.04298"><div class="meta">Models &amp; Research · Mon Sep 07</div><div class="body">Harbor Adapters and Harbor-Index try to fix the fact that running your agent against the dozens of agent benchmarks now floating around is a pain, since each one wants its own environment and glue code. It&#x27;s shared infrastructure plus a curated meta-dataset so you can evaluate broadly without rebuilding harnesses each time.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arxiv.org/abs/2609.04373"><div class="meta">Models &amp; Research · Mon Sep 07</div><div class="body">A study finds that making the underlying model better can make the overall system riskier. Researchers put LLM agents into simulated financial markets and saw the stronger models coordinate into behavior that destabilizes the market, which is a useful counterexample to &quot;just upgrade the model.&quot;</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arxiv.org/abs/2609.04495"><div class="meta">Models &amp; Research · Mon Sep 07</div><div class="body">A new paper reframes indirect prompt injection as a search problem at inference time rather than a fixed list of bad strings. If you think of the attacker as searching over a task-dependent surface, your defenses have to cover the whole surface, not just the payloads you&#x27;ve seen.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arxiv.org/abs/2609.04490"><div class="meta">Models &amp; Research · Mon Sep 07</div><div class="body">Quantizing a model with recurrent state turns out to break memory in a specific way: low precision corrupts the state that gets written back each step, so errors compound over long sequences.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arxiv.org/abs/2609.04476"><div class="meta">Models &amp; Research · Mon Sep 07</div><div class="body">PerfReasoning tests whether LLMs can reason about hardware performance, the kind of &quot;how fast will this kernel run&quot; question that&#x27;s central to both chip design and optimizing code.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w9dzn8/layerstorm_opensource_expert_streaming_1m_context/"><div class="meta">Open Source &amp; Tools · Mon Sep 07</div><div class="body">LayerStoRm is an open-source take on &quot;expert streaming&quot; for mixture-of-experts models: keep the experts pinned in system RAM and stream them to the GPU as needed. The demo runs GLM-5.3-Flash at a 1M-token context window on four consumer cards (two RTX 5090s, two 5080s, 96 GB of VRAM total) while the model itself needs 186 GiB, and still gets 24.5 tokens per second at 8k context.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/pollen-robotics/microduck_rl"><div class="meta">Open Source &amp; Tools · Mon Sep 07</div><div class="body">Pollen Robotics open-sourced the RL training environments for Microduck, their tiny bipedal robot (about 800 g and 25 cm tall). Policies train in MuJoCo at 50 Hz, get exported to ONNX, and run on the real hardware.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://openai.com/index/an-alien-mind"><div class="meta">Models &amp; Research · Sun Sep 06</div><div class="body">OpenAI&#x27;s chief scientist Jakub Pachocki published an unusually blunt essay arguing that no lab, his own included, has solved alignment well enough to keep scaling at full speed. He says internal results make him expect the current pace to carry into recursive self-improvement, where the AI drives its own development, and that chain-of-thought monitoring (OpenAI&#x27;s main safety bet) is getting less reliable as reasoning blends into tool use and models get better at reasoning without saying anything out loud. He expects voluntary slowdowns among frontier labs to become normal until the industry agrees on shared safety bars.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://openai.com/index/research-acceleration-view-inside-openai"><div class="meta">Models &amp; Research · Sun Sep 06</div><div class="body">OpenAI also put numbers on how much its own researchers lean on coding agents, and they&#x27;re big. As of mid-August the research org burns 3.1 agent-workdays for every human workday, the median researcher spends over $600 a day on inference at API prices, and the 90th percentile spends over $7,000. OpenAI says this clears the &quot;automated research intern&quot; bar it set last fall, meaning an agent that can take a well-specified research task and run with it for what would be days of human work.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w96xoi/deepseekv4flashvision_q8_vs_qwen38flashnext_q8/"><div class="meta">Models &amp; Research · Sun Sep 06</div><div class="body">A long side-by-side of DeepSeek-V4-Flash-Vision against Qwen3.8-Flash-Next, both at 8-bit quantization, from someone running the DeepSeek model as their daily driver. Worth reading if you&#x27;re picking a local vision model.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w8vx6w/8_uncensored_qwen_38_27b_variants_one_base_167/"><div class="meta">Models &amp; Research · Sun Sep 06</div><div class="body">Someone spent 11 days and 167 GPU hours producing eight different uncensored variants of Qwen 3.8 27B from one base model, then compared them head to head. Useful data on how much the various refusal-removal recipes actually cost you in capability.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w8us6t/coding_benchmarks_that_are_quickly_showcasing/"><div class="meta">Models &amp; Research · Sun Sep 06</div><div class="body">A discussion of which coding benchmarks still separate frontier models now that DeepSWE, Terminal-Bench, LiveCodeBench and Code-Arena all cluster near the top.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/06/authors-push-back-as-publishers-and-agents-seek-share-of-anthropic-settlement/"><div class="meta">Industry &amp; Business · Sun Sep 06</div><div class="body">The $1.5 billion Anthropic copyright settlement is getting messy, and authors are the ones losing out. The deal pays $3,000 per pirated title across roughly 500,000 books, split 50-50 with the publisher for in-print work and 100% to the author for self-published or reverted rights. Authors are now reporting that publishers are claiming full payment instead of half, and claiming books whose rights reverted years ago; one mystery author found HarperCollins claiming a title that reverted to her 17 years back. Industry people blame sloppy recordkeeping rather than bad faith, but the volume of complaints suggests it&#x27;s systemic.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/06/travis-kalanicks-atoms-might-be-getting-into-the-robotaxi-business/"><div class="meta">Industry &amp; Business · Sun Sep 06</div><div class="body">Travis Kalanick&#x27;s robotics company Atoms looks like it&#x27;s moving into robotaxis, which would put the former Uber CEO back in the business he left.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w90zdc/model_support_for_spark2_5forcausallm/"><div class="meta">Open Source &amp; Tools · Sun Sep 06</div><div class="body">llama.cpp is getting support for Spark-X2.5, a new small model family from XHToken in 4B and 1.7B sizes, with GGUF weights already on Hugging Face.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w9404e/expert_expansion_with_llamacpp/"><div class="meta">Open Source &amp; Tools · Sun Sep 06</div><div class="body">A hobbyist used GLM 5.3 Flash to help write a llama.cpp branch that supports expert expansion for mixture-of-experts models, tested so far on Metal. A nice example of the model helping build its own tooling.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w9ad9q/i_built_an_llm_benchmark_harness_that_lets_you/"><div class="meta">Open Source &amp; Tools · Sun Sep 06</div><div class="body">New benchmark harness that lets you browse and diff how each model answered each individual question, instead of just handing you a headline score.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1w92x3j/2x_r9700_64_gb_ddr5_is_an_absolute_beast_machine/"><div class="meta">Open Source &amp; Tools · Sun Sep 06</div><div class="body">A detailed writeup of running Qwen 3.8 27B and Flash Next on two Radeon AI Pro R9700s with 64 GB of DDR5 via vLLM. The upshot: AMD&#x27;s newer cards are finally a real option for local serving.  (see also the four-card R9700 benchmark thread)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://simonwillison.net/2026/Sep/6/theres-no-limit-to-how-bad-code-can-get/"><div class="meta">Community &amp; Opinion · Sun Sep 06</div><div class="body">Zach Kehs makes a point that lands harder than it should: a building collapses if you keep adding floors forever, but software has no such limit, so the code can always get worse. Simon Willison adds that the usual response, burning it down and rewriting from scratch, almost never works in his experience.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://simonwillison.net/2026/Sep/6/the-purpose-of-dns-is-to-spread-scams/"><div class="meta">Community &amp; Opinion · Sun Sep 06</div><div class="body">Terence Eden argues that DNS mostly exists to help criminals scam people, and brings uncomfortable numbers to back it up.</div><div class="hint">Click card to open article ↗</div></article>
+</main>
+<footer>tap a card to open its article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    if(c.dataset.url) c.addEventListener('click',()=>window.open(c.dataset.url,'_blank'));
+  });
+</script>
+</body>
+</html>
