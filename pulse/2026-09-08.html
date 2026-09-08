@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card[data-url]{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card[data-url]:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:14px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+  .hint{font-size:10.5px;color:var(--muted)}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">30 stories</div></header>
+<main>
+<article class="card"><div class="meta">Entrackr · Tue Sep 08</div><div class="body">Udaan is buying Lynk Logistics from Swiggy for Rs 500 crore. Instead of cash, Swiggy gets roughly a 2.8% stake in Udaan&#x27;s parent company through preference shares.</div></article>
+<article class="card"><div class="meta">Entrackr · Tue Sep 08</div><div class="body">HerSpace raised $40 million from existing investor Gray Matters Capital to build more affordable housing for factory workers around Bengaluru, Hosur, Chennai and Andhra Pradesh.</div></article>
+<article class="card"><div class="meta">Finshots · Tue Sep 08</div><div class="body">Indian drink makers have been short on aluminium cans since April and are scrambling to switch to glass and PET bottles before the festive season. China cut aluminium exports in late 2024, then the West Asia crisis shut Gulf smelters and blocked shipping through the Strait of Hormuz, knocking out about 9% of global smelting capacity. Prices peaked near $3,800 a tonne and are still about 25% above last year&#x27;s average. India makes plenty of raw aluminium but not the thin food-grade sheet cans need, and a new quality order on imported sheet made the shortage worse.</div></article>
+<article class="card" data-url="https://venturebeat.com/technology/welcome-to-the-agi-era-openai-launches-gpt-6-astra?utm_source=tldrit"><div class="meta">TLDR IT · Mon Sep 07</div><div class="body">OpenAI launched GPT-6 Astra. The model is built to run long tasks across browsers, spreadsheets, websites and desktop apps, so it behaves more like an agent operating your software than a chatbot answering questions. (also in Lenny&#x27;s)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.itiger.com/news/1151383175?utm_source=tldrit"><div class="meta">TLDR IT · Mon Sep 07</div><div class="body">Snowflake posted strong quarterly results, helped by growth in its CoCo coding assistant. The read is that enterprise CIOs want tools that can swap between models rather than lock into a single vendor like Anthropic.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://workos.com/blog/cross-app-access-converged-in-eight-days?utm_source=tldrit"><div class="meta">TLDR IT · Mon Sep 07</div><div class="body">Okta, Auth0 and Descope all shipped the same Cross App Access pattern for agent identity within eight days of each other. They converged on Client ID Metadata Documents for client identity and ID-JAG token exchange for delegation, so B2B teams should make their auth servers speak the pattern rather than pick a vendor first.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://venturebeat.com/data/enterprises-put-non-nvidia-chips-14-points-ahead-of-nvidias-next-gen-gpus-on-their-evaluation-lists?utm_source=tldrit"><div class="meta">TLDR IT · Mon Sep 07</div><div class="body">Enterprise buyers now put non-Nvidia AI chips on their evaluation lists more often than Nvidia&#x27;s next-generation GPUs, mostly over cost and supply worries.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.windowslatest.com/2026/09/06/microsoft-is-ending-windows-11s-web-app-slop-era-and-ai-now-writes-native-apps-in-30-minutes/?utm_source=tldrit"><div class="meta">TLDR IT · Mon Sep 07</div><div class="body">Microsoft published a guide that takes you from an empty folder to a published native WinUI 3 app in about 30 minutes, using VS Code, its winapp CLI and the free tier of GitHub Copilot. It also ships AI-assisted migration guides for old WPF and UWP apps, part of a push to get real native apps into the Store instead of web wrappers.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://blog.cloudflare.com/vulnerability-discovery-remediation/?utm_source=tldrit"><div class="meta">TLDR IT · Mon Sep 07</div><div class="body">Cloudflare is using OpenAI&#x27;s Daybreak security models plus live network signals to find and rank vulnerabilities, propose patches and validate fixes. Humans still approve the riskier steps.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.proofpoint.com/us/blog/corporate-news/proofpoint-introduces-soc-analyst-agent-powered-openai-daybreak-models-through?utm_source=tldrit"><div class="meta">TLDR IT · Mon Sep 07</div><div class="body">Proofpoint launched a SOC Analyst Agent, also built on OpenAI&#x27;s Daybreak models, that turns plain-English security questions into structured investigations with recommended next steps. It is in private preview.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://alexott.blogspot.com/2026/09/native-ip-functions-for-threat.html?utm_source=tldrit"><div class="meta">TLDR IT · Mon Sep 07</div><div class="body">Databricks added native SQL functions for IPv4 and IPv6 subnet checks and CIDR math, now in public preview. They handle awkward IPv6 formats better than regex and beat UDFs on join performance, which makes threat hunting easier.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.perplexity.ai/en-GB/hub/blog/introducing-hybrid-compute-on-mac?utm_source=tldrit"><div class="meta">TLDR IT · Mon Sep 07</div><div class="body">Perplexity added a hybrid mode on Mac that splits agent work between local models and the cloud. Sensitive data stays on the device while heavier reasoning goes to frontier models.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://technode.com/2026/09/03/tencent-opens-workbuddy-to-third-party-developers-with-100-partners/?utm_source=tldrit"><div class="meta">TLDR IT · Mon Sep 07</div><div class="body">Tencent opened its WorkBuddy workplace assistant to third-party developers and hardware makers, with around 100 partners at launch.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://siliconangle.com/2026/09/04/equinix-turns-the-network-into-the-control-plane-for-enterprise-ai-inference/?utm_source=tldrit"><div class="meta">TLDR IT · Mon Sep 07</div><div class="body">Equinix is pitching its network as the control plane for enterprise AI inference spread across clouds and providers.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://links.tldrnewsletter.com/5xfuKY"><div class="meta">TLDR Fintech · Mon Sep 07</div><div class="body">Revolut won preliminary approval from the OCC for a US national bank charter. It plans to put about $95 million into a Connecticut-based bank offering checking accounts, loans, credit cards, FX and possibly a stablecoin, aiming to launch in the first half of 2027 once the FDIC and Fed sign off.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arstechnica.com/ai/2026/09/four-major-ai-models-suffer-rare-overlapping-downtime/?utm_source=tldrfintech"><div class="meta">TLDR Fintech · Mon Sep 07</div><div class="body">ChatGPT, Claude, Grok and Gemini all went down within a few hours of each other on Thursday morning, and nobody found a shared cause. Banks that had spread their bets across several providers still got hit, so they are now looking at locally hosted models, degraded operating modes and manual fallbacks.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.pymnts.com/news/artificial-intelligence/2026/anthropic-expands-credit-facility-to-15-billion-ahead-of-mega-ipo/?utm_source=tldrfintech"><div class="meta">TLDR Fintech · Mon Sep 07</div><div class="body">Anthropic is raising its revolving credit facility from $2.5 billion to $15 billion as it prepares for a possible IPO.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://links.tldrnewsletter.com/dvXa5h"><div class="meta">TLDR Fintech · Mon Sep 07</div><div class="body">Anthropic released blueprints for retailers, travel companies and ticketing platforms to build shopper and merchant agents on Claude ahead of the holiday season. Early partners report carts 30% to 35% larger and about 60% higher purchase completion.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.paymentsdive.com/news/ramp-takes-on-ai-expense/829642/?utm_source=tldrfintech"><div class="meta">TLDR Fintech · Mon Sep 07</div><div class="body">Ramp launched Router, which sends AI workloads to different models based on price, latency and benchmark scores and shows finance teams where the token spend goes. Ramp expects AI usage to become a standard expense line next to travel and software.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://fintech.global/2026/09/03/tabapay-raises-155m-as-it-moves-into-banking/?utm_source=tldrfintech"><div class="meta">TLDR Fintech · Mon Sep 07</div><div class="body">TabaPay raised $155 million from FTV Capital and is buying Transact Bank, which it will rename TabaBank. It expects to process over $100 billion this year and wants direct access to RTP, FedNow, ACH and wires.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.pymnts.com/news/investment-tracker/2026/paypal-pauses-venture-capital-portfolio-sale-after-lowball-offers/?utm_source=tldrfintech"><div class="meta">TLDR Fintech · Mon Sep 07</div><div class="body">PayPal shelved the sale of roughly $900 million to $1 billion in startup stakes after bids came in at just 60 cents on the dollar.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.cnbc.com/2026/09/05/lebron-james-polymarket-partnership.html?utm_source=tldrfintech"><div class="meta">TLDR Fintech · Mon Sep 07</div><div class="body">LeBron James teased a partnership with Polymarket ahead of a football-season campaign. Terms were not disclosed, and NBA rules limit how much players can own in wagering businesses.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.dig-in.com/news/insurers-are-retraining-ai-insourcing-data-to-regain-control?utm_source=tldrfintech"><div class="meta">TLDR Fintech · Mon Sep 07</div><div class="body">Insurers including MSI and VIPR Solutions are pulling data work back in-house and retraining models on their own governed data after vendor-led AI rollouts gave inconsistent results.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.fintechbrainfood.com/p/instinct-consumer-agent?utm_source=tldrfintech"><div class="meta">TLDR Fintech · Mon Sep 07</div><div class="body">Fintech Brainfood argues Instinct is the first consumer agent that makes the shift from apps to agents feel real. The bigger point is that businesses now need to be reliably callable by agents, with identity, permissions and payments turning into core infrastructure.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://links.tldrnewsletter.com/dyg4m4"><div class="meta">TLDR Fintech · Mon Sep 07</div><div class="body">Amble makes the case that AI may strengthen incumbents, since they own the data and permissions that agents depend on. Vertical AI startups should aim at high-frequency, judgment-heavy workflows where they can own the whole outcome.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card"><div class="meta">Entrackr · Mon Sep 07</div><div class="body">Swish is raising about $24 million in an extended Series B led by Bertelsmann India at a $175 million valuation.</div></article>
+<article class="card"><div class="meta">Entrackr · Mon Sep 07</div><div class="body">DaMENSCH raised fresh money from A91 Partners and new investor Tancom Electronics, but the round left its valuation flat at Rs 600 crore.</div></article>
+<article class="card"><div class="meta">Entrackr · Mon Sep 07</div><div class="body">Voice AI startup Navana.ai raised Rs 40 crore (about $4.2 million) in a Series A led by Ronnie Screwvala.</div></article>
+<article class="card"><div class="meta">ByteByteGo · Mon Sep 07</div><div class="body">A deep dive on error handling in LLM apps. The core point is that a successful API response does not mean success, since the model can return broken JSON, hallucinate, hit its token limit or call the wrong tool. The piece covers classifying failures, retrying properly, timeouts, falling back to smaller models, circuit breakers, rate limiting and making tool calls idempotent.</div></article>
+<article class="card"><div class="meta">Lenny&#x27;s Newsletter · Mon Sep 07</div><div class="body">On How I AI, Claire Vo explains why she moved her entire agent stack from OpenClaw to Grok Bot, mostly because OpenClaw became too hard to keep running. She now runs bots for six inboxes, PR reviews, SOC 2 fixes and customer refunds. Her takeaways: treat each bot like a new hire with a name and a scope, put high-stakes actions like refunds behind an approval button, and give the agent a voice profile because Grok writes too tersely by default.</div></article>
+</main>
+<footer>tap a card to open its article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    if(c.dataset.url) c.addEventListener('click',()=>window.open(c.dataset.url,'_blank'));
+  });
+</script>
+</body>
+</html>
