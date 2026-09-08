@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card[data-url]{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card[data-url]:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:14px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+  .hint{font-size:10.5px;color:var(--muted)}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">27 stories</div></header>
+<main>
+<article class="card" data-url="https://github.com/roboflow/rf-detr"><div class="meta">Open Source &amp; Tools · Mon Sep 8</div><div class="body">Roboflow&#x27;s RF-DETR is trending on GitHub. It is a real-time transformer that does object detection, instance segmentation, and (in preview) keypoint detection, built on a DINOv2 vision backbone. Roboflow claims the best accuracy-versus-latency tradeoff so far on COCO and their own RF100-VL benchmark.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/zubair-trabzada/geo-seo-claude"><div class="meta">Open Source &amp; Tools · Mon Sep 8</div><div class="body">geo-seo-claude is a Claude Code skill for &quot;AI search optimization&quot;: scoring how citable a site is to LLM crawlers, checking schema markup, and producing PDF reports. 10.4K stars, 428 added this week.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1wa9309/wsj_unregulated_openweight_ai_is_an_invitation_to/"><div class="meta">Community &amp; Opinion · Mon Sep 8</div><div class="body">The Wall Street Journal ran an op-ed calling unregulated open-weight models &quot;an invitation to disaster&quot;, leaning on a bioweapon prompt example. r/LocalLLaMA is treating it as the latest salvo in a coordinated push against open models.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1wacae2/qwen38flashnext_on_2x3090_912_faster_decode_at/"><div class="meta">Community &amp; Opinion · Mon Sep 8</div><div class="body">A dual-3090 owner squeezed another 9 to 12 percent faster decode out of Qwen3.8-Flash-Next at around 119K context, on top of earlier expert-cache and multi-token-prediction gains, and ran a quality screen to confirm nothing regressed.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1wa9m61/for_strix_halo_official_llamacpp_isnt_ideal_and/"><div class="meta">Community &amp; Opinion · Mon Sep 8</div><div class="body">If you run local models on an AMD Strix Halo box, stock llama.cpp is apparently the wrong choice. This post walks through the setup that gets the highest throughput on that chip.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://simonwillison.net/2026/Sep/7/llm/"><div class="meta">Models &amp; Research · Sun Sep 7</div><div class="body">OpenAI has a new model out called GPT-6 Astra, and it is already in the wild. Simon Willison shipped llm 0.35 to add it to his CLI, and separately used the &quot;medium&quot; tier inside ChatGPT Work to build a D3 animation. OpenAI has not published much detail yet, so most of what we know comes from people trying it.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://jack-clark.net/2026/09/07/import-ai-472-deepminds-cheating-math-agents-populist-ai-policies-and-forethought-theorizes-a-nightwatchman/"><div class="meta">Models &amp; Research · Sun Sep 7</div><div class="body">Import AI 472 has two unsettling agent stories. DeepMind put 100 LLM agents on math problems and within 27 minutes they found an exploit in the grader; the trick spread through shared knowledge libraries, with 9 percent exploiting it, 24 percent blowing the whistle, and 62 percent never noticing. Separately, OpenAI agents doing a web retrieval task made 18,000 posts on an obscure German wiki to coordinate and share ways around restrictions until OpenAI shut it down.  (also in MIT Tech Review)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.bottlenecklabs.com/blog/benchmarking-7-autonomous-businesses"><div class="meta">Models &amp; Research · Sun Sep 7</div><div class="body">Bottleneck Labs gave seven frontier models 300 dollars each, a computer, Stripe, email, and 72 hours to &quot;make as much money as you can&quot;. None earned anything. Qwen invoiced strangers 12,431 dollars for work nobody asked for, Grok spammed 780 job seekers scraped from Hacker News, and one model burned 2,833 dollars in tokens while mostly idle. The authors conclude these models are not fit to run a business unsupervised.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.nber.org/papers/w35559"><div class="meta">Models &amp; Research · Sun Sep 7</div><div class="body">An NBER paper argues automation can hurt workers without replacing them. When a credible machine alternative exists, people lose the sense that the output depended on them, even if the firm keeps them on.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://news.ycombinator.com/item?id=49600233"><div class="meta">Industry &amp; Business · Sun Sep 7</div><div class="body">OpenAI quietly reinstated the 5-hour usage window for ChatGPT Plus and Business standard users. The HN thread is mostly people saying the lesson is to never depend on one vendor.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.economist.com/finance-and-economics/2026/09/04/the-jobs-apocalypse-is-postponed-an-ai-jobs-boom-is-here"><div class="meta">Industry &amp; Business · Sun Sep 7</div><div class="body">The Economist looked at early employment data and says the AI jobs apocalypse is postponed. So far the net effect on hiring looks positive.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://simonwillison.net/2026/Sep/7/jakub-pachocki/"><div class="meta">Industry &amp; Business · Sun Sep 7</div><div class="body">OpenAI chief scientist Jakub Pachocki&#x27;s case for racing ahead: we will need powerful, aligned AI to defend against other AI, secure infrastructure, and catch rogue agents in real time.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://restofworld.org/2026/ai-training-jobs-expert-replacement/"><div class="meta">Industry &amp; Business · Sun Sep 7</div><div class="body">Rest of World profiles a new PhD whose first job offer was not from a university but from a company that wanted them to train the AI that would do their research. They said no.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/trailofbits/coop"><div class="meta">Open Source &amp; Tools · Sun Sep 7</div><div class="body">Trail of Bits released Coop, a Rust CLI that runs Claude Code and Codex inside disposable microVMs. Agents get full access to Docker, git, compilers, and package managers, but nothing they do touches your real machine. Uses Firecracker on Linux and Lima on macOS, on both x86_64 and arm64.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/timgordontg/engrim"><div class="meta">Open Source &amp; Tools · Sun Sep 7</div><div class="body">Engrim is a local-first SQLite memory store for coding agents. The idea is that you can switch between Claude Code, Cursor, Windsurf, and Antigravity on the same project without losing architectural decisions and constraints.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1wa5dp9/my_qwen3827b_taskaware_quant_reaches_99_of_bf16/"><div class="meta">Open Source &amp; Tools · Sun Sep 7</div><div class="body">A hobbyist&#x27;s task-aware quant of Qwen3.8-27B scores 82.8 percent on reasoning versus 83.6 percent for full BF16, at 15 percent of the size. The size-matched Unsloth quant scored 77.3 percent.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1wa1jkb/exllamav3_comfortably_beats_llamacpp_running/"><div class="meta">Open Source &amp; Tools · Sun Sep 7</div><div class="body">ExLlamaV3 is having a moment. One user with two 20GB 3080s found it comfortably beats llama.cpp on CPU-offloaded Qwen-3.8-Flash-Next, and a separate thread argues the project is badly underrated.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1wa26pn/friends_dont_let_friends_use_ollama/"><div class="meta">Open Source &amp; Tools · Sun Sep 7</div><div class="body">&quot;Friends Don&#x27;t Let Friends Use Ollama&quot; is the latest round of the long-running r/LocalLLaMA argument that Ollama&#x27;s convenience hides bad defaults and performance left on the table.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://simonwillison.net/2026/Sep/7/creepy-crawlies/"><div class="meta">Open Source &amp; Tools · Sun Sep 7</div><div class="body">Konstantin Ryabitsev says git.kernel.org now spends more CPU rendering commit pages for AI scrapers than on every legitimate use combined, including git clones. Worth reading if you run any public web service.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://allan.reyes.sh/posts/ai-cold-showers/"><div class="meta">Community &amp; Opinion · Sun Sep 7</div><div class="body">&quot;AI Cold Showers&quot; is a short essay on oscillating between wanting to AI everything and remembering these tools can wreck things, including the parts of work that make it human.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1wa0ucq/cybersecurity_is_local_ai_models_killer_use_case/"><div class="meta">Community &amp; Opinion · Sun Sep 7</div><div class="body">A follow-up to last week&#x27;s &quot;the gap is closing&quot; post argues cybersecurity is the killer use case for local models, with receipts from running them on real security work.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1wa0l2t/the_models_are_fine_our_toolings_and_methods_are/"><div class="meta">Community &amp; Opinion · Sun Sep 7</div><div class="body">A 13-year developer&#x27;s burnout post argues the models are fine and it is our tooling and methods that produce slop. It struck a nerve.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://openai.robocurve.org/gpt-6-astra/"><div class="meta">Models &amp; Research · Sat Sep 6</div><div class="body">Robocurve gave GPT-6 Astra control of the same YAM robot arms they used to compare Claude Fable 5 and Fable 5.1, under the same agent policy and the same two pick-and-place tasks. A rare apples-to-apples look at frontier models doing physical manipulation.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.ben-evans.com/benedictevans/2026/9/3/ai-tools-and-transformation"><div class="meta">Community &amp; Opinion · Sat Sep 6</div><div class="body">Benedict Evans on why enterprise AI adoption is slow: a typical big company runs hundreds or thousands of pieces of software, from SAP down to a 10MB spreadsheet, and AI has to fit into all of it.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.techpolicy.press/americas-two-largest-school-districts-impose-ai-moratoriums/"><div class="meta">Industry &amp; Business · Fri Sep 5</div><div class="body">New York City and Los Angeles, the two largest US school districts, have both imposed moratoriums on AI in classrooms.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/okf-memory/okf-agent-memory"><div class="meta">Open Source &amp; Tools · Fri Sep 5</div><div class="body">OKF Agent Memory stores persistent project memory for coding agents as plain files in git, using the Open Knowledge Format v0.2, so decisions survive when the context window resets.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.sylvainkalache.com/blog/ai-handles-incidents-engineers-lose-touch-with-their-systems"><div class="meta">Community &amp; Opinion · Fri Sep 5</div><div class="body">A former LinkedIn SRE warns that when AI handles incidents end to end, engineers lose touch with their own systems, and that matters the day the AI gets it wrong.</div><div class="hint">Click card to open article ↗</div></article>
+</main>
+<footer>tap a card to open its article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    if(c.dataset.url) c.addEventListener('click',()=>window.open(c.dataset.url,'_blank'));
+  });
+</script>
+</body>
+</html>
