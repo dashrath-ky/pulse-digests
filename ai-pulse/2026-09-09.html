@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card[data-url]{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card[data-url]:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:14px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+  .hint{font-size:10.5px;color:var(--muted)}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">30 stories</div></header>
+<main>
+<article class="card" data-url="https://openai.com/index/navier-stokes-solution"><div class="meta">Models &amp; Research · Tue Sep 09</div><div class="body">OpenAI says its agents solved the Navier-Stokes existence and smoothness problem, a Millennium Prize question that has been open for about 90 years, and shipped a formal proof in Lean alongside the writeup. The claim is already messy. NYU mathematician Tristan Buckmaster and Anthropic&#x27;s Levent Alpöge say they spent nearly a year on a simplified version using public models and published the day before, and they accuse OpenAI of neither crediting that work nor ruling out that its 10,000-agent run had access to their transcripts. OpenAI denies it. Terence Tao&#x27;s take is that AI-first solutions with no transparency starve the field of the new techniques that usually come from humans struggling with a hard problem.  (also in MIT Tech Review, TechCrunch, The Verge, Simon Willison)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1wb7p70/qwen38flashnext_on_mlxserve_1m_context_is_released/"><div class="meta">Models &amp; Research · Tue Sep 09</div><div class="body">Qwen3.8-Flash-Next now runs with a 1 million token context on MLX-serve, and a separate benchmark post shows why engine choice matters for it: time to first token at full context ranged from 35 seconds to 258 seconds across llama.cpp, SGLang and FreeToken on the same workstation.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1wauxg9/qwenqwendrive104b_hugging_face/"><div class="meta">Models &amp; Research · Tue Sep 09</div><div class="body">Qwen quietly released Qwen-Drive-1.0-4B, a driving-focused finetune of Qwen 3.5 4B, on Hugging Face.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arxiv.org/abs/2609.05441"><div class="meta">Models &amp; Research · Tue Sep 09</div><div class="body">A new arXiv paper asks when long-term memory actually pays off for tool-using agents, and argues today&#x27;s recall benchmarks miss the cost side entirely. Worth a read if you&#x27;re bolting memory onto an agent.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arxiv.org/abs/2609.05446"><div class="meta">Models &amp; Research · Tue Sep 09</div><div class="body">AutoFyn is an agent harness that borrows the Expert Iteration idea from RL but keeps the model frozen, improving long-horizon agents without any fine-tuning.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1wb9prm/us_accuses_chinese_ai_firms_of_malicious_copying/"><div class="meta">Industry &amp; Business · Tue Sep 09</div><div class="body">The US government has accused Chinese AI firms of &quot;industrial-scale&quot; copying of American AI technology, per Reuters and NBC.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/ruvnet/ruflo"><div class="meta">Open Source &amp; Tools · Tue Sep 09</div><div class="body">ruflo, an &quot;agent meta-harness&quot; for running multi-agent swarms with adaptive memory and native hooks into Claude Code, Codex and Hermes, is the top trending repo this week. 71.7K stars, 1.6K added this week.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/mksglu/context-mode"><div class="meta">Open Source &amp; Tools · Tue Sep 09</div><div class="body">context-mode sandboxes tool output for coding agents (it claims a 98% cut in context usage), persists session memory, and works across 17 platforms via MCP and hooks. 21.5K stars, 935 this week.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/heygen-com/hyperframes"><div class="meta">Open Source &amp; Tools · Tue Sep 09</div><div class="body">HeyGen open-sourced HyperFrames, a framework that turns HTML, CSS and seekable animations into deterministic MP4 video. It&#x27;s built so agents can write video as code.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/openai/skills"><div class="meta">Open Source &amp; Tools · Tue Sep 09</div><div class="body">OpenAI&#x27;s skills repo is now deprecated and points at a new Plugins repo. If you had Codex skills there, they now live as skill-only plugins.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/blader/humanizer"><div class="meta">Open Source &amp; Tools · Tue Sep 09</div><div class="body">humanizer is a Markdown-only skill that rewrites AI-sounding text to read like a person wrote it, and works with any agent that supports the skills spec.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/coreyhaines31/marketingskills"><div class="meta">Open Source &amp; Tools · Tue Sep 09</div><div class="body">marketingskills is a set of agent skills for conversion, copywriting, SEO and growth work that plugs into Claude Code, Codex, Cursor and Windsurf.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1wb8gp5/github_coder543minnow_fast_llada22_inference/"><div class="meta">Open Source &amp; Tools · Tue Sep 09</div><div class="body">minnow is a fast inference server for LLaDA2.2, one of the few serving stacks built for diffusion-style language models.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://openai.com/index/introducing-chatgpt-images-2-5"><div class="meta">Models &amp; Research · Mon Sep 08</div><div class="body">OpenAI shipped ChatGPT Images 2.5, and the headline feature is Sketch: you can doodle a rough drawing and use it as part of the prompt alongside reference photos.  (also in The Verge)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://deepmind.google/blog/alphagenome-atlas-a-predictive-map-of-every-possible-dna-letter-change-in-the-human-genome/"><div class="meta">Models &amp; Research · Mon Sep 08</div><div class="body">Google DeepMind released AlphaGenome Atlas, a predictive map of the molecular effect of every possible single-letter DNA change in the human genome. That&#x27;s 9 billion variants, and the pitch is that it could speed up finding new treatments.  (also in The Verge)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://openai.com/index/codex-quantum-computing-experiments"><div class="meta">Models &amp; Research · Mon Sep 08</div><div class="body">OpenAI published a case study of an MIT researcher using GPT-5.6 Sol with Codex to run quantum computing experiments end to end, including calibrating qubits.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://huggingface.co/blog/MultiverseComputingCAI/safety-for-whom"><div class="meta">Models &amp; Research · Mon Sep 08</div><div class="body">Multiverse Computing argues on the Hugging Face blog that safety training should refuse the harmful slice of a topic rather than the whole topic, and shows how to train for that.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/08/hackers-are-stealing-claude-tokens-from-subscribers/"><div class="meta">Industry &amp; Business · Mon Sep 08</div><div class="body">Hackers are draining Claude subscribers&#x27; token allowances. The attack is old-school: infostealer malware on the victim&#x27;s machine grabs Claude login sessions, and the attacker then burns through the account&#x27;s usage while the owner is idle. Anthropic confirmed it, signed out compromised users, invalidated the stolen sessions and issued partial refunds. Check your active sessions if your usage looks off.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/08/cognition-hits-48b-valuation-signaling-investors-believe-ai-coding-is-far-from-a-winner-take-all-market/"><div class="meta">Industry &amp; Business · Mon Sep 08</div><div class="body">Cognition raised $2 billion at a $48 billion valuation, led by a16z, Accel, Founders Fund, General Catalyst and Avenir. Run-rate revenue nearly doubled from $492 million to $900 million since May. The higher multiple versus Cursor is investors saying AI coding won&#x27;t be winner-take-all.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/08/mistral-raises-e3b-as-sovereign-ai-becomes-big-business/"><div class="meta">Industry &amp; Business · Mon Sep 08</div><div class="body">Mistral raised €3 billion at a €21 billion valuation in a Series D led by Samsung, with Scaleup Europe and PSG Equity co-leading. The money goes to compute and European infrastructure. Being the non-American lab is now a real sales advantage with governments and large companies that want control over their AI.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/08/meta-debuts-its-muse-ai-agent-will-consumers-trust-it/"><div class="meta">Industry &amp; Business · Mon Sep 08</div><div class="body">Meta launched Muse, a personal agent that sends email, books travel and makes purchases by connecting to your inbox, calendar, payments and health apps. It runs inside a sandboxed &quot;Muse Secure VM,&quot; is free on web, iOS, Android and WhatsApp, with $20 and $100 monthly tiers for heavy use. The big question is whether people trust Meta with that much access.  (also in The Verge)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/ai-artificial-intelligence/990313/anthropic-class-action-lawsuit-pricing-subscription-plans"><div class="meta">Industry &amp; Business · Mon Sep 08</div><div class="body">Power users are suing Anthropic in a class action, claiming top-tier subscription plans promised more usage than they delivered.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/08/google-cloud-races-to-catch-up-in-the-ai-deployment-wars-with-accenture-deal/"><div class="meta">Industry &amp; Business · Mon Sep 08</div><div class="body">Google Cloud signed a deal with Accenture to put forward-deployed engineers inside enterprises, a bet that hands-on deployment help is the bottleneck for AI adoption.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arstechnica.com/security/2026/09/microsoft-patches-a-record-972-vulnerabilities-112-of-them-critical/"><div class="meta">Industry &amp; Business · Mon Sep 08</div><div class="body">Microsoft&#x27;s September Patch Tuesday fixed a record 972 vulnerabilities, 112 of them critical. The previous record of 570 was set just two months ago, and AI-assisted bug finding is the likely driver.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/08/chrome-is-now-shipping-updates-every-2-weeks-as-ai-changes-the-security-landscape/"><div class="meta">Industry &amp; Business · Mon Sep 08</div><div class="body">Chrome now ships updates every two weeks, with Google citing AI&#x27;s effect on how fast vulnerabilities get found and exploited.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://openai.com/index/1password"><div class="meta">Industry &amp; Business · Mon Sep 08</div><div class="body">OpenAI says 1Password engineers got a 21% productivity lift from Codex while keeping their security review process intact.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/tech/991133/adobe-is-trying-to-make-its-ai-generators-idiot-proof-in-premiere"><div class="meta">Industry &amp; Business · Mon Sep 08</div><div class="body">Adobe moved its generative video tools directly onto the Premiere timeline with a dedicated Generative Media panel.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1wb35xo/how_many_agents_can_24090_actually_run_at_once/"><div class="meta">Community &amp; Opinion · Mon Sep 08</div><div class="body">A nonprofit CTO ran three weeks of llama.cpp concurrency tests on two 4090s and found a soft cap of 5 concurrent agents at 64K context and a hard cap of 9. Useful numbers if you&#x27;re sizing a local coding-agent box.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1wazzes/on_the_value_of_human_ideas_what_data_poisoning/"><div class="meta">Community &amp; Opinion · Mon Sep 08</div><div class="body">A thoughtful r/LocalLLaMA post uses data poisoning research to argue that the Navier-Stokes result says more about the value of human ideas in the training data than about autonomous AI breakthroughs.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/ai-artificial-intelligence/990932/seattle-times-newsday-lawsuit-openai-microsoft"><div class="meta">Industry &amp; Business · Sat Sep 06</div><div class="body">The Seattle Times and Newsday sued OpenAI and Microsoft for copyright infringement and are asking the court to order the models trained on their work destroyed.</div><div class="hint">Click card to open article ↗</div></article>
+</main>
+<footer>tap a card to open its article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    if(c.dataset.url) c.addEventListener('click',()=>window.open(c.dataset.url,'_blank'));
+  });
+</script>
+</body>
+</html>
