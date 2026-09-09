@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card[data-url]{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card[data-url]:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:14px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+  .hint{font-size:10.5px;color:var(--muted)}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">21 stories</div></header>
+<main>
+<article class="card"><div class="meta">Entrackr · Wed Sep 09</div><div class="body">TPG-backed NewQuest sold another 1.36% of logistics startup Shadowfax for about Rs 200 crore in a bulk deal on the BSE. This is the fund&#x27;s second such sale, so it looks like a steady exit rather than a one-off.</div></article>
+<article class="card"><div class="meta">Entrackr · Wed Sep 09</div><div class="body">Audio platform Kuku is building a 1,000-person AI team in Mumbai ahead of a planned Rs 3,500 crore IPO. It has already hired close to 200 people and wants to hit the full number by the end of this financial year.</div></article>
+<article class="card"><div class="meta">Finshots · Wed Sep 09</div><div class="body">Arcil, India&#x27;s first and one of its largest asset reconstruction companies, is going public. It buys bad loans from banks at a discount, parks them in trusts, and earns fees for recovering the money. The IPO is entirely an offer for sale, so existing holders like SBI and Federal Bank cash out and Arcil itself gets nothing. Worth noting that its stressed asset purchases nearly tripled in two years as retail and small-business loans went bad.</div></article>
+<article class="card" data-url="https://aws.amazon.com/blogs/aws/aws-weekly-roundup-claude-fable-5-1-on-aws-amazon-linux-2027-preview-aws-certified-ai-business-strategist-and-more-september-7-2026/?utm_source=tldrit"><div class="meta">TLDR IT · Tue Sep 08</div><div class="body">Claude Fable 5.1 is now on Amazon Bedrock, but with new strings attached. Prompts and outputs can be kept for up to 30 days and reviewed by Amazon staff for safety. A planned &quot;Enterprise Frontier Safeguards&quot; option would let eligible customers keep that monitoring data inside their own cloud accounts instead.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://cursor.com/blog/self-hosted-machines?utm_source=tldrit"><div class="meta">TLDR IT · Tue Sep 08</div><div class="body">Cursor&#x27;s cloud agents can now run on machines you control, whether that is AWS, Modal, Cloudflare, or a Mac in the office. Cursor still runs the agent loop and inference, but the worker sits inside your network so it can reach internal systems and existing build setups.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.expresscomputer.in/news/sophos-to-bring-openai-cyber-models-into-its-managed-risk-offering/138516/?utm_source=tldrit"><div class="meta">TLDR IT · Tue Sep 08</div><div class="body">Sophos is building a feature that uses OpenAI&#x27;s cyber models to check whether a vulnerability is actually exploitable in your specific network, factoring in patches, privileges, and existing controls. Analysts review the output. No release date yet.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://martinalderson.com/posts/ai-safety-vs-security/?utm_source=tldrit"><div class="meta">TLDR IT · Tue Sep 08</div><div class="body">A pointed essay argues that frontier labs have confused AI safety with security. Safety is probabilistic, security needs to be deterministic, and treating prompt injection defenses as &quot;mostly solved&quot; while relying on detection instead of hard containment is how recent failures happened.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://venturebeat.com/orchestration/companies-are-spending-millions-rewiring-how-ai-gets-used-almost-none-can-prove-its-working?utm_source=tldrit"><div class="meta">TLDR IT · Tue Sep 08</div><div class="body">Companies are pouring millions into rewiring how AI gets used, with model routing and experimentation budgets, but almost none can prove it is paying off.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.innovationendeavors.com/insights/a-decade-of-software-infrastructure?utm_source=tldrit"><div class="meta">TLDR IT · Tue Sep 08</div><div class="body">Innovation Endeavors lays out six trends for the next decade of infrastructure, including dev lifecycles rebuilt around AI, infra re-architected for agents, and APIs replacing apps.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.finos.org/blog/portable-ai-decision-records-konspekt-contributed-to-finos-labs?utm_source=tldrit"><div class="meta">TLDR IT · Tue Sep 08</div><div class="body">FINOS is backing an open format called konspekt for recording project decisions and their provenance across AI tools. Records are plain files that a human has to accept, giving you an audit trail that does not depend on any one model vendor.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.redhat.com/en/blog/introducing-external-secrets-management-console-plugin?utm_source=tldrit"><div class="meta">TLDR IT · Tue Sep 08</div><div class="body">Red Hat added a console plugin to OpenShift 4.22 that puts certificates and external secrets in one place, so admins can chase expiry warnings without hopping between tools. Tech preview, admins only.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://aws.amazon.com/about-aws/whats-new/2026/09/announcing-amazon-linux-2027/?utm_source=tldrit"><div class="meta">TLDR IT · Tue Sep 08</div><div class="body">Amazon Linux 2027 is in public preview with updated dev tooling and AWS Neuron driver support.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card"><div class="meta">Morning Brew · Tue Sep 08</div><div class="body">US gas prices hit a Labor Day record at $4.15 a gallon, about 30% higher than a year ago. Iran has choked tanker traffic through the Strait of Hormuz since the war began in February, and Ukrainian drones have knocked out Russian refineries. Diesel is up almost 60% year on year, so freight costs are feeling it too.</div></article>
+<article class="card"><div class="meta">Morning Brew · Tue Sep 08</div><div class="body">An Amazon cargo jet overshot a runway at Miami International on Sunday and hit vehicles, killing five people. The NTSB is looking at whether the plane touched down too late. Miami&#x27;s runways lack the arresting systems the FAA credits with saving hundreds of lives.</div></article>
+<article class="card"><div class="meta">Morning Brew · Tue Sep 08</div><div class="body">Germany&#x27;s far-right AfD won a landslide in the Saxony-Anhalt state election, its first shot at forming a state government since the Nazi era. Whether other parties break their long-standing firewall and let it govern is still open.</div></article>
+<article class="card"><div class="meta">Morning Brew · Tue Sep 08</div><div class="body">Trump posted a map with &quot;Mexico&quot; crossed out and replaced with &quot;America,&quot; days after signing an order renaming Lake Ontario to &quot;Lake America.&quot; He has no legal power to rename a state, and New Mexico&#x27;s governor shot the idea down immediately.</div></article>
+<article class="card"><div class="meta">Morning Brew · Tue Sep 08</div><div class="body">GameStop reports earnings today, but most eyes are on its side bet: a stake in eBay worth more than $4 billion.</div></article>
+<article class="card"><div class="meta">Entrackr · Tue Sep 08</div><div class="body">India&#x27;s brokers added 5.12 lakh net active clients in August, and Groww alone accounted for 44% of that with 2.23 lakh new users. Sahi grew fastest among the top 20 at 11%.</div></article>
+<article class="card"><div class="meta">Entrackr · Tue Sep 08</div><div class="body">Athleisure brand BlissClub raised Rs 160 crore in a Series B led by Singularity AMC, with Meesho CEO Vidit Aatrey joining in. The founder&#x27;s stake has now dropped below 40%.</div></article>
+<article class="card"><div class="meta">ByteByteGo · Tue Sep 08</div><div class="body">A deep dive into how American Express processes card payments on cloud infrastructure that can fail at any moment. The answer is cell-based architecture: each cell is a complete, self-contained copy of the payment stack with its own services and databases, and no cell makes blocking calls to another during a transaction. Cells divide the system by failure, not by function, so a bad cell can be pulled from rotation while the rest keep approving payments.</div></article>
+<article class="card"><div class="meta">Lenny&#x27;s Newsletter · Tue Sep 08</div><div class="body">Roman Ugarte, who led growth at Cursor before its acquisition by SpaceX, explains how a small isolated team built Grok Bot from zero to an internal product in four weeks and a public launch three weeks after that. He covers why they built it from scratch instead of bolting it onto Cursor, why the team personally onboarded its first 300 users, and his take on moats in the most competitive market around.</div></article>
+</main>
+<footer>tap a card to open its article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    if(c.dataset.url) c.addEventListener('click',()=>window.open(c.dataset.url,'_blank'));
+  });
+</script>
+</body>
+</html>
