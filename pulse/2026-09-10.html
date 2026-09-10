@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card[data-url]{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card[data-url]:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:14px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+  .hint{font-size:10.5px;color:var(--muted)}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">17 stories</div></header>
+<main>
+<article class="card"><div class="meta">Entrackr · Thu Sep 10</div><div class="body">Swish, the 10-minute food delivery startup, raised $24 million in a round led by Bertelsmann India Investments, with Accel and other existing backers joining in. Quick food delivery is turning into a real funding race in India, and Swish is one of the better-funded names in it now.</div></article>
+<article class="card"><div class="meta">Entrackr · Thu Sep 10</div><div class="body">Carrum Mobility, a B2B fleet management platform, picked up $10 million (about Rs 96 crore) in a Series B led by Uber. This is Uber&#x27;s second cheque into the company after putting in $7 million in January.</div></article>
+<article class="card"><div class="meta">Entrackr · Thu Sep 10</div><div class="body">PhonePe and Visa launched cardless payment products for both shoppers and merchants at Global Fintech Fest. PhonePe says it&#x27;s the first Indian app where you can scan and pay abroad the same way you do at home.</div></article>
+<article class="card"><div class="meta">Finshots · Thu Sep 10</div><div class="body">Copper has crossed $14,500 a tonne in London, up roughly 16-17% this year and nearly 48% over twelve months. Supply is the problem: Chile&#x27;s mines are hitting seismic risks, ageing infrastructure and poorer ore, and China stopped exporting the sulphuric acid needed to extract copper from low-grade rock so it could make fertiliser instead. Meanwhile EVs, grid upgrades and AI data centres all want far more copper than before, so the world is now heading into a shortage this year rather than the surplus everyone expected.</div></article>
+<article class="card" data-url="https://links.tldrnewsletter.com/4aod0U"><div class="meta">TLDR IT · Wed Sep 09</div><div class="body">Meta launched Muse, an AI agent that plugs into your email, calendar, payments, shopping and smart home, then goes and does things for you. Each agent gets its own virtual machine and can keep working in the background. It&#x27;s a decent marker of how fast assistants are shifting from answering questions to actually operating your accounts.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theregister.com/software/2026/09/07/oracle-may-be-next-in-eu-software-licensing-hot-seat-following-sap-deal/5294805?utm_source=tldrit"><div class="meta">TLDR IT · Wed Sep 09</div><div class="body">Brussels has started poking at how Oracle licenses its software, and a formal investigation may follow. Regulators are reportedly asking third parties for their views. This comes right after the Commission wrapped up a similar probe into SAP, which ended with SAP agreeing to scrap reinstatement fees and cut back-maintenance charges. Oracle has not been formally investigated yet.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.windowscentral.com/microsoft/microsoft-office/switzerland-testing-alternatives-to-microsoft-365-digital-sovereignty?utm_source=tldrit"><div class="meta">TLDR IT · Wed Sep 09</div><div class="body">Switzerland&#x27;s federal government is trialling alternatives to Microsoft 365 on about 3,000 workstations, roughly 7% of its administrative staff. Keeping sensitive data out of US hands is the main reason, with licensing costs a secondary one. It&#x27;s part of a wider European push to depend less on American workplace software.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://deadneurons.substack.com/p/software-has-never-been-capital-light?utm_source=tldrit"><div class="meta">TLDR IT · Wed Sep 09</div><div class="body">A good argument that &quot;software is capital light&quot; is mostly an accounting trick. Spend $50 million on engineers and it&#x27;s booked as R&amp;D; spend the same on a factory machine and it sits on the balance sheet as an asset. Software also needs constant maintenance work just to stop rotting, and it quietly leans on hyperscalers pouring something like $700 billion into data centres.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://blog.gitguardian.com/leaked-credentials/?utm_source=tldrit"><div class="meta">TLDR IT · Wed Sep 09</div><div class="body">GitGuardian now runs two AI agents over every credential leak it spots on public GitHub and Docker Hub, scoring each one and showing its reasoning. The volume is the reason: 1.27 million credentials leaked publicly last year, up 81%, and a lot stay valid for years. Humans still close the incidents.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.techradar.com/pro/the-fallout-from-ai-is-being-felt-further-across-the-business-than-most-people-assume-cios-are-being-held-accountable-when-ai-goes-wrong?utm_source=tldrit"><div class="meta">TLDR IT · Wed Sep 09</div><div class="body">Half of UK CIOs surveyed said they&#x27;re personally on the hook when an AI agent makes a mistake, rising to 62% at companies with 500 or more staff.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://sophiabits.com/blog/shuffle-shard-everything?utm_source=tldrit"><div class="meta">TLDR IT · Wed Sep 09</div><div class="body">A nice explainer on shuffle-sharding, a cheap trick for stopping one noisy customer from taking down everyone else in a shared system. Instead of parking each tenant on a fixed shard, you give each one a random overlapping subset of workers, so almost no two tenants share exactly the same set. Costs no extra hardware, but you have to be OK with partial degradation.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.lesswrong.com/posts/zmC5Nhx36wt47WHfu/machine-organizations?utm_source=tldrit"><div class="meta">TLDR IT · Wed Sep 09</div><div class="body">A thought experiment on &quot;machine organizations&quot;: AI labs where models do the research, the managing and the executive work, with humans left doing support. The claim is that customers and investors wouldn&#x27;t notice much at first, but government oversight would get much harder and power would shift from employees to the models themselves.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://mega.dev/autonomous-product-development?utm_source=tldrit"><div class="meta">TLDR IT · Wed Sep 09</div><div class="body">Argues that autonomous product development happens when you give agents broad but fenced access to your context and move them into the cloud so they can be triggered by events rather than a person typing.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card"><div class="meta">Entrackr · Wed Sep 09</div><div class="body">Theater, a digital-first fashion brand, raised Rs 56.25 crore (about $6 million) in a Series A at a Rs 400 crore valuation, off the back of two strong fiscal years.</div></article>
+<article class="card"><div class="meta">Entrackr · Wed Sep 09</div><div class="body">Flipkart has quietly started testing a food delivery service called Eat In with its own employees in Bengaluru. It lives inside the main Flipkart app for now, though a separate app may come later if it scales.</div></article>
+<article class="card"><div class="meta">Entrackr · Wed Sep 09</div><div class="body">Bounce is back in scooter rentals, this time with 14,000 electric two-wheelers it builds itself, aimed at gig and delivery workers. The company says it turned EBITDA positive in FY26.</div></article>
+<article class="card"><div class="meta">ByteByteGo · Wed Sep 09</div><div class="body">A walkthrough of smart model routing, which can cut LLM bills by around 10x. The idea is simple: stop sending every request to your most expensive model. Put a router in front that sizes up each request and sends the easy ones (classify this ticket) to a small cheap model while the hard ones go to the big one. The piece covers the main approaches, including cascading (try the cheap model first) and semantic routing, plus the ways routing tends to go wrong.</div></article>
+</main>
+<footer>tap a card to open its article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    if(c.dataset.url) c.addEventListener('click',()=>window.open(c.dataset.url,'_blank'));
+  });
+</script>
+</body>
+</html>
