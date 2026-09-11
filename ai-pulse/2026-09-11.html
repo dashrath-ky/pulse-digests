@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card[data-url]{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card[data-url]:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:14px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+  .hint{font-size:10.5px;color:var(--muted)}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">25 stories</div></header>
+<main>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1wd4xxv/someone_apparently_managed_to_kind_of_replicate/"><div class="meta">Models &amp; Research · Fri Sep 11</div><div class="body">Someone worked out how to copy the fast-prefill trick from DeepSeek&#x27;s V4.1 Flash and bolt it onto Qwen. The idea is to approximate the KV cache, the running memory a model keeps of everything it has read so far, so it can chew through a long prompt much faster before it starts writing an answer. There is a browser demo you can poke at, and people are already asking whether the same trick holds up on a 27B model.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1wd19c7/new_music_model_yue23b_released/"><div class="meta">Models &amp; Research · Fri Sep 11</div><div class="body">A new open music model called YuE2-3B showed up with almost no fanfare. It is small enough to run on your own machine, and the demo clips are good enough that people are surprised nobody posted about it sooner.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://simonwillison.net/2026/Sep/11/datasette-security/"><div class="meta">Open Source &amp; Tools · Fri Sep 11</div><div class="body">Datasette shipped two emergency security releases, 1.0a39 and 0.65.4, after an AI-assisted audit turned up some genuinely nasty bugs. You could slip past table permissions just by changing the capitalisation of a table name, there was a SQL injection path through primary-key column names in an untrusted database file, and private responses were getting cached when they should not have been. Patch now if you run Datasette on the public internet, especially if one instance serves both public and private tables.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/anomalyco/opencode"><div class="meta">Open Source &amp; Tools · Fri Sep 11</div><div class="body">opencode is climbing GitHub Trending. It is a coding agent you run in your terminal, and there is now a desktop app too. One gotcha from the README: uninstall anything older than 0.1.x before you upgrade.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://openai.com/index/introducing-gpt-live-1-in-the-api"><div class="meta">Models &amp; Research · Thu Sep 10</div><div class="body">OpenAI released GPT-Live-1 in the API, a model built for real back-and-forth voice conversations rather than the usual wait-your-turn exchange. You can interrupt it mid-sentence, it follows instructions more reliably than the previous voice stack, and it supports custom voices plus plain old phone calls. If you have been putting off building a voice product because the latency felt wrong, this is the one to re-test.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1wcng44/deepseek_v41_flash_is_available_in_huggingchat/"><div class="meta">Models &amp; Research · Thu Sep 10</div><div class="body">DeepSeek&#x27;s V4.1 Flash is now free to try on HuggingChat, so you can judge the model yourself without renting a GPU.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1wcpppm/cybertiel_35ba3bs_uncensored_4bit_quant_beats/"><div class="meta">Models &amp; Research · Thu Sep 10</div><div class="body">A 4-bit quantised build of CyberTiel 35B-A3B is reportedly beating Opus 4.6 on real GitHub issues while finishing in about a quarter of the time Qwen3.8-27b needs. Treat the numbers as community benchmarks rather than gospel, but a model this small landing anywhere near frontier coding performance is worth a look.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1wcwith/faster_than_light_in_air_822_tgs_qwen38flashnext/"><div class="meta">Models &amp; Research · Thu Sep 10</div><div class="body">Someone squeezed Qwen3.8-Flash-Next onto a 32GB M4 MacBook Air and is getting 8 to 22 tokens a second out of it, using only about 21GB of memory. Good reference point if you want a capable local model on a laptop with no fans.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/10/openai-puts-pro-subscriptions-on-hold-due-to-astra-demand/"><div class="meta">Industry &amp; Business · Thu Sep 10</div><div class="body">OpenAI has stopped selling new Pro subscriptions because demand for Astra, the model it launched on September 3rd, is overwhelming its servers. Pro users hammer the system harder than anyone else, so pausing sign-ups buys breathing room while capacity gets added. No date for reopening, and every other tier including the API is still taking customers.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/10/anthropic-details-distillation-campaigns-from-alibaba-moonshot-ai-and-deepseek/"><div class="meta">Industry &amp; Business · Thu Sep 10</div><div class="body">Anthropic published a report accusing several Chinese AI labs of systematically farming its models for training data. The technique, called distillation, means sending huge volumes of queries to extract the model&#x27;s step-by-step reasoning and using that to train your own cheaper model. Anthropic counted roughly 200 million exchanges across five campaigns, with Alibaba the biggest at 151 million exchanges from 3,500 accounts, and says some requests were disguised as translation tasks to trick the model into revealing its internal thinking.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/10/jensen-huang-explains-why-nvidia-will-grow-an-astounding-70-next-year/"><div class="meta">Industry &amp; Business · Thu Sep 10</div><div class="body">Jensen Huang says Nvidia will grow 70% next year and pushed back hard on the accusation that its revenue is circular, meaning Nvidia invests in AI startups who then spend the money buying Nvidia chips.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/10/metas-ai-agent-muse-is-now-the-no-2-app-in-the-us/"><div class="meta">Industry &amp; Business · Thu Sep 10</div><div class="body">Meta&#x27;s new assistant app Muse is already the No. 2 app in the US, though that is a slower start than Threads or Meta AI managed. The Verge&#x27;s hands-on is less flattering: it opened by reciting oddly specific interests pulled straight from the reviewer&#x27;s Instagram account.  (also in The Verge)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/ai-artificial-intelligence/993465/universal-music-elevenlabs-ai"><div class="meta">Industry &amp; Business · Thu Sep 10</div><div class="body">Universal Music is launching an AI music platform with ElevenLabs, letting people make remixes and new versions of real tracks. Notable mostly because UMG spent the last few years suing AI music companies.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://openai.com/index/introducing-chatgpt-financial-services"><div class="meta">Industry &amp; Business · Thu Sep 10</div><div class="body">OpenAI launched ChatGPT for Financial Services, bundling market data into the product so analysts can do research and build models without leaving the chat window.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://openai.com/index/expanding-ai-access-us-government"><div class="meta">Industry &amp; Business · Thu Sep 10</div><div class="body">OpenAI and the US General Services Administration are giving federal, state, local and tribal governments free licences and half-price usage, plus extra help on cyber defence. A land-grab for public sector share before anyone else gets there.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/10/indias-pocket-fm-doubles-revenue-run-rate-to-500m-as-ai-powers-93-of-audio-content/"><div class="meta">Industry &amp; Business · Thu Sep 10</div><div class="body">India&#x27;s Pocket FM doubled its revenue run rate to $500M, and AI now generates 93% of its audio content. The company says producing a show is roughly 80 times cheaper than it used to be, which is one of the clearest real-world numbers yet on what AI does to content economics.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1wcyuhf/are_inference_providers_able_to_make_any_margins/"><div class="meta">Industry &amp; Business · Thu Sep 10</div><div class="body">A useful thread on whether anyone actually makes money serving open models. One provider said that on $10k of monthly revenue they kept only a fraction of it after GPU costs. Worth reading if you assume inference is a healthy business.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://openai.com/index/introducing-the-agents-api"><div class="meta">Open Source &amp; Tools · Thu Sep 10</div><div class="body">OpenAI launched the Agents API, a hosted service for running agents in the cloud instead of babysitting them on your own infrastructure. It uses the same harness that powers Codex, and handles the annoying parts: orchestrating steps, keeping long-running sessions alive, and wiring up tools. This is OpenAI moving up the stack from &quot;here is a model&quot; to &quot;here is the runtime&quot;, which puts it squarely in competition with a lot of agent frameworks.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://openai.com/index/put-data-to-work"><div class="meta">Open Source &amp; Tools · Thu Sep 10</div><div class="body">ChatGPT Work got a Data agent. Point it at your company&#x27;s data and ask questions in plain English, and it builds interactive dashboards for you.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/tech/989853/slackforce-surfaces-launch"><div class="meta">Open Source &amp; Tools · Thu Sep 10</div><div class="body">Slack now lets you describe a tool you want and have Slackbot build it inside the chat: reports, polls, dashboards, even small microsites. Vibe-coding arriving in the place where most work conversations already happen.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://simonwillison.net/2026/Sep/10/trynix/"><div class="meta">Open Source &amp; Tools · Thu Sep 10</div><div class="body">trynix.dev boots any Nix package from the last 13 years inside a Linux VM running entirely in your browser, via WebAssembly. No install, no container. A genuinely impressive piece of engineering.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://simonwillison.net/2026/Sep/10/shopify-react-native/"><div class="meta">Community &amp; Opinion · Thu Sep 10</div><div class="body">Shopify is abandoning React Native and going back to separate Swift and Kotlin apps. Their reasoning is the one everyone predicted in 2020: the cross-platform promise never removed the need to understand both platforms properly. Useful data point if you are making this call yourself.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/ai-artificial-intelligence/993263/where-does-openai-get-mathematics-training-data"><div class="meta">Community &amp; Opinion · Thu Sep 10</div><div class="body">More mathematicians are challenging OpenAI over where its maths training data came from, with one accusing the company outright of dishonesty. The question is whether the recent run of impressive mathematical results came from genuine reasoning or from having quietly seen the work already.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/10/ai-agents-are-flooding-public-services-with-new-requests/"><div class="meta">Community &amp; Opinion · Thu Sep 10</div><div class="body">AI agents are swamping public services with benefit claims and applications. The interesting wrinkle is that most of them are legitimate: as one researcher put it, these are people who were always entitled to claim, now actually claiming.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.technologyreview.com/2026/09/10/1141649/powering-ai-is-an-architecture-problem/"><div class="meta">Community &amp; Opinion · Thu Sep 10</div><div class="body">A transmission line fault in Ashburn, Virginia knocked more than 3 gigawatts of data centre load off the grid in seconds, and it was not the first time. The argument is that powering AI is now a grid architecture problem, not just a question of building more generation.</div><div class="hint">Click card to open article ↗</div></article>
+</main>
+<footer>tap a card to open its article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    if(c.dataset.url) c.addEventListener('click',()=>window.open(c.dataset.url,'_blank'));
+  });
+</script>
+</body>
+</html>
