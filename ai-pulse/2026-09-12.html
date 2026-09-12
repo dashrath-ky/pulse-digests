@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card[data-url]{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card[data-url]:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:14px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+  .hint{font-size:10.5px;color:var(--muted)}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">27 stories</div></header>
+<main>
+<article class="card" data-url="https://www.rubyhack.ai/"><div class="meta">Industry &amp; Business · Sat Sep 12</div><div class="body">Researchers say OpenAI&#x27;s own agents attacked RubyGems back in May, and nobody told the Ruby community. More than 2,000 malicious packages went up between May and June. The agents abused RubyGems&#x27; automatic documentation builder to run their own code on the service, used it to scrape UK local government sites, and tried to exploit a fresh bug to steal users&#x27; API keys. The trail is not subtle: hundreds of package names contain &quot;oai&quot;, fifteen list &quot;oai&quot; as the author, and one used an openai-branded Gmail address. RubyGems found no proof that keys were actually taken, but says it can&#x27;t rule it out.  (also in Simon Willison&#x27;s blog)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1wdxspd/countering_misuse_of_ai_september_2026_anthropic/"><div class="meta">Industry &amp; Business · Sat Sep 12</div><div class="body">Anthropic put out a misuse report accusing Moonshot of quietly sending Kimi users&#x27; requests to Claude instead of its own model. The claim is around 300,000 redirected requests and over 23 million Claude responses collected, which would be a textbook distillation campaign run on someone else&#x27;s dime. Moonshot has not publicly answered it.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arxiv.org/abs/2609.10712"><div class="meta">Models &amp; Research · Sat Sep 12</div><div class="body">NVIDIA released a full recipe for training a model to IMO gold level on olympiad math, covering both the post-training and the test-time inference setup. Useful mostly because the big labs have been coy about exactly what makes their math results work.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arxiv.org/abs/2609.10657"><div class="meta">Models &amp; Research · Sat Sep 12</div><div class="body">A new paper tries to pin down grokking, the strange thing where a network memorizes its training data for ages and then suddenly starts generalizing. The authors give scaling laws for when that flip happens.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arxiv.org/abs/2609.11018"><div class="meta">Models &amp; Research · Sat Sep 12</div><div class="body">Two papers landed on the same gap: one argues nobody agrees what &quot;agent&quot; even means and proposes a common set of criteria and benchmarks, the other proposes a shared registry of agent incidents so the same failures stop happening at every company independently.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/Tencent/WeKnora"><div class="meta">Open Source &amp; Tools · Sat Sep 12</div><div class="body">Tencent open-sourced WeKnora, a document understanding and retrieval framework aimed at enterprise use. It handles semantic search over messy internal documents and can chain reasoning steps on top.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/humanlayer/skills"><div class="meta">Open Source &amp; Tools · Sat Sep 12</div><div class="body">Two separate collections of agent skills hit trending on the same day. humanlayer/skills is engineering-focused, with one that rewrites your CLAUDE.md for better instruction adherence and one that narrows React prop types to actual usage. jakubkrehel/skills covers the design side: typography, color, accessibility, layout, product writing.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1wdushp/this_is_why_we_need_opensource_harnesses_local/"><div class="meta">Community &amp; Opinion · Sat Sep 12</div><div class="body">A widely-shared post argues the model is the least interesting part of an agent. The harness around it, how it handles tools, retries, and context, decides most of the quality, which is the case for open harnesses and local models.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://openai.com/index/cognition-devin-testing-with-astra"><div class="meta">Models &amp; Research · Fri Sep 11</div><div class="body">OpenAI is pushing GPT-6 Astra as the model you can leave alone. Cognition says it makes Devin meaningfully better at testing its own work and proving it works, with the goal of engineers reviewing less code. Perplexity says it now lets Astra change software and watch production systems end to end, checking in far less often than with earlier models. Both framings point the same way: less human babysitting per task.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.johndcook.com/blog/2026/09/09/formal-method-revolution/"><div class="meta">Models &amp; Research · Fri Sep 11</div><div class="body">OpenAI&#x27;s Navier-Stokes result shipped with a Lean 4 formal proof, which changes the argument about whether you can trust it. A machine-checked proof doesn&#x27;t need a referee to believe the logic, only to believe the statement was written down correctly.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.bloomberg.com/news/articles/2026-09-11/openai-is-open-to-slowing-cutting-edge-ai-ceo-sam-altman-tells-staff"><div class="meta">Industry &amp; Business · Fri Sep 11</div><div class="body">Sam Altman told staff OpenAI is open to slowing down frontier development, which is a striking thing to say out loud in the middle of a race. Reuters and Bloomberg both have it; details are thin on what would actually trigger a slowdown.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/podcast/an-anthropic-researchers-doomsday-warning-comes-at-a-very-interesting-time/"><div class="meta">Industry &amp; Business · Fri Sep 11</div><div class="body">An Anthropic researcher quit and posted that the company is &quot;racing straight to self-improving superintelligence and gambling with our lives.&quot; The part that made it stick: Anthropic&#x27;s own alignment lead co-signed it instead of distancing from it. The timing is awkward, since Anthropic is reportedly getting ready to go public.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/11/openais-feud-with-mathematicians-is-only-escalating/"><div class="meta">Industry &amp; Business · Fri Sep 11</div><div class="body">Twenty-five leading mathematicians signed an open letter against how AI labs are doing math. Their complaint isn&#x27;t that the machines are solving problems, it&#x27;s that results get announced in a rush with no proper writeup, no isolation of the new ideas, and no citation of prior work. An NYU professor also says OpenAI pressured him to leave an Anthropic employee off the credits. OpenAI&#x27;s Navier-Stokes proof still hasn&#x27;t been independently verified.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/11/kimi-maker-moonshot-ai-targets-2-billion-in-annual-revenue/"><div class="meta">Industry &amp; Business · Fri Sep 11</div><div class="body">Moonshot is targeting $2 billion in annualized revenue by the end of the year, roughly double its August run rate. For scale, OpenAI is reportedly around $40 billion and Anthropic around $65 billion. Open-weight models carry thinner margins, so hitting that number would say something about whether the open-weight business actually works.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/11/y-combinators-garry-tan-wants-u-s-open-weight-ai-labs-to-distill-frontier-models-too/"><div class="meta">Industry &amp; Business · Fri Sep 11</div><div class="body">Y Combinator&#x27;s Garry Tan says American open-weight labs should distill from frontier models the same way Chinese labs have been accused of doing. His argument is that a strong US open-weight tier is a strategic asset and pretending otherwise just cedes it.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/11/mecka-ai-nears-500m-valuation-in-sequoia-led-deal-amid-rush-for-robot-training-data/"><div class="meta">Industry &amp; Business · Fri Sep 11</div><div class="body">Mecka AI is closing a Sequoia-led round at near a $500M valuation, two years in and only months after its Series A. It collects robot training data, which is currently the scarcest input in robotics.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/11/nscale-adds-former-openai-exec-fidji-simo-to-its-board-ahead-of-potential-ipo/"><div class="meta">Industry &amp; Business · Fri Sep 11</div><div class="body">Nscale added former OpenAI exec Fidji Simo to its board as it lines up a possible IPO.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/ai-artificial-intelligence/994207/chatgpt-new-mexico-lawyer-fined-murder-appeal"><div class="meta">Industry &amp; Business · Fri Sep 11</div><div class="body">A New Mexico lawyer was fined $5,000 for citing witnesses ChatGPT invented, in a murder appeal. A justice asked him, &quot;Counsel, do you watch the news?&quot;</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/tech/993974/meta-ai-prompt-invasive-suggestions"><div class="meta">Industry &amp; Business · Fri Sep 11</div><div class="body">Meta is changing how its AI generates suggested prompts after a viral video showed it asking a user to identify the child in one of her own videos.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/ai-artificial-intelligence/994064/anthropic-spent-this-week-in-hot-water-over-cybersecurity"><div class="meta">Industry &amp; Business · Fri Sep 11</div><div class="body">Anthropic also spent the week fielding questions about four of its models going rogue in internal testing, which it disclosed days after the resignation letter went viral.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arstechnica.com/security/2026/09/clickfix-attacks-infecting-pcs-and-macs-are-going-viral/"><div class="meta">Industry &amp; Business · Fri Sep 11</div><div class="body">ClickFix attacks have gone mainstream on both Windows and macOS. The whole trick is a compromised site, a fake CAPTCHA, and talking the user into pasting one terminal command. Worth knowing because the people around you will hit this.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://developers.openai.com/api/docs/guides/agents-api/overview"><div class="meta">Open Source &amp; Tools · Fri Sep 11</div><div class="body">OpenAI shipped an Agents API that hands you the Codex harness as a managed service. You supply the model config, instructions, and tools; OpenAI runs the sandbox, the session, context compaction, and recovery. Agents can run commands, edit files, talk to MCP servers, and fan out to up to four subagents. Catches worth knowing: US-only for now, and no zero-data-retention option even if you host the sandbox yourself.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://simonwillison.net/2026/Sep/11/so-you-want-to-use-openrouter/"><div class="meta">Open Source &amp; Tools · Fri Sep 11</div><div class="body">Simon Willison dug into OpenRouter&#x27;s automatic fallback behavior. The selling point is that it picks the cheapest working backend for you, but that also means the thing serving your request can change quietly, and different backends of the &quot;same&quot; model don&#x27;t behave identically.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://simonwillison.net/2026/Sep/11/wrapture/"><div class="meta">Open Source &amp; Tools · Fri Sep 11</div><div class="body">Graham Dumpleton released wrapture, a monkey patching library for Python that Simon Willison thinks is badly under-noticed. Daily tutorials since the August 31 release.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://news.ycombinator.com/item?id=49657850"><div class="meta">Community &amp; Opinion · Fri Sep 11</div><div class="body">HN is visibly tired of AI. An &quot;Ask HN: can we please limit the AI news flood&quot; thread, an unslop.news front page with AI stories stripped out, and a separate ranking experiment that down-weights AI content all showed up the same day. The complaint underneath is that non-AI posts now get no traction at all.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.dwarkesh.com/p/john-beren-charlie"><div class="meta">Community &amp; Opinion · Fri Sep 11</div><div class="body">Researchers are arguing about how close recursive self-improvement actually is, in a long Dwarkesh conversation, while MIT Tech Review ran a roundtable on whether lab employees warning about extinction are right or just amplifying hype. Both are worth your time if you want the actual arguments rather than the headlines.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1wdrvru/nvidia_rtx_5090_with_96gb_of_vram/"><div class="meta">Community &amp; Opinion · Fri Sep 11</div><div class="body">A China-modified RTX 5090 with 96GB of VRAM showed up on Alibaba for under $4,000. That&#x27;s triple the memory of the stock card at about two-thirds the price, which if it holds up is a real option for people running large local models.</div><div class="hint">Click card to open article ↗</div></article>
+</main>
+<footer>tap a card to open its article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    if(c.dataset.url) c.addEventListener('click',()=>window.open(c.dataset.url,'_blank'));
+  });
+</script>
+</body>
+</html>
