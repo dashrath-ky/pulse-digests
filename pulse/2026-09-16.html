@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card[data-url]{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card[data-url]:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:14px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+  .hint{font-size:10.5px;color:var(--muted)}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">29 stories</div></header>
+<main>
+<article class="card"><div class="meta">Entrackr · Wed Sep 16</div><div class="body">India&#x27;s payments regulator finally put a price tag on UPI. NPCI will charge merchants 0.4% on UPI payments above Rs 2,000, capped at Rs 300 for anything Rs 75,000 and up. Regular users are untouched, and payment apps still can&#x27;t add their own platform fee.</div></article>
+<article class="card"><div class="meta">Entrackr · Wed Sep 16</div><div class="body">PhonePe crossed 11 billion UPI transactions in a single month in August, worth about Rs 14.26 lakh crore. That&#x27;s nearly 48% of everything moving through UPI by value. Google Pay is close behind at just under 8 billion.</div></article>
+<article class="card"><div class="meta">Entrackr · Wed Sep 16</div><div class="body">Firi, a Gurugram startup doing quick delivery for beauty and personal care products, raised $3 million led by 360 ONE Asset.</div></article>
+<article class="card"><div class="meta">Finshots · Wed Sep 16</div><div class="body">Hero Motors opened its Rs 1,000 crore IPO today, and the confusing part is that it has almost nothing to do with Hero MotoCorp anymore. The Munjal family split the empire in 2010 and each branch kept the right to use the &quot;Hero&quot; name. This one makes gears, transmissions and e-bike powertrains, with revenue of Rs 1,188 crore in FY26 and margins that have roughly doubled since FY24.</div></article>
+<article class="card" data-url="https://www.apple.com/newsroom/2026/09/major-updates-for-apples-software-platforms-are-now-available/?utm_source=tldrit"><div class="meta">TLDR IT · Tue Sep 15</div><div class="body">Apple shipped its whole annual software wave at once: iOS 27, iPadOS 27, macOS 27, watchOS 27, visionOS 27 and tvOS 27. If you manage devices for a living, the testing clock just started, and the things worth checking first are which devices are still eligible, whether Apple Intelligence and Siri are actually available, and how your managed apps behave.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://petri.com/google-workspace-microsoft-365-migration-tool/?utm_source=tldrit"><div class="meta">TLDR IT · Tue Sep 15</div><div class="body">Google Workspace now has a built-in wizard that finds your Microsoft 365 users and pulls over their email, OneDrive files, calendars and contacts. The catch is a hard limit of 10 users per automated migration, so it works for a small team and nothing bigger.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.computerworld.com/article/4213117/govern-ai-agents-like-workers-just-dont-pretend-theyre-human.html?utm_source=tldrit"><div class="meta">TLDR IT · Tue Sep 15</div><div class="body">A good argument that companies should manage AI agents the way they manage employees: give each one a defined job, limited access, a supervisor, and a proper offboarding when it&#x27;s retired. The line the piece draws is that accountability still sits with the human who handed over the keys.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://docs.databricks.com/aws/en/release-notes/whats-coming?utm_source=tldrit"><div class="meta">TLDR IT · Tue Sep 15</div><div class="body">Databricks changed how people get into a workspace. New users and service principals no longer inherit access from the default users group and need to be granted it explicitly. This became mandatory on September 14, so if you provision through Terraform or SCIM, your scripts may already be broken.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.frontier-enterprise.com/goldie-cuts-through-the-salvation-army-it-maze/?utm_source=tldrit"><div class="meta">TLDR IT · Tue Sep 15</div><div class="body">The Salvation Army put an AI helper inside Microsoft Teams so its 10,000+ staff can ask a question without knowing which internal system holds the answer. The interesting bit isn&#x27;t the chatbot, it&#x27;s the plumbing and guardrails underneath it.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.blocksandfiles.com/ai-ml/2026/09/08/ai-agents-can-use-quill-to-talk-direct-to-enterprise-sql-databases/5295049?utm_source=tldrit"><div class="meta">TLDR IT · Tue Sep 15</div><div class="body">RavenDB released Quill, which lets AI agents query a live enterprise SQL database without migrating the data anywhere. It keeps a synced copy outside production using change data capture, and works with Postgres, SQL Server and MySQL.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://eclecticlight.co/2026/09/09/take-control-of-snapshots/?utm_source=tldrit"><div class="meta">TLDR IT · Tue Sep 15</div><div class="body">If your Mac&#x27;s free space keeps shrinking for no obvious reason, Time Machine&#x27;s APFS snapshots are usually why. A practical walkthrough of making them, keeping them small, and deleting the old ones safely.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.windowslatest.com/2026/09/14/you-dont-need-task-manager-windows-11s-end-task-button-kills-apps-from-the-taskbar-and-heres-how-it-works/?utm_source=tldrit"><div class="meta">TLDR IT · Tue Sep 15</div><div class="body">Windows 11 has a taskbar option that force-quits a frozen app without opening Task Manager. Small thing, but it kills a certain category of support ticket.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://substack.com/redirect/22acfd65-5487-4184-a4fa-429d701b35e4?j=eyJ1IjoiN3l6cTB4In0.df8WKEr391QQFAlb8tCPhBUOdLneIglBki0LB1Av95U"><div class="meta">ben&#x27;s bites · Tue Sep 15</div><div class="body">Dario Amodei published an essay called &quot;Pace the frontier&quot; arguing the leading AI labs should collectively slow down for safety reasons. Sam Altman broadly agreed. Trump did the opposite, pulling Jensen Huang on stage at the All-In Summit to say the US will not lose the AI race, and White House AI czar David Sacks said labs are welcome to slow themselves down but shouldn&#x27;t force it on anyone else. Markets took it badly, with Nvidia, AMD and Intel all sliding on Monday.  (also in Morning Brew)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://substack.com/redirect/8a99b033-6509-41af-a139-397c9acb88b8?j=eyJ1IjoiN3l6cTB4In0.df8WKEr391QQFAlb8tCPhBUOdLneIglBki0LB1Av95U"><div class="meta">ben&#x27;s bites · Tue Sep 15</div><div class="body">The rebuttals came fast, and Ben rounded up the best of them. If you only read one, take the long summary of what everyone is actually arguing.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://substack.com/redirect/50d182cc-b844-4848-b15d-a3f87aa0a09d?j=eyJ1IjoiN3l6cTB4In0.df8WKEr391QQFAlb8tCPhBUOdLneIglBki0LB1Av95U"><div class="meta">ben&#x27;s bites · Tue Sep 15</div><div class="body">OpenAI won&#x27;t IPO in 2026. Altman told Fortune it would be &quot;ill-timed&quot; given how much work is left on alignment, control and safety.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://substack.com/redirect/1d2b2e09-52af-4abe-8d20-b584be2621d7?j=eyJ1IjoiN3l6cTB4In0.df8WKEr391QQFAlb8tCPhBUOdLneIglBki0LB1Av95U"><div class="meta">ben&#x27;s bites · Tue Sep 15</div><div class="body">Anthropic published another report on people misusing Claude.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://substack.com/redirect/34047e34-2872-4a79-80a4-0ec6e6f8c092?j=eyJ1IjoiN3l6cTB4In0.df8WKEr391QQFAlb8tCPhBUOdLneIglBki0LB1Av95U"><div class="meta">ben&#x27;s bites · Tue Sep 15</div><div class="body">tldraw&#x27;s founder said he could make ChatGPT&#x27;s Sketch feature 100x better, and OpenAI&#x27;s Tibo gave him one day to prove it. He came back with a working ChatGPT-style prototype with real drawing tools built in.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://substack.com/redirect/6ad35086-ffcb-492d-b30b-2435305a39b4?j=eyJ1IjoiN3l6cTB4In0.df8WKEr391QQFAlb8tCPhBUOdLneIglBki0LB1Av95U"><div class="meta">ben&#x27;s bites · Tue Sep 15</div><div class="body">OpenAI opened up GPT-Live-1, the model behind ChatGPT&#x27;s new Voice mode, so you can build it into your own product. A new Agents API landed alongside it.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://substack.com/redirect/6dd323da-bd7f-45f3-95b0-d0d55fb6a711?j=eyJ1IjoiN3l6cTB4In0.df8WKEr391QQFAlb8tCPhBUOdLneIglBki0LB1Av95U"><div class="meta">ben&#x27;s bites · Tue Sep 15</div><div class="body">Claude Code can now measure whether a plugin actually helps. It runs the same tasks with and without it and compares the results. Works for skills too.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://substack.com/redirect/50e239b5-183c-40d0-8eb3-b460f82d0b15?j=eyJ1IjoiN3l6cTB4In0.df8WKEr391QQFAlb8tCPhBUOdLneIglBki0LB1Av95U"><div class="meta">ben&#x27;s bites · Tue Sep 15</div><div class="body">ChatGPT got a tiny floating desktop widget for starting chats and checking updates. It&#x27;s hiding under Pets in the desktop app.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card"><div class="meta">ben&#x27;s bites · Tue Sep 15</div><div class="body">Ben tried Instinct, the personal agent every VC is excited about, and came away unimpressed. It&#x27;s slow, its proactiveness feels like having a boss again, and you can&#x27;t see or edit what it remembers about you. His bet is that every AI company ships one of these soon anyway.</div></article>
+<article class="card"><div class="meta">Morning Brew · Tue Sep 15</div><div class="body">The EPA is scrapping the Obama and Biden-era rules that forced gas plants to burn cleaner and coal plants to capture their emissions by 2039. It also proposed a separate rule declaring that greenhouse gases don&#x27;t endanger human health, which would make it much harder for a future administration to bring the limits back. The AP reckons the rules being dropped would have prevented around 30,000 deaths.</div></article>
+<article class="card"><div class="meta">Morning Brew · Tue Sep 15</div><div class="body">The 10-year Treasury yield briefly touched 5.01%, the first time since 2023, as rising oil prices stoked inflation worries. It fell back the same day, but it sets up an awkward backdrop for the Fed, which is expected to raise rates for the first time in three years.</div></article>
+<article class="card"><div class="meta">Morning Brew · Tue Sep 15</div><div class="body">The Supreme Court refused to let the Trump administration restrict mail-in voting before the midterms, leaving a lower court&#x27;s block in place. Alito and Thomas dissented. States that have already started mailing ballots can carry on under the old rules.</div></article>
+<article class="card"><div class="meta">Entrackr · Tue Sep 15</div><div class="body">Flam, a Bengaluru startup building AI-powered interactive content, raised a $40 million Series B led by QED Investors. Datadog&#x27;s Olivier Pomel and Shah Rukh Khan were among the others in the round.</div></article>
+<article class="card"><div class="meta">Entrackr · Tue Sep 15</div><div class="body">Indian wealthtech startups pulled in about $317 million across 26 deals in the first eight months of 2026, though only four of those rounds crossed $30 million.</div></article>
+<article class="card"><div class="meta">Entrackr · Tue Sep 15</div><div class="body">Novastar Partners put an undisclosed sum into AJVC, Aviral Bhatnagar&#x27;s pre-seed fund.</div></article>
+<article class="card"><div class="meta">ByteByteGo · Tue Sep 15</div><div class="body">A clear explainer on why LLMs seem to remember you but don&#x27;t. The model itself keeps nothing between requests. The app around it stores the history, summarises old turns and re-sends what&#x27;s relevant, so the &quot;memory&quot; is really a database plus some clever packing of the context window.</div></article>
+<article class="card"><div class="meta">Lenny&#x27;s Newsletter · Tue Sep 15</div><div class="body">Tom Orbach collected 64 growth tactics that actually worked, sorted by what you&#x27;re trying to do. The opener is a fake online toy store his cloud security startup built for CISOs, selling things like a panic button and blindfolds for the legal team. It cost almost nothing, went viral on Reddit, pulled 46,000 visitors in a day, and generated hundreds of qualified enterprise leads.</div></article>
+</main>
+<footer>tap a card to open its article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    if(c.dataset.url) c.addEventListener('click',()=>window.open(c.dataset.url,'_blank'));
+  });
+</script>
+</body>
+</html>
