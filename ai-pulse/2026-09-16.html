@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card[data-url]{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card[data-url]:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:14px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+  .hint{font-size:10.5px;color:var(--muted)}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">25 stories</div></header>
+<main>
+<article class="card" data-url="https://techcrunch.com/2026/09/15/we-dont-need-ai-regulation-leave-safety-to-us-nvidias-jensen-huang-says/"><div class="meta">Industry &amp; Business · Wed Sep 16</div><div class="body">Nvidia&#x27;s Jensen Huang told the Dreamforce crowd that AI doesn&#x27;t need new regulation, because safety is an engineering problem rather than a legal one. His argument is that each company should just hold a product back until it&#x27;s confident: &quot;If we&#x27;re not confident about the safety of the products, don&#x27;t release it.&quot; It&#x27;s a convenient position for the company selling the shovels, and it lands the same week three big labs are quietly talking about slowing down.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/JustVugg/colibri"><div class="meta">Open Source &amp; Tools · Wed Sep 16</div><div class="body">Colibri is the trending repo of the day at 34.1K stars, and the pitch is genuinely wild: run frontier mixture-of-experts models on hardware you already own. It&#x27;s pure C with no dependencies, and it treats disk, RAM and VRAM as one memory hierarchy so experts stream in from storage instead of needing to fit in VRAM. Kimi K3 at 2.8 trillion parameters runs on a workstation. It&#x27;s slow (roughly 1 token/sec on a single RTX 5070 Ti, 6-7 on a six-GPU box), but &quot;slow&quot; beats &quot;impossible&quot;.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/decolua/9router"><div class="meta">Open Source &amp; Tools · Wed Sep 16</div><div class="body">9router sits between your coding tool and 40+ model providers, automatically falling back to cheaper or free models and claiming 20-40% token savings. Works with Claude Code, Cursor, Copilot, Codex, Gemini, Cline and friends.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/TauricResearch/TradingAgents"><div class="meta">Open Source &amp; Tools · Wed Sep 16</div><div class="body">TradingAgents, a multi-agent framework for trading research, is trending after the team fully open-sourced it.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1whnl3i/write_up_on_building_and_improving_reliability_of/"><div class="meta">Community &amp; Opinion · Wed Sep 16</div><div class="body">Someone spent five months building agentic harnesses and wrote up everything they learned about making them reliable, plus released the dataset from the work. Rare to get the failure modes documented this honestly.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://huggingface.co/blog/ibm-research/altk-evolve-consistency"><div class="meta">Community &amp; Opinion · Wed Sep 16</div><div class="body">Related question from IBM Research: your agent passed the eval once, but will it pass again? They&#x27;re arguing consistency across runs deserves to be a first-class metric, not an afterthought.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1whln8v/vistw_a_traditional_chinese_vision_benchmark_that/"><div class="meta">Community &amp; Opinion · Wed Sep 16</div><div class="body">VisTW is a Traditional Chinese vision benchmark that checks whether your vision model can actually read Taiwanese signage, forms and documents. A good reminder that most VLM benchmarks quietly assume English.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/"><div class="meta">Models &amp; Research · Tue Sep 15</div><div class="body">Google shipped Gemini 3.8 Live and a beefier variant called Live Extended Thinking, both speech-to-speech models in roughly the same shape as OpenAI&#x27;s GPT-Live family. The interesting bits are practical: it handles 97 languages and switches mid-conversation on its own, it can keep talking while it thinks (including saying things like &quot;let me check that&quot; instead of going silent), and it can run background tasks without dropping the thread. The Extended Thinking version took the top spot on Artificial Analysis&#x27; speech-to-speech index at 82.6. Available now in the Gemini API and AI Studio; Simon Willison already built a no-library web UI for poking at it.  (also in Simon Willison&#x27;s blog)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/15/salesforce-and-nvidias-new-reasoning-model-is-everything-the-ai-labs-should-fear/"><div class="meta">Models &amp; Research · Tue Sep 15</div><div class="body">Salesforce and Nvidia released Koa, a reasoning model trained specifically for sales, marketing and support work, built on Nvidia&#x27;s open-weight Nemotron. The point is to stop routing every enterprise task out to Claude or ChatGPT: same job, fewer tokens, weights you can host. If this pattern catches on, the frontier labs lose a big chunk of boring, high-volume enterprise traffic. Salesforce also announced Claudeforce the same day, so it&#x27;s hedging.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1wh5fpa/apple_foundation_models_local_ai_natively_on/"><div class="meta">Models &amp; Research · Tue Sep 15</div><div class="body">Apple quietly made its on-device Foundation Models available natively on macOS 27. You can now just type `fm chat` in a terminal and talk to a local model with no install step.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1wh5elt/cut_qwen3827b_reasoning_tokens_by_40_38/"><div class="meta">Models &amp; Research · Tue Sep 15</div><div class="body">A fine-tune called Swift-Qwen3.8-27B cuts reasoning tokens by about 40% while holding benchmark scores. If you&#x27;re paying for thinking tokens, that&#x27;s real money.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.technologyreview.com/2026/09/15/1144129/ai-models-need-more-data-about-biology-and-openai-is-paying-to-create-it/"><div class="meta">Models &amp; Research · Tue Sep 15</div><div class="body">OpenAI is paying labs to generate new biology data, because the models have run out of good training material in the field. One idea in play: buy up the regulatory filings and safety data of bankrupt biotech companies, which is information that normally just evaporates.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/15/openai-anthropic-google-have-been-in-talks-on-ai-safety-for-weeks/"><div class="meta">Industry &amp; Business · Tue Sep 15</div><div class="body">OpenAI confirmed it&#x27;s been in safety talks with Anthropic and Google DeepMind for weeks, discussing how to slow frontier development and set shared standards. One proposal on the table is embedding third-party evaluators inside the companies. Dario Amodei&#x27;s essay kicked this off and Altman, Hassabis and Musk have all publicly backed some version of it, while the White House is calling existential-risk worry a &quot;sick conspiracy against AI&quot;.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/tech/995453/meta-one-subscriptions-ai"><div class="meta">Industry &amp; Business · Tue Sep 15</div><div class="body">Meta launched Meta One, a subscription bundle starting at $7.99/month that mixes expanded AI access with premium features across Facebook, Instagram and WhatsApp. Perks include 48-hour Instagram stories and a &quot;bold follow button&quot;, which tells you how thin the non-AI half of the pitch is.  (also in TechCrunch)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/15/meta-now-lets-ai-agents-handle-the-boring-parts-of-whatsapp-business-setup/"><div class="meta">Industry &amp; Business · Tue Sep 15</div><div class="body">Meta also shipped a WhatsApp Business MCP server so coding agents can do the tedious setup for you: create the business account, verify phone numbers, register for Cloud API, build message templates, test webhooks, check verification status. Works with Claude, Cursor, Codex and ChatGPT.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/15/aeo-startup-profound-hits-unicorn-valuation-raises-180m-series-d-7-months-after-last-round/"><div class="meta">Industry &amp; Business · Tue Sep 15</div><div class="body">Profound, which helps brands figure out how they show up in AI answers, raised a $180M Series D at a $1.8B valuation. That&#x27;s seven months after its Series C.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/15/early-anthropic-hire-former-metr-coo-have-found-a-way-to-rein-in-rogue-ai-agents/"><div class="meta">Industry &amp; Business · Tue Sep 15</div><div class="body">An early Anthropic hire and METR&#x27;s former COO raised $40M to insure AI agents. Their company underwrites the risk that your agent goes off the rails, which is a bet that liability, not benchmarks, is what gates enterprise adoption.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/15/us-data-centers-could-consume-more-natural-gas-than-germany-and-japan-combined-by-2035/"><div class="meta">Industry &amp; Business · Tue Sep 15</div><div class="body">US data centers are on track to burn more natural gas by 2035 than Germany and Japan combined.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/ai-artificial-intelligence/995917/data-center-nyt-midterm-poll-september"><div class="meta">Industry &amp; Business · Tue Sep 15</div><div class="body">The public has noticed, and it is not happy. 61% of likely voters oppose new AI data center construction, with no real split between parties, and the fight has now reached Philadelphia neighborhoods already carrying the scars of heavy industry. Neither party has figured out which side to be on.  (also in TechCrunch)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.technologyreview.com/2026/09/15/1144028/ai-infrastructure-boom-investment-bubble-risk/"><div class="meta">Industry &amp; Business · Tue Sep 15</div><div class="body">MIT Tech Review has a good piece on what happens if the trillion-dollar AI infrastructure bet doesn&#x27;t pay off, walking through the actual economics rather than the vibes.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/15/ai-agents-now-have-a-place-to-snitch/"><div class="meta">Industry &amp; Business · Tue Sep 15</div><div class="body">There&#x27;s now an AI Contact Hotline where agents can anonymously report misbehavior they witness. Yes, really.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/15/the-ai-graveyard-a-running-list-of-projects-and-startups-that-didnt-make-it/"><div class="meta">Industry &amp; Business · Tue Sep 15</div><div class="body">TechCrunch started a running AI graveyard of projects that died or badly missed, from Apple&#x27;s endlessly delayed Siri revamp to OpenAI&#x27;s messy &quot;super app&quot; launch.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.technologyreview.com/2026/09/15/1143936/roundtables-will-ai-really-kill-us-all/"><div class="meta">Community &amp; Opinion · Tue Sep 15</div><div class="body">MIT Tech Review ran a roundtable on whether AI could actually kill us all, unpacking where the extinction fears come from and whether they survive scrutiny. Worth it for the framing, given how many lab CEOs now say this out loud.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1whdgee/voice_acting_arena/"><div class="meta">Community &amp; Opinion · Tue Sep 15</div><div class="body">LAION and TTS Arena launched Voice Acting Arena, a blind head-to-head for AI voice performances. They want listeners to rate them.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1whf7ov/dont_buy_a_9k_rtx_5090_instead/"><div class="meta">Community &amp; Opinion · Tue Sep 15</div><div class="body">Best local-LLM post of the week: don&#x27;t pay $9K for an RTX 5090, fly to Taipei instead. Round-trip from Orlando runs about $1,081, the card is roughly $4,093 there, and you get two weeks in Taiwan out of the deal.</div><div class="hint">Click card to open article ↗</div></article>
+</main>
+<footer>tap a card to open its article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    if(c.dataset.url) c.addEventListener('click',()=>window.open(c.dataset.url,'_blank'));
+  });
+</script>
+</body>
+</html>
