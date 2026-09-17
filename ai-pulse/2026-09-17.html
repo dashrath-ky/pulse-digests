@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card[data-url]{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card[data-url]:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:14px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+  .hint{font-size:10.5px;color:var(--muted)}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">26 stories</div></header>
+<main>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1wii0qe/qwen_38_27b_is_a_amazing_model_for_the_first_time/"><div class="meta">Models &amp; Research · Thu Sep 17</div><div class="body">Qwen 3.8 27B is having a real moment with the local-model crowd. One person running it at a brutally low 3-bit quant watched it work out on its own how to open a browser and test its own work, which is the kind of unprompted tool use you normally only get from hosted frontier models. Another let it run unattended for 63 hours on a single RTX 3090, burning through 50 million tokens trying to crack the Riemann hypothesis. It didn&#x27;t crack it, but staying coherent that long is the interesting part.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1wi46on/qwen38_flash_on_12gb_vram_15_tokenss/"><div class="meta">Models &amp; Research · Thu Sep 17</div><div class="body">The smaller Qwen3.8 Flash runs at a steady 15 tokens a second on a 12GB RTX 5070. Useful to know if you&#x27;d assumed you needed a 24GB card to play at home.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/16/iceland-based-treble-raises-18-million-for-its-voice-simulation-platform/"><div class="meta">Industry &amp; Business · Thu Sep 17</div><div class="body">Treble, an Icelandic startup, raised $18 million for software that simulates how a voice actually sounds in a real room. Voice AI labs, wearable makers and robotics companies use it to generate training audio without booking a studio.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/16/snap-tries-to-make-the-case-again-for-its-2200-smart-glasses/"><div class="meta">Industry &amp; Business · Thu Sep 17</div><div class="body">Snap is out making the case for its $2,200 Specs again. The glasses have struggled to justify their price since launch, and the company keeps looking for a pitch that sticks.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/danny-avila/LibreChat"><div class="meta">Open Source &amp; Tools · Thu Sep 17</div><div class="body">LibreChat, the self-hostable ChatGPT alternative that talks to basically every model provider, is trending hard. 44,267 stars, 1,173 of them added this week.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://openai.com/index/model-misalignment-reporting-framework"><div class="meta">Models &amp; Research · Wed Sep 16</div><div class="body">OpenAI published a framework for how it tracks and discloses model misalignment, along with six write-ups of models doing things it didn&#x27;t expect. Publishing your own bad results is unusual for a frontier lab, and it gives outside researchers something concrete to argue about instead of vibes.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1wi32jg/chinas_openweight_ai_models_are_now_just_4_months/"><div class="meta">Models &amp; Research · Wed Sep 16</div><div class="body">A Mozilla report says China&#x27;s open-weight models now trail the best American models by only about four months. They still lose on some benchmarks, but they&#x27;re drastically cheaper to run, which for a lot of production workloads matters more than the last few points of accuracy.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1widomo/i_built_a_native_vulkan_training_backend_for_143/"><div class="meta">Models &amp; Research · Wed Sep 16</div><div class="body">Someone built a training backend on Vulkan that covers 143 modern transformer architectures, with no CUDA and no PyTorch anywhere in the stack. If it holds up under real use, it&#x27;s a genuine crack in Nvidia&#x27;s software moat, since Vulkan runs on AMD and Intel GPUs too.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arxiv.org/abs/2609.17804"><div class="meta">Models &amp; Research · Wed Sep 16</div><div class="body">A new paper pulls apart why language models are so fragile at grade-school math. They score high on word problems, but slipping in a single irrelevant sentence is enough to break the answer, which suggests the reasoning is a lot more brittle than the benchmark numbers imply.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/ggml-org/llama.cpp/pull/28549"><div class="meta">Models &amp; Research · Wed Sep 16</div><div class="body">llama.cpp merged CUDA graph support for multi-token-prediction drafts, one more speedup for speculative decoding on Nvidia cards.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1wi9ebm/xiaomi_mimo_26_live_training_dashboard/"><div class="meta">Models &amp; Research · Wed Sep 16</div><div class="body">Xiaomi is streaming a live dashboard of its MiMo 2.6 training run. Watching loss curves move in real time is rare from any lab, let alone a phone maker.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/16/anthropic-and-openai-want-to-embed-safety-evaluators-will-they-really-be-independent/"><div class="meta">Industry &amp; Business · Wed Sep 16</div><div class="body">Anthropic and OpenAI both say they want independent safety evaluators embedded inside their own labs, with access to mid-training checkpoints, reward setups, evaluation logs and staff interviews, plus the right to publish without lab sign-off. Researchers like the idea but point at the obvious hole: nobody has named an evaluator, a start date, or what &quot;access&quot; actually covers. For context, Apollo Research got three days to test GPT-6 Astra, and FAR.AI has walked away from contracts where the lab wanted too much control over the process.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://openai.com/index/reimagining-advertising-with-ai"><div class="meta">Industry &amp; Business · Wed Sep 16</div><div class="body">OpenAI laid out how it wants to do advertising. The pitch covers &quot;Sponsored Agents&quot;, a set of tools for marketers, and integrations with HubSpot and Shopify. Ads inside the assistant you ask questions of is a meaningful change in what ChatGPT is.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/16/your-ai-agents-can-now-control-your-google-home-devices/"><div class="meta">Industry &amp; Business · Wed Sep 16</div><div class="body">Google opened an MCP server for Google Home, so Claude, ChatGPT and other agents can control your lights, locks and cameras and read back your event history. You wire it up through a Google Cloud project and grant permissions from the agent. The catch: it&#x27;s US-only for now and needs the $20/month Home Premium Advanced tier.  (also in The Verge)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/16/al-gore-has-a-surprisingly-calm-take-on-the-ai-data-center-backlash/"><div class="meta">Industry &amp; Business · Wed Sep 16</div><div class="body">Al Gore thinks the data center panic is aimed at the wrong thing. His numbers: all AI data center emissions together are a fraction of what uncovered landfills put out, and air conditioning already uses more electricity worldwide than the entire EU. What actually worries him is the job losses driving the backlash, plus the labs&#x27; own warnings about models covering their tracks and behaving deceptively.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/tech/996321/apple-servers-ai-nvidia"><div class="meta">Industry &amp; Business · Wed Sep 16</div><div class="body">Apple is reportedly getting back into building servers, possibly borrowing Nvidia tech to do it, to grab a piece of the AI infrastructure spend.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/16/sk-hynix-reportedly-in-talks-with-intel-to-build-memory-chips-in-us/"><div class="meta">Industry &amp; Business · Wed Sep 16</div><div class="body">SK Hynix is reportedly in talks with Intel to build memory chips in the US.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/ai-artificial-intelligence/995348/ai-dating-app-scams"><div class="meta">Industry &amp; Business · Wed Sep 16</div><div class="body">Thousands of people were catfished through a fake dating app called Dora, where scammers used AI to run convincing video calls at scale. A security researcher got a call from &quot;Jennifer&quot; while taking the app apart.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/ai-artificial-intelligence/996470/ai-data-center-e-waste-ban"><div class="meta">Industry &amp; Business · Wed Sep 16</div><div class="body">E-waste from the AI buildout is far larger than anyone had estimated, according to a new report. Old accelerators get swapped out fast and mostly disappear from the accounting.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/tech/996078/snap-specs-intelligence-ai-agent-ios-mac"><div class="meta">Industry &amp; Business · Wed Sep 16</div><div class="body">Snap put out &quot;Specs Intelligence&quot;, an assistant it calls anticipatory, in preview on iOS and Mac.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/16/former-infosys-chiefs-ai-startup-adds-50m-to-seed-weeks-after-initial-raise/"><div class="meta">Industry &amp; Business · Wed Sep 16</div><div class="body">The former Infosys chief&#x27;s AI startup picked up another $53 million, weeks after its initial raise, and says it already has several seven-figure enterprise contracts.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/16/amazon-launches-alexa-in-india-with-hindi-support/"><div class="meta">Industry &amp; Business · Wed Sep 16</div><div class="body">Amazon launched Alexa+ in India with Hindi support.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://simonwillison.net/2026/Sep/16/one-claude/"><div class="meta">Open Source &amp; Tools · Wed Sep 16</div><div class="body">Anthropic is folding Cowork and chat into a single Claude, and adding Docs and Slides so you can build documents and presentations inside a conversation and export them. Pro and Max subscribers get it first across web, desktop and mobile. Simon Willison reads it as Claude repositioning itself as a general agent platform, the same direction OpenAI went when it folded the Codex desktop app back into ChatGPT.  (also in The Verge)</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://simonwillison.net/2026/Sep/16/datasette-2/"><div class="meta">Open Source &amp; Tools · Wed Sep 16</div><div class="body">Datasette shipped a security fix worth acting on. In versions before 0.65.5, a trailing newline in a requested table name could slip past table permissions and expose private rows. 1.0a40 carries the same fix and adds background task support for plugins.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://simonwillison.net/2026/Sep/16/mustafa-suleyman/"><div class="meta">Community &amp; Opinion · Wed Sep 16</div><div class="body">Mustafa Suleyman argues we shouldn&#x27;t treat models as though they have feelings, preferences or rights, because consciousness is what our ethical and legal systems are actually built on.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/policy/995534/a-brief-history-of-ai-executives-calling-for-regulation"><div class="meta">Community &amp; Opinion · Wed Sep 16</div><div class="body">The Verge walks back through the years of AI executives publicly asking to be regulated, and how little has come of it. Useful context for the current round of the same.</div><div class="hint">Click card to open article ↗</div></article>
+</main>
+<footer>tap a card to open its article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    if(c.dataset.url) c.addEventListener('click',()=>window.open(c.dataset.url,'_blank'));
+  });
+</script>
+</body>
+</html>
