@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card[data-url]{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card[data-url]:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:14px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+  .hint{font-size:10.5px;color:var(--muted)}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">18 stories</div></header>
+<main>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1wlzvcx/zcode_is_now_open_source/"><div class="meta">Models &amp; Research · Sun Sep 21</div><div class="body">Z.ai open-sourced ZCode, its coding agent, after fixing the security problems people had flagged in it. The repo ships with its design docs, so you can actually see how the agent is put together rather than just running the binary. Worth a look if you&#x27;re building your own coding agent and want a reference implementation.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1wm1gab/miniagi_dynamically_grown_530m_params_currently/"><div class="meta">Models &amp; Research · Sun Sep 21</div><div class="body">Someone trained a 530M-parameter model from scratch on a laptop with 8GB of VRAM, and the twist is that the model grows itself as it learns. It reads data one sample at a time instead of in big batches, which is closer to how a person learns than how models are normally trained. The name (mini-AGI) is overselling it, but the engineering is a genuinely interesting hobbyist result.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1wm0cn0/convaiinnovationslaya_multilingual/"><div class="meta">Models &amp; Research · Sun Sep 21</div><div class="body">Convai Innovations released Laya, an Apache-2.0 multilingual model built to make fast, instinctive decisions rather than long chains of reasoning. It generates its whole answer at once instead of word by word, which makes it much quicker for routing and classification jobs.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arxiv.org/abs/2609.20971"><div class="meta">Models &amp; Research · Sun Sep 21</div><div class="body">A new attention paper tackles the part of long-context inference that actually hurts: the prefill, where the model reads your entire prompt before saying anything. RBS-Attention limits how far each token looks around itself, which cuts the cost without a full rewrite of the attention mechanism.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arxiv.org/abs/2609.21096"><div class="meta">Models &amp; Research · Sun Sep 21</div><div class="body">Researchers found you can spot LLM hallucinations by looking at the shape of information flow inside the model&#x27;s attention, rather than at the text it produces. When parts of the model stop sharing context properly, that pattern shows up before the wrong answer does.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/cline/cline"><div class="meta">Open Source &amp; Tools · Sun Sep 21</div><div class="body">Cline, the open-source coding agent, now runs as a native Mac and Windows app and can go fully headless for CI pipelines. You can point it at any folder, schedule recurring jobs, and plug in your own models and MCP servers. 68K+ stars.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://github.com/cilium/cilium"><div class="meta">Open Source &amp; Tools · Sun Sep 21</div><div class="body">Cilium is trending again. It&#x27;s the eBPF-based networking and security layer for Kubernetes that gives you a flat network across multiple clusters. 25K+ stars.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://simonwillison.net/2026/Sep/20/llm-keys-ui/"><div class="meta">Open Source &amp; Tools · Sun Sep 21</div><div class="body">Simon Willison shipped a small LLM plugin that gives you a web UI for managing API keys. It came out of a real annoyance: he&#x27;s been driving coding agents on remote machines from his phone, and typing keys into a terminal that way is miserable.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://simonwillison.net/2026/Sep/20/voxium/"><div class="meta">Community &amp; Opinion · Sun Sep 21</div><div class="body">A quote making the rounds: an engineer half a month into a job at a big company says every spec, ticket, test, and PRD there is written by Claude Code, and nobody on the team likes it. The complaint isn&#x27;t that the output is bad, it&#x27;s that nobody understands the system anymore. Worth reading if your org is going the same way.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1wlt577/speedup_kimi_k328t_on_a_16x_gb10_cluster_30_ts/"><div class="meta">Community &amp; Opinion · Sun Sep 21</div><div class="body">A Redditor got a 16x GB10 cluster running Moonshot&#x27;s full 2.8-trillion-parameter Kimi K3 at 30 tokens/sec for coding, peaking at 136 with concurrent requests. That&#x27;s a frontier-scale model running on hardware you can buy.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.reddit.com/r/LocalLLaMA/comments/1wm2umu/where_are_the_current_gpu_vram_sweet_spots/"><div class="meta">Community &amp; Opinion · Sun Sep 21</div><div class="body">The VRAM sweet-spot thread is a good pulse check on what local hardware is worth buying right now. The 32GB AMD R9700 gets a lot of love for running 27B-class models at usable speeds.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/ai-artificial-intelligence/997867/trump-ai-force-ai-czar"><div class="meta">Industry &amp; Business · Sat Sep 20</div><div class="body">Trump says he wants to create an &quot;AI Force&quot; and appoint an AI czar to run it. He announced it on Truth Social, with no detail on what the thing would actually do, and paired it with a claim that data centers are good for the communities they land in. It comes as pushback against data-center buildouts is growing on both the left and right.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/ai-artificial-intelligence/997936/nvidia-jensen-huang-ai-fears-overblown"><div class="meta">Industry &amp; Business · Sat Sep 20</div><div class="body">Jensen Huang says there is a &quot;0% chance&quot; AI ends the world. He&#x27;s the person with the most to gain from the AI buildout continuing, which is roughly the reaction the claim has gotten from researchers who&#x27;ve spent decades on the risk question.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://techcrunch.com/2026/09/20/world-model-companies-are-keeping-a-lot-of-secrets/"><div class="meta">Industry &amp; Business · Sat Sep 20</div><div class="body">The world-model startups (Yann LeCun&#x27;s AMI Labs, Fei-Fei Li&#x27;s World Labs) are sitting on huge funding and telling almost nobody what they&#x27;re building. Even the companies selling them training data say they&#x27;re in the dark: &quot;I wish they would tell us more. We could build more useful data if we knew what they were working on.&quot; The secrecy looks deliberate, since the moment a commercial path is visible, OpenAI and Anthropic pile in.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arstechnica.com/security/2026/09/an-undercover-google-analyst-infiltrated-a-notorious-supply-chain-hacking-gang/"><div class="meta">Models &amp; Research · Sat Sep 20</div><div class="body">Google caught a break in the open-source supply chain fight: one of its analysts spent time undercover inside TeamPCP, the group that poisoned hundreds of open-source packages with malware and stole maintainer accounts to keep the chain going. Two alleged members were arrested in Australia last month. If you pull dependencies, this is the attack shape to know.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://www.theverge.com/science/997834/ai-cyberattack-energy-critical-infrastructure"><div class="meta">Models &amp; Research · Sat Sep 20</div><div class="body">Security researchers point out that the biggest cyber risk to power grids is still people, not rogue AI. The infrastructure was already badly exposed before anyone worried about models attacking it, and the AI angle is mostly a distraction from unpatched basics.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arxiv.org/abs/2609.21157"><div class="meta">Models &amp; Research · Sat Sep 20</div><div class="body">A paper asks whether LLM agents design better chips when you let them work at a higher level of abstraction instead of wrangling low-level hardware description code. Early answer looks like yes, which matters because chip design is one of the few places where an agent&#x27;s mistakes are cheap to catch and expensive to miss.</div><div class="hint">Click card to open article ↗</div></article>
+<article class="card" data-url="https://arxiv.org/abs/2609.20974"><div class="meta">Models &amp; Research · Sat Sep 20</div><div class="body">New MoE work couples the router to the attention mechanism, so the model picks experts based on what the token is actually attending to rather than the token alone. Small idea, and the kind of thing that quietly shows up in the next generation of open models.</div><div class="hint">Click card to open article ↗</div></article>
+</main>
+<footer>tap a card to open its article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    if(c.dataset.url) c.addEventListener('click',()=>window.open(c.dataset.url,'_blank'));
+  });
+</script>
+</body>
+</html>
