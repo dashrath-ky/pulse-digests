@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card[data-url]{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card[data-url]:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:14px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+  .hint{font-size:10.5px;color:var(--muted)}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">6 stories</div></header>
+<main>
+<article class="card"><div class="meta">Finshots · Mon Sep 21</div><div class="body">India&#x27;s market regulator SEBI is running a pilot where corporate bonds live on a blockchain instead of in the usual pile of separate databases. REC, L&amp;T and IIFL have already raised over ₹1,000 crore this way. The pitch is that interest payouts fire automatically via smart contracts, and the bond and the money change hands at the same instant, so a trade can&#x27;t half-settle and leave you exposed if the other side blows up. Nothing changes for the buyer, the depository still holds the keys for you.</div></article>
+<article class="card"><div class="meta">Morning Brew · Sun Sep 20</div><div class="body">Gaming is now bigger than music and movies combined, over 3.5 billion players, but you own less of what you buy than ever. Sony goes digital-only for new PlayStation games from 2028 and GTA VI will be too. A proposed class action says Sony isn&#x27;t upfront that you&#x27;re buying a revocable licence, not a game.</div></article>
+<article class="card"><div class="meta">Morning Brew · Sun Sep 20</div><div class="body">Cloud gaming is the next squeeze. Take-Two&#x27;s CEO expects a surge as AI demand pushes console prices up, but streaming turns gaming into a subscription, and Microsoft has already capped monthly Xbox Game Pass streaming hours because the cost scales with how much people play. Ads inside games are the likely release valve, Xbox started testing ad-supported streaming in July.</div></article>
+<article class="card"><div class="meta">Morning Brew · Sun Sep 20</div><div class="body">Hollywood finally cracked video game adaptations. The Super Mario Galaxy Movie is the fifth-biggest film of the year at over $1 billion worldwide, A Minecraft Movie did $960 million last year, and Fallout and The Last of Us proved it works on TV too. It runs the other way now as well, Paramount opened its own game studio in June to turn its films into games.</div></article>
+<article class="card"><div class="meta">Morning Brew · Sun Sep 20</div><div class="body">AI app stores are letting people vibe code their own small games. Meta&#x27;s Pocket publishes them to a scrollable feed and Roblox&#x27;s Build lets you make basic games from your phone. Nobody&#x27;s prompting their way to Red Dead Redemption yet.</div></article>
+<article class="card"><div class="meta">Lenny&#x27;s Newsletter · Sun Sep 20</div><div class="body">Peter Sellis, Snapchat&#x27;s first PM and later Discord&#x27;s head of product, did a 90 minute interview with nothing left to promote and no comms team minding him. He gets into why the median PM is bad, why Snap&#x27;s ads business never lived up to its potential, and why growth nearly always comes out of the core product rather than some side bet.</div></article>
+</main>
+<footer>tap a card to open its article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    if(c.dataset.url) c.addEventListener('click',()=>window.open(c.dataset.url,'_blank'));
+  });
+</script>
+</body>
+</html>
