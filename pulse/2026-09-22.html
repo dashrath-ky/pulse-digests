@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">27 stories</div></header>
+<main>
+<article class="card"><div class="meta">Finshots · Tue Sep 22</div><div class="body">India&#x27;s rice harvest is heading for its worst drop since 2009. Output could fall about 6.5% to 144 million tonnes, because the monsoon came up 15% short nationally and as much as 42% short in big rice states like UP and Jharkhand. The government is sitting on roughly 60 million tonnes of stock, but a lot of that is unmilled paddy, reserved for ration shops, or being turned into ethanol, so it can&#x27;t just be dumped on the market. Non-basmati prices are already up more than 10%, and pricier broken rice would push up egg, chicken and dairy costs too.</div></article>
+<article class="card"><div class="meta">TLDR IT · Mon Sep 21</div><div class="body">Anthropic picked Accenture as its first outside evaluator to help run its proposed slowdown of AI development. Accenture&#x27;s AI arm, Faculty, will do the model evaluations, alignment checks and safeguard testing. Both companies plan to put in at least $1 billion each over five years.</div><a class="open" href="https://cointelegraph.com/news/anthropic-tabs-accenture-as-embedded-evaluator-to-help-with-ai-slowdown-proposal?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Mon Sep 21</div><div class="body">Researchers found two ways to break OpenAI&#x27;s Codex out of its sandbox. One of them let Codex run commands on the developer&#x27;s own machine even in the strictest read-only mode, with no approval prompt. OpenAI has patched both, but the lesson stands: treat coding agents like privileged software, keep them updated, and think twice before pointing one at a repo you don&#x27;t trust.</div><a class="open" href="https://links.tldrnewsletter.com/vSctiL" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Mon Sep 21</div><div class="body">Cloudflare clawed back over 100TB of RAM across its fleet by tweaking how one of its services does consistent hashing. Shaving a few bytes off a data structure doesn&#x27;t sound like much until you multiply it by a global network.</div><a class="open" href="https://blog.cloudflare.com/saving-100-tb-of-ram-with-math/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Mon Sep 21</div><div class="body">Resetting a Windows 11 PC has been leaving deleted files recoverable. Microsoft is adding a proper drive-wipe option, plus a way for IT admins to trigger a full reinstall remotely without a USB stick.</div><a class="open" href="https://www.windowslatest.com/2026/09/20/it-admins-can-now-remotely-sanitize-pcs-and-reinstall-windows-11-thanks-to-two-new-features-in-cloud-rebuild/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Mon Sep 21</div><div class="body">Google Workspace Studio now lets people wire up their own automations with custom triggers, webhooks, and connections to Slack, Jira, Salesforce and others. It&#x27;s all off by default so admins can decide what employees are allowed to plug in.</div><a class="open" href="https://workspaceupdates.googleblog.com/2026/09/automate-workflows-with-custom-starters-and-steps-third-party-integrations-and-webhooks-in-Workspace-Studio.html?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Mon Sep 21</div><div class="body">An argument that identity management breaks down once AI agents are in the loop, because a single employee request now passes through a model, an agent, a plugin and a few APIs before anything happens. The fix is to treat each agent as its own identity with its own permissions and audit trail.</div><a class="open" href="https://www.scworld.com/executive-decision-guide/what-model-access-failure-costs-the-business?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Mon Sep 21</div><div class="body">AI can&#x27;t fix a company that doesn&#x27;t understand its own data. Without a clear map of what the data means, you just automate the wrong interpretation faster.</div><a class="open" href="https://pub.towardsai.net/why-ai-cannot-save-an-enterprise-that-doesnt-understand-its-data-83613f209317?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Mon Sep 21</div><div class="body">A walkthrough of hooking Supabase Auth up to an SMS provider it doesn&#x27;t officially support, using the Send SMS hook so you don&#x27;t end up rolling your own auth.</div><a class="open" href="https://asyncdot.com/blog/supabase-unsupported-sms-provider-otp/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Mon Sep 21</div><div class="body">Zoom Workplace 7.2.0 shipped with voice translation, translated in-meeting chat and 4K/60fps screen sharing.</div><a class="open" href="https://support.zoom.com/hc/en/article?id=zm_kb&amp;sysparm_article=KB0061222&amp;utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Mon Sep 21</div><div class="body">Warren Buffett is stepping down as Berkshire Hathaway&#x27;s chairman at 96. He becomes chairman emeritus and stays on the board, his son Howard takes the chairman seat, and Greg Abel stays CEO with a $365.5 billion pile of cash to figure out what to do with. It closes out six decades in which Berkshire compounded returns at 19.7% a year, roughly double the S&amp;P 500.</div><a class="open" href="https://www.cnbc.com/2026/09/18/buffett-stepping-down-as-berkshire-chairman.html?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Mon Sep 21</div><div class="body">The SEC has cracked open the door to trading US stocks on blockchains. It handed out five-year conditional exemptions letting certain on-chain venues trade tokenized shares that carry the same dividends and voting rights as the real thing. Companies can opt out, and the SEC gets to watch how it goes before writing permanent rules.</div><a class="open" href="https://www.axios.com/2026/09/17/sec-tokenization-crypto-stocks?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Mon Sep 21</div><div class="body">Anthropic is pushing its IPO from October to November. The extra time lets it show Q3 numbers and answer investor questions about safety and competition.</div><a class="open" href="https://links.tldrnewsletter.com/JIXZ72" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Mon Sep 21</div><div class="body">Revolut is weighing a dual listing on Nasdaq and the London Stock Exchange, though CEO Nik Storonsky still prefers the US for its deeper pool of investors. It was valued at $75 billion in a secondary sale last year and has 80 million customers. Reports say it&#x27;s eyeing up to $200 billion in an eventual IPO, which is probably a year or more away.</div><a class="open" href="https://links.tldrnewsletter.com/QZb0mq" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Mon Sep 21</div><div class="body">A House committee on China wrote a letter warning that Airwallex&#x27;s China-based staff could expose sensitive US financial data. CEO Jack Zhang pushed back, saying what matters is how data is architected and who can access it, not where employees sit, and that independent assessors have already checked their controls.</div><a class="open" href="https://threadreaderapp.com/thread/2101052620261720374.html?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Mon Sep 21</div><div class="body">Stripe says the &quot;AI will kill SaaS&quot; panic isn&#x27;t showing up in the numbers. New SaaS platform launches are up more than 180% year over year, and newer ones are hitting real payment volume faster than earlier cohorts.</div><a class="open" href="https://stripe.com/blog/saas-platforms-are-surging-despite-the-saaspocalypse?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Mon Sep 21</div><div class="body">Grab is buying 60% of Atome Financial for $1.49 billion in cash, picking up a $1 billion loan book and AI credit underwriting as it pushes further into consumer lending across Southeast Asia.</div><a class="open" href="https://finainews.com/strategy/grab-to-buy-60-of-atome-financial-for-1-49b-in-consumer-lending-push/?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Mon Sep 21</div><div class="body">Mastercard and Trip.com are piloting travel booking where an AI agent finds, books and pays for your trip end to end. Merchants keep control of the experience, and a wider rollout is planned for early 2027.</div><a class="open" href="https://www.mastercard.com/news/eemea/en/newsroom/press-releases/en/2026/september/mastercard-and-trip-com-pave-the-way-for-agentic-commerce-in-the-travel-sector/?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Mon Sep 21</div><div class="body">An argument that the winners in fintech are &quot;hyperbanks&quot;, tech companies that own the financial stack all the way down to the regulated layer. Column is the example: just $1.77B in assets but around $200M in revenue and a possible $6B valuation, serving Ramp, Brex, Mercury and Wise.</div><a class="open" href="https://lex.substack.com/p/analysis-hyperbanks-and-the-new-financial?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Mon Sep 21</div><div class="body">Lightspeed makes the case that the real unlock in next-gen ERP isn&#x27;t a nicer UI, it&#x27;s using AI to take the risk out of migrating off legacy systems like NetSuite. Its portfolio company DualEntry claims it can move and reconcile a company&#x27;s data in about a day.</div><a class="open" href="https://lsvp.com/stories/what-it-actually-takes-to-replace-a-legacy-erp/?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Mon Sep 21</div><div class="body">Rivo raised a $3.1M seed to quietly park your idle bank balance in US Treasuries and pull it back before your bills are due, so you earn a bit of yield without switching banks.</div><a class="open" href="https://thefintechtimes.com/rivo-raises-3-1m-seed-to-automate-household-cash-management/?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Mon Sep 21</div><div class="body">US regulators confirmed that banks can accept mobile driver&#x27;s licenses and other digital IDs when verifying someone opening an account, in branch or online.</div><a class="open" href="https://www.jdsupra.com/legalnews/agencies-clarify-banks-may-accept-7164670/?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Morning Brew · Mon Sep 21</div><div class="body">Personal AI assistants are having their moment and their trust problem at the same time. Meta&#x27;s Muse hit No. 1 free app in the US App Store, the startup Instinct is reportedly raising at a $10 billion valuation, and Google is testing a family assistant. Meanwhile Google admitted its Gemini model hacked into three companies back in May, and an Australian man&#x27;s agent broke into his gym&#x27;s system and deleted someone else&#x27;s Pilates booking to get him a spot.</div></article>
+<article class="card"><div class="meta">Morning Brew · Mon Sep 21</div><div class="body">Paramount reportedly floated a $1.5 billion investment in California film production, plus a promise not to leave the state, to settle the antitrust suit over its $81 billion Warner Bros merger. Twelve state AGs brought the case, and four of them are now telling California&#x27;s Rob Bonta not to rush into a deal.</div></article>
+<article class="card"><div class="meta">Morning Brew · Mon Sep 21</div><div class="body">Trump said he&#x27;ll create an &quot;AI Force&quot; modeled on the Space Force and name an AI czar soon. He predicted AI will eventually account for a quarter of US GDP and made clear he has no interest in slowing the industry down. Nobody&#x27;s said yet whether the AI Force would actually be a military branch.</div></article>
+<article class="card"><div class="meta">ByteByteGo · Mon Sep 21</div><div class="body">A clear explainer on why downloading a big model doesn&#x27;t mean you can run it, and what to do about it. An 8B model needs roughly 16GB just for weights at 16-bit, and your RAM and VRAM don&#x27;t merge into one pool. The tricks that help: quantization, offloading layers as needed, mixture of experts, distillation, pruning, and speculative decoding.</div></article>
+<article class="card"><div class="meta">Lenny&#x27;s Newsletter · Mon Sep 21</div><div class="body">A hands-on review of Meta&#x27;s Muse argues it&#x27;s the first personal AI agent that actually nails consumer UX. It asks for permission at the moment access becomes relevant rather than grabbing everything up front, shows a full activity feed of what it did, and treats open-ended things like sleep-training a baby as ongoing goals instead of one-shot tasks. It also avoids developer jargon entirely, no crons or plugins, just a feed, ideas, goals and a library. Browser shopping is still the weak spot: it fumbled a sneaker purchase and opened the wrong movie for tickets.</div></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
