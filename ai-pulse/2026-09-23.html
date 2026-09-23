@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">26 stories</div></header>
+<main>
+<article class="card"><div class="meta">Models &amp; Research · Wed Sep 23</div><div class="body">A new paper introduces Lean Pool, an archive of formalized math proofs that AI agents grow and maintain on their own. It&#x27;s a concrete example of agents doing long-running work where every result can be checked.</div><a class="open" href="https://arxiv.org/abs/2609.25199" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Wed Sep 23</div><div class="body">Researchers ran 42 agent tasks three times each and found agents often solve the same task a different way every time. Their fix is to let reusable skills harden into &quot;habits&quot; for repeat work, which is relevant if you write skills for Claude Code or similar tools.</div><a class="open" href="https://arxiv.org/abs/2609.25299" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Wed Sep 23</div><div class="body">Another paper finds that when you clarify something mid-conversation, LLMs often keep acting on the original wrong assumption. The authors trace it to how models update what they believe, which a bigger context window doesn&#x27;t help with.</div><a class="open" href="https://arxiv.org/abs/2609.25337" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Sep 23</div><div class="body">Beijing is reportedly investigating DeepSeek and Moonshot AI (the company behind Kimi) over possible data leaks to Anthropic. Details are thin and mostly come from rumor threads so far, so treat it as unconfirmed.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wnv85k/deepseek_and_moonshot_ai_face_beijings_probe_over/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Sep 23</div><div class="body">Nathan Lambert&#x27;s written testimony to Congress shows how far Chinese open models have pulled ahead in adoption. Chinese open-weight models now get about twice the downloads of American ones, and they account for over 80% of open-model usage on OpenRouter.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wnu53i/nathan_lamberts_written_congressional_testimony/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Sep 23</div><div class="body">OpenAI is setting up a panel of top mathematicians to advise on how it reviews and announces math results, after a string of claimed breakthroughs turned into a reputational mess.</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/999167/openai-elite-mathematicians-panel" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Wed Sep 23</div><div class="body">Tencent open-sourced BrowserSkill. It lets coding agents like Claude Code, Codex and Cursor drive the browser you&#x27;re already logged into, without taking over the window you&#x27;re working in.</div><a class="open" href="https://github.com/Tencent/BrowserSkill" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Wed Sep 23</div><div class="body">Anthropic published reference agents, skills and data connectors for finance work: investment banking, equity research, private equity and wealth management. You can install them as a Claude Cowork plugin or run them through the Managed Agents API.</div><a class="open" href="https://github.com/anthropics/financial-services" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Tue Sep 22</div><div class="body">OpenAI launched GPT-6 Sol and GPT-6 Luna, and the big story is price. Sol is the mid-tier reasoning model (it sits below Astra) at $2 per million input tokens and $10 output, half what the GPT-5.6 equivalent cost. Luna costs $0.10 in and $0.50 out, one of the cheapest models OpenAI has ever shipped, and Simon Willison has already made it his default for his Datasette tools.  (also in Simon Willison)</div><a class="open" href="https://openai.com/index/introducing-gpt-6-sol-and-luna" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Tue Sep 22</div><div class="body">Anthropic released Claude Opus 5.5, its new top model, and cut output pricing from $25 to $20 per million tokens ($4 input). It matches or beats the larger Fable 5.1 on many benchmarks and scores 58 on Artificial Analysis, 12 points above the best open model. It also writes with less jargon, puts the key point first, and ships with tighter cybersecurity safeguards after recent incidents of AI models being used to hack systems. Sonnet 5.5 and Haiku 5.5 follow in the coming weeks.  (also in The Verge, Simon Willison, r/LocalLLaMA)</div><a class="open" href="https://techcrunch.com/2026/09/22/anthropic-releases-opus-5-5-with-lower-prices-and-fable-level-performance/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Tue Sep 22</div><div class="body">OpenAI also reworked prompt caching for GPT-6. Cache hits happen more often, you can set explicit cache breakpoints and see diagnostics, and cached input on Sol drops to $0.20 per million tokens from $0.40. Agents resend long conversations over and over, so cached tokens are most of their bill and this cut matters as much as the headline prices.</div><a class="open" href="https://openai.com/index/better-prompt-caching-for-gpt-6" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Tue Sep 22</div><div class="body">In an OpenAI case study, research startup Parallel says GPT-6 Astra let its agents put together labor-market reports in half the time and at half the cost of earlier models.</div><a class="open" href="https://openai.com/index/parallel-cuts-time-and-cost-with-astra" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Tue Sep 22</div><div class="body">OpenAI laid out what it thinks rigorous, secure and truly independent third-party safety testing of frontier models should look like.</div><a class="open" href="https://openai.com/index/priorities-principles-third-party-assessments" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Tue Sep 22</div><div class="body">The UK AI Security Institute and EvalEval are working with Hugging Face to make benchmark results reproducible, so a published score can actually be rerun and checked.</div><a class="open" href="https://huggingface.co/blog/evaleval-aisi" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Tue Sep 22</div><div class="body">Meta&#x27;s AI assistant Muse hit #1 on the US App Store, and Meta admitted it was &quot;heavily inspired&quot; by the open-source OpenClaw, down to identical workspace files like SOUL.md. Separately, Meta patched a zero-day in the Muse macOS app that could have let attackers take control of the agent.  (also in The Verge)</div><a class="open" href="https://techcrunch.com/2026/09/22/meta-admits-muses-likeness-to-openclaw-isnt-a-coincidence/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Tue Sep 22</div><div class="body">Microsoft led an industry takedown of a subscription scam service that used an AI chatbot to break into 12,000 Microsoft accounts over a few months.</div><a class="open" href="https://arstechnica.com/security/2026/09/microsoft-disrupts-ai-assisted-platform-that-compromised-12000/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Tue Sep 22</div><div class="body">Snorkel AI raised a $350M Series E at a $3.5B valuation, triple its last one, on the back of booming demand for AI training data.</div><a class="open" href="https://techcrunch.com/2026/09/22/snorkel-ai-triples-valuation-to-3-5b-as-demand-for-ai-training-data-booms/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Tue Sep 22</div><div class="body">British data center builder Nscale is heading for an IPO, and most of its revenue comes from just two customers: Microsoft and Anthropic.</div><a class="open" href="https://techcrunch.com/2026/09/22/nscales-ipo-will-test-wall-streets-appetite-for-concentrated-ai-bets-once-again/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Tue Sep 22</div><div class="body">Rabbit, maker of the R1 gadget, released a standalone AI agent that runs locally on Windows, Mac and Linux.</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/999094/rabbit-ai-agent-os3" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Tue Sep 22</div><div class="body">Hugging Face Transformers can now load and run GGUF files, the quantized format llama.cpp uses. You pass a filename to from_pretrained, and speed lands close to llama.cpp itself, including on mixture-of-experts models and Apple Silicon. That makes it much easier to evaluate or fine-tune the same small quantized models people actually run on laptops.</div><a class="open" href="https://huggingface.co/blog/transformers-llama-cpp-quants" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Tue Sep 22</div><div class="body">Jun Kim, who created oMLX, joined Hugging Face to support the MLX community on Apple Silicon.</div><a class="open" href="https://huggingface.co/blog/omlx" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Tue Sep 22</div><div class="body">AntLing open-sourced Ming-Image-0.1-Design, a 6B image model family aimed at UI and layout design, plus agent skills for UI design and for turning images into editable slides.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wnipcz/new_6b_image_model_coming_antling_just_open/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Tue Sep 22</div><div class="body">Qwen Image 2.1 in a fast FP8 build fits in under 10GB, and early users say the image quality is surprisingly high for its size.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wnhq8d/qwen_image_21_fast_fp8_generates_premium_quality/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Tue Sep 22</div><div class="body">Quantized builds of K2-Horizon, a 36B mixture-of-experts model with 4B active parameters, are now on Hugging Face for local use.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wnky7x/quants_for_k2horizon_are_now_available/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Tue Sep 22</div><div class="body">First M5 Ultra benchmarks are in. Prompt processing is 4 to 4.5 times faster than the M3 Ultra, and token generation is about 1.5 times faster.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wnmu2l/m5_ultra_ai_test_results/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Tue Sep 22</div><div class="body">In MIT Technology Review, Timnit Gebru and Emily Bender argue that this summer&#x27;s big claims about AI hacking, math breakthroughs and self-improving systems are more hype than reality.</div><a class="open" href="https://www.technologyreview.com/2026/09/22/1144867/dont-be-fooled-summer-ai-hype/" target="_blank" rel="noopener">Open ↗</a></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
