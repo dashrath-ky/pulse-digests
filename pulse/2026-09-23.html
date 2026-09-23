@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">20 stories</div></header>
+<main>
+<article class="card"><div class="meta">Finshots · Wed Sep 23</div><div class="body">People keep saying India is &quot;privatising&quot; ISRO, but that&#x27;s not quite what&#x27;s happening. Under the 2023 space policy, ISRO is supposed to stick to research, deep-space missions and human spaceflight, and hand mature tech over to private companies to build and sell. You can already see it with rockets: HAL and L&amp;T now manufacture PSLVs, and HAL got the SSLV design outright. The budget tells the same story, with money for running the INSAT satellite fleet dropping from ₹345 crore to ₹131 crore over five years.</div></article>
+<article class="card"><div class="meta">TLDR IT · Tue Sep 22</div><div class="body">Jev, a new model from TypeSafe AI, became the fastest-adopted model ever on Vercel&#x27;s AI Gateway, with nearly 13% of paying teams trying it within a day. It doesn&#x27;t write text. You hand it something and ask a narrow question (is this an ad, which folder does it go in, how relevant is it), and it gives a structured answer. People are already using it to skip YouTube sponsor segments and filter nasty chat comments in real time. (also in Ben&#x27;s Bites)</div><a class="open" href="https://vercel.com/blog/ai-gateway-jev-model-launch?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Tue Sep 22</div><div class="body">Nvidia started a certification program called DSX Ready for the power and cooling gear inside big AI data centers. Operators are running out of power, water and grid capacity, and this is meant to tell them which equipment can actually keep up.</div><a class="open" href="https://blogs.nvidia.com/blog/dsx-ready/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Tue Sep 22</div><div class="body">A warning for security teams: revoking a hacker&#x27;s login token didn&#x27;t get rid of them. The malware in this case could swap out all its credentials with one remote command and keep going. The advice is to treat the registered app itself as the compromised thing, not just the token.</div><a class="open" href="https://www.csoonline.com/article/4223975/revoking-the-token-didnt-kill-the-backdoor.html?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Tue Sep 22</div><div class="body">VMware quietly stopped selling its firewall software for SmartNICs, the network cards that were supposed to bring cloud-style networking into company data centers. It never got many paying customers, partly because regular network cards kept getting better.</div><a class="open" href="https://www.theregister.com/virtualization/2026/09/21/vmware-has-quietly-walked-back-its-smartnic-ambitions/5297654?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Tue Sep 22</div><div class="body">Fastly launched tools to control which AI models a company&#x27;s apps can call, how much they spend, and how agents talk to each other. The eye-catching stat: Fastly says machines now send more than half the traffic on its network.</div><a class="open" href="https://investors.fastly.com/news-releases/news-release-details/fastly-launches-ai-firewall-and-ai-runtime-control-secure-and?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Tue Sep 22</div><div class="body">A new Android malware called RatHat tricks people into installing fake apps and then asks for accessibility permissions, which lets it control the phone. Security firm Zimperium says it uses AI.</div><a class="open" href="https://www.cnet.com/tech/services-and-software/rathat-malware-attacks-android-phones/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Tue Sep 22</div><div class="body">Atlassian explains how it generates huge amounts of realistic fake customer data for testing Jira and Confluence, with all the relationships between records intact.</div><a class="open" href="https://www.atlassian.com/blog/how-we-build/how-atlassian-built-scalable-synthetic-data-engine?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Tue Sep 22</div><div class="body">Your top experts are bad at judging an AI pilot, because they can do the task anyway and can&#x27;t tell who did the work. Test with capable non-experts, score against real answers, and track whether the model or the person solved it.</div><a class="open" href="https://hitesh.in/2026/best-people-worst-ai-judges/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Tue Sep 22</div><div class="body">Sumo Logic now lets companies filter and reshape their logs before storing them, so they pay less for data nobody looks at.</div><a class="open" href="https://www.prnewswire.com/news-releases/sumo-logic-enhances-data-pipelines-advancing-its-ai-first-platform-to-lower-observability-and-security-tco-302884209.html?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Morning Brew · Tue Sep 22</div><div class="body">The $110 billion Paramount and Warner Bros. merger is back on after California and 11 other states agreed to drop their antitrust lawsuit. In return, Paramount has to keep its headquarters and studio lots in California for five years, release at least 30 movies a year in theaters, and let a board of journalists protect CNN and CBS News from interference. It didn&#x27;t have to sell off anything. The combined company will carry up to $87 billion in debt, and analysts expect job cuts as it chases $6 billion in savings.</div></article>
+<article class="card"><div class="meta">Morning Brew · Tue Sep 22</div><div class="body">ABC, CBS, CNN, Fox News and NBC stopped sending TV cameras to cover President Trump. They did it together, after the White House banned CNN, MS NOW and Politico from its grounds over coverage it didn&#x27;t like. Those three outlets are now suing to get their access back.</div></article>
+<article class="card"><div class="meta">Morning Brew · Tue Sep 22</div><div class="body">At least five East Coast airports, including JFK, LaGuardia, Newark and Philadelphia, ground to a halt when an air traffic radio system in Philadelphia failed. The backup in New Jersey was dead too, because someone had accidentally cut a fiber line and nobody noticed. More than 430 flights were canceled.</div></article>
+<article class="card"><div class="meta">Morning Brew · Tue Sep 22</div><div class="body">The Nasdaq hit a record high and AMD joined the $1 trillion club.</div></article>
+<article class="card"><div class="meta">Entrackr · Tue Sep 22</div><div class="body">Used-car platform Spinny has quietly filed early IPO paperwork with India&#x27;s market regulator. It also added Bharti&#x27;s CFO Akhil Gupta and Info Edge&#x27;s Geeta Mathur to its board.</div></article>
+<article class="card"><div class="meta">Entrackr · Tue Sep 22</div><div class="body">The National Stock Exchange&#x27;s own IPO closed 5.71 times oversubscribed, but regular retail investors didn&#x27;t show much interest.</div></article>
+<article class="card"><div class="meta">ByteByteGo · Tue Sep 22</div><div class="body">A look inside how OpenAI built GPT-Live, its voice model that can listen and talk at the same time. Most voice assistants take turns, so they jump in the moment you pause to think. GPT-Live keeps deciding on the fly whether to stay quiet, interrupt, or speak, and it hands the heavy thinking to a separate slower path so the conversation stays snappy.</div></article>
+<article class="card"><div class="meta">Lenny&#x27;s Newsletter · Tue Sep 22</div><div class="body">Hamel Husain and Shreya Shankar wrote a follow-up guide on AI evals, the tests that check whether your AI product still behaves after a change. Their main point is that most teams jump straight to writing metrics and end up measuring the wrong things. The step people skip is actually reading real failures first. Nearly half the PM job posts Lenny saw last week asked for eval experience.</div></article>
+<article class="card"><div class="meta">Ben&#x27;s Bites · Tue Sep 22</div><div class="body">Projects in Claude Code are becoming a single main chat where you dump requirements and tasks, and Claude spins off separate threads to do the work in the cloud. It&#x27;s in beta now, and local support is on the way. Claude Code will also finally read AGENTS.md files.</div></article>
+<article class="card"><div class="meta">Ben&#x27;s Bites · Tue Sep 22</div><div class="body">Meta&#x27;s personal AI agent Muse got a Mac app and a platform for building connectors to other services. It could shop for you, until Amazon started blocking it. (also in Morning Brew)</div></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
