@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">19 stories</div></header>
+<main>
+<article class="card"><div class="meta">Finshots · Thu Sep 24</div><div class="body">India&#x27;s company law tribunal (the NCLT, which handles corporate bankruptcy cases) is badly short of people. The law says these cases should wrap up in 330 days, but delays now stretch as long as 738 days. The tribunal should have 63 members and has 50, with 18 more retiring by the end of next year, so 18 benches are only running half days. The Supreme Court has blamed the government for sitting on appointments, and a new law passed last month sets up an independent commission to run tribunals.</div></article>
+<article class="card"><div class="meta">TLDR IT · Wed Sep 23</div><div class="body">Meta&#x27;s new Mac AI assistant, Muse, had a serious security hole. Any other app on the same computer could steal the user&#x27;s Muse login and get everything the assistant could reach: files, camera, messages, and connected accounts. Meta has shipped a fix. The bigger point is that an AI agent with broad desktop access is as sensitive as an admin tool and needs to be locked down like one. On the same day, Shopify said it will let Muse buy things for users, and investors liked it (also in Morning Brew).</div><a class="open" href="https://arstechnica.com/security/2026/09/muse-metas-extraordinarily-privileged-ai-assistant-has-a-serious-0-day/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Wed Sep 23</div><div class="body">A security writeup explains why company AI copilots keep leaking data. The trouble starts when one assistant can read private data, reads content from outsiders (like an incoming email), and can also send things out. With all three, a single crafted email can trick it into handing data to an attacker, and this has already happened to Microsoft 365 Copilot and Salesforce Agentforce. The fix is to give assistants fewer permissions and never all three at once.</div><a class="open" href="https://aminrj.com/posts/lethal-trifecta-in-production/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Wed Sep 23</div><div class="body">Palo Alto Networks launched a service that uses top AI models, including Claude and GPT, to keep probing a company&#x27;s websites, APIs, and cloud setup for weak spots. It also suggests fixes, like code changes or temporary patches. AI-powered hacking for defense is quickly becoming something companies can just buy.</div><a class="open" href="https://links.tldrnewsletter.com/9afl40" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Wed Sep 23</div><div class="body">Microsoft opened a new cloud region in Hyderabad and is pitching it as its AI hub for Asia and the Global South. It&#x27;s part of a $20.5 billion investment in India, and its cooling system uses no water.</div><a class="open" href="https://news.microsoft.com/source/asia/2026/09/21/ai-ambition-into-action-microsoft-brings-ai-ready-capabilities-across-its-india-cloud-infrastructure-establishes-india-south-central-region-as-a-strategic-hub-for-asia-and-global-south?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Wed Sep 23</div><div class="body">Apple&#x27;s new Mac mini and Mac Studio are now shipping with M5 and M6 chips. Apple is selling them as machines for running AI models locally, which could appeal to companies tired of paying per-use cloud AI bills.</div><a class="open" href="https://www.apple.com/newsroom/2026/09/the-new-mac-mini-and-mac-studio-are-available-today/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Wed Sep 23</div><div class="body">Gartner expects 55% of companies on VMware to be testing alternatives by 2029, up from 25% this year. The tech still rates well. What&#x27;s pushing people away is pricing changes, confusing licensing, and worries about support.</div><a class="open" href="https://assets.theregister.com/2026/09/22/20261/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Wed Sep 23</div><div class="body">Microsoft will stop allowing SMS codes as a first sign-in step for work accounts starting in February. Admins should move people to passkeys or hardware security keys, which are much harder to phish.</div><a class="open" href="https://links.tldrnewsletter.com/bT1mry" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Wed Sep 23</div><div class="body">1Password switched its apps and services to encryption that should hold up against future quantum computers, without rewriting any app code. It just changed a setting on its AWS load balancers and swapped out a crypto library. The lesson: keep encryption separate from your app logic and security upgrades get much easier.</div><a class="open" href="https://1password.com/blog/post-quantum-tls-without-code-changes?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Wed Sep 23</div><div class="body">Vast Data launched DataEnclave, a sealed-off space where companies can run AI on sensitive data without exposing it. It relies on Nvidia hardware that keeps data encrypted even while the GPU is working on it.</div><a class="open" href="https://siliconangle.com/2026/09/22/vast-data-launches-confidential-computing-service-for-sensitive-workloads/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Wed Sep 23</div><div class="body">Google Cloud added new protections to its code hosting service to block unauthorized changes and supply-chain attacks on build pipelines.</div><a class="open" href="https://cloud.google.com/blog/products/identity-security/strengthen-your-cicd-pipeline-with-new-secure-source-manager-capabilities?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Morning Brew · Wed Sep 23</div><div class="body">MIT is now the top US college in the US News rankings, knocking Princeton off after 12 years at No. 1. MIT scored best on research, graduates&#x27; earnings (a new category), and test scores. Harvard and Yale stayed third and fourth.</div></article>
+<article class="card"><div class="meta">Morning Brew · Wed Sep 23</div><div class="body">At the UN, President Trump defended the Iran war and threatened to escalate it. He also rejected calls for AI guardrails and said AI will be called &quot;super intelligence&quot; in official US documents.</div></article>
+<article class="card"><div class="meta">Morning Brew · Wed Sep 23</div><div class="body">Xbox is laying off another 268 people and handing the next Halo game to Activision, the Call of Duty studio Microsoft bought for $69 billion. It plans to cut up to 3,200 jobs in total to fix weak margins.</div></article>
+<article class="card"><div class="meta">Morning Brew · Wed Sep 23</div><div class="body">Bloomberg reports Apple is prototyping a screenless fitness band, much like a Whoop. It may never ship, and not before 2028 if it does.</div></article>
+<article class="card"><div class="meta">Morning Brew · Wed Sep 23</div><div class="body">Peloton is betting its future on running, with a new line of treadmills.</div></article>
+<article class="card"><div class="meta">Entrackr · Wed Sep 23</div><div class="body">Rio.ai, a startup doing fast delivery of medicines and health essentials, raised Rs 43 crore in a pre-Series A round led by Version One Ventures.</div></article>
+<article class="card"><div class="meta">Entrackr · Wed Sep 23</div><div class="body">Analytics firm MathCo grew revenue 23.7% to over Rs 620 crore in FY26, but profit fell 94% because costs rose much faster.</div></article>
+<article class="card"><div class="meta">ByteByteGo · Wed Sep 23</div><div class="body">A clear explainer on how to customize an AI model. Start with better prompts. If the model is missing information, feed it the right documents at question time (called RAG). Only train it further when it keeps making the same mistakes, and use LoRA or QLoRA, tricks that make that training much cheaper by only learning a small set of changes.</div></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
