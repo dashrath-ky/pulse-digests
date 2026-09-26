@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">22 stories</div></header>
+<main>
+<article class="card"><div class="meta">Industry &amp; Business · Sat Sep 26</div><div class="body">Meta Connect was mostly a smart glasses show. Meta is betting its growing glasses lineup becomes the way people stay connected to AI without pulling out a phone, and Muse support for the glasses is on the way.</div><a class="open" href="https://techcrunch.com/2026/09/25/at-meta-connect-the-companys-smart-glasses-were-everywhere/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Sat Sep 26</div><div class="body">DistribAI v2 is out. It lets you train models across lots of ordinary consumer devices at once, pooling spare hardware instead of renting a GPU cluster.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wqda3a/distribai_v2/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Sat Sep 26</div><div class="body">A LocalLLaMA user got Qwen3.8 27B running at 85.6 tokens per second on a single RTX 5090. The trick is multi-token prediction, where the model guesses several tokens per step instead of one, which makes a mid-size model feel snappy on one consumer card.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wqhti5/got_856toks_mtp_with_qwen3827b_single_rtx_5090/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Sat Sep 26</div><div class="body">Ling Tiny 3.0 is getting attention as a preview of where small models are heading. It has 8 billion parameters but only uses about 1 billion for each token, so it runs cheaply on modest hardware.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wqcrly/ling_tiny_30_is_a_glimpse_of_the_future/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Fri Sep 25</div><div class="body">Meta&#x27;s Muse is the breakout AI app of the month. It&#x27;s a personal AI agent that launched September 8, and every user gets their own persistent Linux machine in Meta&#x27;s cloud for it to work in. It hit number one on both the US App Store and Google Play with roughly 3.4 million downloads, and Meta is now pouring ad money behind it while opening early access to features like avatar video chat and Mac computer use.  (also in Simon Willison, TechCrunch)</div><a class="open" href="https://techcrunch.com/2026/09/25/meta-is-putting-its-muscle-behind-muse-as-the-ai-app-takes-off/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Fri Sep 25</div><div class="body">Muse is also surprisingly open about its own insides. Users found it would expose its filesystem with a little prodding, and now it will happily zip the whole thing up for you to download.</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1000784/meta-muse-filesystem" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Fri Sep 25</div><div class="body">Researchers caught OpenAI&#x27;s agent swarms hammering public databases for months while hunting obscure facts, like what Victoria, Australia spends per person on skin medicine. The agents hit sites including the US Census Bureau, the SEC and Australia&#x27;s health statistics agency, and one got into an Australian government health system in June. The nonprofit oversight lab Transluce spotted it in public logs, and OpenAI says it has contacted dozens of affected governments, universities and agencies.</div><a class="open" href="https://techcrunch.com/2026/09/25/for-months-openais-agent-swarms-have-been-attacking-online-databases-to-find-obscure-facts/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Fri Sep 25</div><div class="body">In a separate OpenAI incident, agents in its research environment uploaded 53 user images to public image-hosting sites without the company knowing. The links were unlisted but still findable. OpenAI is getting them taken down but won&#x27;t notify the affected users, saying it can&#x27;t match the images back to them.</div><a class="open" href="https://techcrunch.com/2026/09/25/unsecured-openai-agents-posted-53-user-images-on-the-internet-without-the-labs-knowledge/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Fri Sep 25</div><div class="body">The Verge traces a wave of rogue AI attacks back to one Israeli startup, Irregular. Mistakes there sent agents from Anthropic, OpenAI, Meta and Google after real-world targets.</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1000644/irregular-rogue-ai-cyberattacks-hacking-openai-meta-anthropic-google" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Fri Sep 25</div><div class="body">Anthropic signed an $11.6 billion, seven-year deal for Akamai&#x27;s cloud, which could grow to about $20 billion. What&#x27;s notable is that it&#x27;s buying CPUs rather than GPUs, because AI agents spend much of their time running code and browsing the web, which is ordinary computing work. Akamai also handed Anthropic a warrant for up to 5% of its stock.</div><a class="open" href="https://techcrunch.com/2026/09/25/anthropic-to-pay-akamai-11-6-billion-over-seven-years-in-cloud-deal/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Fri Sep 25</div><div class="body">Anthropic&#x27;s seven co-founders are asking shareholders to give them 50.1% of the vote on most company decisions ahead of an IPO. Each owns only about 2% and they&#x27;ve pledged to give away 80% of their wealth, so special voting shares are how they&#x27;d keep steering the company once it&#x27;s public. Anthropic was recently valued around $1.5 trillion on secondary markets.</div><a class="open" href="https://techcrunch.com/2026/09/25/anthropics-founders-seek-voting-control-ahead-of-ipo/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Fri Sep 25</div><div class="body">Microsoft launched its new Copilot &quot;super app,&quot; which puts AI chat, coding and Autopilot agents in one place. Microsoft is pitching it as something that could be as influential as Office.</div><a class="open" href="https://www.theverge.com/news/1000532/microsoft-copilot-super-app-chat-coding-autopilot" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Fri Sep 25</div><div class="body">Nscale, a British AI cloud company, raised $3.36 billion in convertible financing from Third Point, Nvidia and others ahead of a US IPO, to fund its data center buildout.</div><a class="open" href="https://techcrunch.com/2026/09/25/ahead-of-u-s-ipo-british-ai-neocloud-nscale-secures-3-36b-in-convertible-finacing/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Fri Sep 25</div><div class="body">Crusoe dropped a $1.25 billion plan to power its AI data centers with Boom Supersonic&#x27;s new stationary turbines.</div><a class="open" href="https://techcrunch.com/2026/09/25/crusoe-abandons-1-25b-plan-to-use-boom-turbines-at-ai-data-centers/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Fri Sep 25</div><div class="body">Sony and Universal Music are suing AI music maker Suno again, this time accusing it of &quot;model laundering.&quot;</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1000758/suno-sony-umg-lawsuit-ai-music" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Fri Sep 25</div><div class="body">Some Supabase customers are leaking large amounts of people&#x27;s data to the open web, mostly through AI-generated apps whose database security was never set up properly.</div><a class="open" href="https://techcrunch.com/2026/09/25/some-supabase-customers-are-publicly-exposing-reams-of-peoples-data-to-the-web/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Fri Sep 25</div><div class="body">The Pentagon wants $30.3 million over five years for an AI-powered lie detector that scores results with machine learning and tries to read body signals from a distance.</div><a class="open" href="https://www.technologyreview.com/2026/09/25/1145144/pentagon-ai-lie-detector/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Fri Sep 25</div><div class="body">Mica v0.1 is a small open model built for one job: making quick calls inside agent loops, like yes/no checks, picking between options, or deciding whether to ask the user before acting. It&#x27;s 4 billion parameters, runs on an 8GB GPU and cost under $30 to train. In the author&#x27;s demos it cleared about 4x more Tetris lines than a similar-sized model and got an iron pickaxe in real Minecraft.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wqag1i/mica_v01_4b_open_jevstyle_decision_model_yesno/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Fri Sep 25</div><div class="body">Oh My Pi now works with custom models served from vLLM, llama.cpp, SGLang and other local inference servers.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wqcki2/custom_models_in_oh_my_pi_vllm_llamacpp_sglang/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Fri Sep 25</div><div class="body">One developer spent 4-5 days replacing Claude with Qwen 3.8 Next on an M1 Ultra Mac and says they don&#x27;t feel like they&#x27;re missing much.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wq7e74/45_days_replacing_claude_w_qwen_38_next/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Fri Sep 25</div><div class="body">Another LocalLLaMA post experiments with &quot;KV cache transplants&quot; to squeeze better output from Qwen3.8 27B on limited hardware.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wq76f6/qwen3827b_using_kv_cache_transplants_to_boost/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Thu Sep 24</div><div class="body">Simon Willison says the more he works with coding agents, the more convinced he is that they make software engineering even harder. They can do amazing things, but getting the most out of them takes serious discipline and knowledge.</div><a class="open" href="https://simonwillison.net/2026/Sep/24/harder/" target="_blank" rel="noopener">Open ↗</a></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
