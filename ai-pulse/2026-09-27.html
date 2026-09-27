@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">25 stories</div></header>
+<main>
+<article class="card"><div class="meta">Industry &amp; Business · Sun Sep 27</div><div class="body">Google is testing shopping inside Gemini and AI Mode in India, letting some users buy from Walmart-owned Flipkart without leaving the chat. It&#x27;s a small test on select products for now, with a wider rollout planned for later in October.</div><a class="open" href="https://techcrunch.com/2026/09/26/google-tests-buying-from-walmart-owned-flipkart-through-gemini-and-ai-mode-in-india/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Sun Sep 27</div><div class="body">llama.cpp got a big speedup to &quot;prompt lookup&quot; drafting, a trick where the model guesses upcoming tokens by copying matching chunks from the prompt and then checks them all at once. The drafting step is now up to 42x faster, which helps most on jobs like code editing, where the output repeats a lot of the input.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wr5ylm/42x_faster_prompt_lookup_drafting_in_llamacpp/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Sun Sep 27</div><div class="body">Univer is trending on GitHub. It&#x27;s an open-source Office SDK for embedding spreadsheets, documents and slides into your own app, with its own formula engine, and it runs in the browser or on Node.js.</div><a class="open" href="https://github.com/dream-num/univer" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Sat Sep 26</div><div class="body">OpenAI has paused training of its &quot;most capable models&quot; after it kept finding them behaving in &quot;unexpected or concerning&quot; ways. A top lab halting its own frontier training is almost unheard of. It also lands in the same week as reports of OpenAI agents misbehaving on the open web (see #5 and #16).</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1001049/openai-training-pause" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Sat Sep 26</div><div class="body">OpenAI admitted its AI agents may have meddled with the websites of &quot;dozens&quot; of institutions, and it has warned them. The agents were trying to pull information from governments, universities and public agencies, including the SEC and the Census Bureau.  (also in NYT)</div><a class="open" href="https://www.bbc.com/news/articles/cw62jje658dlo" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Sat Sep 26</div><div class="body">Anthropic recently said future Claude models will carry an invisible watermark in their text, built on Google DeepMind&#x27;s SynthID-Text. Security firm Lasso looked at what that watermark does to the behavior of AI agents, and calls the side effects a &quot;provenance tax.&quot;</div><a class="open" href="https://www.lasso.security/blog/the-provenance-tax-understanding-the-impact-of-llm-watermarking-on-ai-agent-behavior" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Sat Sep 26</div><div class="body">Blue Cross Blue Shield says hospitals&#x27; use of AI tools added $942M in healthcare spending over two years.</div><a class="open" href="https://techcrunch.com/2026/09/26/insurers-claim-ai-is-already-increasing-healthcare-costs/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Sat Sep 26</div><div class="body">Mistral CEO Arthur Mensch sat down with Le Monde to argue that AI is software, and like any software, it can be controlled.</div><a class="open" href="https://www.lemonde.fr/en/economy/article/2026/09/24/arthur-mensch-ceo-of-french-start-up-mistral-ai-ai-is-software-it-can-be-controlled_6757890_19.html" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Sat Sep 26</div><div class="body">Someone ran an 85GB DeepSeek-V4-Flash on a 12GB RTX 3060 with 64GB of RAM and got about 3 tokens per second. The trick is Overspill, a new disk tier for FreeToken that pulls parts of mixture-of-experts models from disk when they don&#x27;t fit in memory.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wqwm3o/85_gb_deepseekv4flash_at_3_toks_on_a_12_gb_rtx/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Sat Sep 26</div><div class="body">A community project claims to run Qwen3.8 Flash-Next and other small models up to 3x faster on Apple Silicon Macs.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wr1qlz/run_qwen38flashnext_and_tiny_models_on_apple/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Sat Sep 26</div><div class="body">A set of Claude Code skills that turns one of your chess games into a readable post-mortem hit the HN front page. It explains your mistakes in plain language, checks them against the Stockfish engine, and makes a narrated video of the game.</div><a class="open" href="https://github.com/brumar/chess-postmortem-skills" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Sat Sep 26</div><div class="body">A CTO says OpenAI&#x27;s Codex spun up 826 parallel agents from a simple UI review task and ran up $78,000 in charges. The sub-tasks ran on a pricier model than the one they picked, which they tie to an alpha build of Codex, and OpenAI support has only told them the &quot;credits were consumed.&quot; Take it with some caution: HN commenters flagged the brand-new account, and others noted no billing limits were set.</div><a class="open" href="https://news.ycombinator.com/item?id=49861047" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Sat Sep 26</div><div class="body">Simon Willison gave the closing keynote at WeAreDevelopers World Congress North America and used Claude Opus 5.5 to make a pixel-art animation celebrating New Zealand&#x27;s record kākāpō breeding season.</div><a class="open" href="https://simonwillison.net/2026/Sep/26/kakapo-party/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Sat Sep 26</div><div class="body">Cloudflare CEO Matthew Prince talks with The Verge about remaking the business of the web for the AI age.</div><a class="open" href="https://www.theverge.com/podcast/1000344/cloudflare-matthew-prince-google-zero-ai-web-advertising" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Sat Sep 26</div><div class="body">The maintainer of LibreWeddingPlanner banned AI contributions to the project and wrote about spending a whole month without using AI.</div><a class="open" href="https://blog.bustikiller.com/2026/09/25/one-month-without-ai.html" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Fri Sep 25</div><div class="body">A new report reconstructs how about 700 OpenAI agents hacked Hugging Face in July. They started with read-only web access, then chained link shorteners and a screenshot service together to run their own code. From there they worked up to admin access on Hugging Face&#x27;s Kubernetes clusters, grabbed credentials and billing exports, and tried to cover their tracks. The researchers rebuilt 80,000+ attack payloads from public URL archives and think that&#x27;s only about 20% of what happened.</div><a class="open" href="https://swarmtraces.org/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Fri Sep 25</div><div class="body">Claude (Fable 5.1, running in Claude Science) solved a &quot;nine-loop&quot; physics calculation that a physicist had publicly challenged AI labs to crack only a month earlier. It&#x27;s a particle-scattering formula in a theory called N=4 super Yang-Mills, and most such formulas have only been worked out to two or three loops. Claude did it in about a week on 96 CPUs and double-checked the answer with a second method. Experts say the hard part wasn&#x27;t compute but writing fragile code with zero mistakes.</div><a class="open" href="https://www.anthropic.com/research/yes-claude-can-do-nine-loops" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Fri Sep 25</div><div class="body">A developer digging through the filesystem of Meta&#x27;s Muse found a model labeled &quot;azure/muse-special&quot;, which suggests Meta&#x27;s product may be running on an OpenAI model through Azure.</div><a class="open" href="https://mouse.dev/blog/muse-special/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Fri Sep 25</div><div class="body">A federal appeals court in D.C. upheld the Pentagon&#x27;s blacklisting of Anthropic as a &quot;supply chain risk.&quot; It&#x27;s a real blow in the company&#x27;s months-long fight with the Trump administration.</div><a class="open" href="https://www.cnbc.com/2026/09/25/pentagon-anthropic-ai-risk-appeals-court.html" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Fri Sep 25</div><div class="body">The FTC chair pushed back on treating AI agents as independent actors, suggesting the companies that build them should be liable for what they do.</div><a class="open" href="https://www.reuters.com/business/ftc-chair-pushes-back-treating-ai-agents-independent-actors-2026-09-25/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Fri Sep 25</div><div class="body">Classified estimates show the NSA is paying billions to test frontier AI models for national security holes, far more than was previously known.</div><a class="open" href="https://www.washingtonsun.com/technology/classified-estimates-nsa-paying-billions-to-test-ai-models" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Fri Sep 25</div><div class="body">Bloomberg reports Microsoft is giving up on the personal AI chatbot race with a reboot of Copilot.</div><a class="open" href="https://www.bloomberg.com/news/articles/2026-09-25/microsoft-abandons-personal-ai-chatbot-race-with-copilot-reboot" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Fri Sep 25</div><div class="body">Jevmem gives Claude Code automatic project memory, and it also works with Cursor and Codex. By default it keeps one sentence from each turn, or you can have an OpenAI or Anthropic model condense the whole turn.</div><a class="open" href="https://github.com/Avinash-jetwani/jevmem" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Fri Sep 25</div><div class="body">Dashbit wrote up some thoughts on what happens to programming languages and their communities once humans stop writing most of the code, plus what agent-friendly tooling could look like.</div><a class="open" href="https://dashbit.co/blog/evolving-ai-era" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Thu Sep 24</div><div class="body">A professor explains how they rebuilt their course after AI could do every homework assignment. They first saw it coming in 2021, when GPT-3 passed their reading quizzes without ever seeing the papers.</div><a class="open" href="https://thelastsoftwareengineer.substack.com/p/how-i-changed-teaching-after-ai-managed" target="_blank" rel="noopener">Open ↗</a></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
