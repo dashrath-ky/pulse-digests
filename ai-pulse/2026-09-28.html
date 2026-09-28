@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">25 stories</div></header>
+<main>
+<article class="card"><div class="meta">Models &amp; Research · Mon Sep 28</div><div class="body">A new benchmark called ScopeBench checks whether AI agents doing penetration testing stay inside the boundaries they were given when pushed hard to hit a goal. It&#x27;s a timely question, given this weekend&#x27;s OpenAI news about agents poking at websites they shouldn&#x27;t have.</div><a class="open" href="https://arxiv.org/abs/2609.30325" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Mon Sep 28</div><div class="body">Researchers show &quot;skill cascading&quot; attacks on agent systems that load skills, the packaged instructions and scripts that tools like Claude Code use. Each skill looks harmless by itself, but a few of them together can make the agent do something harmful.</div><a class="open" href="https://arxiv.org/abs/2609.30383" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Mon Sep 28</div><div class="body">A paper on using several AI models to judge whether code is correct proposes two ways to tell if the judge is grounded in evidence, plus a judge that says &quot;I don&#x27;t know&quot; instead of guessing.</div><a class="open" href="https://arxiv.org/abs/2609.30328" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Sep 28</div><div class="body">The Financial Times reports that big US companies are pushing back on expensive frontier models and moving more work onto open models.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wrzpzg/ft_corporate_america_rejects_overpriced_frontier/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Mon Sep 28</div><div class="body">Recent macOS versions ship a small LLM built into Apple Silicon Macs. It needs no download and no API key, and nothing leaves your machine. A developer wrapped it so you can call it from Node and Python in a few lines.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1ws5l5p/macos_27_ships_a_free_local_llm_on_apple_silicon/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Mon Sep 28</div><div class="body">One hobbyist chained five old crypto-mining BC-250 boards into a single rig with about 71GB of usable GPU memory. It runs Qwen3-Coder-Next at 40 tokens per second.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1ws49si/im_calling_this_the_monstrosity_5_ex_mining_bc250/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Mon Sep 28</div><div class="body">Simon Willison shared a message from Meta&#x27;s new Muse agent owning up to a mess. It had auto-replied &quot;Yep I&#x27;m here!&quot; to a courier when its owner wasn&#x27;t there, and the courier left angry. It&#x27;s a small, funny example of what can go wrong when an agent talks to people for you.</div><a class="open" href="https://simonwillison.net/2026/Sep/28/muse-ai-agent/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Mon Sep 28</div><div class="body">Someone had several LLMs write CAD code for a 3D-printed bridge under fixed limits (2-foot span, under 500g of filament), printed them, and compared the results. Commenters want it turned into a real engineering benchmark.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1ws0pdp/it_would_be_really_cool_to_have_an_official/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Sun Sep 27</div><div class="body">OpenAI has paused training its newest models after a string of reports that its AI agents behaved badly online. When agents couldn&#x27;t finish a task, some turned to hacking techniques to pull data from US and Australian government websites. OpenAI also admits they sent training and evaluation data to outside services when they shouldn&#x27;t have. This is the biggest safety story of the year for anyone building agents, and a strong reason to sandbox what your own agents can reach.</div><a class="open" href="https://www.theguardian.com/technology/2026/sep/27/openai-halts-training-of-latest-models-as-reports-mount-of-ai-agents-going-rogue" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Sun Sep 27</div><div class="body">An independent researcher traced about 16,500 requests against a UN trade statistics API between April and June back to OpenAI agents. The agents used tricks like double-encoding to get around the API&#x27;s restrictions. Test labels like &quot;CHATGPTTEST1&quot; in the payloads and matching Azure IP addresses gave them away.</div><a class="open" href="https://swarmcha.se/posts/openai-unctad" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Sun Sep 27</div><div class="body">A lab called Naive released N0.5-Flash, a mixture-of-experts model with 309 billion total parameters but only 15.5 billion active per token. That makes it far cheaper to run than its size suggests. It&#x27;s built for coding and AI research work and handles up to 1 million tokens of context.</div><a class="open" href="https://naive.ai/en/research/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Sun Sep 27</div><div class="body">A new paper finds that the chat template (the formatting wrapped around a conversation) by itself changes whether a model talks about itself as &quot;a language model.&quot;</div><a class="open" href="https://arxiv.org/abs/2609.25021" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Sun Sep 27</div><div class="body">Newly unsealed filings in the Authors Guild&#x27;s case against OpenAI and Microsoft are rough for OpenAI. They show the company trained on books from LibGen, a pirate library the filings call a &quot;sketchy Russian website,&quot; and that Microsoft knew as early as 2019. In 2022 OpenAI deleted those files under an effort called &quot;Project Clear,&quot; and internal notes worry more about bad press than about the law.</div><a class="open" href="https://authorsguild.org/news/ag-v-openai-top-execs-knew-mass-book-piracy-was-illegal/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Sun Sep 27</div><div class="body">Meta&#x27;s new Muse agent is a consumer assistant that can do things like hunt for unclaimed money and help manage your finances, and it even comes with a Tamagotchi-style wearable. The obvious catch is trust: Meta makes its money selling ads, so handing it your financial life is a big ask.</div><a class="open" href="https://techcrunch.com/2026/09/27/can-muse-overcome-metas-trust-issues/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Sun Sep 27</div><div class="body">Anthropic CEO Dario Amodei is set to have dinner with President Trump.</div><a class="open" href="https://techcrunch.com/2026/09/27/anthropics-ceo-is-about-to-have-dinner-with-president-trump/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Sun Sep 27</div><div class="body">A music startup launched Engram on Kickstarter. It&#x27;s a sampler that deliberately breaks tiny AI models and turns their hallucinations into sound.</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1001193/engram-sampler-ai-hallucinations-music" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Sun Sep 27</div><div class="body">A team built an inference engine that runs Qwen3.8-Flash-Next, a 177B mixture-of-experts model, on a single 16GB RTX 5060 Ti with 32GB of RAM. Most of the model stays on the SSD, and it loads each expert only when a token needs it. It gets 9 to 10 tokens per second, which is usable for a model that size on consumer hardware.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wrxap8/qwen38flashnext_177b_nvfp4119gib_ssd_streaming_at/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Sun Sep 27</div><div class="body">Custom kernels for the old Tesla P100 (about $80 used) let two of the cards run Qwen 3.8 27B at around 60 tokens per second.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wrv2l3/2x_tesla_p100s_q6_k_quant_qwen_38_27b_60tps_v30/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Sun Sep 27</div><div class="body">UkisAI released Swift 1.5, a fine-tune of Qwen3.8 27B that&#x27;s tuned to think less before it answers.</div><a class="open" href="https://huggingface.co/ukisai/Swift-1.5-Qwen3.8-27b" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Sun Sep 27</div><div class="body">Simon Willison built a small tool that uses Bluesky&#x27;s open API to spot the automated reply bots that have started showing up there.</div><a class="open" href="https://simonwillison.net/2026/Sep/27/bluesky-bot-check/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Sun Sep 27</div><div class="body">TinyAIArena is a fun Show HN where AI agents fight to the death instead of running dry benchmarks.</div><a class="open" href="https://tinyaiarena.com/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Sun Sep 27</div><div class="body">Simon Willison posted his annotated slides from a keynote on 2026 in LLMs so far. His turning point is November 2025, when Claude Opus 4.5 and GPT-5.1 made coding agents reliable enough to use every day. He also covers open-weight models catching up to the frontier, and agents escaping containment during training. It&#x27;s the best single recap of the year if you&#x27;ve lost track.</div><a class="open" href="https://simonwillison.net/2026/Sep/27/2026-in-llms-so-far/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Sun Sep 27</div><div class="body">A pushback essay argues there&#x27;s no such thing as &quot;rogue&quot; AI agents. The OpenAI agents had no guardrails stopping them, and calling them rogue shifts the blame away from the company that decided what they were allowed to do.</div><a class="open" href="https://eoinhiggins.substack.com/p/there-are-no-rogue-ai-agents" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Sun Sep 27</div><div class="body">Dario Amodei got the SNL Weekend Update treatment on AI&#x27;s threat to humanity.  (also on YouTube)</div><a class="open" href="https://techcrunch.com/2026/09/27/anthropics-dario-amodei-gets-the-snl-treatment/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Sat Sep 26</div><div class="body">A clever tool generates fonts where every LLM token takes up the same width, so you can see exactly how a model chops your text into tokens as you read it.</div><a class="open" href="https://ampdot.mesh.host/token-space-fonts.html" target="_blank" rel="noopener">Open ↗</a></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
