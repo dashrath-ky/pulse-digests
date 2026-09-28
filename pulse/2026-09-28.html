@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">4 stories</div></header>
+<main>
+<article class="card"><div class="meta">Finshots · Mon Sep 28</div><div class="body">India&#x27;s insurance regulator, IRDAI, wants to change how insurance gets sold. A new draft proposal would cap the commissions insurers pay to agents, banks and online brokers, and stop banks from forcing you to buy a policy along with a loan. The push comes from mis-selling: complaints rose 14% to over 26,600 in FY25. Shares of distributors like Policybazaar have dropped as much as 30% since. (Finshots owns Ditto, one of those distributors, so they&#x27;re openly affected.)</div></article>
+<article class="card"><div class="meta">Morning Brew · Sun Sep 27</div><div class="body">Young, wealthy investors are moving money into &quot;alternatives&quot; like private company shares, real estate, crypto and even Pokémon cards. About 20% of millennial portfolios sit in these assets, compared with 6% for boomers, per Goldman Sachs. Banks are eager to sell them. The catch is that many lock up your money and tell you far less than a stock does, so losses can be bigger and harder to see coming.</div></article>
+<article class="card"><div class="meta">Morning Brew · Sun Sep 27</div><div class="body">Two in five Gen Z Americans say sports betting counts as investing, according to a Bank of America survey. Half of Gen Z in a separate Betterment survey said they&#x27;d moved money meant for investing into bets instead. The math is against them. Sportsbooks bake a fee into the odds, so you lose over time even if you win half your bets, and Gen Z gets back about 80 cents per dollar wagered.</div></article>
+<article class="card"><div class="meta">Lenny&#x27;s Newsletter · Sun Sep 27</div><div class="body">Leadership coach Molly Graham (ex-Google, Facebook) says tech is going through a wave of grief, loneliness and burnout right now. Her famous &quot;give away your Legos&quot; advice, which means handing off your work as the company grows, doesn&#x27;t work the same way when the one taking it is AI. She also thinks the fear about AI wiping out jobs is overblown.</div></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
