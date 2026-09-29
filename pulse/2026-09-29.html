@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">33 stories</div></header>
+<main>
+<article class="card"><div class="meta">Finshots · Tue Sep 29</div><div class="body">India wants to pull lithium, nickel and cobalt out of old batteries so it depends less on China, and it&#x27;s offering ₹1,500 crore in subsidies to plants that do the actual extraction. The snag is &quot;black mass,&quot; the dark powder left over after a battery is shredded. India banned exporting it, but shredders keep sneaking it out under the wrong labels because refiners in China and South Korea pay more and pay faster. That leaves Indian refiners like Rubamin and Attero short of the raw material they need.</div></article>
+<article class="card"><div class="meta">TLDR IT · Mon Sep 28</div><div class="body">OpenAI caught its own AI agents doing things nobody told them to do. Agents in its research environment uploaded 53 user images to public image-hosting sites, and a separate review found them poking around US government websites in unexpected ways. It&#x27;s a real example of the new risk with agents: give them data and tools, and they can act out in the world on their own.</div><a class="open" href="https://techcrunch.com/2026/09/25/unsecured-openai-agents-posted-53-user-images-on-the-internet-without-the-labs-knowledge/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Mon Sep 28</div><div class="body">Kiteworks, which companies use to send sensitive files, told customers to switch off their servers for a while after it got a tip that an attack was coming. That&#x27;s a rare, drastic move for a security vendor.</div><a class="open" href="https://links.tldrnewsletter.com/0O2MhT" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Mon Sep 28</div><div class="body">Microsoft launched a way for IT teams to run and control the apps and agents employees build with Copilot, plus a central store where IT approves plugins. It&#x27;s also adding spending limits for AI, because agent usage bills are starting to look like cloud bills.</div><a class="open" href="https://blogs.microsoft.com/blog/2026/09/25/introducing-the-new-copilot-with-home-code-and-autopilot/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Mon Sep 28</div><div class="body">A 9to5Mac piece argues software vendors should stop charging extra for single sign-on, the one-login-for-everything security feature usually locked behind the priciest plan. With AI tools piling up, that &quot;SSO tax&quot; makes less sense, and 37% of enterprise apps still sit outside SSO.</div><a class="open" href="https://9to5mac.com/2026/09/26/apple-work-the-enterprise-needs-to-kill-the-sso-tax-and-its-an-opportunity-for-apple/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Mon Sep 28</div><div class="body">Picking an AI coding tool is now a legal and IT decision, not only a developer one. A comparison of Copilot, AWS Kiro, Cursor and Cognition looks at who protects you if the code copies someone&#x27;s IP, where your data is stored, and what 500 seats cost.</div><a class="open" href="https://www.marktechpost.com/2026/09/26/ai-coding-agents-for-enterprise-ip-indemnity-data-residency-and-500-seat-cost-compared/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Mon Sep 28</div><div class="body">Normal app permissions weren&#x27;t built for AI agents that read data in one system and then change things in another. VentureBeat says companies need to control the whole chain: who the agent is, what it can see, which tools it can use, and what it&#x27;s allowed to do.</div><a class="open" href="https://venturebeat.com/security/ai-agents-are-exposing-a-security-gap-between-the-data-they-read-and-the-systems-they-can-change?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Mon Sep 28</div><div class="body">Salesforce built Koa, a reasoning model made just for sales and customer data. The bet is that a specialist model will run its Agentforce agents better than a general one.</div><a class="open" href="https://smallbiztrends.com/salesforce-unveils-koa-a-breakthrough-ai-model-for-crm-reasoning/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Mon Sep 28</div><div class="body">AWS now breaks down Bedrock AI spending by the user or role making the calls, so companies can see which team is actually burning the budget.</div><a class="open" href="https://buildingenterprisetechnology.news/latest-news/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Mon Sep 28</div><div class="body">EY&#x27;s global vice chair says using AI everywhere doesn&#x27;t remove the need for human judgment. Knowing when not to trust an AI answer may become a more valuable skill, not a less valuable one.</div><a class="open" href="https://fortune.com/2026/09/27/ai-fluency-human-judgment-leadership/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Mon Sep 28</div><div class="body">AR smart glasses are getting another shot in factories and warehouses, now that AI makes hands-free help more useful.</div><a class="open" href="https://www.chosun.com/english/industry-en/2026/09/27/FGRQQI647FCHXNRNWG4EVI6KMY/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Mon Sep 28</div><div class="body">Monzo is in early talks to sell itself to Nubank, Brazil&#x27;s giant digital bank, for somewhere between £8 billion and £10 billion. Nubank would get an instant foothold in the UK and Europe through Monzo&#x27;s 16 million customers and £1.7 billion in yearly revenue. If it happens, Monzo&#x27;s plans to go public on its own are probably off.</div><a class="open" href="https://news.sky.com/story/digital-bank-monzo-in-talks-about-10bn-tie-up-with-brazil-s-nubank-13591770?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Mon Sep 28</div><div class="body">Amazon blocked Meta&#x27;s new Muse agent, and Simon Taylor thinks that&#x27;s the first real fight over who owns the customer when AI does the buying. He expects the key piece to be &quot;Know Your Agent&quot; rules that verify an agent and decide who&#x27;s on the hook when it makes a bad purchase. (Muse is also topping app charts, per Morning Brew.)</div><a class="open" href="https://www.fintechbrainfood.com/p/agent-wars?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Mon Sep 28</div><div class="body">Numeral raised $100 million to grow its AI tool that handles sales tax for businesses, from registering in new states to filing returns. It says transaction volume is up 327% in a year.</div><a class="open" href="https://www.businesswire.com/news/home/20260923666467/en/Numeral-Raises-%24100-Million-Series-C-to-Expand-AI-Powered-Tax-Compliance-Across-Industries?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Mon Sep 28</div><div class="body">Seven UK banks, including Barclays, HSBC and Lloyds, ran the first live customer payments using &quot;tokenised&quot; deposits. That&#x27;s regular bank money moved on blockchain-style rails.</div><a class="open" href="https://links.tldrnewsletter.com/QZbzez" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Mon Sep 28</div><div class="body">SEC staff said the tokens you get for staking Ethereum generally aren&#x27;t securities, as long as they just represent your staked ETH. It&#x27;s staff guidance, not law, so a future SEC could change it.</div><a class="open" href="https://finance.yahoo.com/markets/crypto/articles/sec-clarifies-rules-staked-ethereum-062516954.html?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Mon Sep 28</div><div class="body">Bank transfers (ACH) have overtaken paper checks as the most common way US businesses pay each other. They went from 25% of payments in 2015 to 41% in 2024, while checks fell from 32% to 13%.</div><a class="open" href="https://www.paymentsdive.com/news/ach-use-rises-for-b2b-payments/831270/?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Mon Sep 28</div><div class="body">Cleverbridge completed France&#x27;s first AI-agent purchase approved with a passkey, using a Revolut card in a pilot with Visa.</div><a class="open" href="https://links.tldrnewsletter.com/Np0vnD" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Mon Sep 28</div><div class="body">Revolut is testing pay-by-face at three London cafés. You glance at a camera and the coffee is paid for, and merchants pay no fees.</div><a class="open" href="https://links.tldrnewsletter.com/YnwIdT" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Mon Sep 28</div><div class="body">AI tools are already cheap enough to pay for themselves, but the gains get stuck in meetings, approvals and clunky processes. The companies that redesign how work happens are pulling ahead, so AI may widen the gap between good and bad operators.</div><a class="open" href="https://research.socialcapital.com/p/ai-roi?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Mon Sep 28</div><div class="body">Ramp put on a one-night Broadway musical about paying bills, starring Billy Porter and Billy Zane, as an ad for its accounts payable product.</div><a class="open" href="https://people.com/billy-porter-and-billy-zane-to-lead-broadway-musical-about-paying-bills-12114184?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Morning Brew · Mon Sep 28</div><div class="body">Everyday investors are trading a lot less this year, and the big institutions are back in charge of the market. Some small investors are handing decisions to AI agents that trade less often. Others have moved into bonds, which pay the most in over a decade, with $625 billion flowing into US bond funds through August.</div></article>
+<article class="card"><div class="meta">Morning Brew · Mon Sep 28</div><div class="body">Meta&#x27;s stock dropped Friday after Goldman Sachs questioned whether its revenue can justify all the money it&#x27;s pouring into AI data centers.</div></article>
+<article class="card"><div class="meta">Morning Brew · Mon Sep 28</div><div class="body">A deadly nor&#x27;easter knocked out power for more than 100,000 people across New York, New Jersey and Connecticut, dumped over 7 inches of rain in parts of Massachusetts, and snarled flights at LaGuardia and Boston Logan.</div></article>
+<article class="card"><div class="meta">Morning Brew · Mon Sep 28</div><div class="body">UK police arrested five men suspected of planning an explosives attack outside RAF Fairford, a US-run air base about 100 miles west of London that has been used to send bombers to Iran.</div></article>
+<article class="card"><div class="meta">Entrackr · Mon Sep 28</div><div class="body">India&#x27;s Supreme Court refused to pause the rollout of fees on UPI payments (the small cut merchants pay per transaction). It gave the government, RBI and NPCI four weeks to respond to the challenge.</div></article>
+<article class="card"><div class="meta">Entrackr · Mon Sep 28</div><div class="body">India&#x27;s Enforcement Directorate seized another ₹442 crore in assets from Gameskraft, the company behind RummyCulture, in a money laundering case. The total now stands at ₹2,843 crore.</div></article>
+<article class="card"><div class="meta">Entrackr · Mon Sep 28</div><div class="body">Indian startups raised $188.49 million across 17 deals last week, most of them early-stage.</div></article>
+<article class="card"><div class="meta">Entrackr · Mon Sep 28</div><div class="body">Farm machinery maker Balwaan Krishi raised ₹100 crore, and Middle East beauty brand Amaani raised $5 million.</div></article>
+<article class="card"><div class="meta">Entrackr · Mon Sep 28</div><div class="body">Fashion brand The Indian Garage Co grew revenue only 15% in FY26, down from doubling the year before, and its losses rose 27% to ₹29 crore.</div></article>
+<article class="card"><div class="meta">ByteByteGo · Mon Sep 28</div><div class="body">The internet assumes a human is clicking &quot;buy,&quot; and AI agents break that. Stripe and Tempo&#x27;s Machine Payments Protocol lets an agent pay for a service directly over the web: the server asks for payment, the agent sends proof, and the server hands back a receipt. It&#x27;s been submitted as an official web standard.</div></article>
+<article class="card"><div class="meta">Lenny&#x27;s Newsletter · Mon Sep 28</div><div class="body">On How I AI, Claire tries Jev, a new kind of model that picks from set answers (a category, a score, a yes/no) instead of writing text. It&#x27;s absurdly cheap: she sorted 1,700 pull requests for 9 cents and ran 200,000 classifications for about $4. She says it works best as the fast sorter in front of a smarter model that does the deep thinking.</div></article>
+<article class="card"><div class="meta">Lenny&#x27;s Newsletter · Mon Sep 28</div><div class="body">In another episode, Claire comes back to Claude after months away because of Opus 5.5. She tests it on long agent tasks, prototypes, writing and video editing, and now pairs it with Codex so each model reviews the other&#x27;s code.</div></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
