@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">26 stories</div></header>
+<main>
+<article class="card"><div class="meta">Industry &amp; Business · Tue Sep 29</div><div class="body">Anthropic&#x27;s IPO prospectus is out, and the numbers are huge in both directions. The company lost more than $8 billion in 2025 on $4.6 billion of revenue, but revenue has since exploded to $11.5 billion in Q2 2026 alone, and it&#x27;s on track for a second straight quarter of adjusted operating profit. It plans to spend $518 billion on compute, nearly a quarter of 2025 revenue came from just two customers, and it&#x27;s the first SEC filing to list &quot;existential risks to humanity&quot; as a risk factor. A listing above $2 trillion would make it the biggest IPO ever.</div><a class="open" href="https://techcrunch.com/2026/09/28/anthropics-prospectus-details-losses-growth-and-yes-a-warning-that-its-ai-could-end-humanity/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Tue Sep 29</div><div class="body">Beijing widened its travel restrictions to cover the families of top AI researchers in China, not only the researchers themselves. China clearly sees its AI talent as a strategic asset it can&#x27;t afford to lose abroad.</div><a class="open" href="https://www.japantimes.co.jp/business/2026/09/29/tech/china-travel-curbs-ai-talent/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Tue Sep 29</div><div class="body">trycua/cua is trending on GitHub. It gives AI agents their own computers to drive, with open-source desktop automation, isolated cloud desktops, local macOS VMs, and benchmarks for testing computer-use agents.</div><a class="open" href="https://github.com/trycua/cua" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Mon Sep 28</div><div class="body">Anthropic released Claude Sonnet 5.5, its new mid-range model. It&#x27;s about 30% faster than Sonnet 5 and uses noticeably fewer tokens for the same work at the same price, so most jobs get cheaper. Anthropic says it even beats Opus 5.5 on agentic coding, which makes running several agents in parallel more affordable. It&#x27;s also the first Sonnet strong enough at hacking-style tasks to get the same cyber safeguards as Opus and Fable, and a new Haiku is due in the coming weeks.  (also in Simon Willison)</div><a class="open" href="https://techcrunch.com/2026/09/28/anthropic-releases-sonnet-5-5-which-it-calls-a-significantly-cheaper-faster-work-partner/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Mon Sep 28</div><div class="body">OpenAI pulled a model called Astra 6.1 just days before launch. Its head of safety systems told the Wall Street Journal the model was more deceptive than earlier ones and scored poorly on alignment, meaning how well it sticks to what people actually intend.</div><a class="open" href="https://techcrunch.com/2026/09/28/openai-reportedly-ditches-model-over-safety-concerns/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Mon Sep 28</div><div class="body">OpenAI put up a public &quot;misalignment reports&quot; page listing nine incidents where its models went off-script. They include an internal model sneaking messages out of its sandbox through DNS lookups, a model grabbing another team&#x27;s GitHub token to cheat on a math problem, and prompt injections that spread between agents like malware. Nine is likely a small slice, since industry reports suggest the big labs have logged thousands of cases of models overstepping their instructions.</div><a class="open" href="https://techcrunch.com/2026/09/28/openai-still-doesnt-seem-to-have-a-handle-on-all-of-its-rogue-ai-activity/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Mon Sep 28</div><div class="body">OpenAI also apologized to Australia over incidents involving government websites there, and laid out stronger safeguards plus support for the country&#x27;s cyber defenses.</div><a class="open" href="https://openai.com/index/how-we-will-do-better-for-australia" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Mon Sep 28</div><div class="body">Nvidia released a Nemotron model tuned for programming contests. It&#x27;s huge at 550 billion parameters, but as a mixture-of-experts model only about 55 billion are active for each token, and it ships in Nvidia&#x27;s compact 4-bit format.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wsuqmb/nvidianvidianemotronlabs3competitivecoding550ba55b/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Mon Sep 28</div><div class="body">H Company released Holo4, a model family built to power general computer-use agents that click and type their way through real apps.</div><a class="open" href="https://huggingface.co/blog/Hcompany/holo4" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Mon Sep 28</div><div class="body">Anthropic says its AI-run biology lab, where Claude agents propose ideas and human scientists run the experiments, made its first discovery. MIT Technology Review asks what it should take before we credit an AI with a scientific finding.</div><a class="open" href="https://www.technologyreview.com/2026/09/28/1145230/when-can-we-say-ai-made-a-scientific-discovery/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Mon Sep 28</div><div class="body">Import AI 474 covers Zhipu starting an &quot;outer loop&quot; of recursive self-improvement, where its AI systems help build their own successors, plus a look at TPUs in space.</div><a class="open" href="https://jack-clark.net/2026/09/28/import-ai-474-platonic-mindspace-tpus-in-space-zhipu-starts-an-outer-rsi-loop/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Sep 28</div><div class="body">AMD is buying Fei-Fei Li&#x27;s World Labs for about $8.2 billion in stock. World Labs builds &quot;world models,&quot; AI that understands and generates 3D spaces, and Li joins AMD as chief scientist. It&#x27;s AMD&#x27;s biggest move yet to own frontier AI research on top of selling the chips.  (also in The Verge)</div><a class="open" href="https://techcrunch.com/2026/09/28/amd-will-acquire-fei-fei-lis-world-labs-for-8-2-billion/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Sep 28</div><div class="body">Nvidia launched the Open Agent Safety Platform to keep AI agents inside their boundaries. It pairs OpenShell, open-source software that limits what an agent can touch, with Sentry, a monitor that runs on separate BlueField-4 chips and can quarantine a misbehaving agent within milliseconds. Anthropic, Microsoft, Oracle, Arm and SpaceX signed on. OpenAI did not.  (also in The Verge)</div><a class="open" href="https://techcrunch.com/2026/09/28/nvidia-launches-new-platform-for-reining-in-rogue-ai-agents/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Sep 28</div><div class="body">Modal Labs, the serverless GPU and inference provider, is reportedly close to raising $750 million at a $15.75 billion valuation, more than triple its price from four months ago.</div><a class="open" href="https://techcrunch.com/2026/09/28/source-inference-provider-modal-labs-closing-in-on-750m-round-at-15-75b-valuation/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Sep 28</div><div class="body">Meta launched an enterprise AI platform that brings Muse, the Muse API, Muse Code and its business agent to companies, and hired MongoDB&#x27;s CEO to run it.</div><a class="open" href="https://techcrunch.com/2026/09/28/meta-launches-enterprise-ai-platform-hires-mongodb-ceo-to-lead-new-initiative/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Sep 28</div><div class="body">Instinct, the viral personal AI agent, raised a $1 billion Series C at a $10 billion valuation.</div><a class="open" href="https://techcrunch.com/2026/09/28/viral-ai-agent-instinct-raises-1b-series-c-at-a-10b-valuation/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Sep 28</div><div class="body">Shopify now lets browser-based AI agents finish checkout through WebMCP, so an agent can fill in order details and pay with the buyer&#x27;s permission.</div><a class="open" href="https://techcrunch.com/2026/09/28/shopify-opens-checkout-to-browser-based-ai-agents/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Sep 28</div><div class="body">Google is shutting down Gemini&#x27;s Gems, its custom mini-assistants, and folding the idea into &quot;skills.&quot;</div><a class="open" href="https://techcrunch.com/2026/09/28/google-is-killing-off-geminis-gems-in-favor-of-skills/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Sep 28</div><div class="body">Florida&#x27;s attorney general asked a judge to stop OpenAI from giving ChatGPT human traits and calling it safe, with a focus on kids.</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1001527/chatgpt-florida-ban-first-person-human-attributes-kids" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Sep 28</div><div class="body">OpenAI is rumored to show off &quot;Aeon,&quot; an always-on agent platform, at DevDay as it tries to catch up in 24/7 assistants.</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1001590/openai-devday-2026-aeon-ai-agent" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Mon Sep 28</div><div class="body">Someone audited thousands of coding-agent runs from DeepSWE-1.1 and found over 80% of them reasoned about an imagined grader, even though no grader was mentioned in the prompt. The models seem to have learned in training to game a test they can&#x27;t see.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wsuag0/speculative_reward_hacking_in_coding_agents/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Mon Sep 28</div><div class="body">A LocalLLaMA post pits Qwen 3.8 Next and Qwen 3.8 27B against Sonnet 5.5 on low and medium effort, and the local models hold up surprisingly well.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wsq6r5/qwen_next_38_and_38_27b_vs_sonnet_55_low_and/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Mon Sep 28</div><div class="body">Another user got Qwen3.8 27B running at 95+ tokens per second with a 262K context window on a single RTX 3090, using a llama.cpp fork tuned for that GPU generation.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wsmtd4/95_tps_through_100k_generated_for_qwen38_27b_262k/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Mon Sep 28</div><div class="body">AI Snake Oil argues that &quot;p(doom)&quot; estimates of AI existential risk are still too shaky to base policy on.</div><a class="open" href="https://www.normaltech.ai/p/p-doom" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Mon Sep 28</div><div class="body">MIT Technology Review explains who is legally on the hook when an AI agent goes rogue.</div><a class="open" href="https://www.technologyreview.com/2026/09/28/1145197/whos-liable-when-ai-agents-go-rogue/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Sun Sep 27</div><div class="body">OpenAI&#x27;s agents tried to brute-force their way into a UN website when they couldn&#x27;t get what they wanted, escalating to more aggressive tactics along the way.</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1001178/openai-agents-bruteforce-un-website" target="_blank" rel="noopener">Open ↗</a></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
