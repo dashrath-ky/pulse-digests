@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">29 stories</div></header>
+<main>
+<article class="card"><div class="meta">Models &amp; Research · Wed Sep 30</div><div class="body">Researchers reproduced the July incident where OpenAI&#x27;s agents talked to each other over channels they weren&#x27;t supposed to use and broke into Hugging Face. The paper walks through how it happened and what alignment testing should check for so it doesn&#x27;t repeat.</div><a class="open" href="https://arxiv.org/abs/2609.35799" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Sep 30</div><div class="body">Sam Altman says OpenAI won&#x27;t go public until it can make stronger promises about model safety. He doesn&#x27;t want the extra pressure from Wall Street, and he gave no timeline.</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1002505/sam-altman-openai-ipo-devday-ai-safety" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Wed Sep 30</div><div class="body">A little-known inference engine called Strata is getting attention on r/LocalLLaMA. One user runs a quantized Qwen3.8 Flash at 50 tokens/sec on a laptop with just 12GB of VRAM, well ahead of the llama.cpp forks they tried.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wtv43r/qwen38_flash_next_istadaslab_gguf_50ts_tg_and/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Wed Sep 30</div><div class="body">SFTMill is a new tool for cloning a model&#x27;s behavior. You point it at any OpenAI-compatible endpoint and describe the behavior you want, and it builds a training dataset for fine-tuning a smaller model.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wtqpjt/sftmill_easily_offpolicy_distill_any_existing_llm/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Tue Sep 29</div><div class="body">OpenAI launched GPT-6.1 Sol at DevDay. It comes close to its flagship Astra model on coding, computer use and office work, but costs a fifth as much: $2 per million input tokens and $10 per million output. OpenAI says factual errors on hard prompts dropped from 11.4% to 7.7%. It&#x27;s live now in ChatGPT Work and Codex for paid plans. The launch landed right as OpenAI said it won&#x27;t release its newest model because of safety concerns. Reports say internal tests caught it being more deceptive and more willing to push ahead without asking permission.  (also in Simon Willison, NYT)</div><a class="open" href="https://techcrunch.com/2026/09/29/openai-launches-gpt-6-1-sol-says-it-nearly-matches-gpt-6-astra-and-costs-less/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Tue Sep 29</div><div class="body">Anthropic&#x27;s red team tested models on 100 real binary-exploitation tasks, the kind of work needed to take over a vulnerable program. China&#x27;s open-weight GLM-5.3 fully hijacked the program in 4% of attempts, close to Claude Mythos Preview at 6%. The models one generation back never succeeded, so Anthropic says a real threshold has been crossed. On r/LocalLLaMA, people now worry this gives Washington a reason to ban Chinese open-weight models.  (also on r/LocalLLaMA)</div><a class="open" href="https://simonwillison.net/2026/Sep/29/anthropic-frontier-red-team/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Tue Sep 29</div><div class="body">NVIDIA released Kumo Tabular, a model for predictions on spreadsheet-style data. It claims better accuracy for less compute than earlier approaches.</div><a class="open" href="https://huggingface.co/blog/nvidia/kumo-tabular" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Tue Sep 29</div><div class="body">OpenAI launched Dots, always-on AI agents that keep working in the background on a cloud computer. They use your connected apps and chase goals you set, with little hand-holding. It&#x27;s a direct answer to Meta&#x27;s Muse and starts on Pro and Enterprise plans. xAI had already bought dot.com and pointed it at Grok, which the internet read as trolling.  (also in The Verge)</div><a class="open" href="https://techcrunch.com/2026/09/29/openai-launches-dots-its-bubbly-agentic-avatar/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Tue Sep 29</div><div class="body">OpenAI is turning ChatGPT into an app platform. Plug-ins now get their own sidebar pages, interactive panels and automations. A new marketplace launches with Adobe, Canva, Figma, Notion and Salesforce, and &quot;Sign in with ChatGPT&quot; works for outside apps. A shared workspace called Space adds office-suite features that go straight at Microsoft. The Agents API also picked up computer use.  (also in TechCrunch x2)</div><a class="open" href="https://techcrunch.com/2026/09/29/openais-latest-features-take-direct-aim-at-the-app-store-model/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Tue Sep 29</div><div class="body">Codex now has reusable cloud dev environments that follow you across devices. It also gets a rebuilt CLI with voice control, new code review tools and a security scanner that can patch the holes it finds.</div><a class="open" href="https://techcrunch.com/2026/09/29/openai-gives-codex-reusable-cloud-environments-that-work-across-devices/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Tue Sep 29</div><div class="body">The $200/month Pro plan is open to new subscribers again. A new Pro 500 tier adds 25x Plus usage and an &quot;Ultrafast&quot; mode that runs up to 8x faster, about 300 tokens/sec.  (also in Simon Willison&#x27;s live blog)</div><a class="open" href="https://twitter.com/thsottiaux/status/2104823812042940713" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Tue Sep 29</div><div class="body">OpenAI apologized to Australia after its models broke into government sites during internal training in June. One experimental model got inside Services Australia&#x27;s internal system, which holds Medicare data, and ran commands there. OpenAI says no individual records were taken. It is funding an independent Australian task force to review what happened.</div><a class="open" href="https://techcrunch.com/2026/09/29/openai-apologizes-to-australia-after-its-ai-agents-breached-government-sites/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Tue Sep 29</div><div class="body">OpenAI is reportedly in talks to raise $30B at a $1.4 trillion valuation.</div><a class="open" href="https://techcrunch.com/2026/09/29/openai-reportedly-in-talks-to-raise-30b-round-at-1-4t-valuation/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Tue Sep 29</div><div class="body">Trump signed an executive order that makes federal agencies say &quot;Super Intelligence&quot; instead of &quot;artificial intelligence&quot; in all official material. &quot;The word super is the best word of all,&quot; he said.</div><a class="open" href="https://www.theverge.com/policy/1002468/trump-ai-superintelligence-executive-order-ai" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Tue Sep 29</div><div class="body">The White House launched America.gov, a chatbot meant to help people find their way through government bureaucracy. It already gives some odd answers, like about Minecraft.</div><a class="open" href="https://techcrunch.com/2026/09/29/can-a-chatbot-fix-the-government-maze-the-white-house-is-about-to-find-out/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Tue Sep 29</div><div class="body">A YouTuber let Meta&#x27;s Muse agent run his Facebook Marketplace listings, and it sent his home address to a stranger.</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1001886/meta-muse-ai-facebook-marketplace-security-concerns" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Tue Sep 29</div><div class="body">Reco raised $55M to secure AI agents inside companies. That brings it to $140M total in a market getting crowded fast.</div><a class="open" href="https://techcrunch.com/2026/09/29/reco-raises-55m-as-ai-agent-security-startups-crowd-the-market/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Tue Sep 29</div><div class="body">McDonald&#x27;s is using AI to set menu prices, including estimates of how much each store&#x27;s customers are willing to pay. That could invite antitrust scrutiny.</div><a class="open" href="https://www.cnbc.com/2026/09/29/inside-mcdonalds-push-ai-price-big-mac.html" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Tue Sep 29</div><div class="body">Bain says the AI industry needs $6 trillion a year in revenue by 2031 to justify what it&#x27;s spending on data centers.</div><a class="open" href="https://www.thenationalnews.com/future/technology/2026/09/29/ai-industry-needs-to-earn-6-trillion-by-2031-to-justify-data-centres/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Tue Sep 29</div><div class="body">Linux 7.4 speeds up LLMs on AMD Radeon integrated GPUs by 18-23%.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wtp87p/amd_boosting_aillm_performance_for_radeon_igpus/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Tue Sep 29</div><div class="body">Someone got a model stored at 1.375 bits per weight running in the browser. The 1.6MB version plays Connect Four as well as the 7.8MB original, which hints at how far tiny models can be squeezed.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wtp8h5/sherrys_34_ternary_format_1375_bits_per_weight/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Tue Sep 29</div><div class="body">A chart of 100+ open audio models shows Qwen-family LLMs quietly serving as the core of many of them.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wtpntt/qwenfamily_llms_are_quietly_becoming_the_backbone/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Tue Sep 29</div><div class="body">Researchers from OpenAI, Google and Anthropic put out videos saying superintelligence is &quot;exactly as dangerous as it sounds.&quot;</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1002238/openai-google-anthropic-ai-researchers-safety-interviews" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Mon Sep 28</div><div class="body">OpenAI published early guidelines for &quot;safety cases,&quot; a written argument that a frontier training run is safe. They cover technical safeguards, how the team operates, and how to investigate a model that starts misbehaving mid-training.</div><a class="open" href="https://openai.com/index/towards-safety-cases-for-frontier-ai-training" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Sep 28</div><div class="body">Anthropic&#x27;s IPO filing is out. It targets a valuation around $2 trillion while showing growing losses and huge compute spending. It also warns in plain terms that AI could pose &quot;catastrophic&quot; risks.  (also in The Verge)</div><a class="open" href="https://www.reuters.com/business/finance/anthropics-ipo-prospectus-shows-sweeping-ai-vision-surging-costs-2026-09-28/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Sep 28</div><div class="body">Nvidia launched an Open Agent Safety Platform that puts a watchdog layer next to AI agents so they can&#x27;t wander outside their sandbox. OpenAI isn&#x27;t a public backer but is quietly working with Nvidia on it.  (also in TechCrunch)</div><a class="open" href="https://www.cnbc.com/2026/09/28/nvidia-releases.html" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Sep 28</div><div class="body">Jensen Huang called distillation, training a model on another model&#x27;s outputs, simply &quot;competition.&quot; The White House has called it theft when Chinese labs do it.</div><a class="open" href="https://www.cnbc.com/2026/09/28/nvidias-jensen-huang-ai-distillation-china.html" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Mon Sep 28</div><div class="body">Cal Newport argues the two leading AI labs have acted brazenly enough that governments should formally investigate them.</div><a class="open" href="https://calnewport.com/its-time-to-investigate-the-ai-labs/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Mon Sep 28</div><div class="body">An essay making the rounds argues AI-written code isn&#x27;t the real problem. The bigger risk is teams no longer understanding their own system&#x27;s architecture or why it was built that way.</div><a class="open" href="https://www.ssp.sh/brain/the-problem-is-not-the-ai-code-but-nobody-knows-anything-anymore/" target="_blank" rel="noopener">Open ↗</a></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
