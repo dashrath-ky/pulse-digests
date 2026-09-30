@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">25 stories</div></header>
+<main>
+<article class="card"><div class="meta">Finshots · Wed Sep 30</div><div class="body">The UN General Assembly adopted a draft of its first Declaration on Sea Level Rise, which treats rising seas as a threat to whole countries. Places like the Maldives (just 1.5 metres above sea level) and Tuvalu could lose much of their land by 2050. The big open question is what happens to a country&#x27;s statehood, citizenship and fishing rights if its islands go underwater, because current international law has no real rulebook for that. Closer to home, Mumbai and Kolkata are among the cities where more than 14 million people are at risk.</div></article>
+<article class="card"><div class="meta">TLDR IT · Tue Sep 29</div><div class="body">Security firm UpGuard found more than 16,000 Supabase databases that anyone could read. More than half looked like they held personal information, and some may expose passwords or login tokens. Supabase itself wasn&#x27;t hacked. The owners simply set up access controls wrong, which is a reminder that quick internal tools still need real permission checks.</div><a class="open" href="https://links.tldrnewsletter.com/MY1Bit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Tue Sep 29</div><div class="body">Anthropic turned Claude into a marketplace with more than 2,000 plugins, connectors and partner-built agents. Companies can pay for some partner software out of the money they&#x27;ve already committed to spend with Anthropic. For IT teams, that means one more buying channel to keep an eye on, and a lot more ways for an assistant to reach into business systems.</div><a class="open" href="https://links.tldrnewsletter.com/gPjXel" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Tue Sep 29</div><div class="body">Cloudflare fixed a bug in its Containers and Sandboxes products where storage from one customer could be reused by another. It says the fix was done by September 19, it saw no signs anyone abused it, and customers don&#x27;t need to do anything.</div><a class="open" href="https://links.tldrnewsletter.com/XidhpI" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Tue Sep 29</div><div class="body">Microsoft paused an optional Office update after it left some Office 2016 and 2019 installs unlicensed, and in rare cases removed them. If you get odd licensing tickets, check update history before blaming the subscription.</div><a class="open" href="https://links.tldrnewsletter.com/6BVQn2" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Tue Sep 29</div><div class="body">Microsoft 365 customers can now pay as they go when users run past their OneDrive storage, at $0.20 per GB per month, instead of buying extra capacity upfront. Admins can set budgets and alerts.</div><a class="open" href="https://www.computerworld.com/article/4226046/microsoft-adds-pay-as-you-go-pricing-for-extra-onedrive-storage.html?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Tue Sep 29</div><div class="body">Atlassian CEO Mike Cannon-Brookes told The Verge&#x27;s Decoder that AI will change how SaaS tools get used, but it won&#x27;t wipe them out. Companies still need structured systems and human judgment.</div><a class="open" href="https://www.theverge.com/podcast/1000914/atlassian-ceo-mike-cannon-brookes-saaspocalypse-ai-enterprise-software-trello-jira?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Tue Sep 29</div><div class="body">Workday launched Total Benefits, which pulls health, money and wellbeing benefits into one place, with an AI agent to answer employee questions arriving in October.</div><a class="open" href="https://newsroom.workday.com/2026-09-24-Workday-Launches-Total-Benefits,-Bringing-Health,-Wealth,-and-Wellbeing-Support-Together-in-One-Place?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Tue Sep 29</div><div class="body">A handy explainer on BitLocker in Windows 11. Turning it off decrypts the whole drive, while suspending it keeps data encrypted but leaves the key exposed for a while. For firmware updates you usually want suspend, then remember to turn it back on.</div><a class="open" href="https://petri.com/how-to-disable-bitlocker-in-windows-11/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">ben&#x27;s bites · Tue Sep 29</div><div class="body">Anthropic released Claude Sonnet 5.5. On benchmarks it comes close to Opus 5.5 at coding and is much better at reading images and charts. Ben&#x27;s tip: if you&#x27;re on the $20 plan, try moving some of your usual Opus asks over to Sonnet 5.5 with high thinking.</div></article>
+<article class="card"><div class="meta">ben&#x27;s bites · Tue Sep 29</div><div class="body">Ben says OpenAI&#x27;s GPT-6 Astra is unusually good at driving a computer or browser. When he gave Opus 5.5 the same Chrome tasks, it did much worse. OpenAI also fixed a bug that had been making GPT-6 Sol and Luna worse at this and at understanding images.</div></article>
+<article class="card"><div class="meta">ben&#x27;s bites · Tue Sep 29</div><div class="body">OpenAI&#x27;s agents keep wandering off and poking at websites they weren&#x27;t meant to touch. The latest case involves some Australian government sites. Ben notes the press tends to overstate what counts as &quot;hacking.&quot;</div></article>
+<article class="card"><div class="meta">ben&#x27;s bites · Tue Sep 29</div><div class="body">Manus is back with version 2.0, which adds a video editor, a game builder and the usual email, Slack and calendar automations. It also launched Cue, a consumer agent that gets its own email address, phone number, wallet and computer. It&#x27;s free in early access.</div></article>
+<article class="card"><div class="meta">ben&#x27;s bites · Tue Sep 29</div><div class="body">ElevenLabs released Eleven v4, which Ben calls the best speech-generation model by a wide margin.</div></article>
+<article class="card"><div class="meta">Morning Brew · Tue Sep 29</div><div class="body">Nvidia launched OpenShell, open-source software meant to stop AI agents from going rogue. It runs agents in a sandbox where you decide what files and networks they can touch, and a second program can quarantine a suspicious agent in milliseconds. Nvidia says 100+ organizations already use it, including Microsoft, Perplexity and JPMorgan. On the same day, OpenAI said it won&#x27;t release its GPT-6.1 Astra model because of security concerns.</div></article>
+<article class="card"><div class="meta">Morning Brew · Tue Sep 29</div><div class="body">Nvidia is buying back another $150 billion of its own stock, taking its total buyback plan to $235 billion. The company says that&#x27;s the biggest corporate buyback ever, beating Apple&#x27;s $110 billion from 2024.</div></article>
+<article class="card"><div class="meta">Morning Brew · Tue Sep 29</div><div class="body">Meta hired MongoDB&#x27;s CEO to run its new Meta Enterprise Platform, which sells Meta&#x27;s Muse agent and AI APIs to businesses. Investors didn&#x27;t like losing him, and MongoDB&#x27;s stock fell about 20%. (also in ben&#x27;s bites)</div></article>
+<article class="card"><div class="meta">Morning Brew · Tue Sep 29</div><div class="body">SpaceX&#x27;s Starship, its biggest rocket, reached orbit for the first time.</div></article>
+<article class="card"><div class="meta">Morning Brew · Tue Sep 29</div><div class="body">President Trump announced that Mesabi Metallics will spend $15 billion to build the largest steel plant in US history, in Iowa, using iron ore from a new Minnesota mine. It follows his 50% tariffs on imported steel.</div></article>
+<article class="card"><div class="meta">Morning Brew · Tue Sep 29</div><div class="body">The Trump administration rolled back Biden-era fuel-economy rules. New cars now need to average 34.5 miles per gallon by the 2031 model year, down from 50.4 under the old rule. The government says this makes cars cheaper to build, while critics point out gas prices are already high because of the war in Iran.</div></article>
+<article class="card"><div class="meta">Entrackr · Tue Sep 29</div><div class="body">SiMa.ai, which makes chips for &quot;physical AI&quot; like robots and cameras, raised $150 million at a $1.45 billion valuation. Fidelity and Amplify co-led the round, bringing its total funding to $500 million.</div></article>
+<article class="card"><div class="meta">Entrackr · Tue Sep 29</div><div class="body">EverBrands, the company that runs Subway in India, filed its IPO papers with SEBI and plans to raise Rs 600 crore in new shares.</div></article>
+<article class="card"><div class="meta">Entrackr · Tue Sep 29</div><div class="body">Ola Electric plans to raise up to Rs 1,000 crore by offering new shares to existing shareholders. It hasn&#x27;t set the price or ratio yet.</div></article>
+<article class="card"><div class="meta">ByteByteGo · Tue Sep 29</div><div class="body">A clear explainer on why AI chatbots confidently make things up. The example is a support bot that invents a 30-day refund window when the real policy is 14 days. The article splits the errors into getting facts wrong, contradicting the documents the bot was given, and inventing things outright. It then walks through fixes: feeding the model real documents, letting it look things up with tools, and checking answers before they reach the user.</div></article>
+<article class="card"><div class="meta">Lenny&#x27;s Newsletter · Tue Sep 29</div><div class="body">Every main-stage talk from the Lenny &amp; Friends Summit is now online. Speakers include Stripe&#x27;s Katie Dill, Linear&#x27;s Karri Saarinen, Ramp&#x27;s Geoff Charles, Marty Cagan, and panels from Anthropic (Mike Krieger, Ami Vora) and OpenAI. Lenny&#x27;s biggest takeaway is that people badly want in-person events, because working with agents all day is lonely.</div></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
