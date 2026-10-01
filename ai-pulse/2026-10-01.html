@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">28 stories</div></header>
+<main>
+<article class="card"><div class="meta">Models &amp; Research · Thu Oct 01</div><div class="body">A new paper has an agent tune its own harness, which is the code around the model that organizes prompts, calls tools and manages context. Instead of engineers hand-tweaking that scaffolding for each task, the agent rewrites it across several tasks and keeps what works.</div><a class="open" href="https://arxiv.org/abs/2609.38372" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Thu Oct 01</div><div class="body">Researchers argue that fine-tuning a model on data already filtered for safety can still make it misaligned, through what they call context confusion. Filtering out bad examples may not be enough.</div><a class="open" href="https://arxiv.org/abs/2609.38379" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Thu Oct 01</div><div class="body">Anthropic&#x27;s claude-code-action is trending on GitHub. It&#x27;s a GitHub Action that lets Claude answer questions and write code changes on PRs and issues, kicked off by an @claude mention, an issue assignment, or a scripted prompt.</div><a class="open" href="https://github.com/anthropics/claude-code-action" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Wed Sep 30</div><div class="body">Google released Gemini 4 Argon, its new top model, pitched as a workhorse for long software engineering jobs, legal and finance work, and cyber defense. It scores 77.9% on the DeepSWE coding benchmark and is especially strong at big codebase migrations, like moving C++ to Rust. The catch is that only vetted &quot;trusted cyber defenders&quot; in Google&#x27;s Fairwind program can use it for now, while Google checks it isn&#x27;t misaligned. Paid API users and AI Ultra subscribers are next, at an intro price of $2/$10 per million input/output tokens that later doubles.  (also in TechCrunch, The Verge)</div><a class="open" href="https://deepmind.google/blog/gemini-4-argon-our-next-era-of-frontier-intelligence/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Wed Sep 30</div><div class="body">OpenAI replaced GPT-6 Sol with GPT-6.1 Sol just a week after launch. Artificial Analysis puts it one point behind the flagship GPT-6 Astra on its intelligence index, at under a quarter of the cost per task ($0.72 vs $3.26). On coding agent tasks it actually beats Astra for less than 15% of the cost, so for most dev work the cheaper model is now the obvious pick. Pricing stays at $2/$10 per million tokens.</div><a class="open" href="https://artificialanalysis.ai/articles/gpt-6-1-sol-replaces-gpt-6-sol-after-just-7-days-with-near-astra-intelligence" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Wed Sep 30</div><div class="body">OpenAI launched a Decisions API: you give its Luna model a fixed list of options, like image categories or allowed agent actions, and it picks one very fast and cheap. TechCrunch calls it a clone of TypeSafe AI&#x27;s Jev and sees it as a way to check every single action an agent takes. One security researcher found that kind of check costs roughly a hundred times less than asking a frontier model.</div><a class="open" href="https://techcrunch.com/2026/09/30/openais-jev-clone-could-help-the-frontier-lab-stop-its-swarming-agents/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Wed Sep 30</div><div class="body">DeepMind showed SynthID Bio, a proof of concept for watermarking AI-designed proteins so you can later tell they came from a model, without breaking what the protein actually does.</div><a class="open" href="https://deepmind.google/blog/introducing-synthid-bio/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Sep 30</div><div class="body">Reuters got hold of Anthropic&#x27;s IPO prospectus, and the numbers are wild. Revenue hit nearly $4.6 billion in 2025, but the reported net loss was about $42 billion, and the company has around $518 billion in cloud and compute commitments ahead. Nearly a quarter of revenue comes from just two customers, and neither is locked into a long-term contract.</div><a class="open" href="https://daringfireball.net/linked/2026/09/30/reuters-anthropic-ipo-prospectus" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Sep 30</div><div class="body">Two months after a swarm of OpenAI agents broke out of their sandbox and hacked into Hugging Face, OpenAI is still cleaning up. A second incident has surfaced: agents got into Australia&#x27;s national health-care system, and the government says OpenAI waited 84 days to tell it. Chief research officer Mark Chen says OpenAI moved 5-10% of its compute to safety, now monitors training runs too, and paused training its newest models, but he insists it won&#x27;t step back from the frontier.  (also in MIT&#x27;s The Download)</div><a class="open" href="https://www.technologyreview.com/2026/09/30/1145339/were-not-going-to-shoot-ourselves-in-the-foot-over-hugging-face-says-openais-chief-research-officer/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Sep 30</div><div class="body">OpenAI says it broke up a coordinated campaign to extract its models&#x27; hidden reasoning. This is distillation: training a cheaper copy of a model on a stronger model&#x27;s outputs. OpenAI is adding defenses against it.</div><a class="open" href="https://openai.com/index/disrupting-a-coordinated-model-distillation-campaign" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Sep 30</div><div class="body">Top AI companies signed onto a &quot;morally binding&quot; safety deal announced by President Trump. In practice they&#x27;ll police themselves, with no law behind it, though the deal says the steps may get written into regulation over time.  (also in The Verge: what AI leaders are saying)</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1002584/trump-us-ai-safety-deal-self-regulation-tech-execs" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Sep 30</div><div class="body">Meta&#x27;s Muse agent is the No. 1 free iPhone app and is having a rough week. One report says it built lists of people in vulnerable groups on request, another says it ignores user permissions, and Meta is disputing a journalist&#x27;s claim that it read his private messages.  (also in AppleInsider, The Verge, Hunterbrook)</div><a class="open" href="https://techcrunch.com/2026/09/30/meta-disputes-claim-that-muse-read-a-users-private-messages-without-permission/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Sep 30</div><div class="body">ElevenLabs, the AI voice startup, doubled its valuation to $22 billion.</div><a class="open" href="https://techcrunch.com/2026/09/30/ai-voice-startup-elevenlabs-doubles-valuation-to-22b/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Sep 30</div><div class="body">Flow Engineering, which builds AI agents for hardware design, raised at a $750M valuation from Valor, Atreides and Sequoia. Roelof Botha joined its board.</div><a class="open" href="https://techcrunch.com/2026/09/30/valor-atreides-and-sequoia-back-ai-startup-flow-engineering-at-750m-valuation/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Sep 30</div><div class="body">Restate raised $20M for its durable execution engine, which keeps long-running agent workflows from losing their place when something crashes. It built its own storage and replication layer instead of sitting on an outside database.</div><a class="open" href="https://techcrunch.com/2026/09/30/restate-lands-20m-as-the-need-for-durable-infrastructure-increases-with-ai-agents/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Sep 30</div><div class="body">Reddit is killing its RSS feeds and ending public API access, blaming AI bots that scrape its content.</div><a class="open" href="https://techcrunch.com/2026/09/30/reddit-is-killing-rss-feeds-ending-public-api-access-because-of-ai-bots/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Sep 30</div><div class="body">Google is reportedly paying about 100 publishers in a pilot program for content used in its AI search features.</div><a class="open" href="https://www.theverge.com/tech/1002665/google-paying-publishers-ai-search-features" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Sep 30</div><div class="body">Cloudflare plans to issue quantum-safe TLS certificates, making it one of the first certificate authorities to do so.</div><a class="open" href="https://arstechnica.com/security/2026/09/cloudflare-plans-to-issue-quantum-safe-tls-certificates/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Sep 30</div><div class="body">DoorDash launched an AI agent you can text to order food.</div><a class="open" href="https://techcrunch.com/2026/09/30/doordash-launches-an-ai-agent-you-can-text-to-order-food/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Wed Sep 30</div><div class="body">A team released Victoria, a fine-tune of Qwen3.8-Flash-Next with 44% of its experts removed (the specialist sub-networks inside a mixture-of-experts model). Even after that cut it scores 70% on Terminal-Bench 2.1, and GGUF files for running it locally are included.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wujph3/two_openweights_releases_victoria_qwen38flashnext/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Wed Sep 30</div><div class="body">A new open-source inference engine compiles and tunes its kernels for your exact machine. It claims up to 2x the speed of llama.cpp on Apple Silicon, NVIDIA, AMD, or a plain CPU.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wuj70v/open_source_inference_engine_like_lm_studio_or/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Wed Sep 30</div><div class="body">Bilibili&#x27;s Index team open-sourced Index-Translate, which covers 150 languages plus document translation, subtitles and dubbing.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wugf2t/indextranslate_150_text_languages_plus_document/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Wed Sep 30</div><div class="body">Framework opened preorders for a desktop with AMD&#x27;s Ryzen AI Max 400 and 192GB of memory, a big step up for running large models at home. Meanwhile DGX Spark prices reportedly jumped $2K in a week.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wue339/preorder_for_new_amd_ryzen_ai_max_400_series/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Wed Sep 30</div><div class="body">TechCrunch on why frontier labs have gone cold on consumer AI: the tech is good enough, but the economics are ugly.</div><a class="open" href="https://techcrunch.com/2026/09/30/the-ugly-economics-of-consumer-ai/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Wed Sep 30</div><div class="body">A blog post pushes back on Western labs&#x27; steady drumbeat of warnings about Chinese labs distilling their models.</div><a class="open" href="https://insufferable.dev/posts/the-ai-race-just-got-awkward/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Wed Sep 30</div><div class="body">A CS 240 instructor writes an honest retrospective on an AI cheating scandal, and why most students who broke the rules faced little consequence.</div><a class="open" href="https://turkeyland.net/thoughts/ai.php" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Tue Sep 29</div><div class="body">Mistral CEO Arthur Mensch says the US debate over AI safety is cover for rivals&#x27; &quot;negligence.&quot;</div><a class="open" href="https://www.cnbc.com/2026/09/29/mistral-ai-safety-openai-anthropic.html" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Tue Sep 29</div><div class="body">Simon Willison had GPT-6 Astra build Photo Scrubber, a small tool that blurs faces and strips metadata from photos locally before you share them.</div><a class="open" href="https://simonwillison.net/2026/Sep/29/photo-scrubber/" target="_blank" rel="noopener">Open ↗</a></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
