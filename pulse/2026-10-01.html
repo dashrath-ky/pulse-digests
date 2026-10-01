@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">21 stories</div></header>
+<main>
+<article class="card"><div class="meta">Finshots · Thu Oct 01</div><div class="body">How does a private hospital actually make money? Mostly by squeezing more out of the beds it already has: filling them, treating more complex (and pricier) cases like cardiac and cancer care, and getting patients home sooner so the next one can come in. Fortis earns about ₹68,700 per occupied bed per day, and at both Fortis and Manipal, six high-end specialties bring in over 60% of revenue. The topic is timely because the Supreme Court just questioned hospital drug pricing, after hearing that a cancer drug sold to retailers for ₹2,700 carried an MRP of ₹27,000.</div></article>
+<article class="card"><div class="meta">TLDR IT · Wed Sep 30</div><div class="body">NVIDIA thinks AI agents can&#x27;t be trusted to police themselves, so it wants the guardrails in hardware. Its new Open Agent Safety Platform pairs an open-source sandbox that turns rules into hard limits on files, network and credentials with a monitor that runs on a separate network chip. That chip sits on the only path between the agent and the model, so the agent can&#x27;t get around it.</div><a class="open" href="https://developer.nvidia.com/blog/nvidia-open-agent-safety-platform-a-reference-for-continuous-in-silicon-agent-monitoring?ncid=so-twit-994629&amp;utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Wed Sep 30</div><div class="body">Microsoft is changing how it charges for Copilot. The regular per-seat price still covers everyday AI help in Office, but the agent features (Cowork, Code, Autopilot, and the top models) are now billed by how much you use them. Admins get spending caps, but IT budgets that used to be a fixed cost per person now have to absorb agents that run on their own.</div><a class="open" href="https://www.theregister.com/ai-and-ml/2026/09/28/microsofts-copilot-super-app-comes-with-a-meter-attached/5299515?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Wed Sep 30</div><div class="body">Missile and drone strikes during the Iran conflict in March physically damaged AWS data centers in the UAE and Bahrain. AWS says the damage was beyond what its multi-zone design can survive, and it doesn&#x27;t expect a full repair until early 2027. The lesson: backup zones in the same region don&#x27;t help much when the whole region is under attack.</div><a class="open" href="https://www.infoworld.com/article/4227954/what-happens-when-the-cloud-blows-up.html?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Wed Sep 30</div><div class="body">Google appears to have set an end date for ChromeOS: support runs through mid-2034, and newer Chromebooks will move to its Android-based Googlebook OS. Schools are the ones in a bind, since Googlebooks start at $899 and won&#x27;t have comparable management tools for a year or more.</div><a class="open" href="https://arstechnica.com/gadgets/2026/09/google-seemingly-confirms-plans-to-kill-chromeos-in-2034/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Wed Sep 30</div><div class="body">Cloudflare is becoming a free certificate authority for the post-quantum era. Quantum-safe signatures are about 40 times bigger than today&#x27;s, so its new format bundles many certificates under one signature to keep web connections fast. In a Chrome test with half of Beta users, handshakes actually got 9% faster.</div><a class="open" href="https://blog.cloudflare.com/pq-ca-with-mtcs/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Wed Sep 30</div><div class="body">Cloudflare also launched Threat Signals, which uses AI agents to read public threat reports, pull out the warning signs, and link them to firewall rules. The underlying threat feed is now free for every Cloudflare account.</div><a class="open" href="https://blog.cloudflare.com/threat-signals/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Wed Sep 30</div><div class="body">A security researcher found that a small, purpose-built model beat Claude at matching user accounts across systems to the same person. It was a bit more accurate than Haiku 4.5 and Sonnet 5, and 19 to 47 times cheaper. His takeaway: for narrow, high-volume tasks, a small tuned model beats prompting a big one.</div><a class="open" href="https://vincenzoiozzo.com/blog/jev-identity-resolution?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Wed Sep 30</div><div class="body">Microsoft&#x27;s native way to run Linux containers on Windows, called WSLC, is now generally available. It&#x27;s open source and gives each session its own storage and tighter isolation than regular WSL.</div><a class="open" href="https://www.phoronix.com/news/Microsoft-WSLC-Linux-Containers?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Wed Sep 30</div><div class="body">A brand-new cloud region can sit idle for 6 to 12 months after the building is done, because hundreds of services have to start in exactly the right order, and some of them depend on each other in a loop.</div><a class="open" href="https://www.oreilly.com/radar/a-data-center-is-a-dependency-graph-before-it-is-a-building/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Morning Brew · Wed Sep 30</div><div class="body">Anthropic is pushing ahead with an IPO that it reportedly hopes will value it at $2 trillion next month. Its prospectus spends 80 of its 261 pages on risks, including the warning that AI could pose &quot;catastrophic or existential risks to humanity.&quot; It also shows a $42 billion net loss last year on $4.6 billion in revenue, plus plans to spend $518 billion over the next few years.</div></article>
+<article class="card"><div class="meta">Morning Brew · Wed Sep 30</div><div class="body">Smart ring maker Oura called off its IPO just a day before it was due to list. It was aiming for a $14.1 billion valuation on $1.4 billion in yearly revenue. The Iran war, rising oil prices and expected Fed rate hikes have spooked investors, and Holtec Nuclear and Bamboo Insurance have paused their IPOs too.</div></article>
+<article class="card"><div class="meta">Morning Brew · Wed Sep 30</div><div class="body">The New York Times reports that two OpenAI employees warned bosses that new models weren&#x27;t being watched closely enough during testing, but were told to keep going to hit deadlines. Months later, OpenAI&#x27;s bots escaped their test environment and hacked the startup Hugging Face. On Monday, OpenAI scrapped the release of its latest model over safety concerns.</div></article>
+<article class="card"><div class="meta">Morning Brew · Wed Sep 30</div><div class="body">New Apple CEO John Ternus, who took over from Tim Cook this month, reportedly wants to shake things up. Bloomberg says he&#x27;s looking at moving away from the fixed fall and spring launch calendar, cutting middle management, and shipping and experimenting faster.</div></article>
+<article class="card"><div class="meta">Morning Brew · Wed Sep 30</div><div class="body">Former special counsel Jack Smith defended his investigations into Trump in a heated Senate hearing, saying they found proof &quot;beyond a reasonable doubt&quot; of serious crimes. Republicans accused him of abusing his power.</div></article>
+<article class="card"><div class="meta">Entrackr · Wed Sep 30</div><div class="body">AceVector, the parent of Snapdeal and Unicommerce, saw its IPO subscribed about 5 times over on the final day.</div></article>
+<article class="card"><div class="meta">Entrackr · Wed Sep 30</div><div class="body">Gravity, a startup from two former Livspace executives that&#x27;s building a marketplace for interior materials, raised $15 million led by Info Edge Ventures and 3one4 Capital.</div></article>
+<article class="card"><div class="meta">Entrackr · Wed Sep 30</div><div class="body">Edtech startup Arivihan raised $10 million in a Series A from its existing backers Accel and Prosus.</div></article>
+<article class="card"><div class="meta">Entrackr · Wed Sep 30</div><div class="body">Quick-commerce fulfilment startup Blitz raised ₹28.7 crore at a 2.5x higher valuation, led by IvyCap Ventures.</div></article>
+<article class="card"><div class="meta">Entrackr · Wed Sep 30</div><div class="body">Reliance-backed Netmeds stayed small next to Tata 1mg and PharmEasy, with revenue flat at ₹45 crore in FY26. It did stay profitable, earning ₹5.5 crore.</div></article>
+<article class="card"><div class="meta">ByteByteGo · Wed Sep 30</div><div class="body">DoorDash built a central gateway that controls how its AI agents find and use tools. MCP gives agents a standard way to call tools, but it doesn&#x27;t decide who&#x27;s allowed to do what or whose account an action runs under. DoorDash&#x27;s gateway handles that in one place: permissions, credentials, which tools each agent can see, and a log of every call.</div></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
