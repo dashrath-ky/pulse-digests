@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">38 stories</div></header>
+<main>
+<article class="card"><div class="meta">TLDR IT · Thu Oct 01</div><div class="body">OpenAI&#x27;s headline DevDay launch is Dots, an always-on AI agent with its own cloud computer and browser, so it keeps working when your laptop is off. You message or call it like an assistant, and it hands tasks off to other ChatGPT and Codex chats, then reports back. It connects to over 4,000 apps and is rolling out on Pro, Business Premium and Enterprise plans first. (also in Ben&#x27;s Bites)</div><a class="open" href="https://links.tldrnewsletter.com/IIkXoq" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Thu Oct 01</div><div class="body">Companies like Spotify and Twilio are using AI to build their own internal tools instead of buying another SaaS product. When custom software gets this cheap to make, the build-versus-buy math changes, and SaaS vendors end up competing with their own customers.</div><a class="open" href="https://www.businessinsider.com/spotify-twilio-using-ai-build-software-saaspocalypse-2026-9?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Thu Oct 01</div><div class="body">AI &quot;coworkers&quot; that run all the time with standing access are a new headache for security teams. Unlike one-off agents that get temporary permissions for a single task, these need to be managed more like employees: minimal access, constant visibility, and a proper offboarding when they&#x27;re retired.</div><a class="open" href="https://links.tldrnewsletter.com/z66O9v" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Thu Oct 01</div><div class="body">Employees are using AI to build their own apps and automations outside normal IT channels. The bigger worry is visibility: nobody knows what&#x27;s been built, what data it touches, or who owns it.</div><a class="open" href="https://www.cio.com/article/4228674/the-problem-with-wild-code-it-cant-see-it-coming.html?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Thu Oct 01</div><div class="body">Meta launched an enterprise platform that sells its AI models and agents to businesses. One analyst argues the real point is to give Meta&#x27;s huge AI data center spend a second set of customers, in case consumer products alone can&#x27;t use all that compute.</div><a class="open" href="https://www.mbi-deepdives.com/meta-enterprise/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Thu Oct 01</div><div class="body">Analysts reading Anthropic&#x27;s confidential IPO prospectus think big companies have more bargaining power than they assumed. Anthropic leans heavily on enterprise revenue and has few long-term contracts, so buyers can push for price protection, easy data export, and advance notice before models get retired.</div><a class="open" href="https://www.computerworld.com/article/4228501/anthropic-revelations-suggest-a-much-stronger-ai-negotiating-stance-for-enterprise-cios-2.html?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Thu Oct 01</div><div class="body">Google is adding reusable &quot;skills&quot; to the Gemini app and Workspace, which you can mix into prompts and share with others. The Workspace rollout starts October 5, and skills will eventually replace Gems, so admins should start planning the switch.</div><a class="open" href="https://workspaceupdates.googleblog.com/2026/09/skills-gemini-app-workspace.html?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Thu Oct 01</div><div class="body">MongoDB 9.0 is now generally available, with faster transactions and updates. The company also previewed Atlas Agent Engine, a managed platform for running AI agents with built-in memory, and Atlas Infinite, which scales compute and storage separately.</div><a class="open" href="https://www.constellationr.com/insights/news/mongodb-launches-atlas-agent-engine-atlas-infinite-mongodb-90-goes-ga?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Thu Oct 01</div><div class="body">Graph database FalkorDB 6.0 is the first release on its new Rust engine. It uses 39% fewer CPU instructions on benchmark queries and fixes 226 bugs, and existing queries keep working.</div><a class="open" href="https://www.falkordb.com/blog/announcing-falkordb-6-0/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Thu Oct 01</div><div class="body">OpenSearch 3.9 adds a faster C++ engine for AI-powered sparse search, more compact ways to store vectors, and a single alerts view with anomaly detection and forecasting.</div><a class="open" href="https://opensearch.org/blog/get-to-know-opensearch-3-9/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Thu Oct 01</div><div class="body">In a Cisco survey of 1,000 IT pros, about 80% said they&#x27;re fine letting AI run parts of the network on its own, beyond just helping troubleshoot.</div><a class="open" href="https://www.networkworld.com/article/4225341/80-of-network-pros-are-ok-with-giving-ai-an-autonomous-role-in-network-operations.html?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Thu Oct 01</div><div class="body">Oracle and NetApp are building a fully managed NetApp storage service inside Oracle Cloud. The pitch is that companies can move databases, VMware and AI data onto Oracle without changing how they manage and protect their storage.</div><a class="open" href="https://www.itpro.com/cloud/cloud-computing/netapp-ticks-another-hyperscaler-box-with-oracle-cloud-infrastructure-deal?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Thu Oct 01</div><div class="body">AI app builder Bolt bought Dokai to bring enterprise workflow know-how into its coding agents.</div><a class="open" href="https://bolt.new/blog/bolt-acquires-dokai?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Thu Oct 01</div><div class="body">Developers can now manage comments in Google Docs, Sheets and Slides through the API, and the Docs API can submit suggested edits for a human to approve.</div><a class="open" href="https://workspaceupdates.googleblog.com/2026/09/programmatic-comment-and-suggestion.html?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Thu Oct 01</div><div class="body">Tiger Global and Dragoneer are in talks to join a new $1 billion round for Kalshi, the prediction-market exchange. The deal could value it at about $40 billion, nearly double its $22 billion price in May, though nothing has closed yet. Kalshi wants to grow into a broader trading platform just as regulators look harder at prediction markets.</div><a class="open" href="https://links.tldrnewsletter.com/wJDtHS" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Thu Oct 01</div><div class="body">Apple Pay has finally launched in India, through a partnership with Axis Bank. People with Axis Bank Visa or Mastercard credit cards can now pay in stores, online and in apps on iPhone, iPad and Apple Watch, with Mac support coming soon.</div><a class="open" href="https://links.tldrnewsletter.com/5l7RqI" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Thu Oct 01</div><div class="body">Long Lake, which calls itself an AI holding company, closed its $6.3 billion all-cash purchase of American Express Global Business Travel. Amex GBT is now private and off the NYSE, and Long Lake plans to add AI agents to its customer tools and travel services.</div><a class="open" href="https://www.businesswire.com/news/home/20260929141717/en/Long-Lake-the-Worlds-First-AI-Holding-Company-Completes-%246.3-Billion-Acquisition-of-American-Express-Global-Business-Travel?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Thu Oct 01</div><div class="body">Citi and Coinbase are teaming up so businesses can move between regular bank money and stablecoins more easily. Companies can receive dollars that convert to stablecoins automatically, and Citi clients can accept stablecoin payments that Coinbase turns back into cash.</div><a class="open" href="https://links.tldrnewsletter.com/kfsRLh" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Thu Oct 01</div><div class="body">Amex is taking on Ramp and Brex with a corporate cashback card that comes with software to track spending, build expense reports and flag policy violations. It&#x27;s aimed at companies with $10 million to $300 million in revenue, and more AI agents are on the way.</div><a class="open" href="https://links.tldrnewsletter.com/8rcQlt" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Thu Oct 01</div><div class="body">A Senate Democratic report found that 84% of the 846 sanctioned wallets it examined had used Tether&#x27;s USDT stablecoin. It&#x27;s calling on US authorities to investigate Tether&#x27;s role in moving Iran-linked money.</div><a class="open" href="https://links.tldrnewsletter.com/tF7Uv6" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Thu Oct 01</div><div class="body">Jeeves raised $110 million, led by CoinFund, for its stablecoin-based banking platform for companies operating across 35 countries. It says revenue grew 4x in 14 months and it now handles over $5 billion a year in payments.</div><a class="open" href="https://www.prnewswire.com/news-releases/jeeves-raises-110-million-equity-round-to-scale-its-stablecoin-native-banking-platform-for-global-enterprises-across-35-countries-302892811.html?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Thu Oct 01</div><div class="body">Thought Machine and AWS launched an AI tool that digs the business rules out of banks&#x27; old mainframe code and turns them into tested cloud banking products.</div><a class="open" href="https://thepaypers.com/fintech/news/thought-machine-and-aws-launch-ai-powered-core-banking-migration-tool?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Thu Oct 01</div><div class="body">IPO delays are picking up this quarter, and it&#x27;s not just Oura. Higher bond yields, new rate hikes and worries about AI spending are making public investors pickier.</div><a class="open" href="https://www.cnbc.com/2026/09/29/ipo-postponements-are-accelerating-in-third-quarter-even-beyond-oura.html?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Thu Oct 01</div><div class="body">The boom in &quot;forward-deployed engineers&quot; (people embedded at customers to make AI work) points to a missing product. Companies still need humans to turn expert judgment into instructions agents can follow, and one writer argues that loop should be built into the software instead.</div><a class="open" href="https://links.tldrnewsletter.com/OkeJYk" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Thu Oct 01</div><div class="body">BCG expects payments revenue to keep growing through 2030, reaching about $1 trillion globally, but more slowly than before as digital payments mature. The faster growth is shifting to Latin America, the Middle East and Africa.</div><a class="open" href="https://www.paymentsdive.com/news/payment-revenue-growth-to-slow/831491/?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Ben&#x27;s Bites · Thu Oct 01</div><div class="body">Beyond Dots, OpenAI&#x27;s DevDay brought GPT-6.1 Sol, which feels like a real upgrade after GPT-6 Sol was a step back. A new $500 Pro plan joins the $100 and $200 tiers, and limits are now simple multiples of the $20 Plus plan, so $200 users get less and are being handed one-time credits to soften it. You can also sign in to other AI apps with ChatGPT and spend your ChatGPT allowance there.</div></article>
+<article class="card"><div class="meta">Ben&#x27;s Bites · Thu Oct 01</div><div class="body">Google published benchmark scores for Gemini 4 Argon that beat GPT-6 Astra and Opus 5.5, at a cheap promo price. You can&#x27;t actually use it yet.</div></article>
+<article class="card"><div class="meta">Ben&#x27;s Bites · Thu Oct 01</div><div class="body">Meta&#x27;s AI agent app Muse can now plug into Shopify, Stripe, QuickBooks, Klaviyo and more to help run a small business. Muse&#x27;s popularity helped Meta stock have its best month since 2022. (also in Morning Brew)</div></article>
+<article class="card"><div class="meta">Ben&#x27;s Bites · Thu Oct 01</div><div class="body">OpenAI&#x27;s new Decisions API lets you define a question and a set of possible answers, then has GPT-6 Luna sort your data into them. It&#x27;s about 10x faster than regular Luna calls.</div></article>
+<article class="card"><div class="meta">Morning Brew · Thu Oct 01</div><div class="body">A second Fed rate hike this year looks less likely. August inflation came in softer than expected and Q2 growth was revised up to 2.2%, so markets now give an October hike about a 41% chance, down from 70% on Monday. The worry is bonds: the 10-year Treasury yield just hit a 24-year high.</div></article>
+<article class="card"><div class="meta">Morning Brew · Thu Oct 01</div><div class="body">A FlyDubai flight to Tel Aviv made an emergency landing in Saudi Arabia after one pilot stabbed the other and tried to crash the plane, according to Israel&#x27;s prime minister. Passengers and crew overpowered the attacker, and the plane, with 170 people aboard, landed safely.</div></article>
+<article class="card"><div class="meta">Morning Brew · Thu Oct 01</div><div class="body">Apple&#x27;s long-delayed smart home hub goes on sale October 13, now that its upgraded AI Siri is out. It&#x27;s an early test for new CEO John Ternus, who is reportedly planning layoffs to speed up product development.</div></article>
+<article class="card"><div class="meta">Morning Brew · Thu Oct 01</div><div class="body">The Fed&#x27;s internal watchdog found no crimes or misconduct in the $2.5 billion renovation of its headquarters, but said the project was poorly managed.</div></article>
+<article class="card"><div class="meta">Entrackr · Thu Oct 01</div><div class="body">Digital lender Moneyview&#x27;s shares opened 64% above their IPO price, after the IPO was subscribed 100 times over.</div></article>
+<article class="card"><div class="meta">Entrackr · Thu Oct 01</div><div class="body">SBI Mutual Fund pushed its stake in Swiggy above 5% after buying about ₹300 crore worth of shares.</div></article>
+<article class="card"><div class="meta">Entrackr · Thu Oct 01</div><div class="body">Indian startups raised $2.9 billion in Q3 2026, down from $3.5 billion in Q2 and $3.87 billion in Q1, with fewer big rounds. EV and AI companies led the way.</div></article>
+<article class="card"><div class="meta">Entrackr · Thu Oct 01</div><div class="body">Edtech startup Teachmint&#x27;s revenue grew 2.8x to ₹205 crore in FY26, and it narrowed its losses.</div></article>
+<article class="card"><div class="meta">ByteByteGo · Thu Oct 01</div><div class="body">An explainer on why state (everything a system has to remember, like who&#x27;s logged in or which tasks are pending) is the hardest part of software design. &quot;Stateless&quot; apps still have state; they just keep it elsewhere so servers are easy to replace.</div></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
