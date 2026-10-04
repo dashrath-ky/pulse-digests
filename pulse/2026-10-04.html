@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">8 stories</div></header>
+<main>
+<article class="card"><div class="meta">Finshots · Sun Oct 4</div><div class="body">Your biryani might one day arrive by drone. A US company called Matternet plans to start drone food deliveries in 2027 with Dave&#x27;s Hot Chicken, and India&#x27;s Skye Air has already done about 3.6 million drone drops, including 7-minute runs in Gurugram and Bengaluru. Finshots doesn&#x27;t think this kills the gig delivery job, though. Drones can skip the traffic, but someone still has to carry the bag up the stairs.</div></article>
+<article class="card"><div class="meta">Finshots · Sun Oct 4</div><div class="body">A well-known study found that when cable TV reached rural Indian villages in the early 2000s, women&#x27;s attitudes shifted. They reported more say at home, less tolerance of domestic violence and less preference for sons. Finshots asks whether Ekta Kapoor&#x27;s family soaps really deserve credit, since those shows mostly cast women as dutiful wives, and the study never showed women earning more.</div></article>
+<article class="card"><div class="meta">Morning Brew · Sat Oct 3</div><div class="body">US hiring slowed sharply. The economy added just 29,000 jobs in September, far below the 84,000 economists expected, and July and August were revised down by 60,000 combined. Unemployment ticked up to 4.2% and wage growth fell to 3%, its slowest since the pandemic. Oddly, stocks loved it, because weak hiring makes another Fed rate hike less likely.</div></article>
+<article class="card"><div class="meta">Morning Brew · Sat Oct 3</div><div class="body">The G7 countries will release 100 million barrels of oil and diesel from emergency reserves over four months. Energy prices have shot up because of the Iran war. The deal also seems to end Trump&#x27;s idea of banning US diesel exports.</div></article>
+<article class="card"><div class="meta">Morning Brew · Sat Oct 3</div><div class="body">The merged Paramount and Warner Bros. Discovery will just be called Skydance, after CEO David Ellison&#x27;s original company. Paramount and Warner Bros. stay on as brands underneath. The $111 billion deal should close Tuesday, and the stock moves to the NYSE as SKYD.</div></article>
+<article class="card"><div class="meta">Morning Brew · Sat Oct 3</div><div class="body">Tesla delivered more cars in Q3 than Wall Street expected, and its stock jumped. Deliveries were still about 2% lower than a year ago.</div></article>
+<article class="card"><div class="meta">ByteByteGo · Sat Oct 3</div><div class="body">A short explainer on how SSH keeps a remote login safe. The two machines agree on encryption, the server proves who it is with its host key, and each side works out the same session key on its own so it never travels over the network. Then you log in by signing with a private key that never leaves your laptop.</div></article>
+<article class="card"><div class="meta">ByteByteGo · Sat Oct 3</div><div class="body">Six common tricks that make serving AI models cheaper and faster. Examples include streaming tokens as they&#x27;re ready, shrinking model weights to lower precision, and letting a small model guess several words ahead for the big model to check in one pass.</div></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
