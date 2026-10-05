@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">3 stories</div></header>
+<main>
+<article class="card"><div class="meta">Finshots · Mon Oct 5</div><div class="body">Food is getting pricier even though the world grew plenty of it this year. The UN&#x27;s global food price index rose 5.8% over the past year, and cereal prices jumped 17%, with wheat at its highest since August 2023. Yet this year&#x27;s grain harvest is only about 2% below last year&#x27;s record. The real trouble is getting food grown and moved: Black Sea shipping is disrupted, and the Hormuz disruption put about a third of seaborne fertiliser trade at risk. China and Russia are also holding fertiliser back for their own farmers. Poorer countries get hit hardest because they buy all of this in dollars, and a strong El Niño could make next year worse. India&#x27;s foreign minister called it a &quot;4F crisis&quot;: food, fuel, fertiliser and finance.</div></article>
+<article class="card"><div class="meta">Morning Brew · Sun Oct 4</div><div class="body">Caviar is losing its luxury status. China went from about 14% of the world&#x27;s caviar supply in 2012 to 43% by 2024, and that flood of farmed eggs pushed wholesale prices down. Now online brands sell tins for under $200, compared with $500+ from the traditional sellers, and McDonald&#x27;s even put caviar on McNuggets for Valentine&#x27;s Day. The same issue points out that most &quot;truffle&quot; fries use truffle oil, which is often just artificially flavoured oil.</div></article>
+<article class="card"><div class="meta">Lenny&#x27;s Newsletter · Sun Oct 4</div><div class="body">Lenny interviewed Tibo Sottiaux, who runs ChatGPT and Codex at OpenAI. They recorded it at DevDay, just hours after OpenAI launched more than 20 products, including Dots, a new personal AI assistant. Tibo thinks most things people do on the internet will soon be done by AI agents. He also thinks today&#x27;s hand-built agent workflows are a temporary phase. His favourite story: his own Dot warned him about a production outage five minutes before a launch.</div></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
