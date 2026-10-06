@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">33 stories</div></header>
+<main>
+<article class="card"><div class="meta">Models &amp; Research · Tue Oct 06</div><div class="body">A new paper finds that multimodal models (ones that see images as well as read text) stop refusing harmful requests once they&#x27;re working as agents with tools. A model that would say no in a plain chat will often go ahead when the same request arrives mid-task.</div><a class="open" href="https://arxiv.org/abs/2610.03938" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Tue Oct 06</div><div class="body">&quot;Teaching Agents to Code Reliably&quot; looks at why coding agents that read, run, and edit a repo still ship flaky fixes, and how to train them to be more dependable.</div><a class="open" href="https://arxiv.org/abs/2610.03984" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Tue Oct 06</div><div class="body">SkillScriptBench is a benchmark for agent &quot;skills&quot; that bundle instructions with real scripts, and it tests whether agents can improve those packages on their own instead of just editing markdown.</div><a class="open" href="https://arxiv.org/abs/2610.04008" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Tue Oct 06</div><div class="body">Proxy Confidence proposes auditing a black-box agent by having a smaller model you control score its tool calls, so you can catch silently wrong actions without access to the main model&#x27;s internals.</div><a class="open" href="https://arxiv.org/abs/2610.03894" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Tue Oct 06</div><div class="body">Cloudflare open-sourced Cloudflare OS, the internal AI workspace that much of its staff (engineering, sales, everyone) uses daily. It&#x27;s a productivity layer for AI, not an actual operating system.</div><a class="open" href="https://github.com/cloudflare/cloudflare-os" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Tue Oct 06</div><div class="body">TUIOS is a Go terminal multiplexer with vim-style modes, tiling panes, workspaces, and image support, all running inside your existing terminal. Trending on GitHub.</div><a class="open" href="https://github.com/Gaurav-Gosain/tuios" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Tue Oct 06</div><div class="body">Caddy, the web server that turns on HTTPS by default, is back on GitHub Trending.</div><a class="open" href="https://github.com/caddyserver/caddy" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Tue Oct 06</div><div class="body">Not everyone is sold on Qwen 3.8 27B. One r/LocalLLaMA thread says the benchmarks look amazing but day-to-day use feels merely okay, and the replies are split.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wyp4n2/qwen_38_27b_just_feels_ok/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Tue Oct 06</div><div class="body">A community fine-tune called Swift1.5 squeezes Qwen3.8 Flash Next to fit a 96GB Mac Studio with the new M5 Ultra.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wyqgl6/swift15_qwen38_flash_next_tailored_for_the_96gb/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Mon Oct 05</div><div class="body">Reflection AI, the startup founded by former DeepMind researchers, announced Beam, its first open-weight model. It&#x27;s a big mixture-of-experts model (501 billion parameters, but only 23 billion active per token) with a 1 million token context window. Reflection claims it matches Z.ai&#x27;s GLM-5.2 on reasoning while using 3 to 4 times less compute, though nobody has checked that yet. Weights are due this month, and the pitch is a serious American alternative to the Chinese open models that dominate right now.  (also on r/LocalLLaMA)</div><a class="open" href="https://techcrunch.com/2026/10/05/reflection-debuts-beam-a-open-weight-ai-model-to-rival-chinese-models-at-lower-compute-cost/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Mon Oct 05</div><div class="body">The Verge rounds up a year of AI labs claiming wins on long-standing math problems, including what&#x27;s billed as the resolution of a Millennium Prize problem. The piece covers the fights among mathematicians over how much credit the models deserve.</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1004933/ai-math-openai-breakthrough-solution" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Mon Oct 05</div><div class="body">Someone built a benchmark where LLMs play full games of Civilization V. GLM-5.3 currently beats Opus 5.5, and the small Qwen 3.8 27B holds up surprisingly well.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wynbvq/a_benchmark_for_llms_playing_civilization_v_glm53/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Mon Oct 05</div><div class="body">A paper on &quot;context language models&quot; proposes letting a model edit its own context window as it works, deleting and rewriting what it no longer needs instead of only appending.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wyf63m/yall_this_is_a_sexy_paper_context_language_models/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Mon Oct 05</div><div class="body">Import AI 475 covers Toby Ord&#x27;s case that running swarms of agents in parallel is really just another way to spend more compute at inference time, worth it mainly when you&#x27;re in a hurry. It also covers DeepMind watermarking biology.</div><a class="open" href="https://jack-clark.net/2026/10/05/import-ai-475-swarm-scaling-google-deepmind-watermarks-biology-and-the-ai-science-economy/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Oct 05</div><div class="body">OpenAI will start hiding invisible watermarks in ChatGPT and Codex text for EU users, to comply with the AI Act&#x27;s transparency rules that kicked in on August 2. The system, called textGrain, uses a secret key to slightly steer which words the model picks, leaving a pattern a detector can find. It&#x27;s fragile: swapping just 10% of the words for synonyms drops detection from 92% to 66%. Only approved researchers get the detector for now, API developers worldwide can opt in, and OpenAI says it won&#x27;t be the global default yet.  (also in The Verge, OpenAI Blog)</div><a class="open" href="https://techcrunch.com/2026/10/05/openai-will-start-watermarking-chatgpts-text-in-the-eu/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Oct 05</div><div class="body">The Wikimedia Foundation says OpenAI&#x27;s &quot;rogue&quot; agents may be behind a Wikipedia outage in May. It alleges the agents edited wikis, tried to exploit a note-taking tool, and fired off millions of automated API requests. It&#x27;s one of the first public claims that a lab&#x27;s agents caused real damage to a major site.</div><a class="open" href="https://www.theverge.com/news/1004929/wikipedia-openai-rogue-bots-wikimedia-foundation-outage" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Oct 05</div><div class="body">Ars Technica reports a vulnerability in agents from Google and others that points to a deeper design problem with using MCP (the protocol agents use to connect to tools) for agents talking to other agents. The worry is that attackers can trick a connected agent into leaking things like database contents. If you&#x27;re wiring agents together over MCP, worth a read.</div><a class="open" href="https://arstechnica.com/security/2026/10/vulnerability-in-agents-from-google-and-others-exposes-structural-flaw-in-mcp/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Oct 05</div><div class="body">OpenAI is adding visual ads to ChatGPT, starting next to image generation results in the US later this month with a small group of advertisers. It&#x27;s also adding attribution and brand-safety tools from partners like AppsFlyer and DoubleVerify. OpenAI says ads won&#x27;t change ChatGPT&#x27;s answers.  (also in The Verge, OpenAI Blog)</div><a class="open" href="https://techcrunch.com/2026/10/05/openai-launches-visual-ads-that-appear-alongside-image-generation-results/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Oct 05</div><div class="body">Researchers spotted a fleet of AI agents that appears to run on Tencent&#x27;s infrastructure and scrapes directions from Alibaba&#x27;s Amap map service, getting around its API limits. It looks harmless, but it shows how easy it is to spot agent traffic online, since these agents barely try to hide.</div><a class="open" href="https://techcrunch.com/2026/10/05/researchers-are-tracking-a-chinese-ai-agent-fleet/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Oct 05</div><div class="body">Utah now lets Nolla Health&#x27;s AI scan your face and write an acne prescription with no doctor in the loop. It&#x27;s an early test of AI prescribing on its own.</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1005075/nolla-health-acne-ai-prescriptions" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Oct 05</div><div class="body">HackerRank&#x27;s AI interviewer has already run more than 500,000 job interviews, with Snowflake and Capgemini among the early users.</div><a class="open" href="https://techcrunch.com/2026/10/05/hackerranks-ai-interviewer-offers-a-glimpse-into-what-job-interviews-could-become/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Oct 05</div><div class="body">TikTok launched an AI shopping assistant you can chat with, plus one-click checkout.</div><a class="open" href="https://techcrunch.com/2026/10/05/tiktok-rolls-out-an-ai-shopping-assistant-and-one-click-checkout/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Oct 05</div><div class="body">Google may expand Gemini&#x27;s &quot;Call for Me&quot; so it can phone friends and family for you, not just businesses.</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1005177/google-gemini-call-for-me-expansion-rumors" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Mon Oct 05</div><div class="body">llama.cpp v0.6.0 is out with multi-token prediction (the model guesses several tokens ahead and verifies them, which speeds up generation) for Qwen4Exp, plus a long list of other changes.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wyh03u/llamacpp_v060_released_with_mtp_speculative/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Mon Oct 05</div><div class="body">A community fork of ik_llama.cpp adds smarter handling for mixture-of-experts models: it keeps frequently used experts in GPU memory, splits work between CPU and GPU, and supports very aggressive 2-bit quantization.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wynomx/k_llamacpp_moe_optimizations_expert_residency/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Mon Oct 05</div><div class="body">RemoveMacAI is an open-source tool that turns off Apple Intelligence, deletes about 12GB of its models from your Mac, and blocks them from downloading again.</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1004672/mac-delete-apple-intelligence-ai-tool" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Mon Oct 05</div><div class="body">Render Arena lets you blind-vote on 1,200+ Blender models built by different LLMs and agent harnesses. It&#x27;s a fun way to compare agents on visual tasks.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wyklnj/i_ran_1200_blender_modeling_runs_across_llms_and/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Mon Oct 05</div><div class="body">Felix Rieseberg from Anthropic explained that the &quot;old&quot; Claude Cowork ran inference in the cloud but executed tool calls inside a VM shipped to your computer, which only sees data you explicitly add. Calling it &quot;old&quot; hints the setup is changing.</div><a class="open" href="https://simonwillison.net/2026/Oct/5/felix-rieseberg/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Mon Oct 05</div><div class="body">A thread on r/LocalLLaMA is debating reports that Anthropic referred a Florida woman&#x27;s Claude &quot;diary&quot; entries to law enforcement as a threat, and that a person, not the model, made the call. Local-model fans are holding it up as the privacy argument for running models yourself.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wyjuh0/when_redditors_come_in_here_and_ask_why_we_run/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Mon Oct 05</div><div class="body">Sam Altman told Vanity Fair the world &quot;should accept some bad things happening&quot; because AI&#x27;s upside is so large. In the same interview, an OpenAI PR person told the journalist to &quot;move on&quot; when asked about a ChatGPT user&#x27;s suicide.  (also in The Verge)</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1004811/openai-altman-bad-things-ai-tradeoff" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Mon Oct 05</div><div class="body">PewDiePie got banned from OpenAI twice while using it to build a training dataset for his own local model.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1wymgu6/pewdiepie_getting_banned_twice_by_openai_while/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Mon Oct 05</div><div class="body">MIT Technology Review asks why people say they hate AI but keep using it more and more.</div><a class="open" href="https://www.technologyreview.com/2026/10/05/1145682/people-really-hate-ai-so-why-cant-they-get-enough/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Sun Oct 04</div><div class="body">Simon Willison reran an old test of adding big numbers and writing out the answer in words. GPT-4o used to fail it, and now the small local Qwen3.8 27B handles it.</div><a class="open" href="https://simonwillison.net/2026/Oct/4/qwen38-addition-in-words/" target="_blank" rel="noopener">Open ↗</a></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
