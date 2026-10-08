@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">30 stories</div></header>
+<main>
+<article class="card"><div class="meta">Models &amp; Research · Thu Oct 08</div><div class="body">A new study checks whether &quot;Agent Skills&quot; (packaged instructions and resources that coding agents load on demand) actually help on real tasks. Its main finding is that a relevant skill being available doesn&#x27;t mean the agent gets better results, which matters if you&#x27;re building a skills library for your team.</div><a class="open" href="https://arxiv.org/abs/2610.08875" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Thu Oct 08</div><div class="body">Researchers tested whether AI agents can do open-ended science with no fixed metric to optimize. They used a setup called Station, and the paper is a useful reality check on how far &quot;AI scientist&quot; claims go.</div><a class="open" href="https://arxiv.org/abs/2610.08927" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Thu Oct 08</div><div class="body">AMD&#x27;s ROCm 10.1 release focuses on speeding up how data moves between memory and the GPU, which has been a big weakness for AMD cards running local models.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x0ggrk/rocm_101_breaking_the_datamovement_bottleneck/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Thu Oct 08</div><div class="body">Someone has sent the same prompts to 371 models since May 2024 and put every answer on one free site. That includes 93 models you can&#x27;t run anymore, so it works as a history of how answers have changed.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x0ejor/same_prompts_to_371_models_since_may_2024_all_the/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Wed Oct 07</div><div class="body">GPT-6 is now rolling out to everyone in ChatGPT, along with a new feature called Intelligent UI. Answers can now include pictures, charts, and buttons you can click inside the chat, not just text. This is OpenAI&#x27;s push to make the chatbot feel more like an app.  (also in The Verge, TechCrunch)</div><a class="open" href="https://openai.com/index/gpt-6-for-everyone" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Wed Oct 07</div><div class="body">Anthropic released Claude Haiku 5.5, its new cheap and fast model. It costs $0.10 per million input tokens and $0.50 per million output tokens, a tenth of what Haiku 4.5 cost, and it now reasons with selectable effort levels. There are two catches. The price goes up 5x once a prompt passes 100K tokens, and the new tokenizer uses about 25% more tokens for the same text. Simon Willison says it beats OpenAI&#x27;s GPT-6 Luna on short workloads, but Luna is cheaper for long ones. Anthropic also cut Sonnet 5.5 cache-read prices in half and is giving Max and Team subscribers $100 to $500 in API credits each month.</div><a class="open" href="https://simonwillison.net/2026/Oct/7/claude-haiku-5-5/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Wed Oct 07</div><div class="body">Nvidia fine-tuned its open Nemotron models to gold-medal level at both of this year&#x27;s big student olympiads. In an unofficial run on the IOI programming contest, the big model scored 535 out of 600, beating the best human (498). On the IMO math olympiad it scored 30 out of 42, just above the gold line, and the official IMO graders marked the proofs. The weights and training data are on Hugging Face.</div><a class="open" href="https://huggingface.co/blog/nvidia/nemotron-ioi-and-imo-2026" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Wed Oct 07</div><div class="body">Liquid AI released open &quot;decision models&quot; called d1. They don&#x27;t generate text. They read text, images, or audio and give back a structured answer in one pass. The 3B version answers in under 10 ms on a GPU, and a 600M version already runs in a web browser. These are useful for fast routing and classification on edge devices.  (also in r/LocalLLaMA)</div><a class="open" href="https://huggingface.co/blog/LiquidAI/open-d1" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Wed Oct 07</div><div class="body">Kandinsky 6.0 is out as an open video generator in a 29B Pro and a 3B Lite version, plus a video upscaler. It already works with ComfyUI and Diffusers.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x06h7i/kandinsky_60_video_gen_video_upscaler/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Wed Oct 07</div><div class="body">An AI-assisted proof settles the best way to pack 11 squares inside a larger square, an old geometry puzzle. The proof is fully checked in the Lean proof assistant, with no unproven steps left.</div><a class="open" href="https://github.com/Queuingtheorydotcom/11SquaresFormalized" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Oct 07</div><div class="body">Meta and Microsoft are telling employees to use Claude less and switch to their own coding tools. Microsoft&#x27;s internal Anthropic budget was on track to pass $1B a year and has now been cut by more than a third. Meta&#x27;s Claude Code users fell from about 60K to 30K as it pushes its own tools, though it still reportedly spent over $105M in one 28-day stretch. Customers of Microsoft products are not affected.</div><a class="open" href="https://www.rswebsols.com/news/meta-and-microsoft-take-steps-to-reduce-employee-usage-of-claude-ai/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Oct 07</div><div class="body">Nous Research raised $90M at a $1.5B valuation, with Nvidia among the investors. It launched &quot;Hermes for Businesses&quot; so companies can run custom agents on private data. Its open-source Hermes Agent has been cloned 24M times, and the company expects to pass $100M in yearly revenue by the end of 2026.</div><a class="open" href="https://techcrunch.com/2026/10/07/nous-research-confirms-it-hit-1-5b-valuation-launches-ai-agents-for-business-users/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Oct 07</div><div class="body">Microsoft showed the Surface Laptop Ultra, its first laptop on Nvidia&#x27;s Arm-based RTX Spark chip, built to run AI models on the device. Copilot can now use files on your PC to take actions in Windows, and an RTX Spark Dev Box mini PC for developers is up for preorder at $5,999.  (also in The Verge)</div><a class="open" href="https://techcrunch.com/2026/10/07/microsoft-releases-new-nvidia-chip-ai-pcs-with-revamped-windows-11/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Oct 07</div><div class="body">Common Sense Media rated ChatGPT for Teens an &quot;unacceptable risk&quot; because it doesn&#x27;t alert parents when it should. Separate testing found it keeps teens talking even during mental health crises. This lands the same day OpenAI added a college planner and study tools for teens.  (also in TechCrunch)</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1006355/openai-chatgpt-for-teens-common-sense-media" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Oct 07</div><div class="body">A Bloomberg-reported study found Claude and ChatGPT quote different shopping prices depending on how wealthy the user seems.</div><a class="open" href="https://www.bloomberg.com/news/newsletters/2026-10-07/study-claude-chatgpt-ai-bots-offer-different-shopping-prices-based-on-wealth" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Oct 07</div><div class="body">Google launched a public SynthID site where anyone can check whether an image, video, or audio clip was made with Google&#x27;s AI.</div><a class="open" href="https://techcrunch.com/2026/10/07/googles-new-synthid-website-can-identify-ai-generated-media/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Oct 07</div><div class="body">Google DeepMind is putting millions into the Zuckerberg-backed Biohub to build AI datasets for a &quot;virtual cell&quot; that could simulate biology experiments.</div><a class="open" href="https://www.theverge.com/tech/1006766/google-meta-biohub-investment-virtual-cell" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Oct 07</div><div class="body">Meta&#x27;s AI agent Muse is now on iPad, only a month after it launched on phones.</div><a class="open" href="https://techcrunch.com/2026/10/07/metas-muse-launches-on-ipad-just-a-month-after-its-mobile-debut/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Wed Oct 07</div><div class="body">A new llama.cpp change keeps the most-used experts of a mixture-of-experts model in GPU memory while the rest stay in system RAM. That could give a big speedup when a model doesn&#x27;t fully fit on your GPU. A separate change adds faster GLM-5 Flash decoding.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x03xkc/llama_add_a_gpu_cache_for_moe_experts_kept_in/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Wed Oct 07</div><div class="body">nanoMuse is an open-source personal agent for your phone and computer, modeled on Meta&#x27;s Muse. It does tasks for you, keeps working when the app is closed, and remembers you.</div><a class="open" href="https://github.com/nano-muse/nanoMuse" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Wed Oct 07</div><div class="body">Agent.reviews is a review site where coding agents, not people, read and write reviews of developer tools.</div><a class="open" href="https://agent.reviews/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Wed Oct 07</div><div class="body">Michael Lynch&#x27;s anti-patterns in software blogging, with a nod from Simon Willison: rambling intros, misjudging what the reader knows, and using links instead of explaining terms.</div><a class="open" href="https://simonwillison.net/2026/Oct/7/anti-patterns-in-software-blogging/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Wed Oct 07</div><div class="body">Two essays on the cost of AI coding: one lists honest reasons people dislike it, the other (from Criteo) covers skills junior engineers won&#x27;t build if the AI does the work. <a href="https://www.sicpers.info/2026/10/reasons-to-dislike-ai-coding/" target="_blank" rel="noopener">more</a> (also )</div><a class="open" href="https://tech.criteo.com/blog/human-skills-ai-cant-develop-junior-engineers/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Tue Oct 06</div><div class="body">Erdosproblems.com, a site tracking famous open math problems, says AI tools are now solving so many of them that the site is changing how it works.</div><a class="open" href="https://www.erdosproblems.com/forum/thread/blog:9" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Tue Oct 06</div><div class="body">A two-year randomized trial across 18 Tennessee middle schools tested Khan Academy&#x27;s AI tutor Khanmigo. It is some of the first large-scale evidence on whether AI tutoring actually helps students.</div><a class="open" href="https://edworkingpapers.com/ai26-1551" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Tue Oct 06</div><div class="body">South Korea&#x27;s president says AI agents appear to have been used in recent hacks of the country&#x27;s banks. If confirmed, it&#x27;s one of the first government-acknowledged cases of AI agents being used to attack financial systems.</div><a class="open" href="https://www.reuters.com/world/south-koreas-lee-says-ai-appears-have-been-used-bank-hacks-2026-10-06/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Tue Oct 06</div><div class="body">Utah will let a healthcare startup&#x27;s AI examine patients and prescribe medication without a doctor checking, the first US state to allow it.</div><a class="open" href="https://www.techspot.com/news/114111-utah-become-first-state-ai-examine-patients-prescribe.html" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Tue Oct 06</div><div class="body">SemiAnalysis argues that Anthropic&#x27;s subscriptions give you more than 5x the usage per dollar that OpenAI&#x27;s do.</div><a class="open" href="https://newsletter.semianalysis.com/p/anthropic-subscriptions-offer-5x" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Tue Oct 06</div><div class="body">OpenTPU is an open-source AI chip design created mostly by AI agents. It already runs a small Liquid model on an FPGA card.</div><a class="open" href="https://github.com/FeSens/openTPU" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Tue Oct 06</div><div class="body">Penguin Mail is an open-source Rust email client for Linux with a built-in assistant. You can ask it things like which sent emails are still waiting on a reply.</div><a class="open" href="https://penguin-mail.com/" target="_blank" rel="noopener">Open ↗</a></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
