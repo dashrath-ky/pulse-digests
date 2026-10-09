@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">29 stories</div></header>
+<main>
+<article class="card"><div class="meta">Models &amp; Research · Fri Oct 9</div><div class="body">StepFun&#x27;s next big model, Step 5, has shown up as a preview on OpenRouter. There&#x27;s no official announcement yet, but it&#x27;s worth watching because StepFun&#x27;s earlier models were competitive among Chinese open-weight releases.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x19lvs/stepfun_step_5_preview_showing_up_in_openrouter/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Fri Oct 9</div><div class="body">You can now fine-tune Qwen3.8-Flash-Next, a 125B mixture-of-experts model, with LoRA on just 40GB of VRAM. The trick is training small adapter layers directly on top of a compressed GGUF copy of the model.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x1bdvl/lora_over_gguf_train_qwen38flashnext_in_40g_vram/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Fri Oct 9</div><div class="body">Qwen3.8-27B runs at 159 tokens/sec on AMD&#x27;s R9700 card and 64 tokens/sec on a Strix Halo laptop chip. That&#x27;s another sign that AMD hardware is becoming a real option for local models.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x18e95/qwen3827b_159_toks_on_r9700_64_toks_on_strix_halo/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Fri Oct 9</div><div class="body">Simon Willison shipped ttok 1.0, his CLI for counting tokens. It now defaults to the GPT-5/GPT-6 tokenizer and can list the models it supports.</div><a class="open" href="https://simonwillison.net/2026/Oct/9/ttok/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Fri Oct 9</div><div class="body">EpicGames/raddebugger is trending on GitHub. It&#x27;s the fast native Windows debugger that Epic picked up from RAD Game Tools.</div><a class="open" href="https://github.com/EpicGames/raddebugger" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Thu Oct 8</div><div class="body">OpenAI&#x27;s big math push is in trouble. A few weeks ago it published 719 AI-written manuscripts, including work on a Navier-Stokes problem with a million-dollar prize. On Oct 7 it withdrew three of them, all about the Hodge conjecture and K3 surfaces, because a sign error broke a key step and two of the papers depended on that step. Mathematicians are not impressed: only 42% of the proofs were formally checked by a computer, and Terence Tao criticized people who publish AI proofs they can&#x27;t explain themselves.  (also on HN, karagila.org)</div><a class="open" href="https://techcrunch.com/2026/10/08/openais-math-solutions-arent-meeting-the-fields-standards-yet/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Thu Oct 8</div><div class="body">OpenAI also published a set theory result: the Partition Principle does not imply the Axiom of Choice. One of the field&#x27;s best-known experts on that exact question wrote up his reaction.</div><a class="open" href="https://karagila.org/2026/openai-pp/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Thu Oct 8</div><div class="body">Goodfire launched agent monitors that work by looking at the model&#x27;s internal activations instead of paying a second AI to read every step. The pitch is that you get the same oversight of rogue agents for a fraction of the cost.</div><a class="open" href="https://techcrunch.com/2026/10/08/goodfire-says-its-new-inside-out-monitors-catch-rogue-ai-agents-at-a-fraction-of-the-cost/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Thu Oct 8</div><div class="body">Samsung Labs released LittleBit-2, which squeezes LLMs below one bit per weight. It&#x27;s a research result for now, but it points toward big models fitting on much smaller devices.</div><a class="open" href="https://github.com/SamsungLabs/LittleBit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Thu Oct 8</div><div class="body">Hugging Face introduced Falcon ASR, a new open speech-to-text model from TII.</div><a class="open" href="https://huggingface.co/blog/tiiuae/falcon-asr" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Thu Oct 8</div><div class="body">JetBrains released Mellum2.1, a small 12B mixture-of-experts coding model that only activates 2.5B parameters per token, with a &quot;thinking&quot; variant.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x0u6l7/mellum21_a_jetbrains_collection/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Thu Oct 8</div><div class="body">OpenAI&#x27;s revenue looks a lot smaller than people thought. The Financial Times reports that OpenAI told investors it&#x27;s at roughly $50B a year in annualized revenue. That&#x27;s about $20B less than the ~$70B figure that leaked in late September. Nvidia, Oracle and CoreWeave stock all fell on the news, since their growth depends on OpenAI&#x27;s spending.  (also in CNBC)</div><a class="open" href="https://techcrunch.com/2026/10/08/openais-revenue-is-reportedly-20-billion-less-than-previously-projected/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Thu Oct 8</div><div class="body">Google is turning Gemini into a work agent that you give goals to instead of step-by-step instructions. It plans the work, hands pieces off to sub-agents, and connects to Workspace, Microsoft 365, Slack, Jira, Snowflake and any MCP server. You can even pick Anthropic&#x27;s Claude as the model underneath. It&#x27;s for businesses first, with a &quot;tasks inbox&quot; that shows what each sub-agent is doing and spending caps to keep costs in check.  (also in The Verge)</div><a class="open" href="https://techcrunch.com/2026/10/08/google-brings-agentic-ai-to-gemini-starting-with-businesses/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Thu Oct 8</div><div class="body">Anthropic launched OSS Scanner, a free service that scans open-source projects for security holes using its strongest models, including Mythos, and sends maintainers vulnerability reports.</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1008521/anthropic-open-source-oss-scanner" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Thu Oct 8</div><div class="body">Anthropic also updated its usage policy. It now bans extreme, repeated abuse of Claude (ordinary frustration is still fine), and adds new rules on propaganda, election interference, surveillance and weapons.  (also in The Verge)</div><a class="open" href="https://techcrunch.com/2026/10/08/anthropic-changes-usage-policy-to-ban-model-abuse-and-election-interference/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Thu Oct 8</div><div class="body">Arena, the company behind the LMArena leaderboard, raised $200M at a $3.1B valuation, nearly double what it was worth 10 months ago. It&#x27;s also starting to rank models on alignment.</div><a class="open" href="https://techcrunch.com/2026/10/08/popular-ai-leaderboard-arena-nearly-doubles-valuation-to-3-1b-valuation-in-10-months/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Thu Oct 8</div><div class="body">Manus, the Chinese agent startup, raised more than $500M in its first round since splitting from Meta, led by Boyu Capital and IDG.</div><a class="open" href="https://techcrunch.com/2026/10/08/chinas-manus-raises-over-500m-in-first-funding-round-since-split-with-meta/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Thu Oct 8</div><div class="body">USA Today is suing OpenAI for more than $250M, claiming it trained on hundreds of thousands of its articles.</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1008198/usa-today-openai-copyright-lawsuit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Thu Oct 8</div><div class="body">Three safety researchers fired by OpenAI published an open letter disputing claims that they mishandled sensitive information. They warn that the firings will scare others away from raising concerns.</div><a class="open" href="https://techcrunch.com/2026/10/08/fired-openai-safety-researchers-dispute-misconduct-claims-warn-of-chilling-effect/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Thu Oct 8</div><div class="body">OpenAI shut down two influence operations that used fake journalists and a fake think tank to push geopolitical messaging.</div><a class="open" href="https://openai.com/index/disrupting-ai-enabled-false-front-operations" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Thu Oct 8</div><div class="body">Biohub, the US Department of Energy, NIH and other partners committed $1.8B to producing biology data that AI models can learn from.</div><a class="open" href="https://biohub.org/news/virtual-biology-initiative-expansion/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Thu Oct 8</div><div class="body">Google released AI Edge Foresight, a meeting note-taker that runs fully offline on your device. It goes straight after Granola.  (also in The Verge)</div><a class="open" href="https://techcrunch.com/2026/10/08/google-releases-a-new-local-first-granola-competitor/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Thu Oct 8</div><div class="body">LegalOn cut its Codex bill by 65% without slowing down, mostly by sending each task to the cheapest OpenAI model (Astra, Sol or Luna) that could handle it.</div><a class="open" href="https://openai.com/index/legalon-halves-codex-costs" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Thu Oct 8</div><div class="body">Someone used LLMs to port the whole TypeScript compiler, type checker and language server to Rust, and says they never read a line of the code. OpenAI&#x27;s models got stuck at about 84% compatibility. Claude Opus 5.5 then started over and had a working version in about 10 hours. The result passes all 181K tests ported from the Go version and type-checks about 11x faster than tsc 6. The catch is the bill: $420K in API-priced tokens overall, of which the Opus run was about $24K.</div><a class="open" href="https://github.com/pingdotgg/ts-rust" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Thu Oct 8</div><div class="body">One builder put together a $2,800 rig with eight Radeon Pro V620 cards (256GB of VRAM) that runs Qwen3.8-Flash-Next at 60 to 100 tokens/sec, using a custom fork of vLLM.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x0wnz1/2800_rig_with_8x_radeon_pro_v620_256_gb_vram/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Thu Oct 8</div><div class="body">Someone released an OpenAI-compatible text-to-speech server built on OmniVoice. It responds in about 0.3 seconds on an RTX 3080.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x0vld1/openaicompatible_tts_endpoint_using_omnivoice_03s/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Thu Oct 8</div><div class="body">People noticed that Strata rewrote its GitHub history to hide that Claude wrote much of its code, which broke the project&#x27;s built-in update script. It&#x27;s a good example of how awkward AI-authorship disclosure still is.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x15a8w/strata_rewrote_their_github_history_to_wipe/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Thu Oct 8</div><div class="body">Jevman benchmarked six AI &quot;decision models&quot; by having each play 100 games of Pac-Man against the classic arcade ghosts. It&#x27;s a fun way to see how these new decision models compare.</div><a class="open" href="https://opper.ai/jevman-benchmark/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Thu Oct 8</div><div class="body">Carson Gross, who created htmx, argues that programming is really about solving problems and managing complexity. He thinks AI won&#x27;t make those skills any less valuable.</div><a class="open" href="https://simonwillison.net/2026/Oct/8/carson-gross/" target="_blank" rel="noopener">Open ↗</a></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
