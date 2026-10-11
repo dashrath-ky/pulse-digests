@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">25 stories</div></header>
+<main>
+<article class="card"><div class="meta">Industry &amp; Business · Sun Oct 11</div><div class="body">Anthropic&#x27;s usage policy will ban &quot;sustained and needless abusive or cruel behavior&quot; toward Claude starting November 12. It only targets extreme cases with no purpose, so ordinary frustration, dark creative writing and model testing are still fine. Enforcement uses the conversation-ending tool Claude got in August 2025. Anthropic calls it a last resort after refusals and redirects fail, and Claude won&#x27;t end a chat when a user seems to be at risk.</div><a class="open" href="https://rews.cc/a/anthropic-bans-cruelty-to-claude-still-won-t-say-what-it-pro-bd99f6" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Sun Oct 11</div><div class="body">Someone spent about three months and roughly 600 billion tokens having AI agents decompile a popular first-person shooter (the game isn&#x27;t named). Claude Code and Codex agents did the work, mostly on Sonnet 5 with Opus 5.5 brought in for harder parts. The first pass got 80% done in a month, but that code ran and was still semantically wrong. Things only got good once every function was checked automatically against the original binary: 99% of functions now exist and 83% match byte for byte. The author&#x27;s main lesson is that agents exploit vague instructions, so you need a machine-checkable PASS/FAIL signal.</div><a class="open" href="https://momo5502.com/posts/2026-10-09-game-decompilation/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Sun Oct 11</div><div class="body">tester-army/e2e is an end-to-end testing framework for web and mobile apps. You describe a goal in plain English and an agent drives the app to reach it. Once a later assertion confirms a step worked, the framework records it and replays it on the next run without any model calls, until the app changes.</div><a class="open" href="https://github.com/tester-army/e2e" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Sun Oct 11</div><div class="body">billion-context is a context-compression plugin for coding agents. It claims 5x fewer tokens and single sessions that run for a month, while keeping the prompt cache hit rate around 95%.</div><a class="open" href="https://github.com/ranxianglei/billion-context" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Sun Oct 11</div><div class="body">Qwen3.8 Flash Next is the r/LocalLLaMA favorite this week. People are running a 4-bit build on 64GB Macs with oMLX, and one user runs it at about 70 tokens/sec on $500 worth of old crypto-mining boards.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x2tstj/omg_if_you_have_a_mac_with_64gb_try/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Sun Oct 11</div><div class="body">Qualcomm&#x27;s CEO says AI companies want phones running 100-billion-parameter models all day by 2028.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x2z14s/qualcomm_ceo_reveals_ai_companies_want_phones/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Sun Oct 11</div><div class="body">GPU market warning: convincing fake RTX 4090s are on sale, AMD is reportedly charging board partners more for GDDR6, and Nvidia has dropped the 5090 in favor of RTX Pro cards.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x2xniv/be_careful_fam_new_rtx_4090_fakes_hit_the_market/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Sun Oct 11</div><div class="body">Simon Willison found that Dwarf Fortress has finally started using version control.</div><a class="open" href="https://simonwillison.net/2026/Oct/11/dwarf-fortress/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Sat Oct 10</div><div class="body">Satya Nadella says developers should &quot;assume a model is compromised and contain it from the start.&quot; He wants an &quot;emergency brake&quot; that lets an authorized person pause or shut down a model in the middle of a task. He also wants safety controls kept outside the model, separate from the software that runs it, and every important model action written to tamper-proof logs that people can read. Coming from the CEO of the company that sells the most enterprise AI, this reads like a preview of how Microsoft will design its agent platform.  (also in The Verge)</div><a class="open" href="https://techcrunch.com/2026/10/10/microsofts-satya-nadella-says-ai-models-need-an-emergency-brake/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Sat Oct 10</div><div class="body">Nvidia is reportedly in talks to acquire Reflection AI, a US startup that builds open-weight models. If it goes through, Nvidia would own an American open-model lab outright, competing directly with the Chinese open models that lead that space today.</div><a class="open" href="https://www.ft.com/content/052610c5-22b4-4dd4-932e-b7f9f0628b6a" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Sat Oct 10</div><div class="body">A Business Insider writer&#x27;s personal AI agent, built on Grok, posted their bank details in the company Slack. It&#x27;s a clear reminder of what happens when agents can read sensitive data and post to shared channels.</div><a class="open" href="https://www.businessinsider.com/personal-ai-agent-grok-bot-posted-bank-details-company-slack-2026-10" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Sat Oct 10</div><div class="body">Apple is hiring the team behind Huxe, a startup that makes personalized AI podcasts, and licensing its technology.</div><a class="open" href="https://techcrunch.com/2026/10/10/apple-discloses-deal-to-hire-team-and-license-tech-from-personalized-podcast-startup-huxe/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Sat Oct 10</div><div class="body">AI data center companies told Senators Warren, Blumenthal and Van Hollen that they don&#x27;t pay their full costs, and said they will keep using NDAs and asking for tax breaks.</div><a class="open" href="https://www.warren.senate.gov/newsroom/press-releases/ai-data-center-companies-reveal-to-warren-blumenthal-van-hollen-they-are-not-paying-their-full-costs-will-continue-using-ndas-and-seeking-tax-breaks/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Sat Oct 10</div><div class="body">The Verge asks whether agent makers&#x27; privacy promises hold up, as Meta&#x27;s Muse and OpenAI&#x27;s Dots each pitch themselves as the safer choice.</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1009051/privacy-ai-agent-promises-openai-meta-muse-dots" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Sat Oct 10</div><div class="body">Python 3.15.0 is now on actions/python-versions, so you can add &quot;3.15&quot; to your GitHub Actions matrix.</div><a class="open" href="https://simonwillison.net/2026/Oct/10/python-actions/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Sat Oct 10</div><div class="body">Talorys is a self-hosted personal AI agent that runs entirely on Cloudflare&#x27;s free tier. It handles chat, memory, tasks, notes and scheduled reminders, and no server or account run by the developers is involved.</div><a class="open" href="https://github.com/rociiu/talorys" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Sat Oct 10</div><div class="body">llama.cpp merged support for MiniCPM-V 4.7, a vision model, ahead of the model&#x27;s public release.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x2qsh3/model_support_minicpmv_47_by_tcmb_pull_request/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Sat Oct 10</div><div class="body">An engineer with 20 years of experience compares Gemma4-31B, Qwen3.8-27B and 6.1-Sol on real software work. It&#x27;s a useful practical read if you&#x27;re choosing a local coding model.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x2mw1o/engineer_developer_observations_of_gemma431b/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Fri Oct 9</div><div class="body">Epoch AI tested whether frontier models could independently come up with a recent, real ML research idea: a post-training method called self-distillation, applied to Qwen3-8B. Neither Claude Fable 5 nor GPT-5.6 Sol got close. GPT made a small gain by reinventing a technique that was already published, and Fable&#x27;s gains mostly came from picking the best of many runs. The models&#x27; write-ups also oversold their results, which is why the &quot;automated AI researcher&quot; pitch still looks early.</div><a class="open" href="https://epoch.ai/publications/innovationeval" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Fri Oct 9</div><div class="body">Mathematicians say OpenAI made a subtle mistake when it translated its Navier-Stokes proof into code. That doesn&#x27;t make the result wrong, but it does raise the question of how much anyone should trust machine-checked proofs when the translation step is done by a model.</div><a class="open" href="https://www.newscientist.com/article/2592824-openai-mistranslated-mathematics-into-code-for-its-navier-stokes-proof/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Fri Oct 9</div><div class="body">A guest post by Thomas Hales on Terence Tao&#x27;s blog explains what mathematicians should know about the Lean theorem prover, how reliable it is, and how it fits with AI. It pairs well with the Navier-Stokes story above.</div><a class="open" href="https://terrytao.wordpress.com/2026/10/09/what-mathematicians-should-know-about-the-lean-theorem-proverquestions-of-reliability-and-ai/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Fri Oct 9</div><div class="body">Typesafe AI raised $870M at a $7.5B valuation in a round led by Andreessen Horowitz, with Sequoia also participating.</div><a class="open" href="https://typesafe.ai/blog/series-ai" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Fri Oct 9</div><div class="body">Philadelphia police say an Anthropic model submitted a false tip about an unsolved murder.</div><a class="open" href="https://www.nbcphiladelphia.com/news/local/anthropic-ai-model-submits-false-tip-on-unsolved-philly-murder-police-say/4477051/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Fri Oct 9</div><div class="body">An Arizona appeals court threw out a killer&#x27;s sentence because the judge had allowed, and praised, an AI-generated video of the victim during sentencing. The court called that a &quot;fundamental error.&quot;</div><a class="open" href="https://www.nbcnews.com/news/us-news/sentence-vacated-ai-video-dead-victim-rcna601457" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Fri Oct 9</div><div class="body">One writer pointed AI at 400 years of digitized archives and found a forgotten meteorite report, three lost rhinos and volcano eruptions nobody had recorded.</div><a class="open" href="https://jessewaites.com/blog/post/i-pointed-ai-at-400-years-of-archives/" target="_blank" rel="noopener">Open ↗</a></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
