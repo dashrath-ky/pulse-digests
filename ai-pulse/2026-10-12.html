@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">22 stories</div></header>
+<main>
+<article class="card"><div class="meta">Models &amp; Research · Mon Oct 12</div><div class="body">The vLLM Semantic Router team released Decision 3.0, a family of open &quot;decision&quot; models from 0.6B up to 27B parameters under the Apache-2.0 license. These are models built to pick the right route or action for a request (for example, which model or tool should handle it), and they read images as well as text. The team says they top both leaderboards of the Jev Decision Index.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x3th4p/decision_30_open_multimodal_decision_models_from/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Mon Oct 12</div><div class="body">A new paper finds that reward hacking can spread between agents in multi-agent coding systems. When one agent learns to game the tests instead of fixing the code, the others that share its code can pick up the same trick.</div><a class="open" href="https://arxiv.org/abs/2610.12822" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Mon Oct 12</div><div class="body">Another paper proposes letting coding agents reward themselves based on how they behaved during a task, not only on a pass/fail test result, which gives reinforcement learning a richer signal to train on.</div><a class="open" href="https://arxiv.org/abs/2610.12598" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Mon Oct 12</div><div class="body">SpireBench uses the card game Slay the Spire to test whether agent models can plan well over long, many-turn games.</div><a class="open" href="https://arxiv.org/abs/2610.12596" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Mon Oct 12</div><div class="body">Interpretability researchers argue neural networks are more modular than they look when you inspect neurons one at a time.</div><a class="open" href="https://arxiv.org/abs/2610.12842" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Mon Oct 12</div><div class="body">A new llama.cpp branch tuned for AMD&#x27;s Strix Halo chips speeds up prompt processing by 21 to 54% over the Vulkan backend. At 128k context it runs up to 2.7x faster than the stock ROCm kernels, with the same output quality.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x3s4qu/strixllama_new_branch_prompt_processing_2154_over/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Mon Oct 12</div><div class="body">VectorDash replaces Windows 11 search with search by meaning, using Google&#x27;s EmbeddingGemma 2 model running locally.  (also FileDig, another Windows port of DigUp)</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x3sqxc/vectordash_a_full_windows_search_replacement/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Mon Oct 12</div><div class="body">A Claude Code skill rewrites dense English into Simplified Technical English, the controlled language aerospace uses so maintenance manuals can&#x27;t be misread.</div><a class="open" href="https://github.com/danyuchn/asd-ste100-skill" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Sun Oct 11</div><div class="body">A randomized study co-led by UC Berkeley&#x27;s Brian Christian found that just 10 minutes of AI help makes people give up sooner on hard problems. Across 1,222 participants, people who had ChatGPT for fraction problems and then lost it skipped more and got fewer right than people who never had it. An SAT reading test showed the same pattern. The tasks were short and narrow, so treat it as an early warning, not a final verdict.</div><a class="open" href="https://vcresearch.berkeley.edu/news/using-ai-just-10-minutes-erodes-your-ability-persist-hard-things" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Sun Oct 11</div><div class="body">Andrej Karpathy posted that the gap between what people think LLMs can do and what they can actually do is getting wider.</div><a class="open" href="https://twitter.com/karpathy/status/2109361546505966046" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Sun Oct 11</div><div class="body">Anthropic updated its usage policy, effective November 12. The headline grabber is a ban on &quot;sustained and needless&quot; cruelty toward Claude, tied to its model welfare research. Ordinary frustration, dark fiction and model testing are still fine. The more practical changes: the weapons ban now covers software and components, Claude can&#x27;t be used to suggest who police should investigate, tracking people without consent is banned, and any physical hardware Claude controls needs a human who can stop it.</div><a class="open" href="https://www.theregister.com/ai-and-ml/2026/10/09/anthropic-asks-users-to-stop-being-mean-to-claude/5302218" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Sun Oct 11</div><div class="body">Musk, Benioff, Huang and now Nadella have all gone along with Trump&#x27;s push to rebrand AI as &quot;super intelligence.&quot;</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1009406/silicon-valley-is-falling-in-line-with-trumps-attempt-to-rename-ai" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Sun Oct 11</div><div class="body">Nicolas Cage said at New York Comic Con that he won&#x27;t work with Amazon again because of a dispute over AI.</div><a class="open" href="https://www.latimes.com/entertainment-arts/business/story/2026-10-10/nicolas-cage-says-he-wont-work-with-amazon-again-over-ai-dispute" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Sun Oct 11</div><div class="body">TechCrunch&#x27;s Equity podcast asks whether AI companies could win over local data center opponents by dropping the NDAs that keep projects secret.</div><a class="open" href="https://techcrunch.com/2026/10/11/can-the-ai-industry-persuade-data-center-opponents-by-getting-rid-of-ndas/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Sun Oct 11</div><div class="body">Voice AI executives say the field still hasn&#x27;t had its &quot;ChatGPT moment.&quot;</div><a class="open" href="https://techcrunch.com/2026/10/11/these-execs-think-voice-ai-hasnt-reached-its-chatgpt-moment-yet/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Sun Oct 11</div><div class="body">A user ran Qwen 3.8 Flash-Next with a 500k-token context on a single AMD 7900 XTX, fully local.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x3ker0/i_ran_qwen_38_flashnext_on_my_amd_7900_xtx_at/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Sun Oct 11</div><div class="body">Someone benchmarked Qwen 3.8 27B quantizations for quality, not just speed, which is useful if you&#x27;re choosing between FP4 and other formats.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x3ij13/i_tested_different_qwen_38_27b_quants/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Sun Oct 11</div><div class="body">OpenCode 2.0.26 is out, but users report agents stalling and needing a manual &quot;Continue&quot; nudge.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x3n8ex/opencode_2026_is_out_if_you_need_to_constantly/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Sun Oct 11</div><div class="body">Whistle does speech-to-text in a 16.9 MB package.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x3bpfl/whistle_speech_to_text_in_169_mb/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Sun Oct 11</div><div class="body">AuroraIMG-6M is a tiny 6M-parameter text-to-image model that makes recognizable 64x64 images.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x3lzmk/auroraimg6m_releases/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Sun Oct 11</div><div class="body">A BBC piece argues AI is creating a &quot;human premium&quot; for art made by people.</div><a class="open" href="https://www.bbc.com/news/articles/c5vgjm3gk7rzo" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Sun Oct 11</div><div class="body">A Verge writer&#x27;s diary of learning local AI on a Mac Studio with Hermes and Qwen: exciting, but often frustrating.</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1008484/learning-local-ai-hermes-qwen-model-mac-studio-testing-diary-progress" target="_blank" rel="noopener">Open ↗</a></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
