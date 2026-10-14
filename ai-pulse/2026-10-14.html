@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">27 stories</div></header>
+<main>
+<article class="card"><div class="meta">Models &amp; Research · Tue Oct 14</div><div class="body">Google DeepMind and Singapore&#x27;s government built a scam detector that runs entirely on your phone. It uses small Gemma models to spot scam conversations in private chats, and nothing leaves the device, so your messages stay private.</div><a class="open" href="https://deepmind.google/blog/on-device-ai-scam-detection-mddi/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Mon Oct 13</div><div class="body">Google finally shipped Gemini 4 Argon, its new frontier model, after months of trailing OpenAI and Anthropic. It&#x27;s aimed at long, multi-step work in coding, finance, law and science, and it tops the Vals Index for those kinds of tasks. It&#x27;s also the hardest model to trick with hidden prompt injections on Gray Swan&#x27;s test. For developers it&#x27;s in the API now with a 1M token context window, at an introductory $2 in / $10 out per million tokens, doubling after November 30. Google also published a robotics version pitched at physical reasoning.  (also in The Verge, Simon Willison, DeepMind Robotics)</div><a class="open" href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Mon Oct 13</div><div class="body">Liquid AI released LFM2.5-24B-A2B, an open-weight model built to run AI agents on your own laptop. It has 24 billion parameters but only uses about 2 billion per word, so it hits roughly 184 tokens per second on an M5 Max. It beats the bigger Qwen3.6-35B on tool-use and instruction-following tests, but it&#x27;s weaker at coding and general knowledge, so pair it with search for those.  (also in r/LocalLLaMA)</div><a class="open" href="https://huggingface.co/blog/LiquidAI/lfm25-24b-a2b" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Mon Oct 13</div><div class="body">Video startup Higgsfield now makes AI videos longer than 10 minutes, up from about 1 minute, using OpenAI&#x27;s GPT-6 Astra and GPT-Image-2.5.</div><a class="open" href="https://openai.com/index/higgsfield-longer-videos-voice" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Mon Oct 13</div><div class="body">MIT Tech Review looks at the open model debate after Anthropic argued that Z.ai&#x27;s freely downloadable GLM-5.3 is a serious cyberattack risk. It&#x27;s a fair look at what open weights give us versus what they cost.</div><a class="open" href="https://www.technologyreview.com/2026/10/13/1146366/open-models-have-real-benefits-do-they-outweigh-the-risks/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Oct 13</div><div class="body">Character.AI, the chatbot companion app, filed for bankruptcy just five years in. Lawsuits (including one over a teen&#x27;s suicide) and the rising cost of serving AI at scale caught up with it. Disney is buying some assets for $20 million, and if no other buyer shows up the platform will shut down. It&#x27;s a sharp fall for a company that had 20 million monthly users in 2024 and a $2.7B licensing deal with Google.  (also in r/LocalLLaMA)</div><a class="open" href="https://techcrunch.com/2026/10/13/just-5-years-in-interactive-chatbot-platform-character-ai-files-for-bankruptcy/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Oct 13</div><div class="body">An OpenAI engineer was arrested after the company found a hidden recording device plugged into a TV in an executive meeting room.</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1010642/openai-employee-arrested-recording-device" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Oct 13</div><div class="body">A judge ordered OpenAI to hand Apple its interview records and messages involving ex-Apple hires, in Apple&#x27;s trade secrets lawsuit.</div><a class="open" href="https://techcrunch.com/2026/10/13/judge-orders-openai-to-turn-over-hiring-records-in-apple-trade-secrets-case/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Oct 13</div><div class="body">SpaceXSI now sells one subscription that bundles X Premium, Grok and Cursor, priced from $8 to $200 a month.</div><a class="open" href="https://techcrunch.com/2026/10/13/spacexsi-bundles-x-premium-grok-and-cursor-into-one-subscription/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Oct 13</div><div class="body">Epic told developers on its unannounced Disney shooter to use AI tools like Claude for code and art, and the game has slipped from its March release window.</div><a class="open" href="https://www.theverge.com/games/1010097/epic-games-disney-project-ai-coding-art" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Oct 13</div><div class="body">American Express released a framework to make sure AI shopping agents only buy what their users actually approved.</div><a class="open" href="https://techcrunch.com/2026/10/13/amex-introduces-a-framework-to-prevent-ai-agents-from-making-unauthorized-purchases/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Oct 13</div><div class="body">Shopify is opening its product catalog so more AI agents can browse and check out, beyond its existing Meta Muse deal.</div><a class="open" href="https://www.theverge.com/news/1010365/shopify-opens-its-catalog-up-to-more-ai-agents" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Oct 13</div><div class="body">AI labs are now buying the data archives of dead startups to use as training data.</div><a class="open" href="https://www.technologyreview.com/2026/10/13/1145755/ai-labs-buying-data-from-dead-startups-to-train-models/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Oct 13</div><div class="body">Pluto Security raised $42M to help security teams track how employees are actually using AI tools at work.</div><a class="open" href="https://techcrunch.com/2026/10/13/pluto-security-raises-42m-as-ai-gives-enterprise-security-teams-a-new-headache/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Oct 13</div><div class="body">Google Play now lets you install your own AI-built apps straight from the store, without plugging your phone into a computer.  (also in The Verge)</div><a class="open" href="https://techcrunch.com/2026/10/13/google-play-now-supports-private-vibe-coded-apps-built-just-for-you/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Oct 13</div><div class="body">Facebook is getting &quot;Your Algorithm,&quot; which lets you pick the topics you want in your feed, and Meta is using LLMs more to rank posts.  (also in TechCrunch)</div><a class="open" href="https://www.theverge.com/tech/1010344/meta-facebook-your-algorithm-ai" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Oct 13</div><div class="body">Microsoft started an Xbox Labs group that uses AI to decompile and rebuild old games for new hardware.</div><a class="open" href="https://www.theverge.com/news/1010406/xbox-labs-game-decompiling-emulation-exploration" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Mon Oct 13</div><div class="body">Anthropic replaced Git with its own source control system, called Scion. Merges jumped from about 2,500 a day in May to over 30,000 a day by September, mostly driven by Claude writing code. Plain Git fetching would have meant over 600 petabytes of traffic a day. A seven-person team built it and the move took five months. They skipped offline support because the heaviest user, Claude, is always online.</div><a class="open" href="https://simonwillison.net/2026/Oct/13/redesigning-source-control-at-anthropic/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Mon Oct 13</div><div class="body">Tencent open-sourced Agent Memory, a long-term memory layer for AI agents that runs fully locally on SQLite.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x50rgo/tencent_opensourced_agent_memory_and_it_runs_100/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Mon Oct 13</div><div class="body">AnythingLLM is moving from Ollama to AMD&#x27;s Lemonade and llama.cpp for running local models.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x5720r/why_anythingllm_is_moving_from_ollama_to_lemonade/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Mon Oct 13</div><div class="body">Someone got Qwen 27B running at about 20 tokens per second on the GPU of a jailbroken PS5.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x5ak2n/someone_is_running_qwen_27b_at_20_toks_on_a/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Mon Oct 13</div><div class="body">Geoffrey Huntley&#x27;s tip for keeping coding agents in line: don&#x27;t rely on instructions in AGENTS.md, which drift. Write a pre-commit hook that rejects code breaking your rules instead.</div><a class="open" href="https://simonwillison.net/2026/Oct/13/geoffrey-huntley/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Mon Oct 13</div><div class="body">Cerebras CEO Andrew Feldman told AI leaders to stop with the doomsday warnings, and predicted personal AI assistants will soon be as common as home appliances.</div><a class="open" href="https://techcrunch.com/2026/10/13/cerebras-ceo-pushes-back-on-ai-doomsday-warnings/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Mon Oct 13</div><div class="body">One r/LocalLLaMA user ran the numbers and found their local Qwen3.8 agent cheaper than nearly every cloud model, even counting peak electricity prices.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x5blg4/my_local_qwen38fn_agent_is_significantly_cheaper/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Mon Oct 13</div><div class="body">Heads-up for RTX 3090 Founders Edition owners: long LLM runs can overheat the card&#x27;s memory chips.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x4z19k/psa_for_3090_fe_owners_running_llms_overheats/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Sun Oct 12</div><div class="body">Meta released Muse Wonder, its most capable model so far. Artificial Analysis rates the top setting as roughly equal to OpenAI&#x27;s GPT-6.1 Sol, which would make it Meta&#x27;s first true frontier-class model. Meta has been shipping a new Muse model about once a month.</div><a class="open" href="https://simonwillison.net/2026/Oct/12/llm-meta-ai/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Sun Oct 12</div><div class="body">Simon Willison had GPT-6 Astra profile his web-edit app with Python 3.15&#x27;s new built-in profiler, producing flame graphs and source heatmaps. Claude Opus 5.5 then used the report to speed the app up.</div><a class="open" href="https://simonwillison.net/2026/Oct/12/python-3-15-web-edit-profiling/" target="_blank" rel="noopener">Open ↗</a></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
