@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">25 stories</div></header>
+<main>
+<article class="card"><div class="meta">Models &amp; Research · Thu Oct 15</div><div class="body">Liquid AI&#x27;s new LFM2.5-24B-A2B is getting good early reviews on r/LocalLLaMA. It has 24 billion parameters in total, but only about 2 billion do work on each token, so it runs fast on ordinary hardware. One tester running it inside the Pi coding agent said it held up far better than its size suggests.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x68qma/very_impressed_with_lfm2524a2b_in_pi_agent/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Thu Oct 15</div><div class="body">Long-Horizon-Terminal-Bench 2.0 is a new benchmark that checks whether an agent can keep making real progress over a long terminal session, instead of stalling after a few steps. It also generates its own varied tasks, which makes it harder to game.</div><a class="open" href="https://arxiv.org/abs/2610.14146" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Thu Oct 15</div><div class="body">A paper called Echo compresses the data GPUs exchange after every layer in tensor-parallel training and inference down to 4 bits, and corrects the rounding error so accuracy holds. Worth a look if you run large models across many GPUs.</div><a class="open" href="https://arxiv.org/abs/2610.14277" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Thu Oct 15</div><div class="body">A controlled study tested which parts of an MCP tool&#x27;s description (name, summary, parameter docs) actually change whether a model picks that tool. Useful if you write MCP servers.</div><a class="open" href="https://arxiv.org/abs/2610.14334" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Thu Oct 15</div><div class="body">Figma launched Specs, a Markdown editor where a team writes down its design rules in one place. Figma&#x27;s own agent and outside agents can read it, so AI-generated designs stay on brand. Code layers, which let you add real code to designs on the canvas, are now in open beta, and Figma&#x27;s MCP server now works with 20 more tools.</div><a class="open" href="https://techcrunch.com/2026/10/14/figma-announces-new-features-to-define-how-agents-work-on-its-platform/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Thu Oct 15</div><div class="body">Startup Ricursive Intelligence is building AI that designs computer chips and learns from each design to make the next one better. Their pitch is that this can help ease the shortage of AI compute.</div><a class="open" href="https://techcrunch.com/2026/10/14/ricursive-intelligence-is-betting-on-ai-designed-chips-to-help-solve-the-compute-crisis/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Thu Oct 15</div><div class="body">The NSA&#x27;s Ghidra, a free tool for reverse engineering compiled programs, is trending on GitHub. That fits the wave of AI-assisted game decompiling covered below.</div><a class="open" href="https://github.com/NationalSecurityAgency/ghidra" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Thu Oct 15</div><div class="body">Paul Hudson&#x27;s SwiftUI Agent Skill is trending on GitHub. It teaches coding assistants to write modern SwiftUI and targets the mistakes LLMs actually make, like using deprecated APIs.</div><a class="open" href="https://github.com/twostraws/SwiftUI-Agent-Skill" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Thu Oct 15</div><div class="body">Qwen 3.8 Flash-Next is the model local AI fans can&#x27;t stop testing. One user got 176 tokens per second of output on two AMD R9700 cards, and others are comparing it with GLM 5.3 Flash and DeepSeek V4 Flash. The verdict so far: Qwen feels more chatty and collaborative, GLM more terse.  (also in r/LocalLLaMA threads comparing it with GLM and DeepSeek)</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x640u6/176_ts_decode_and_6450_ts_prefill_with_q4_qwen38/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Thu Oct 15</div><div class="body">One builder put together three local AI machines, each with four AMD R9700 GPUs and a $127 used EPYC processor, for about $10.7K each. That adds up to 384GB of GPU memory in total.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x67qeu/4x_r9700_builds_with_127_used_epycs_107k_allin/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Wed Oct 14</div><div class="body">Google and Meta are back in the frontier model race. Google released Gemini 4 Argon, which it says matches or beats the best from OpenAI and Anthropic on many benchmarks. It is also cheap: up to 80% cheaper per token than rivals during the launch promotion, and still well below them after. Meta&#x27;s Muse Wonder Full is the first model from its Superintelligence Labs that it says competes with GPT-6 Astra and Claude Opus 5.5.</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1011311/the-ai-race-is-back-on" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Wed Oct 14</div><div class="body">Anthropic warned that small open models may soon be able to copy themselves across cheap smart devices like TV boxes and fridges, acting like a self-spreading computer worm. In tests, it split Gemma4-26B across 15 boxes with only 4GB of memory each and got it running. A Qwen3.5-9B agent managed to set up models on eight of nine device types by itself. Anthropic says this kind of worm would be hard to stop because there&#x27;s no central server to shut off, though it would spread slowly.</div><a class="open" href="https://arstechnica.com/security/2026/10/anthropic-warns-small-ai-models-could-self-replicate-through-iot-devices/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Wed Oct 14</div><div class="body">The Qwen 3.8 27B fine-tunes keep coming. Telperion&#x27;s version uses a different attention design that shrinks memory use for long contexts by 4x. Tessera-27B does its reasoning in compact Chinese, Japanese, and Korean text to use fewer tokens. Both are open weights.  (also Tessera on r/LocalLLaMA)</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x5wcnz/new_model_from_telperion_qwen3827bmla/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Wed Oct 14</div><div class="body">Two open weather releases came out the same day. Microsoft released a machine learning tool that it says keeps forecasts reliable beyond two weeks. AllenAI&#x27;s HiRO-ACEv2 simulates extreme weather at 3 km resolution for a fraction of the usual compute cost.  (also on Hugging Face Blog)</div><a class="open" href="https://www.theverge.com/science/1011127/ai-weather-forecast-microsoft" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Oct 14</div><div class="body">Eight US states (Iowa, Kansas, Nebraska, West Virginia, Arkansas, Arizona, Idaho, Montana) each sued OpenAI, saying it marketed ChatGPT as safe for kids when it wasn&#x27;t. The suits point to deaths linked to the chatbot and to data collected from minors. The states want fines, an end to the safety claims, and in some cases deletion of the data. OpenAI says it has strong age protections and wants rules that apply to the whole industry.</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1011500/openai-state-lawsuits-chatgpt-safety" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Oct 14</div><div class="body">The OpenAI and Apple trade-secret fight now goes both ways. OpenAI says a former employee took more than 100 files, including images of an unreleased device and supplier data, and presented them to Apple leadership before joining Apple. OpenAI ties this to Apple&#x27;s new HomeView smart display. Apple has made similar claims against OpenAI.</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1011276/openai-employee-unreleased-product-plans" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Oct 14</div><div class="body">OpenAI published a batch of customer stories. Amp is using GPT-6 Astra for agents that go beyond coding, Third Moment Research runs 10,000 agents for more than 36 hours at a time, and SentinelOne says OpenAI&#x27;s Daybreak security tools cut malware analysis from weeks to hours.  (also Amp, SentinelOne, Block on OpenAI Blog)</div><a class="open" href="https://openai.com/index/third-moment-research" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Oct 14</div><div class="body">Character.AI is going bankrupt, and New York&#x27;s attorney general revealed a multi-state investigation into the company. The states want to stop users&#x27; private chats from being sold to whoever buys its assets.</div><a class="open" href="https://www.theverge.com/policy/1011417/new-york-ag-characterai-bankruptcy" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Oct 14</div><div class="body">YouTube Music now labels songs made mostly with AI, and Deezer will let listeners filter AI music out by the end of the year. Streaming services are reacting to a flood of AI-generated tracks.  (also in The Verge, TechCrunch on Deezer)</div><a class="open" href="https://techcrunch.com/2026/10/14/youtube-music-launches-new-labels-as-ai-generated-music-floods-streaming-platforms/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Oct 14</div><div class="body">Google Messages on Android has a new opt-in mode that uses Gemini to judge whether a message from an unknown sender is a scam.</div><a class="open" href="https://www.theverge.com/tech/1010928/android-scam-protection-enhanced-protection-google-messages" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Oct 14</div><div class="body">Apate.ai sends AI agents to talk to scammers on purpose, letting them get &quot;scammed&quot; to collect intel on fraud tactics.</div><a class="open" href="https://techcrunch.com/2026/10/14/apate-sends-ai-agents-undercover-to-get-scammed-so-they-can-gather-fraud-intelligence/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Oct 14</div><div class="body">Funding: Zenzap raised $44M for an AI workplace chat app used by Starbucks and Taco Bell. Scimplify raised $25M to use AI against China&#x27;s hold on critical materials, and its revenue run rate has tripled to $200M.  (also Scimplify on TechCrunch)</div><a class="open" href="https://techcrunch.com/2026/10/14/zenzap-raises-44m-for-its-ai-chat-app-that-aims-to-replace-whatsapp-in-the-workplace/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Oct 14</div><div class="body">Some entry-level McKinsey candidates now have a 10-minute conversation with an AI-simulated client as part of the interview.</div><a class="open" href="https://www.theverge.com/news/1011654/mckinsey-ai-client-interview" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Wed Oct 14</div><div class="body">Simon Willison points to an indie developer&#x27;s take on AI decompiling old games in bulk. It&#x27;s driving a boom in game preservation and odd game mashups, but it also raises copyright worries.</div><a class="open" href="https://simonwillison.net/2026/Oct/14/ai-is-mass-decompiling-games/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Wed Oct 14</div><div class="body">AI Snake Oil published a research agenda for steering AI toward uses beyond simply automating jobs away.</div><a class="open" href="https://www.normaltech.ai/p/steering-ai-beyond-automation" target="_blank" rel="noopener">Open ↗</a></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
