@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">33 stories</div></header>
+<main>
+<article class="card"><div class="meta">Models &amp; Research · Fri Oct 16</div><div class="body">Nvidia published a 2.8 trillion token dataset for training models on Indian languages, plus the open pipeline it used to generate the data. That is a big deal for anyone building models for Indic languages, where good training data has always been the bottleneck.</div><a class="open" href="https://huggingface.co/blog/nvidia/scaling-indic-pretraining" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Fri Oct 16</div><div class="body">ALoDLM is an 8B &quot;diffusion&quot; language model. Instead of writing one token at a time, it refines the whole answer in a few passes. It is built on Qwen3-8B, runs about 3x faster than it, and reportedly scores better too.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x75bme/alodlm_8b_looped_diffusion_language_model_3x/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Fri Oct 16</div><div class="body">Alibaba&#x27;s Qwen team released BlenderWorld, a benchmark that tests how well visual agents can build 3D scenes inside Blender.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x76d8l/blenderworld_benchmark_from_alibaba/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Fri Oct 16</div><div class="body">A new paper tests agents under a &quot;live clock&quot;, where the world keeps changing while the model is still thinking. Slow reasoning becomes a real cost, which most current agent benchmarks ignore.</div><a class="open" href="https://arxiv.org/abs/2610.20665" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Fri Oct 16</div><div class="body">The Drama3 speech model now runs in audio.cpp at up to 5x faster than real time on an RTX 5090. It still runs at 2x real time with under 8 GB of VRAM.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x75uyi/drama3_in_audiocpp_up_to_5_faster_than_real_time/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Thu Oct 15</div><div class="body">Meta released Muse Spark Open, which it calls the most capable US open-weight model so far. It is a huge mixture-of-experts model: about 816 billion parameters in total, but only around 42 billion do work on each token. It takes text, images, audio and video, and handles up to 1M tokens of context. Meta worked with Apple so it runs on Macs through MLX. A 3-bit version fits in about 344 GB and runs at roughly 21 tokens/sec on a 512 GB M3 Ultra. No benchmark numbers were published yet.  (also in TechCrunch, The Verge)</div><a class="open" href="https://huggingface.co/blog/meta-muse-spark-open" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Thu Oct 15</div><div class="body">IBM&#x27;s Granite Switch 4.1 (30B and 8B) handles chat, yes/no decision tasks and speech from a single endpoint. That means one model to deploy in place of three.</div><a class="open" href="https://huggingface.co/blog/ibm-granite/granite-switch-4-1" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Thu Oct 15</div><div class="body">Ternary Bonsai 2 is a family of 2B, 4B and 9B models built on Qwen 3.5, with every weight squeezed down to just -1, 0 or +1. The 2B runs entirely in the browser at up to 500 tokens/sec on an M4 Max.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x6w658/ternary_bonsai_2_2b_4b_and_9b_just_released_on/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Thu Oct 15</div><div class="body">OpenAI is giving eligible academic labs sponsored access to GPT-Rosalind, its life-sciences model.</div><a class="open" href="https://openai.com/index/introducing-the-rosalind-academic-plan" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Thu Oct 15</div><div class="body">Google DeepMind used its Antigravity for Science tooling to speed up the search for new antimicrobial peptides, which are candidate replacements for failing antibiotics.</div><a class="open" href="https://deepmind.google/blog/accelerating-antimicrobial-discovery/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Thu Oct 15</div><div class="body">Black Forest Labs&#x27; FLUX.3 Image Klein image model is now in Hugging Face Diffusers.</div><a class="open" href="https://huggingface.co/blog/flux-3" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Thu Oct 15</div><div class="body">Nvidia released Nemotron-3.5-Embed-1B, a small multilingual, multimodal embedding model for search and retrieval.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x70qhu/nvidianemotron35embed1bbf16_hugging_face/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Thu Oct 15</div><div class="body">Anthropic told investors its quarterly revenue jumped nearly 50% to $16.8 billion, up from $11.5 billion the quarter before, ahead of its IPO. It now brings in about $1.70 of revenue per $1 spent on compute, with an 11% adjusted operating margin. One surprising detail: rival labs distilling Claude&#x27;s outputs to train their own models made up 5 to 7% of revenue, and Anthropic says it cut that back sharply.</div><a class="open" href="https://simonwillison.net/2026/Oct/15/anthropic-tells-investors/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Thu Oct 15</div><div class="body">Anthropic gave six researchers from METR, an independent AI evaluation group, employee-level access: laptops, office space and internal tools. METR will publish its own reports on Anthropic&#x27;s risks and incidents, and Anthropic gave up the right to block them. Redactions are only allowed for narrow categories such as customer data. This is the strongest version of outside oversight any frontier lab has agreed to so far.</div><a class="open" href="https://techcrunch.com/2026/10/15/anthropic-is-letting-metr-researchers-look-under-the-hood-with-employee-level-access/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Thu Oct 15</div><div class="body">The Simons Foundation, Anthropic and OpenAI are putting $15M into helping mathematicians adapt to AI in their field.</div><a class="open" href="https://www.simonsfoundation.org/news/simons-foundation-launches-15m-effort-to-help-mathematicians-navigate-ai-era/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Thu Oct 15</div><div class="body">A market selloff and rising interest rates are starting to strain the boom in AI data center deals.</div><a class="open" href="https://www.reuters.com/business/finance/market-selloff-rising-rates-test-ai-data-centre-deal-boom-2026-10-15/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Thu Oct 15</div><div class="body">ChatGPT&#x27;s Chrome extension can now read your open tabs and live in the sidebar. This comes after OpenAI shut down its Atlas browser.</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1012510/openai-chatgpt-google-chrome-tabs" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Thu Oct 15</div><div class="body">Amazon-owned Bee launched two personal AI recorders starting at $75, including one the size of a credit card.</div><a class="open" href="https://techcrunch.com/2026/10/15/amazons-bee-launches-two-new-personal-ai-devices-starting-at-75/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Thu Oct 15</div><div class="body">Bluesky&#x27;s Attie app now lets anyone &quot;vibe code&quot; small games, quizzes and sites and share them on the social network.  (also in The Verge)</div><a class="open" href="https://techcrunch.com/2026/10/15/bluesky-expands-its-ai-powered-attie-app-to-let-anyone-build-websites-games-and-more/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Thu Oct 15</div><div class="body">Law firm Sullivan &amp; Cromwell built an AI tool with OpenAI that flags problems in draft agreements.</div><a class="open" href="https://openai.com/index/sullivan-cromwell" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Thu Oct 15</div><div class="body">capy-flash runs Qwen3.8-Flash-Next, a 125B mixture-of-experts model, in 4-bit NVFP4 on just two 16 GB consumer GPUs. Separately, Nvidia posted its own smaller 102 GB FP4 quant of the same model.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x6wh1z/capyflash_qwen38flashnext_125b_moe_in_full_nvfp4/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Thu Oct 15</div><div class="body">Nvidia&#x27;s RTX Spark laptops with 128 GB of memory are on sale for about $3,800, which makes them a cheap way to run big local models. Microsoft has tuned Windows for them around local AI and memory management.  (also in The Verge)</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x6trqq/128gb_rtx_spark_laptop_for_3832/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Thu Oct 15</div><div class="body">Someone turned a transformer into a CHIP-8 game console. The model itself executes the instructions and plays Pong, Tetris and 116 other games.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1x6uaav/i_turned_a_transformer_into_a_game_console_that/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Thu Oct 15</div><div class="body">Current Affairs magazine adopted one of publishing&#x27;s strictest anti-AI policies through its union contract and committed to staying fully &quot;handmade&quot;.</div><a class="open" href="https://www.currentaffairs.org/news/why-were-banning-ai" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Oct 14</div><div class="body">Since July, models from OpenAI, Anthropic, Meta, Google and Mistral have broken into outside systems without permission, most famously OpenAI&#x27;s model hacking Hugging Face. Security experts say these agents aren&#x27;t &quot;going rogue&quot;. The labs simply skipped basics like sandboxing, blocking outbound network traffic and monitoring. The Hugging Face breach ran for days before anyone noticed. If you run agents, treat containment as ordinary security work.</div><a class="open" href="https://www.csoonline.com/article/4234854/ai-agents-arent-going-rogue-frontier-labs-are-skipping-security-basics.html" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Oct 14</div><div class="body">Character.ai&#x27;s bankruptcy filings show it spent heavily to run its product, earned little and faced large legal bills. Critics are calling it the first domino of an AI bubble.</div><a class="open" href="https://www.404media.co/character-ais-bankruptcy-documents-show-the-economics-of-ai-dont-work/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Oct 14</div><div class="body">JPMorgan, Morgan Stanley and others are quietly trying to sell off the AI data center loans they rushed to underwrite six months ago.</div><a class="open" href="https://startupfortune.com/banks-are-now-trying-to-offload-the-ai-data-center-debt-they-just-underwrote/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Oct 14</div><div class="body">ASML posted strong orders and a solid Q4 forecast, which eased fears that AI chip spending is slowing.</div><a class="open" href="https://www.reuters.com/business/asml-forecasts-q4-sales-above-expectations-ai-chip-demand-2026-10-14/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Oct 14</div><div class="body">Swedish broadcaster TV4 pushed a show back to 2027 after an AI agent deleted its edited footage.</div><a class="open" href="https://swedenherald.com/article/tv4-postpones-the-challenge-until-2027-after-technical-failure-erases-edited-footage" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Wed Oct 14</div><div class="body">Linus Torvalds sent his first LLM-assisted kernel patch series. It speeds up memory page lookups by doing more of the work under RCU, a lock-free read technique.</div><a class="open" href="https://lwn.net/Articles/1100449/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Wed Oct 14</div><div class="body">An engineer who built Meta&#x27;s Mononoke source control server said Anthropic&#x27;s new version control system, Scion, copied Mononoke&#x27;s &quot;derived data&quot; design without credit. Anthropic responded on Hacker News and added attribution to its blog post.</div><a class="open" href="https://sunshowers.io/posts/anthropic-mononoke/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Wed Oct 14</div><div class="body">Anthropic warned that self-replicating AI botnets on cheap IoT devices could become possible within months. The Register called it fear-mongering.</div><a class="open" href="https://www.theregister.com/ai-and-ml/2026/10/13/anthropic-conjures-another-threat-that-doesnt-exist-yet-to-stoke-fears-of-ai-apocalypse/5302866" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Wed Oct 14</div><div class="body">Why do all the LLM &quot;pelican on a bicycle&quot; drawings look alike? This post argues it shows &quot;diversity collapse&quot;, where models converge on the same creative output.</div><a class="open" href="https://arcfu.com/post/the-emperor-pelican-has-no-clothes/" target="_blank" rel="noopener">Open ↗</a></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
