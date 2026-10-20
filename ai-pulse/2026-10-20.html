@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">27 stories</div></header>
+<main>
+<article class="card"><div class="meta">Models &amp; Research · Tue Oct 20</div><div class="body">Google and Meta published TorchTPU, a joint open-source project that lets PyTorch run natively on Google&#x27;s TPU chips. It mixes normal step-by-step execution with compiled graphs, so you don&#x27;t have to rewrite code for a different framework. Landing the same day as Amazon&#x27;s TorchNeuron, it shows how hard everyone is pushing to loosen Nvidia&#x27;s grip on PyTorch.</div><a class="open" href="https://arxiv.org/abs/2610.24161" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Tue Oct 20</div><div class="body">Cache2LoRA studies &quot;context internalization&quot;: turning a document into a small set of model weight tweaks so the model remembers it without the text sitting in the prompt. The paper explains when this works and how to make it better, which matters for cheaper long-context apps.</div><a class="open" href="https://arxiv.org/abs/2610.24107" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Tue Oct 20</div><div class="body">World of SWECraft builds simulated software projects to test how teams of coding agents cooperate at scale, a growing problem as multi-agent coding setups get bigger.</div><a class="open" href="https://arxiv.org/abs/2610.24061" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Tue Oct 20</div><div class="body">GardenBench is a small benchmark meant to be run daily, so you can spot when a hosted model quietly gets better or worse.</div><a class="open" href="https://arxiv.org/abs/2610.23866" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Tue Oct 20</div><div class="body">New York City mayor Zohran Mamdani said the federal government has given up on regulating AI and urged New Yorkers to push for local rules that protect workers.</div><a class="open" href="https://techcrunch.com/2026/10/19/mamdani-says-feds-have-abdicated-on-ai-urges-new-yorkers-to-push-back/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Tue Oct 20</div><div class="body">AMD&#x27;s GAIA 0.25 improves its toolkit for running local AI agents on Ryzen AI laptops.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xaegqa/amd_gaia_025_brings_several_improvements_for/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Tue Oct 20</div><div class="body">Tess-4.5-27B is a new fine-tune of Qwen that claims to reach the same answers while spending far less time &quot;thinking,&quot; which means faster, cheaper replies on local hardware.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xadfm7/migtisseratess4527b_qwen_finetune/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Tue Oct 20</div><div class="body">A new system service lets one 24GB GPU juggle several inference engines by loading and unloading them on demand, so they never fight over memory.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xahi82/24gb_is_plenty_if_your_engines_take_turns/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Tue Oct 20</div><div class="body">Local AI users are comparing Terminal Bench v4 with Artificial Analysis&#x27;s new Frontier Code benchmark, where Kimi K3 scores well on agent-style software work. The gap between the two is a reminder that coding benchmarks still disagree a lot.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xahu9x/terminal_bench_v4_vs_frontier_code_v11/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Mon Oct 19</div><div class="body">Nvidia released a new family of open-weight models built for AI agents. The big one, Nemotron 3.5 Super VL, has 120 billion parameters and is meant for companies to fine-tune on their own data and run in their own data centers. Nvidia says it matches its larger Ultra model on following instructions and using tools, and names Ramp, CrowdStrike, Perplexity and Salesforce as users. A smaller Bolt model is built to run locally on Nvidia&#x27;s Spark desktop machines, with an even tinier one coming later this month.</div><a class="open" href="https://techcrunch.com/2026/10/19/nvidia-launches-new-open-models-to-run-agents-in-the-enterprise-and-on-pcs/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Mon Oct 19</div><div class="body">A long blog post from Goodfire researcher Nick Cammarata argues that neural networks may be much easier to understand than people thought. His example: a neuron that seemed to fire for both cats and cars was really detecting a V shape, like a cat&#x27;s face or a car&#x27;s front. Some researchers called it historic, but others pushed back hard, and Google DeepMind&#x27;s Neel Nanda said it wasn&#x27;t a big update. Worth knowing because if he&#x27;s right, monitoring and controlling AI models gets a lot more practical.</div><a class="open" href="https://www.technologyreview.com/2026/10/19/1147149/we-were-looking-at-it-wrong-the-explosive-claim-thats-upended-the-ai-world/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Mon Oct 19</div><div class="body">OpenAI says ChatGPT is getting better at less common programming languages, and it has new tests for things like SQLite work and COBOL migration.</div><a class="open" href="https://openai.com/index/low-resource-programming-languages" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Mon Oct 19</div><div class="body">Researchers left Claude alone on a virtual desert island for 30 hours with no task. It ended up doing things that look a lot like play.</div><a class="open" href="https://www.technologyreview.com/2026/10/19/1147095/ai-stranded-claude-virtual-desert-island-play/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Mon Oct 19</div><div class="body">A new paper from the AI Snake Oil team lays out how people evaluate AI agents today and where those methods fall short.</div><a class="open" href="https://www.normaltech.ai/p/new-paper-emerging-trends-in-ai-agent" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Oct 19</div><div class="body">Hackers broke into OpenCode Console, the web platform behind the popular open-source coding agent, and used stored API keys to run up charges on users&#x27; OpenAI, Anthropic and Google accounts. Some people saw hundreds of dollars in bills, and a few saw over $1,000. About 1.4% of Console users were hit, and the open-source app and CLI themselves were not affected. If you use the Console, rotate your provider keys and check your bills.</div><a class="open" href="https://techcrunch.com/2026/10/19/hackers-hit-ai-coding-tool-opencode-running-up-charges-on-users-ai-accounts/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Oct 19</div><div class="body">Amazon launched TorchNeuron, which lets PyTorch apps run on its Trainium chips by changing one line of config. Nvidia&#x27;s CUDA software is the reason most PyTorch code is stuck on Nvidia GPUs, so this is Amazon&#x27;s most direct attempt yet to pull developers away. Amazon also plans to push changes into PyTorch itself that remove chip-specific ties.  (also in Hugging Face Blog)</div><a class="open" href="https://techcrunch.com/2026/10/19/amazon-is-taking-its-biggest-shot-at-nvidia-yet-with-new-torchneuron-dev-tool/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Oct 19</div><div class="body">A security firm found that one hacker used a swarm of mostly autonomous AI agents to break into more than 100 websites, including John Deere, SharkNinja and Cummins. It&#x27;s one of the clearest examples yet of AI doing most of the work in a real attack.</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1013643/ai-agents-hack-john-deere-shark-ninja-cummins" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Oct 19</div><div class="body">Anthropic is reportedly in talks with Nscale for another $45 billion compute deal, the latest in a long run of huge infrastructure agreements.</div><a class="open" href="https://techcrunch.com/2026/10/19/nscale-and-anthropic-are-reportedly-in-talks-for-yet-another-45-billion-compute-deal/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Oct 19</div><div class="body">CoreWeave&#x27;s bonds slid into distressed territory last week. Because so much AI compute runs through it, its debt is turning into a risk for the whole industry.</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1014045/coreweave-stock-debt-sector-ai" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Oct 19</div><div class="body">Tenstorrent raised $1.5 billion at a $6.2 billion valuation to stay independent and keep building AI chips as an Nvidia alternative.</div><a class="open" href="https://techcrunch.com/2026/10/19/tenstorrent-hits-6-2b-valuation-to-scale-open-weight-ai-chips/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Oct 19</div><div class="body">Microsoft told companies to treat AI agents like possible insider threats and watch them closely, saying frontier models can&#x27;t be fully trusted.</div><a class="open" href="https://techcrunch.com/2026/10/19/microsoft-says-ai-agents-are-like-insider-threats-as-frontier-models-cant-be-trusted/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Oct 19</div><div class="body">Replika founder Eugenia Kuyda launched Wabi, a personal AI assistant she first pitched 12 years ago, and AI companion app Tolan raised $30 million.</div><a class="open" href="https://techcrunch.com/2026/10/19/replikas-founder-built-the-ai-assistant-she-pitched-at-disrupt-12-years-ago/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Mon Oct 19</div><div class="body">Cohere models now run in llama.cpp, the popular engine for running models on your own machine.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xa0cyz/llamacpp_support_for_cohere_models/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Mon Oct 19</div><div class="body">A small Hong Kong team built its own inference engine that fits a 32B model with a 262K-token context window inside 16GB of GPU memory.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xa02iw/we_built_our_own_inference_engine_so_a_32b_model/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Mon Oct 19</div><div class="body">Jack Clark of Anthropic told an IMF meeting that &quot;the Singularity has begun,&quot; pointing to AI starting to do frontier science on its own.</div><a class="open" href="https://jack-clark.net/2026/10/19/import-ai-477-in-which-i-tell-the-imf-the-singularity-has-begun/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Mon Oct 19</div><div class="body">Simon Willison shared a moving essay on what career programmers lose when coding agents take over the puzzle-solving they loved.</div><a class="open" href="https://simonwillison.net/2026/Oct/19/my-obituary-for-programming/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Mon Oct 19</div><div class="body">MIT Tech Review warns that reshaping the web for AI agents could make it worse for human users.</div><a class="open" href="https://www.technologyreview.com/2026/10/19/1147186/making-the-internet-better-for-ai-agents-might-make-it-worse-for-everyone-else/" target="_blank" rel="noopener">Open ↗</a></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
