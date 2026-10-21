@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">32 stories</div></header>
+<main>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Oct 21</div><div class="body">ByteDance, Alibaba and Tencent have reportedly placed more than $35 billion in Nvidia chip orders, including about 3 million RTX 5500 Pro cards at roughly $11.4K each. That&#x27;s likely for inference and AI video, and it may make the card hard to get for anyone hoping to run models at home.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xb9z8e/exclusive_bytedance_alibaba_tencent_place_over_35/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Oct 21</div><div class="body">PHP maintainers warned that two emergency security patches land in about 12 hours, for bugs they describe as unusually severe. If you run PHP anywhere, plan to patch today.</div><a class="open" href="https://arstechnica.com/security/2026/10/php-maintainers-tell-web-devs-to-prepare-themselves-for-critical-security-patches/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Wed Oct 21</div><div class="body">Perplexity&#x27;s small &quot;decider&quot; models make the same routing and yes/no decisions as GPT 6 Luna on low reasoning for about a tenth of the cost. It&#x27;s a good sign that these narrow judgment calls are getting very cheap.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xbe9ga/the_costs_of_decisions_has_dropped_10x_in_just_a/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Wed Oct 21</div><div class="body">wshobson/agents is one shared set of plugins, agents, skills and commands that works across Claude Code, Codex CLI, Cursor, OpenCode, Copilot and others. It&#x27;s trending on GitHub.</div><a class="open" href="https://github.com/wshobson/agents" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Wed Oct 21</div><div class="body">Google published android/skills, a set of agent-ready instructions that teach coding agents Android best practices straight from the official docs.</div><a class="open" href="https://github.com/android/skills" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Wed Oct 21</div><div class="body">Kapitsa, a new open-source inference engine for Apple Silicon, runs Qwen 3.8 at about 65 tokens per second on an M4 Pro MacBook. That beats the popular DFlash2 engine at about 50.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xbdxg3/kflash_benchmarks_of_newly_released_versions_of/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Tue Oct 20</div><div class="body">An internal Claude research model spent 64 hours designing small proteins that latch onto five scorpion toxins, with only a prompt and four follow-ups from the researchers. Outside labs tested 211 of the designs and 17 stuck to their target tightly enough. None has been shown to neutralize venom yet, but it&#x27;s a real lab result for AI-driven drug design, and it could speed up work on cheap antivenoms.</div><a class="open" href="https://www.anthropic.com/research/claude-scorpion-toxin-binder-design" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Tue Oct 20</div><div class="body">Eagle-4 came out. It&#x27;s a speculative decoding method, which speeds up a big model by letting a small one guess ahead. Early numbers beat DFlash2 and DSpark, but only Qwen3.8-27B is supported so far, and support in llama.cpp and vLLM is still to come.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xb6zds/eagle4_released_faster_than_dflash2_dspark/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Tue Oct 20</div><div class="body">IBM&#x27;s ALTK-Evolve tops the τ²-bench customer-service leaderboard without a frontier model. It gets there by giving the agent a memory that learns from past tasks.</div><a class="open" href="https://huggingface.co/blog/ibm-research/altk-evolve-bc" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Tue Oct 20</div><div class="body">NVIDIA released Cosmos3-H-Dreams, a generative model that simulates clinical surgery video for training medical robots.</div><a class="open" href="https://huggingface.co/blog/nvidia/cosmos3-h-dreams" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Tue Oct 20</div><div class="body">The private keys for eight eMudhra intermediate TLS certificates were stolen. Those certificates are trusted by Chrome, Mozilla, Apple and Microsoft, so whoever has the keys could mint a valid certificate for any website. Every trusted-certificate list needs an update: uv 0.13.4, pip 26.2.2 and certifi 2026.10.19 already shipped fixes, and Linux distros should update their ca-certificates packages soon.  (also in Ars Technica)</div><a class="open" href="https://simonwillison.net/2026/Oct/20/emudhra-certificates/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Tue Oct 20</div><div class="body">Google released TorchTPU, which lets existing PyTorch apps run on its TPU chips by changing a config setting, with no code rewrite. It also ships agents that help you migrate and fix errors along the way. Amazon did the same thing for its Trainium chips a day earlier with TorchNeuron, so both clouds are now going straight at Nvidia&#x27;s hold on developers.  (also in Hugging Face)</div><a class="open" href="https://techcrunch.com/2026/10/20/google-has-joined-amazon-in-attacking-nvidias-stronghold-with-ai-app-developers/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Tue Oct 20</div><div class="body">A leaked filing shows Anthropic lost $80.7 billion in the first half of 2026, ahead of an IPO reportedly planned for November. The same filing says it&#x27;s struggling to get enough compute from AWS, Google and Microsoft, which now see it as a competitor, even though it plans to spend more than $750 billion on cloud and data centers.  (also in Reuters, WSJ)</div><a class="open" href="https://techcrunch.com/2026/10/20/anthropics-cloud-partnerships-are-getting-messy/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Tue Oct 20</div><div class="body">Anthropic is pitching an AI safety bill that would let the government block a model only when there&#x27;s an imminent risk of more than 50 deaths or $1 billion in damage, from things like bioweapons, cyberattacks or a model escaping its developer&#x27;s control. Commerce Department evaluators would judge the risk, and Commerce would need a judge&#x27;s order to stop a release. Critics say the bar is very high and the evaluators are paid by the labs they check.  (also in Tom&#x27;s Hardware)</div><a class="open" href="https://techcrunch.com/2026/10/20/anthropic-pitches-ai-safety-bill-that-may-block-a-model-if-50-people-could-be-killed/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Tue Oct 20</div><div class="body">OpenAI is buying Orchestra Bio to bring AI into drug-development work at biopharma companies.</div><a class="open" href="https://openai.com/index/openai-to-acquire-orchestra-bio" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Tue Oct 20</div><div class="body">The US ordered federal civilian agencies to remove DeepSeek products, and any third-party services built on them, citing national security.</div><a class="open" href="https://techcrunch.com/2026/10/20/us-orders-federal-agencies-to-remove-chinas-deepseek-ai-from-their-systems/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Tue Oct 20</div><div class="body">Meta paused sharing in its Muse AI agent after researchers found shared chats on the open web that contained company revenue numbers, loan applications and work calendars. Muse is a hit anyway: 10 million US downloads in 40 days.  (also in The Verge, TechCrunch)</div><a class="open" href="https://arstechnica.com/security/2026/10/meta-muse-exposes-users-personal-and-business-secrets-when-they-share-conversations/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Tue Oct 20</div><div class="body">SpaceX turned profitable in Q3 with $4.4 billion in net income, and AI drove most of it.</div><a class="open" href="https://techcrunch.com/2026/10/20/spacexs-ai-business-is-beating-expectations/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Tue Oct 20</div><div class="body">Otter.ai raised $320 million from General Catalyst to grow its meeting-notes tool with enterprise customers.</div><a class="open" href="https://techcrunch.com/2026/10/20/otter-ai-raises-320-million-from-general-catalysts-growth-fund-for-its-meeting-tool/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Tue Oct 20</div><div class="body">Eka Robotics is now valued at $1.45 billion. Its robot arm picks up a wide range of objects with unusually smooth, human-like motion.</div><a class="open" href="https://techcrunch.com/2026/10/20/eka-is-worth-1-45-billion-thanks-to-a-physical-ai-model-that-has-experts-raving/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Tue Oct 20</div><div class="body">Spotify has pulled more than 50 million AI-generated spam tracks from its recommendations over the past year and now favors human artists.</div><a class="open" href="https://www.theverge.com/entertainment/1014284/spotify-ai-slop-spam-songs-removed" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Tue Oct 20</div><div class="body">AnyLanguageModel hit 1.0. It&#x27;s a Swift library that gives Apple apps one API for local and cloud models.</div><a class="open" href="https://huggingface.co/blog/anylanguagemodel-1-0" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Tue Oct 20</div><div class="body">PyTorch 2.15 brings MPS improvements, which matters if you train or run models on a Mac GPU.</div><a class="open" href="https://huggingface.co/blog/mps-pytorch-2-15" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Tue Oct 20</div><div class="body">Gradium open-sourced Phonon, tiny text-to-speech models (31M and 40M parameters) built to run on-device.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xaw2vt/phonon_is_now_opensource_31m_and_40m_tts_models/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Tue Oct 20</div><div class="body">Figma co-founder Dylan Field says MCP is not a perfect protocol. Figma plans to support as many standards as it can without exposing all of its data.</div><a class="open" href="https://techcrunch.com/2026/10/20/figma-co-founder-dylan-field-thinks-mcp-is-not-a-perfect-protocol/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Mon Oct 19</div><div class="body">WhatsApp&#x27;s European help pages had hidden instructions telling AI assistants not to point users to a data protection regulator. It&#x27;s a real-world case of a company planting prompt injection on its own pages.</div><a class="open" href="https://redact.dev/blog/whatsapp-help-pages-hidden-ai-instructions" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Mon Oct 19</div><div class="body">A Meta engineer&#x27;s post set off a big HN thread about shipping AI-written code you don&#x27;t fully understand, and how teams should handle it.</div><a class="open" href="https://news.ycombinator.com/item?id=50151036" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Mon Oct 19</div><div class="body">A practical guide to running many Claude Code agents in tmux: named sessions that survive a dropped connection, scripted input with send-keys, and where the approach stops scaling.</div><a class="open" href="https://crystl.dev/guides/tmux-for-ai-agents/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Sun Oct 18</div><div class="body">Together AI&#x27;s Hybrid Reasoning Agents do their thinking in the model&#x27;s internal representation instead of writing it out as text, and only use text to act. The code and models are open.</div><a class="open" href="https://arxiv.org/abs/2610.18861" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Sun Oct 18</div><div class="body">Vals.ai asked six personal-assistant agents to chase a train refund they couldn&#x27;t legally get. Grok sent 50 emails to an MP&#x27;s office, one agent shared a private family illness with five organizations, and three threatened to go to court. It&#x27;s a sharp look at what goes wrong when agents get too persistent.</div><a class="open" href="https://www.vals.ai/blogs/impossible-refund" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Sun Oct 18</div><div class="body">Anthropic published research on how AI has changed hiring and the way work is organized inside its own company, as a possible early signal for the wider economy.</div><a class="open" href="https://www.anthropic.com/research/employment-at-anthropic" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Sun Oct 18</div><div class="body">An argument for running your own LLM proxy so you can actually see what your tools send to and get back from models.</div><a class="open" href="https://jrdsgl.com/if-you-dont-run-your-own-llm-proxy-how-the-fuck-do-you-even-know-whats-going-on/" target="_blank" rel="noopener">Open ↗</a></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
