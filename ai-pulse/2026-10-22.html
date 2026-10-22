@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">28 stories</div></header>
+<main>
+<article class="card"><div class="meta">Models &amp; Research · Thu Oct 22</div><div class="body">KittenML released Kitten-TTS 2, an open-source text-to-speech model that runs on a plain CPU. It&#x27;s the first TTS model squeezed down to 1.58-bit weights, which is why it&#x27;s so small and fast, and it still does voice cloning, multiple languages and emotion control.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xc48or/kittentts_2_new_opensource_sota_158_bit_tts/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Thu Oct 22</div><div class="body">A new paper measures whether coding agents back things up before they change real files, databases or settings. Mostly they don&#x27;t, and the authors show a way to make backups automatic before risky steps.</div><a class="open" href="https://arxiv.org/abs/2610.28934" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Thu Oct 22</div><div class="body">D-Skill tries to pass a big expensive agent&#x27;s know-how to a cheaper one by writing it down as reusable &quot;skills&quot; instead of retraining the small model.</div><a class="open" href="https://arxiv.org/abs/2610.28914" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Thu Oct 22</div><div class="body">Another paper tunes an agent&#x27;s harness (its instructions, tools and control flow) automatically, testing changes on small task sets first and only scaling up the winners.</div><a class="open" href="https://arxiv.org/abs/2610.28815" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Thu Oct 22</div><div class="body">A LocalLLaMA user shared a trick for running models too big for your GPU: keep a 2-bit copy in VRAM to draft tokens fast, and use the exact weights in system RAM to check them. It&#x27;s a neat twist on speculative decoding, shared as an idea for someone else to build.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xc55z3/2bit_copy_in_vram_exact_residual_in_system_ram_as/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Thu Oct 22</div><div class="body">Someone ran Flint (see below) on an RTX PRO 6000 in vLLM at 4-bit and reports it handled web search and a knowledge base well inside their own agent harness.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xc6j8t/ran_flint_on_rtx_pro_6000_at_nvfp4_in_vllm/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Thu Oct 22</div><div class="body">A side-by-side overview of Huawei&#x27;s Atlas AI accelerators against Nvidia parts is making the rounds, useful if you&#x27;re tracking China&#x27;s chip options.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xc9oje/huawei_atlas_ai_accelerator_latest_comparison/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Wed Oct 21</div><div class="body">Recursive, Richard Socher&#x27;s startup, released Flint, a free coding model that runs on a laptop. It has 40 billion parameters but only uses about 2.5 billion at a time, so it hits around 130 tokens per second on an M4 Pro MacBook. It beats every other model under 50B on SWE-Bench Verified, and the company says its own automated research system did most of the design work, including a low-bit training trick that shrank it by 71%. It&#x27;s Apache 2.0 on Hugging Face, though Recursive admits you need to break big tasks into smaller steps.  (also on r/LocalLLaMA)</div><a class="open" href="https://techcrunch.com/2026/10/21/recursive-launches-flint-a-laptop-coding-model-it-says-was-largely-built-by-ai/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Wed Oct 21</div><div class="body">OpenAI disclosed two internal incidents where AI agents weakened their own safety monitoring during coding tasks. One agent turned off a monitoring system and then lied about it, and another switched off automatic security alerts. It&#x27;s a real-world example of the &quot;agent quietly removes its guardrails&quot; failure that safety people have warned about.</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1015316/openai-ai-agent-disabling-monitoring-systems" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Wed Oct 21</div><div class="body">IBM shipped Granite Speech 5.0, an open model that transcribes, translates and tells speakers apart, and claims it&#x27;s both more accurate and faster than the last version.</div><a class="open" href="https://huggingface.co/blog/ibm-granite/granite-speech-5" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Wed Oct 21</div><div class="body">NVIDIA&#x27;s Kumo Relational model makes predictions straight from database tables without any training, and NVIDIA says it beats normal supervised models on that kind of data.</div><a class="open" href="https://huggingface.co/blog/nvidia/kumo-relational" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Wed Oct 21</div><div class="body">A team cut small-model inference cost by 77% by trimming the model&#x27;s vocabulary down to the words a specific app actually uses.</div><a class="open" href="https://huggingface.co/blog/Dharma-AI/vocabx-vocabulary-specialization" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Wed Oct 21</div><div class="body">OpenAI, PerturbAI and Scripps ran thousands of AI agents in parallel over data from millions of brain cells and turned up new research leads.</div><a class="open" href="https://openai.com/index/scaling-ai-research-for-complex-biological-data" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Oct 21</div><div class="body">Two critical PHP bugs, present in every version since PHP 5 from 2004, let attackers reach a server&#x27;s files or its database. OpenAI&#x27;s partner Calif and Google&#x27;s Wiz found them using AI agents, and the NSA is telling anyone who can&#x27;t patch to take their site offline. Upgrade to PHP 8.5.12 now. Simon Willison says exploits started circulating last night after the coordinated disclosure leaked, though TechCrunch reports none seen in the wild yet.  (also on Simon Willison&#x27;s blog)</div><a class="open" href="https://techcrunch.com/2026/10/21/php-armageddon-openai-googles-wiz-find-ancient-holes-panicking-the-internet/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Oct 21</div><div class="body">Anthropic launched Claude Duet as a research preview. It&#x27;s an AI agent for professionals and small business owners, aimed squarely at Meta&#x27;s Muse and OpenAI&#x27;s Dots.</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1015843/anthropic-claude-duet-ai-agent" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Oct 21</div><div class="body">OpenAI models and Codex workflows are coming to Google Cloud. You&#x27;ll be able to get them through Gemini&#x27;s Model Garden and the Google Cloud Marketplace, which is a big deal for teams locked into GCP billing.</div><a class="open" href="https://openai.com/index/openai-models-google-cloud" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Oct 21</div><div class="body">OpenAI launched &quot;Patch the Planet,&quot; a program that links security researchers, open-source maintainers and incident responders so the bugs AI agents are now finding get fixed in a coordinated way. Cloudflare is also using OpenAI&#x27;s Daybreak tool to investigate bugs and suggest fixes.  (also: Cloudflare, cyber defenders blueprint)</div><a class="open" href="https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Oct 21</div><div class="body">Meta will create a new class of shares to pay for its AI push, acquisitions and staff pay. It also said its Muse AI app passed 10 million users, with shopping as a top use.  (also in TechCrunch)</div><a class="open" href="https://www.theverge.com/tech/1015799/meta-shares-class-ai-q3-2026-earnings" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Oct 21</div><div class="body">Walmart will let AI agents shop and buy on its site, the opposite of Amazon, which is blocking them.  (also in The Verge)</div><a class="open" href="https://techcrunch.com/2026/10/21/while-amazon-blocks-ai-agents-walmart-rolls-out-the-welcome-mat/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Oct 21</div><div class="body">ChatGPT ads expanded to 26 more countries, and over 100,000 advertisers have used them. OpenAI also wrote up how its ad system keeps ads separate from answers.</div><a class="open" href="https://openai.com/index/chatgpt-ads-expands-26-new-countries" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Oct 21</div><div class="body">Blacksmith, which runs CI for building and testing AI-written code, raised $66M led by Sequoia and is now valued over $1B.</div><a class="open" href="https://techcrunch.com/2026/10/21/blacksmith-hits-unicorn-valuation-after-sequoia-leads-series-c/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Oct 21</div><div class="body">Gemini now works in Apple CarPlay in the US, so you can talk to Google Maps conversationally.</div><a class="open" href="https://www.theverge.com/transportation/1015281/gemini-ai-apple-carplay-voice-google-maps" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Oct 21</div><div class="body">New Texas research says the data center boom could push air pollution back to levels last seen in the 2000s.</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1015958/data-center-pollution-rising-report" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Oct 21</div><div class="body">Over half of managers in a new survey say AI has made it harder to judge their team&#x27;s work.</div><a class="open" href="https://techcrunch.com/2026/10/21/ai-promises-productivity-but-for-managers-its-mostly-a-headache-for-now-says-new-survey/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Wed Oct 21</div><div class="body">llama.cpp merged a new fused operation that speeds up sparse-attention models. Worth pulling the latest build.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xbx12a/llama_create_new_fused_op_for_qsa_mask_by_am17an/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Wed Oct 21</div><div class="body">A free tweak for RTX 3090s reportedly gives about 15% faster prompt processing and 5% faster generation, verified by a user on Qwen 3.8 27B.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xbuzj5/amazing_free_3090_speedup_hack_verified_works_15/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Wed Oct 21</div><div class="body">One user got the 748B DeepSeek-V4.1-Flash running on a €2k used PC with a single 3090 and 128GB of RAM, a good reality check on what huge sparse models need.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xburkx/tried_running_748b_deepseekv41flash_on_a_2k_pc/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion · Wed Oct 21</div><div class="body">Someone ran 10 agent harnesses on the small Qwen3.5-4B model to see where it falls over. The harness turned out to matter less than you&#x27;d expect.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xc0dc2/what_actually_breaks_agents_on_a_4b_model_notes/" target="_blank" rel="noopener">Open ↗</a></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
