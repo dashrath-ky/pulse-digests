@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">29 stories</div></header>
+<main>
+<article class="card"><div class="meta">Finshots · Fri Oct 23</div><div class="body">eMudhra, an Indian company that issues the digital certificates behind the padlock in your browser, shipped some certificates with keys so weak a computer could guess them in a fraction of a second. Out of 24 certificates made in one batch last year, 8 were affected. There&#x27;s no sign anyone abused them, but Google, Microsoft and Mozilla have blocked them anyway. The stock fell to a 52-week low and lost close to ₹1,000 crore in value after the government ordered a security probe.</div></article>
+<article class="card"><div class="meta">TLDR IT · Thu Oct 22</div><div class="body">OpenAI bought Orchestra Bio, a startup that helps drug companies manage the messy, many-step process of developing a new medicine. It&#x27;s another sign that OpenAI wants a foothold in science and healthcare, not just chat.</div><a class="open" href="https://links.tldrnewsletter.com/hRhIlJ" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Thu Oct 22</div><div class="body">Databricks launched Agent Memory in beta, so AI agents built on its platform can remember user preferences and company knowledge between conversations. In its own tests, agents finished three times as many tasks and used about a third fewer tokens.</div><a class="open" href="https://www.databricks.com/blog/introducing-agent-memory-databricks?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Thu Oct 22</div><div class="body">Attackers are phishing Google Cloud admins, then quietly linking their own projects to the victim&#x27;s billing account to run huge amounts of Gemini AI on someone else&#x27;s dime. Wiz calls this &quot;LLMjacking.&quot; Victims have seen bills climb into the hundreds of thousands of dollars within days.</div><a class="open" href="https://www.wiz.io/blog/from-phishing-to-llmjacking?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Thu Oct 22</div><div class="body">DeepSeek open-sourced DeepInfer, the software it uses to run its AI models cheaply. Anyone can now use it to cut the cost of serving models.</div><a class="open" href="https://qz.com/deepseek-open-source-deepinfer-inference-software-ai-102026?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Thu Oct 22</div><div class="body">llm-d hit version 1.0. It&#x27;s an open-source toolkit for serving large AI models across many machines on Kubernetes, with smart request routing and shared caching so the same work isn&#x27;t repeated.</div><a class="open" href="https://cloud.google.com/blog/topics/ai-infrastructure/llm-d-1-0-an-open-source-stack-for-distributed-inference?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Thu Oct 22</div><div class="body">Google now offers Gemini-powered document search for its fully offline cloud, so governments and banks can search sensitive files without data ever leaving their own servers.</div><a class="open" href="https://cloud.google.com/blog/topics/hybrid-cloud/managed-rag-search-inside-the-sovereign-perimeter-gemini-on-gdc-enterprise-search?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Thu Oct 22</div><div class="body">AWS launched ECS Gateway, which sets up and manages load balancers for container apps automatically. Up to 25 services can share one load balancer, and each gets its own web address.</div><a class="open" href="https://aws.amazon.com/about-aws/whats-new/2026/10/announcing-amazon-ecs-gateway/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT · Thu Oct 22</div><div class="body">The team behind the spaCy library argues developer tools should work equally well for humans and their coding agents. Their new platform, Ellf, builds both a UI and a command-line tool from the same Python code.</div><a class="open" href="https://ines.io/blog/agent-ux-developer-tools?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Thu Oct 22</div><div class="body">Anthropic launched Claude Duet, a personal assistant app that keeps working on your behalf while you&#x27;re away. It checks your connected apps and can even buy things through Shop Pay or Stripe Link, but it asks before sending messages, paying, or deleting anything. It&#x27;s waitlist-only for US Pro and Max users for now.  (also in ben&#x27;s bites)</div><a class="open" href="https://www.pymnts.com/news/artificial-intelligence/2026/anthropics-new-ai-agent-purchases-business-supplies/?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Thu Oct 22</div><div class="body">Ramp applied for a national trust bank charter, which would let it manage investments and hold crypto for customers under federal rules. It won&#x27;t take deposits or make loans. This comes right after a $1.85 billion raise at a $60 billion valuation.</div><a class="open" href="https://www.bankingdive.com/news/ramp-applies-national-trust-bank-charter-occ-fintech-icba/833434/?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Thu Oct 22</div><div class="body">Ramp also bought Vesto, which shows businesses all their bank accounts in one place and forecasts cash flow. Ramp is clearly moving past expense cards toward running a company&#x27;s whole finance stack.</div><a class="open" href="https://www.fintechfutures.com/m-a/ramp-acquires-vesto?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Thu Oct 22</div><div class="body">Fintech funding fell 21% from a year ago to $10.6 billion in Q3. The number of deals dropped even more, to the lowest since at least 2018. Money is piling into fewer, bigger bets, mostly AI, payments and stablecoins.</div><a class="open" href="https://news.crunchbase.com/venture/q3-2026-fintech-startup-funding-deal-count-fell-ai/?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Thu Oct 22</div><div class="body">Mastercard opened early access to Agent Pay for Machines, a set of tools that let AI agents pay other software on their own. In one demo, an agent made nine purchases end to end using Coinbase&#x27;s wallet and payment tech.</div><a class="open" href="https://links.tldrnewsletter.com/OsuqTr" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Thu Oct 22</div><div class="body">Visa, BILL and Billtrust started a live pilot where approved AI agents pay business invoices on supplier portals, skipping the step where a person logs in and types in card details. The buyer&#x27;s spending rules still apply.</div><a class="open" href="https://investor.visa.com/news/news-details/2026/Visa-BILL-and-Billtrust-Launch-First-Live-Pilot-for-Trusted-AI-Agent-Payments-Between-Buyer-and-Supplier-Platforms/default.aspx?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Thu Oct 22</div><div class="body">JPMorgan has put $5 billion of its own money into companies tied to US national security, like defense tech, energy and advanced manufacturing.</div><a class="open" href="https://links.tldrnewsletter.com/BzfP2Z" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Thu Oct 22</div><div class="body">After 14 years doing only online payments, Checkout.com is moving into physical stores. Merchants can keep their existing card machines and run online and in-store payments through one contract.</div><a class="open" href="https://links.tldrnewsletter.com/URPoFp" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Thu Oct 22</div><div class="body">PayPal&#x27;s new CEO says the company got too slow and has too many layers of management. He plans to cut layers and invest more in Venmo and Braintree. He doesn&#x27;t expect AI agents to drive real payment volume until around 2028.</div><a class="open" href="https://www.paymentsdive.com/news/paypal-isnt-agile-enough-ceo-says/833449/?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Thu Oct 22</div><div class="body">The UK&#x27;s competition regulator wants Apple to charge much less, and loosen its rules, for other companies that want to use the iPhone&#x27;s tap-to-pay chip.</div><a class="open" href="https://links.tldrnewsletter.com/4DRHeA" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech · Thu Oct 22</div><div class="body">A fintech essay argues personal AI agents will become the main way people bank, the way phones did. Banks that let outside agents use their products could come out ahead.</div><a class="open" href="https://www.fintechbrainfood.com/p/mod-era-of-finance?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Morning Brew · Thu Oct 22</div><div class="body">A serious bug in PHP, the language behind roughly 70% of websites, got patched this week, and site owners need to update right away. Researchers using AI found it over the summer and quietly worked on a fix, which took over 10,000 lines of code. It&#x27;s rated 9.2 out of 10 for severity. Basically every WordPress site is exposed, and some governments took sites offline as a precaution. (also in ben&#x27;s bites, which notes the hosting platform Railway had a big security issue the same day)</div></article>
+<article class="card"><div class="meta">Morning Brew · Thu Oct 22</div><div class="body">Meta beat revenue expectations, but its AI spending ate into its cash. To fund more AI, it&#x27;s doing a 2-for-1 stock split that hands out new non-voting shares, so Zuckerberg keeps full control. A board committee also decided he should stay CEO for the long term.</div></article>
+<article class="card"><div class="meta">Morning Brew · Thu Oct 22</div><div class="body">Hours before earnings, a New Mexico judge ordered Meta to pay $25 billion over the Cambridge Analytica data scandal. A jury had found 43 million violations of state consumer law.</div></article>
+<article class="card"><div class="meta">Morning Brew · Thu Oct 22</div><div class="body">SpaceX posted strong earnings, and talk of it merging with Tesla lifted the market. Netflix fell after missing estimates.</div></article>
+<article class="card"><div class="meta">ByteByteGo · Thu Oct 22</div><div class="body">A plain explainer on why distributed systems try to avoid having parts wait on each other. Every time one service waits for another to approve, acknowledge or release a lock, the whole system gets slower and more fragile. The piece covers ways to cut that waiting down.</div></article>
+<article class="card"><div class="meta">ben&#x27;s bites · Thu Oct 22</div><div class="body">Anthropic says 17 out of 211 protein designs made by Claude, meant to neutralize scorpion venom toxins, passed its lab tests. That&#x27;s an early sign AI can help design real drug candidates.</div></article>
+<article class="card"><div class="meta">ben&#x27;s bites · Thu Oct 22</div><div class="body">Grok can now build and update web pages for you, like morning briefs or weekly work summaries.</div></article>
+<article class="card"><div class="meta">ben&#x27;s bites · Thu Oct 22</div><div class="body">Supermemory released a memory graph for AI apps. It pulls facts out of documents, links related ones, and keeps old versions when facts change.</div></article>
+<article class="card"><div class="meta">ben&#x27;s bites · Thu Oct 22</div><div class="body">AgentReady is a new open standard for making products easy for AI agents to find, read and act on.</div></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
