@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">AI Pulse</div><div class="counter">29 stories</div></header>
+<main>
+<article class="card"><div class="meta">Models &amp; Research · Fri Oct 23</div><div class="body">MiniMax released M3.1-Flash, a smaller and faster cut of its M3 model, with open weights on Hugging Face. It lands the same week MiniMax cleared China&#x27;s new export registration for open-source releases, so more of these drops should keep coming.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xd0fgs/minimaxm31flash/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Fri Oct 23</div><div class="body">Nvidia updated its Nemotron retrieval models to version 3.5: new embedding, reranking and document-parsing models. These are the building blocks of search-over-your-docs (RAG) pipelines, and they&#x27;re free to download.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xd4mlk/nemotron35embed_parse_and_rerank/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Fri Oct 23</div><div class="body">Perplexity&#x27;s decision model (pplx-decider-flash) now runs fully on a Mac from the menu bar, with no data leaving the machine.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xd1t6q/you_can_now_run_the_perplexity_decision_model/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Fri Oct 23</div><div class="body">MIT researchers left 13 AI agents on a virtual island with nothing to do. They invented games, mourned a lost ring, and got better at working together over time.</div><a class="open" href="https://techcrunch.com/2026/10/22/left-alone-with-nothing-to-do-ai-agents-started-playing/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Fri Oct 23</div><div class="body">A human-plus-AI loop broke a long-standing barrier in Lehmer&#x27;s problem, an old open question in number theory. It&#x27;s another data point that AI is starting to help on real math research.</div><a class="open" href="https://arxiv.org/abs/2610.30277" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Fri Oct 23</div><div class="body">A new paper compares MCP and plain CLI tools as ways to give agents access to outside systems. Useful if you&#x27;re picking how to wire tools into your own agents.</div><a class="open" href="https://arxiv.org/abs/2610.30157" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Fri Oct 23</div><div class="body">inDrive, an Uber rival, plans to test Pony.ai robotaxis in Kazakhstan&#x27;s capital in the first half of 2027, with Nvidia involved.</div><a class="open" href="https://techcrunch.com/2026/10/22/uber-rival-indrive-eyes-2027-robotaxi-tests-in-central-asia-with-pony-ai-and-nvidia/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Thu Oct 22</div><div class="body">OpenAI opened its Decisions API to everyone. It&#x27;s a fast model that picks one option from a list you give it and tells you how confident it is, instead of writing free-form text. The pitch is speed: answers in about 100 to 180 milliseconds instead of one to three seconds, at much lower cost. Speak cut the delay between actions in its app from 1.4 seconds to 0.13. This puts OpenAI head to head with Jev, the startup model that created the category.  (also in TechCrunch)</div><a class="open" href="https://openai.com/index/decisions-api" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Thu Oct 22</div><div class="body">Canva released Craft, its first in-house image model. It sketches out a layout before generating, outputs up to 2K resolution, and is available to all Canva users.  (also in TechCrunch)</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1017151/canva-craft-in-house-ai-model" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Thu Oct 22</div><div class="body">Microsoft says its AI diagnosis system beat general doctors on hard medical cases, in a study published in Science. Mustafa Suleyman calls the goal &quot;medical superintelligence,&quot; though much of the gain seems to come from how the system orchestrates several models.  (also in The Verge)</div><a class="open" href="https://techcrunch.com/2026/10/22/microsofts-mustafa-suleyman-says-its-ai-outperforms-doctors-on-hard-cases-as-he-chases-medical-superintelligence/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Thu Oct 22</div><div class="body">Qwen 3.8 Flash Next keeps impressing locally. One tester found a 129 GB quant beats a much larger DeepSeek V4.1 Flash, and on Artificial Analysis the 180B Qwen scores 40 against 39 for Meta&#x27;s 816B Muse Spark Open.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xcthj8/metas_816b_muse_spark_open_scores_39_on/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Thu Oct 22</div><div class="body">Allen AI shipped OlmoEarth v1.3, open embeddings of satellite data for the whole planet. Google DeepMind also published a global map of forest types at 10-meter detail.</div><a class="open" href="https://huggingface.co/blog/allenai/olmoearth-v1-3" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Thu Oct 22</div><div class="body">OpenAI is reportedly raising up to $30 billion at a $1.25 trillion valuation, led by Coatue and UAE investors. That would make it the most valuable private company ever, up from $852 billion in March. Both OpenAI and Anthropic filed confidentially for IPOs in June, and Anthropic is reportedly aiming for $1.5 to $2 trillion.</div><a class="open" href="https://techcrunch.com/2026/10/22/openai-working-on-new-30b-raise-at-1-25t-valuation-ahead-of-ipo/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Thu Oct 22</div><div class="body">DeepSeek reportedly raised $15 billion, one of China&#x27;s largest rounds ever, just days after the US told federal agencies to remove its tools.</div><a class="open" href="https://techcrunch.com/2026/10/22/deepseek-reportedly-raises-15b-days-after-us-restrictions/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Thu Oct 22</div><div class="body">Microsoft says a China-aligned hacker group breached IT provider ConnectWise and then used AI agents to quickly break into thousands of its customers. It&#x27;s one of the clearest cases yet of attackers using agents at scale.</div><a class="open" href="https://techcrunch.com/2026/10/22/chinese-hackers-spied-on-thousands-of-companies-after-breaching-it-giant-connectwise/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Thu Oct 22</div><div class="body">Claude now works inside Google Docs, Sheets and Slides in public beta on all paid plans. New connectors also let Claude create and edit Google files directly.</div><a class="open" href="https://claude.com/resources/articles/claude-now-works-in-google-docs-sheets-and-slides" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Thu Oct 22</div><div class="body">Uber is rolling ChatGPT Work out to all 30,000+ employees after a smaller pilot.  (also in OpenAI Blog)</div><a class="open" href="https://techcrunch.com/2026/10/22/uber-puts-all-30000-employees-on-chatgpt-work/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Thu Oct 22</div><div class="body">1Password launched a way for AI agents to log in to your accounts without ever seeing your password.</div><a class="open" href="https://techcrunch.com/2026/10/22/1password-launches-a-way-for-ai-agents-to-log-in-on-your-behalf-without-seeing-your-password/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Thu Oct 22</div><div class="body">Meta&#x27;s earnings call leaned hard on Muse, its AI assistant, with a vision of your Muse talking to other people&#x27;s Muses. Separately, Meta turned Muse sharing back on with new links after researchers found public links were easy to guess.</div><a class="open" href="https://www.theverge.com/tech/1016905/meta-earnings-fall-2026-muse-network" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Thu Oct 22</div><div class="body">OpenAI, Anthropic and Nvidia each had their biggest lobbying quarter ever, nearly $6 million combined. Meanwhile an ABC/Ipsos poll found most Americans think AI is bad for society and oppose more data centers.</div><a class="open" href="https://www.theverge.com/policy/1016585/openai-anthropic-nvidia-lobbying-records" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Thu Oct 22</div><div class="body">Anthropic donated the Agent Skills standard to the Agentic AI Foundation under the Linux Foundation, the same home it gave MCP. The goal is to keep skills vendor-neutral so they work across agents from different companies.</div><a class="open" href="https://simonwillison.net/2026/Oct/22/donating-agent-skills/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Thu Oct 22</div><div class="body">OpenAI released an official CLI for its API. You can generate images, upload files, run batches and inspect results straight from the terminal.</div><a class="open" href="https://github.com/openai/openai-cli" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Thu Oct 22</div><div class="body">A llama.cpp change reworked how it uses Intel&#x27;s matrix engines, giving a big speedup for speculative decoding on Intel B70 GPUs.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xcqb3p/massive_b70_specdecoding_improvement_intel_xmx/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research · Wed Oct 21</div><div class="body">Anthropic opened a research preview of Claude Duet, a proactive agent app. It sends you a morning brief across your connected apps, watches them during the day, and only pings you when something needs you. It keeps working on its own virtual machine while you&#x27;re away, and asks before it sends messages, pays, signs or deletes anything. It&#x27;s waitlist-only for US Pro and Max users on iOS, Android and the web.</div><a class="open" href="https://claude.com/resources/articles/claude-duet" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Oct 21</div><div class="body">Wiz found critical bugs in core PHP, which runs about 70% of websites, that can let attackers take over servers without logging in. Nearly every version back to 5.4 is affected. Wiz used AI models to find the flaws and build working exploits, which shows how much easier this kind of attack is getting. Patches came out October 21, so update now.</div><a class="open" href="https://www.wiz.io/blog/php2shell-php-rce" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Oct 21</div><div class="body">Some Google DeepMind staff have resigned over the company&#x27;s military AI contracts, the BBC reports.</div><a class="open" href="https://www.bbc.com/news/articles/cmreyvepnv0po" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business · Wed Oct 21</div><div class="body">Meta plans a new class of stock to help fund its huge AI buildout.</div><a class="open" href="https://techcrunch.com/2026/10/21/meta-wants-to-pay-for-its-broad-ai-buildout-with-a-newly-created-class-of-stock/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Wed Oct 21</div><div class="body">Trail of Bits released two agent plugins: one reproduces and fixes reported bugs, the other checks whether the fix broke anything else.</div><a class="open" href="https://blog.trailofbits.com/2026/10/21/your-ai-agent-fixed-the-bug-but-what-else-did-it-change/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools · Wed Oct 21</div><div class="body">Omnara is an open-source, self-hostable alternative to Claude Managed Agents and OpenAI&#x27;s Agents API. It runs agents on any model with tools, secrets and permissions built in.</div><a class="open" href="https://github.com/omnara-ai/omnara" target="_blank" rel="noopener">Open ↗</a></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
