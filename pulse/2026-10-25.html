@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">8 stories</div></header>
+<main>
+<article class="card"><div class="meta">Finshots · Sun Oct 25</div><div class="body">Thieves broke into a FedEx truck parked outside PSA, a big company that grades collectible cards, and stole about $963,000 worth of freshly graded Pokémon and sports cards. It isn&#x27;t a one-off. Card values took off thanks to millennial nostalgia, pandemic boredom, and stunts like Logan Paul reselling a rare Pikachu card for $16.5 million, so organised crime now treats these cards like cash.</div></article>
+<article class="card"><div class="meta">Finshots · Sun Oct 25</div><div class="body">A fun short read on why so much of our world is rectangular when nature almost never is. Rectangles are easy to measure, divide and stack without gaps, which is why even the Harappans laid out cities on a grid over 4,000 years ago.</div></article>
+<article class="card"><div class="meta">Morning Brew · Sat Oct 24</div><div class="body">Madison Square Garden sent staff a fake phishing email promising them free Knicks championship rings. Anyone who clicked had to sit through a cybersecurity class, and the backlash was loud enough that MSG then said it really is handing out 275+ rings. It also revives the debate over whether these trick tests work at all: one study of nearly 20,000 healthcare workers found that training made no real difference to who fell for phishing.</div></article>
+<article class="card"><div class="meta">Morning Brew · Sat Oct 24</div><div class="body">The Justice Department sued to challenge Alaska&#x27;s Senate result in advance, in case Republican Sen. Dan Sullivan loses. The suit says a second, independent candidate who is also named Dan Sullivan will confuse voters and is only running to help the Democrat, Mary Peltola.</div></article>
+<article class="card"><div class="meta">Morning Brew · Sat Oct 24</div><div class="body">Stocks fell on Friday as oil prices rose and an AI-driven sell-off from earlier in the week spread to the wider market. Investors moved into bonds, pushing the 10-year yield back below 5%. Cybersecurity stocks like CrowdStrike went up on worries about a flaw in a coding language that most websites depend on.</div></article>
+<article class="card"><div class="meta">Morning Brew · Sat Oct 24</div><div class="body">Trump dropped the 50% tariffs on nine categories of Canadian goods that matter to Maine farmers, a move seen as a boost for Sen. Susan Collins&#x27;s reelection. He added some new tariffs at the same time.</div></article>
+<article class="card"><div class="meta">ByteByteGo · Sat Oct 24</div><div class="body">A clear explainer on plain RAG versus &quot;agentic&quot; RAG. Plain RAG looks up relevant documents once and hands them to the AI model to answer. Agentic RAG lets an AI agent keep searching across documents, APIs or the web, check whether it has enough evidence, and try again if it doesn&#x27;t.</div></article>
+<article class="card"><div class="meta">ByteByteGo · Sat Oct 24</div><div class="body">A quick refresher on OAuth and OIDC, the two standards behind &quot;Sign in with Google&quot;. OAuth decides what an app is allowed to touch on your behalf without ever seeing your password. OIDC sits on top of it and tells the app who you actually are.</div></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
