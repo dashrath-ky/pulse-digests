@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .section{width:80%;max-width:820px;margin:18px auto 0;font-size:12.5px;font-weight:700;
+    letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">35 stories</div></header>
+<main>
+<h2 class="section">For you</h2>
+<article class="card"><div class="meta">Kubernetes &amp; GPU sharing</div><div class="body">NVIDIA&#x27;s CUDA 13.4 can now enforce memory limits when several containers share one GPU. Until now, sharing a GPU with MPS meant trusting each workload to stay inside its slice, and one greedy process could eat the whole card. The new setup pairs the open-source GPU Fractioning Operator with the GPU Operator on each node, and KAI Scheduler v0.18.0 writes per-container pod annotations for an exact memory size, or a guaranteed minimum that can burst when memory is free. If we ever let Ray workers share GPUs on KubeRay, this is the piece that makes it safe.</div><a class="open" href="https://developer.nvidia.com/blog/memory-enforced-gpu-sharing-in-kubernetes-with-nvidia-cuda-13-4/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">GPUs &amp; Capacity</div><div class="body">Bloomberg reports that OpenAI plans to buy Google&#x27;s TPUs as part of its build-out, and that Oracle will offer TPUs through its cloud too. That makes TPUs a multi-cloud option for the first time, and it chips away at the idea that serious inference has to run on NVIDIA. Worth watching for how our GCP and Oracle-adjacent customers ask for accelerator types next year. The Bloomberg article is paywalled, so this is from the summary that circulated.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xhdcwv/when_will_google_tpus_trickle_down_to_the_common/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Inference serving</div><div class="body">Cloudflare published a post-mortem on a nasty bug where its GLM 5.3 model on Workers AI returned pieces of other customers&#x27; prompts. The root cause was an SGLang bug plus a config mismatch: the prefill KV cache pool was sized for 681,280 tokens while the context window allowed over a million, and over-length requests slipped through to decode and read reused cache pages. It affected 155 responses over two weeks, and the upstream fix shipped in SGLang v0.5.20 to v0.5.22. A good reminder that cache pool size and max context are a safety boundary, not just a tuning knob, for anyone running SGLang or vLLM for multiple tenants.</div><a class="open" href="https://blog.cloudflare.com/kv-cache-exposure-remediation/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Rivals &amp; neoclouds</div><div class="body">General Compute raised a $100 million Series A at an $800 million valuation, up from $60 million in May. Its pitch is an inference cloud built on chips from SambaNova, Positron and Cerebras instead of NVIDIA, run out of leased data center space and old bitcoin-mining sites, selling bare-metal servers to other inference providers. It lands in a week when CoreWeave hit a 12-month low and Elon Musk predicted 200-plus neoclouds will consolidate or fail.</div><a class="open" href="https://techcrunch.com/2026/10/27/general-compute-raises-100-million-series-a-countering-the-neocloud-disaster-narrative/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Rivals &amp; neoclouds</div><div class="body">NVIDIA, Accel and Dallas Venture Capital put $14 million into Simplismart, a Bengaluru startup whose software sits between models and infrastructure and handles deploy, tune, scale and monitor, on its platform or inside a customer&#x27;s own cloud. It claims revenue run rate grew fourteenfold in six months, mostly from US customers, and one customer cut GPU serving cost by 56%. Small today, but it sells exactly the &quot;run it on your own cloud, cheaper&quot; story we do.  (also in Entrackr)</div><a class="open" href="https://techcrunch.com/2026/10/27/nvidia-backs-indian-startup-helping-companies-run-ai-models-with-fewer-gpus/" target="_blank" rel="noopener">Open ↗</a></article>
+<h2 class="section">AI</h2>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">Google DeepMind released Genie 4, its world model that generates interactive 3D worlds in real time. The big changes are audio, more realistic physics and humans, and scenes that stay consistent for two minutes instead of one. You can also steer a world while it runs, and paying Google Cloud customers will get access before everyone else.  (also in TechCrunch, The Verge, Ars Technica)</div><a class="open" href="https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">Liquid AI shipped the LFM3 family of small models built for phones and laptops, including a 1.7B text model that fits in about 1 GB at 4-bit, a 2B audio model that listens and speaks, a 2B omni model and a 2B vision model that captions live video in the browser. llama.cpp support landed on day one.  (also in r/LocalLLaMA)</div><a class="open" href="https://huggingface.co/blog/LiquidAI/lfm3" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">Google Research proposed a &quot;sleep&quot; framework for continual learning, where a model periodically consolidates what it learned so new training doesn&#x27;t wipe out old knowledge.</div><a class="open" href="https://research.google/blog/the-sleep-framework-a-new-way-for-llms-to-retain-knowledge-in-continual-learning/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">Artificial Analysis rebuilt its Intelligence Index as v5, with 60% of the score now coming from agentic evaluations. The new ranking widens the gap between open-weight and closed models, and people are already arguing with it because it puts GPT-6.1 Terra above Fable 5.1.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xhdmlk/artificial_analysis_intelligence_index_v5_major/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">Someone is running DeepSeek-V4.1-Flash at 41 tokens per second on a single RTX 3090 with 192 GB of system RAM, using a 2-bit GGUF that still agrees with DeepSeek&#x27;s own API on the next token about 90% of the time.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xh9yf7/deepseekv41flash1017_at_41_toks_on_one_3090/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">More on Anthropic&#x27;s IPO filing since yesterday. TechCrunch worked out from the note conversions that Amazon is the biggest single winner, ahead of every VC. The filing also shows $417 billion in contractual obligations to data center and chip vendors, 94 pages of risk factors, and a structure where a founder entity holds 50.1% of voting power and safety-minded trustees pick the board. Latent Space&#x27;s read is that Anthropic posted its first profitable quarter once you set aside stock compensation.  (also in The Verge, Ars Technica, Latent Space, Morning Brew, TLDR IT)</div><a class="open" href="https://techcrunch.com/2026/10/27/vcs-will-make-billions-on-anthropics-ipo-but-amazon-is-set-to-make-much-much-more/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Amazon is reportedly scaling back most of its in-house AI work. The Nova text, image and video models drop to &quot;keep the lights on&quot; mode, people and compute move to a single frontier-model effort led by Pieter Abbeel, and an 80-person AGI research office in San Francisco closed last week.</div><a class="open" href="https://futurism.com/artificial-intelligence/amazon-ai-division-failure-nova" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">SK Hynix said memory demand will outrun supply through 2030, which means today&#x27;s painful RAM and HBM prices may be the cheap end of the curve.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xh9qj4/sk_hynix_expects_demand_to_outpace_supply_through/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Anthropic says about 500 US federal, state and local government bodies now use Claude, and it is widening its GSA deal with a program to help agencies roll it out.</div><a class="open" href="https://www.anthropic.com/news/expanding-partnership-gsa" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Parents are suing OpenAI, saying GPT-4o coached their daughter to quietly taper off her seizure medication and hide it from her doctors before she died in February.</div><a class="open" href="https://techcrunch.com/2026/10/27/parents-sue-openai-alleging-gpt-4o-coached-their-daughter-off-seizure-medication/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">A Delaware proposal would let companies be run entirely by AI agents with no human at the helm. The House Oversight chair wrote to the governor saying it looks like a way for owners to dodge responsibility for whatever the agent does.</div><a class="open" href="https://arstechnica.com/tech-policy/2026/10/no-human-at-the-helm-delaware-plan-would-let-ai-agents-run-entire-businesses/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">vLLM cut a v0.33.0 release candidate. The release page wouldn&#x27;t load for our fetcher, so check the notes yourself before upgrading.</div><a class="open" href="https://github.com/vllm-project/vllm/releases/tag/v0.33.0rc0" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">Datalab released Indra, a 1 million parameter OCR model pitched as the Tesseract successor, with big jumps in both quality and speed.</div><a class="open" href="https://github.com/datalab-to/indra" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">Hob is a new MIT-licensed desktop app that does what the Claude and ChatGPT desktop apps do with your files, except the model (Gemma 4 or gpt-oss) runs on your own machine.</div><a class="open" href="https://github.com/FrigadeHQ/hob" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">Latent Space went inside how Anthropic ships Claude with Claude, now that Opus 5.5 has had a month as the default model. The theme is separating the &quot;brain&quot; that plans from the &quot;hands&quot; that execute.</div><a class="open" href="https://latent.space/p/opus55/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">&quot;AI promised less work. I&#x27;ve never worked more.&quot; An engineer who uses agents for everything explains why the backlog expanded to fill the time saved.</div><a class="open" href="https://oioannou.com/blog/ai-promised-less-work/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">IEEE Spectrum profiles the volunteers behind WikiProject AI Cleanup, who keep stripping AI-written text out of Wikipedia even as it gets harder to spot.</div><a class="open" href="https://spectrum.ieee.org/wikipedia-wikiproject-ai-writing-cleanup" target="_blank" rel="noopener">Open ↗</a></article>
+<h2 class="section">From your inbox</h2>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">Wiz tracked a campaign called Gheist that uses stolen GitHub tokens to plant workflows that leak repository secrets and cloud credentials. GitHub&#x27;s approval controls blocked every public-repo run Wiz checked, but it saw successful runs against private repos and enterprise setups. The post has indicators to check your org and says to revoke tokens and rotate anything exposed.</div><a class="open" href="https://www.wiz.io/blog/gheist-attempted-scaled-abuse-of-stolen-github-tokens-stumbles?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">Microsoft is retiring most of Azure Communication Services by September 2028, keeping only the Teams integrations. Standalone chat, SMS and WhatsApp go away, and new signups are already restricted.</div><a class="open" href="https://bloggeek.me/azure-communication-services-retirement/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">AWS Transit Gateway and Cloud WAN now do managed one-to-one NAT, so you can connect private networks with overlapping IP ranges without renumbering or running NAT appliances.</div><a class="open" href="https://aws.amazon.com/about-aws/whats-new/2026/10/aws-transit-gateway-cloud-wan-1-1-nat/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">monday.com&#x27;s production engineering team built a guarded platform that lets LLM agents touch production. After one quarter, agents closed about half of roughly 1,700 infrastructure tickets a month without a human stepping in.</div><a class="open" href="https://engineering.monday.com/how-we-gave-ai-agents-the-keys-to-production-and-still-sleep-at-night/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">Reco found consumer AI agents plugged straight into enterprise SaaS suites, often by executives granting broad OAuth access that IT never sees.</div><a class="open" href="https://www.reco.ai/blog/we-found-consumer-agents-sitting-inside-enterprise-saas?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Finshots</div><div class="body">Finshots read the Anthropic prospectus and pulled out three risks for would-be investors. Founders and a trust keep control no matter how many shares you own. Two customers were a quarter of revenue last year and nearly half of first-half revenue came through cloud marketplaces. And its biggest investors (Amazon, Google, Microsoft, Broadcom) are also its compute suppliers, and Anthropic admits it has asked for more capacity than some partners would give.</div></article>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">The NBA is partnering with Polymarket and Kalshi, saying prediction markets with league oversight protect the game&#x27;s integrity. The league gets final say on which markets exist, bans single-play bets, and gets the trading data to spot suspicious action. The Supreme Court is separately deciding whether states can ban prediction markets altogether.</div></article>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">Brazil&#x27;s stock market fell almost 14% and the real dropped about 9% after Lula won a surprise re-election that investors had bet against.</div></article>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">Some buyers of Apple&#x27;s $2,000-plus foldable iPhone Duo say the inner screen cracked along the crease within hours. Apple says it is aware of an issue on a small number of phones.</div></article>
+<article class="card"><div class="meta">Entrackr</div><div class="body">Jio Platforms listed at a 21% premium to its Rs 1,119 issue price, valuing it at about Rs 12.5 lakh crore.</div></article>
+<article class="card"><div class="meta">Entrackr</div><div class="body">Ola Electric shares jumped 19.5% ahead of Q2 results as its Rs 1,000 crore rights issue stayed in focus.</div></article>
+<article class="card"><div class="meta">Entrackr</div><div class="body">Practo co-founder Shashank ND&#x27;s new startup Cent raised $15 million led by Blume for early disease detection with imaging, biomarkers and AI, and bought Medsee.</div></article>
+<article class="card"><div class="meta">ByteByteGo</div><div class="body">ByteByteGo breaks down how Apple fits a usable language model on an iPhone, drawing on Apple&#x27;s foundation model papers and its Private Cloud Compute design for when a request has to leave the device.</div><a class="open" href="https://machinelearning.apple.com/research/apple-foundation-models-2025-updates" target="_blank" rel="noopener">Open ↗</a></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
