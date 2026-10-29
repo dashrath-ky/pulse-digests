@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .section{width:80%;max-width:820px;margin:18px auto 0;font-size:12.5px;font-weight:700;
+    letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">34 stories</div></header>
+<main>
+<h2 class="section">For you</h2>
+<article class="card"><div class="meta">Cloud</div><div class="body">Microsoft shared Azure&#x27;s quarterly revenue in dollars for the first time: $33.2 billion, up 48% from a year ago and well above its own forecast. Google Cloud came in close behind at $30.7 billion, but it roughly doubled year over year, about twice Azure&#x27;s pace. AWS reports Thursday and is still the biggest, but the AI-driven race for the number two and three spots is now very tight, which matters for where customers will want to run GPU workloads.</div><a class="open" href="https://techcrunch.com/2026/10/28/microsoft-just-shared-azures-actual-revenue-in-dollars-33-2-billion/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Inference infrastructure</div><div class="body">Meta explained how it rebuilt Andromeda, the system that picks which ads to even consider for you, by designing the model and the GPU setup together. It fuses the lookup, matching and scoring steps into one GPU kernel so data never leaves the chip, and runs matching, scoring and top-K selection on the same server, which cut network traffic about 100x. The result scores over a billion ads per second on NVIDIA GH200s, 100x the 2024 system, in the same latency budget. It&#x27;s a strong example of how much you gain by placing whole pipelines on one GPU box instead of spreading them out.</div><a class="open" href="https://engineering.fb.com/2026/10/28/ml-applications/meta-andromeda-next-gen-ads-retrieval-gpu-co-design/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">GPUs &amp; Capacity</div><div class="body">An IT vendor listed a decommissioned AI supercomputer on eBay for $60 million: 9,600 NVIDIA A100s and 4,200 AMD EPYC CPUs across 300 racks. It&#x27;s a sign that older GPU fleets are now hitting the resale market as people move to newer chips.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xhsvmy/it_vendor_lists_massive_60_million_ai/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">GPUs &amp; Capacity</div><div class="body">The consumer GPU squeeze from earlier this week keeps going. The RTX 5080 now sells for nearly $2,000 at US retailers, $800 more than two months ago.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xhu4q8/nvidia_rtx_5080_is_now_selling_for_nearly_2000_at/" target="_blank" rel="noopener">Open ↗</a></article>
+<h2 class="section">AI</h2>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">Google released Gemini 4 Carbon, its new top model, just two weeks after Gemini 4 Argon. It now leads the Artificial Analysis Intelligence Index, ahead of Claude Opus 5.5 and GPT-6 Astra, and Google is leaning hard on security: it scores 88% on finding vulnerabilities and 71% on patching them. Access starts with a small group of cyber defenders and trusted partners, with a wider release &quot;soon.&quot; Intro pricing is $2 per million input tokens and $10 per million output, doubling after the intro period.  (also in The Verge)</div><a class="open" href="https://deepmind.google/blog/gemini-4-carbon-our-next-frontier-model/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">NVIDIA released Nemotron 3.5 Transcribe, a free speech-to-text model for up to 40 languages. It only works on recorded audio, not live speech, so it&#x27;s aimed at meeting and medical transcription rather than real-time voice apps.  (also in TechCrunch)</div><a class="open" href="https://huggingface.co/blog/nvidia/nemotron-transcribe-granary" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">A code change in Qwen&#x27;s own tools suggests the upcoming Qwen4 models will handle a 1 million token context, with more details expected at Alibaba&#x27;s Apsara event.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xi7390/qwen4_1m_context_window/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">Timestral is a new family of small time series forecasting models (5M to 209M parameters) that takes the top spots on the main forecasting benchmarks.</div><a class="open" href="https://tldr.takara.ai/p/2610.37585" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Anthropic launched reporting tools that show companies what their Claude spending actually produced: what a team built, what it cost and where workflows broke down. Teams can also share pooled budgets now. It lands as Anthropic heads to IPO, with reported numbers showing a second-quarter operating profit and 900% net revenue retention, mostly thanks to Claude Code.</div><a class="open" href="https://techcrunch.com/2026/10/28/anthropic-just-launched-tools-to-show-companies-what-their-ai-spending-is-buying/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Microsoft booked $10 billion of revenue from OpenAI in one quarter, mostly revenue-sharing. That came inside a record $92.3 billion quarter, its tenth record in a row.</div><a class="open" href="https://techcrunch.com/2026/10/28/microsoft-recorded-10-billion-in-revenue-from-openai/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Alphabet grew revenue 25% to $127.6 billion and is taking its AI Search ads global, as growth in its classic ad business slows.</div><a class="open" href="https://techcrunch.com/2026/10/28/google-expands-ai-search-ads-globally-as-core-ad-growth-slows/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Google opened a developer platform that lets businesses plug their services into Gemini and Search, so AI agents can find and use apps directly.</div><a class="open" href="https://techcrunch.com/2026/10/28/as-ai-agents-reshape-the-web-google-opens-gemini-and-search-to-more-apps/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">OpenAI and ServiceNow widened their deal: OpenAI models and agents run inside ServiceNow, and ServiceNow workflows show up in ChatGPT and Codex.</div><a class="open" href="https://openai.com/index/openai-servicenow-partnership-expansion" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Data center backlash is getting real. xAI is reportedly offering to buy 418 homes near its Mississippi data center if owners don&#x27;t join a noise lawsuit, and in Texas, anger over data centers is becoming a midterm issue.</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1020596/xai-mississippi-neighborhood-data-center-lawsuit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">Someone found that Claude Code spends roughly 15 to 20% of tokens on background agents&#x27; status lines. Every 30 seconds it sends each agent&#x27;s full transcript to the model just to get a 3 to 5 word summary, and there&#x27;s no setting to turn it off. The gist includes a workaround.</div><a class="open" href="https://gist.github.com/flamerix-ai/c3905705cc4205e5de3011fa2e74efce" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">GitHub&#x27;s Octoverse 2026 shows what coding agents did to the platform: merged pull requests tripled in under a year to 220 million a month, and commits passed 7 billion a month.</div><a class="open" href="https://simonwillison.net/2026/Oct/28/github-octoverse-2026/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">CaseCite is an open-source, self-hosted legal research tool built as a free answer to Harvey, the $500M-funded legal AI startup. You bring your own model API keys and documents stay on your servers.</div><a class="open" href="https://github.com/thomasunise/casecite" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">A llama.cpp fork called Basalt runs Qwen3.8 Flash on one RTX 5080 with 64 GB of RAM at up to 275 tokens per second while coding.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xi9sfl/update_benchmark_basalts_new_prs_strata_fork_new/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">Latent Space&#x27;s lead story: Anthropic is dropping the traditional coding interview, arguing that for junior engineers &quot;hunger beats tenure.&quot;</div><a class="open" href="https://latent.space/p/ainews-anthropic-ends-coding-interviews-hunger-beats-tenure/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">Amazon engineering leadership told developers that if AI doesn&#x27;t help their work, that&#x27;s a finding to document, not a failing.</div><a class="open" href="https://simonwillison.net/2026/Oct/28/terk-terkowitz/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">Simon Willison thinks October 2026 is the moment vibe-coding real games started working, mostly thanks to Claude Opus 5.5.</div><a class="open" href="https://simonwillison.net/2026/Oct/28/vibe-game-development/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">AI now cranks out game decompilations in days, and Microsoft and Epic, both big AI backers, are suddenly calling it theft when it&#x27;s their games.</div><a class="open" href="https://kotaku.com/now-that-the-shoe-is-on-the-other-foot-microsoft-and-epic-games-suddenly-agree-that-ai-is-theft-2000749316" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">Google&#x27;s AI Mode dodges the question &quot;who won the 2020 presidential election&quot; and tells you to check outside sources.</div><a class="open" href="https://arstechnica.com/ai/2026/10/google-ai-gets-cagey-when-asked-who-won-the-2020-elections/" target="_blank" rel="noopener">Open ↗</a></article>
+<h2 class="section">From your inbox</h2>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">Tailscale is rushing out fixes for SSH flaws that let authorized users go beyond their assigned privileges, after the bugs were disclosed without warning. Until patches land, tighten access policies and turn off SSH forwarding you don&#x27;t need.</div><a class="open" href="https://www.securityweek.com/tailscale-rushes-patches-after-uncoordinated-disclosure-of-tailworm-flaws/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">A now-patched bug in Microsoft Authenticator for Android let malicious apps pose as Microsoft apps and grab work-account tokens. Update to 6.2606.4246 or later.</div><a class="open" href="https://thehackernews.com/2026/10/microsoft-authenticator-flaw-let.html?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">IBM extended HashiCorp Vault to issue short-lived credentials for AI agents, part of a push to give agents real identities and access controls.</div><a class="open" href="https://newsroom.ibm.com/2026-10-27-ibm-introduces-identity-and-control-for-ai-agents,-securing-frontier-intelligence-for-the-enterprise?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">Cisco launched Privileged Infrastructure Access, which swaps long-lived admin credentials for short, task-specific access that expires when the job is done.</div><a class="open" href="https://blogs.cisco.com/security/cisco-rethinks-privileged-infrastructure-access?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">An argument that it&#x27;s time to retire VPNs: once one is breached it opens the whole network, and AI is finding VPN bugs faster than teams can patch.</div><a class="open" href="https://www.networkworld.com/article/4240378/is-it-time-to-retire-vpns.html?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">Linux servers can look healthy in an EDR dashboard while sending almost no security data, often because of kernel mismatches. Check each host&#x27;s sensor before trusting the coverage.</div><a class="open" href="https://technologymatch.com/blog/extending-edr-to-linux-servers?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">Oracle added a business semantic layer and wider Apache Iceberg support to its AI lakehouse.</div><a class="open" href="https://www.oracle.com/sg/news/announcement/ai-world-oracle-advances-autonomous-ai-lakehouse-with-business-semantic-layer-and-expanded-support-for-iceberg-data-2026-10-26/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">ByteByteGo</div><div class="body">How Uber built an MCP Gateway: one shared platform where its AI agents discover which internal tools exist, call them, and get checked for permissions along the way.</div><a class="open" href="https://www.uber.com/in/en/blog/designing-mcp-gateway/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Finshots</div><div class="body">Swiggy&#x27;s stock has more than halved since listing even though revenue grew 34% and food delivery is profitable. The drag is Instamart, whose quarterly loss widened to ₹895 crore as it added 69 dark stores and spent on discounts to chase Blinkit. Swiggy has ₹13,662 crore in cash to keep going, but it still has to prove the extra customers will pay off.</div></article>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">GM is moving its stock from the NYSE to Nasdaq on November 17, the first legacy automaker to do so, as it pitches itself as an AI and software company.</div></article>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">Coca-Cola sold 5% more drinks worldwide last quarter, driven by India, China, Mexico and Brazil, while US volume stayed flat. Coke Zero sales jumped 16%.</div></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
