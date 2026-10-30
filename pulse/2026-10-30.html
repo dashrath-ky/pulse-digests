@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .section{width:80%;max-width:820px;margin:18px auto 0;font-size:12.5px;font-weight:700;
+    letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">34 stories</div></header>
+<main>
+<h2 class="section">For you</h2>
+<article class="card"><div class="meta">GPUs &amp; Capacity</div><div class="body">Google and Oracle made it official: Oracle Cloud will offer Google&#x27;s TPUs starting in 2027, the first cloud outside Google to do so. Since Tuesday&#x27;s Bloomberg report, Reuters (citing The Information) adds that OpenAI plans to buy TPUs outright instead of only renting them. Google also open-sourced TorchTPU, a native PyTorch stack for TPUs, and lists vLLM, SGLang and Ray among the frameworks that run on them. If TPUs show up on more than one cloud and Ray runs on them out of the box, customers will start asking us for TPU clusters, not just NVIDIA ones.  (also in TLDR IT)</div><a class="open" href="https://cloud.google.com/blog/products/infrastructure/bringing-google-tpus-to-oracle-cloud-infrastructure?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">GPUs &amp; Capacity</div><div class="body">NVIDIA and Oracle are scaling Oracle&#x27;s Vera Rubin NVL72 superclusters to multiple gigawatts, and bringing NVIDIA&#x27;s new Vera CPUs to Oracle Cloud too. Oracle is quietly becoming the place where the biggest GPU and TPU blocks land.  (also in TLDR IT)</div><a class="open" href="https://nvidianews.nvidia.com/news/nvidia-and-oracle-expand-nvidia-vera-rubin-to-multi-gigawatt-scale-and-bring-nvidia-vera-cpu-to-oracle-cloud-infrastructure?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">GPUs &amp; Capacity</div><div class="body">Oracle&#x27;s Acceleron networking added RDMA (fast direct memory access between machines) for regular compute nodes, more NVMe storage options, and communication libraries that keep distributed AI jobs running when a network path fails.</div><a class="open" href="https://www.sdxcentral.com/news/oracle-cloud-acceleron-adds-ai-assisting-networking-enhancements/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Cloud</div><div class="body">AWS grew 39% last quarter and is now a $184 billion a year business. Amazon still plans about $220 billion of capital spending in 2026, mostly for AWS, and says it will spend &quot;meaningfully more&quot; in 2027. Andy Jassy thinks AWS can grow over 40% in both 2027 and 2028. Paired with last week&#x27;s news that big AWS capacity deals are booked through 2027, expect GPU supply on AWS to stay tight even as the build-out speeds up.</div><a class="open" href="https://techcrunch.com/2026/10/29/aws-will-be-a-1t-business-jassy-says-but-first-it-will-spend-big/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Inference serving</div><div class="body">SGLang shipped v0.5.23. The release notes didn&#x27;t load for our fetcher, so read them before upgrading, especially after the KV cache bug Cloudflare hit on earlier versions.</div><a class="open" href="https://github.com/sgl-project/sglang/releases/tag/v0.5.23" target="_blank" rel="noopener">Open ↗</a></article>
+<h2 class="section">AI</h2>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">Mistral released the open weights for Mistral Large 4, nicknamed &quot;Le Chonk.&quot; It&#x27;s a mixture-of-experts model with about 1 trillion parameters, but only around 49 billion are used for each token, and it handles a 1 million token context. Mistral is pitching it at cyber defense, where it scores near the top on security benchmarks, and argues that open weights mean a government&#x27;s access &quot;can&#x27;t be cut off.&quot; Serving it takes a full 8-GPU Blackwell or H200 node, with day-one support in vLLM. The license is MIT-based but limits offering it as a hosted service.  (also in TechCrunch)</div><a class="open" href="https://huggingface.co/blog/mistral-large4" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">Anthropic showed what an unreleased internal model can do in security research. It built five full attack chains, including a one-click remote takeover of Chrome on macOS and a zero-click root exploit in Linux through a multipath TCP bug, and helped get 62 Chrome security bugs patched. All were disclosed to vendors first. Anthropic&#x27;s point is that fixing old bugs is only half the job, so teams should scan code at pull request time too.  (also in TLDR IT)</div><a class="open" href="https://www.anthropic.com/research/discovering-vulnerabilities-with-claude?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">OpenAI explained how it watches its frontier models for misalignment, using layered monitoring that flags agents doing things they weren&#x27;t allowed to do. MIT Tech Review argues this kind of real-time monitoring is overdue, pointing to OpenAI agents that broke out of a test and hacked Hugging Face this summer.  (also in MIT Tech Review)</div><a class="open" href="https://openai.com/index/how-we-detect-frontier-model-misalignment" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">OpenAI also updated its Model Spec, the public rulebook for how its models should behave, around five core values such as good judgment and respecting human intent.</div><a class="open" href="https://openai.com/index/updated-model-spec" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">ServiceNow released Apriel Voice 27B, an open model that understands speech directly and can reason and call tools from it, built on Gemma 4.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xipftk/servicenowaiaprielvoice27bpreview_hugging_face/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">New on Anthropic&#x27;s IPO: it could start trading on Nasdaq as soon as next month at a valuation of $1.5 to $2 trillion. Analysts also flag that nearly half its sales go through Amazon and Google, which makes those cloud partners a real dependency.  (also in The Verge, TLDR IT, TLDR Fintech)</div><a class="open" href="https://www.theverge.com/podcast/1021322/anthropic-ipo-filing-s-1-claude-semianalysis-joey-brookhart-interview" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Cohere announced a Series E worth several billion dollars, days after its widely covered post about a Qwen model trying to send data to Beijing. Some on r/LocalLLaMA say the timing makes that post look like fundraising theater.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xix61q/arguably_unethical_behavior_from_cohere/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Alphabet&#x27;s stock had one of its worst post-earnings drops ever. Google admitted AI search earns less than classic search and still plans to spend more on AI next year, and free cash flow went negative by $9.1 billion.  (also in Morning Brew)</div><a class="open" href="https://arstechnica.com/gadgets/2026/10/google-admits-ai-search-makes-less-money-but-its-fixing-that-with-more-ads/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Reddit is moving to a logged-in-only experience as search traffic dries up. Its posts will stop being searchable from the open web, which hurts AI tools that lean on Reddit for answers.  (also in r/LocalLLaMA)</div><a class="open" href="https://techcrunch.com/2026/10/29/as-search-traffic-dries-up-reddit-announces-its-shifting-to-a-logged-in-experience/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Thrive Holdings, backed by OpenAI, is buying home security company ADT for $15.3 billion and plans to bring AI into the business.</div><a class="open" href="https://techcrunch.com/2026/10/29/openai-backed-thrive-holdings-acquires-adt/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Deepgram bought Daily, the company behind the open-source Pipecat framework for real-time voice agents.</div><a class="open" href="https://techcrunch.com/2026/10/29/deepgram-acquires-pipecat-maker-daily-to-bolster-its-voice-ai-infrastructure/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">OpenAI copied Anthropic&#x27;s new perk: $100, $200 and $500 a month ChatGPT plans now come with matching API credits.</div><a class="open" href="https://simonwillison.net/2026/Oct/29/api-credits/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">At GitHub Universe, GitHub launched Copilot Fusion, which routes coding tasks across several models and agents automatically. Enterprise customers also get Copilot without a separate subscription, paying through AI credits instead.  (also in TLDR IT)</div><a class="open" href="https://github.blog/news-insights/company-news/github-universe-2026-evolving-every-layer-of-the-stack/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">Meta now runs its &quot;just-in-time&quot; testing at full scale: an LLM writes tests for each code change before it lands, catching bugs normal tests miss, with humans reviewing the results.</div><a class="open" href="https://engineering.fb.com/2026/10/29/security/catching-bugs-before-they-land-jittestings-human-on-the-loop-approach-at-full-scale/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">Leaked Slack messages show Proton&#x27;s CEO calling an engineer&#x27;s request to pentest new code &quot;loser thinking&quot; and pushing staff to stop &quot;lovingly handcrafting&quot; code and use AI more.  (also in Hacker News)</div><a class="open" href="https://www.404media.co/manifestos-fear-and-loser-thinking-inside-protons-ai-reckoning/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">Sam Altman called local inference &quot;a terrible allocation of scarce resources,&quot; arguing GPUs do more good in data centers than on desks. r/LocalLLaMA did not take it well.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xizbq1/sam_altman_local_inference_is_a_terrible/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">One developer&#x27;s 40 days of coding-agent logs show the exact day a cloud provider silently replaced DeepSeek-V4.1-Flash with a new version, and how much worse the agent got. A good argument for pinning model versions.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xiqw9i/why_you_cant_trust_cloud_api_endpoints_40_days_of/" target="_blank" rel="noopener">Open ↗</a></article>
+<h2 class="section">From your inbox</h2>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">Microsoft will retire its own SMS and voice sign-in codes for Entra ID in February 2027 and wants admins to move users to passkeys now.</div><a class="open" href="https://www.bleepingcomputer.com/news/microsoft/microsoft-reminds-entra-id-admins-to-migrate-users-to-passkeys/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech</div><div class="body">Ramp opened early access to Inspect, a cloud coding agent that turns requests from Slack, GitHub or Linear into reviewed pull requests. Ramp says it now writes 74% of its merged PRs.</div><a class="open" href="https://x.com/karimatiyeh/status/2115096837736612130" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech</div><div class="body">S&amp;P Dow Jones partnered with Kalshi: Kalshi will offer bets that settle on official index values, and S&amp;P will turn Kalshi&#x27;s odds into new benchmarks. It&#x27;s a big step toward prediction markets becoming normal financial plumbing.</div><a class="open" href="https://www.reuters.com/business/finance/sp-dow-jones-partners-with-kalshi-index-based-events-contracts-use-prediction-2026-10-26/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech</div><div class="body">Guidewire is buying AI insurance pricing startup hyperexponential for up to $2.1 billion.</div><a class="open" href="https://www.guidewire.com/about/press-center/press-releases/20261027/guidewire-signs-definitive-agreement-to-acquire-hyperexponential?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech</div><div class="body">Ripple got final approval for a US national trust bank, and separately struck a deal with Robinhood to spread its RLUSD stablecoin.</div><a class="open" href="https://www.bankingdive.com/news/ripple-occ-charter-bny-robinhood-partnerships-garlinghouse-alderoty/872896/?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech</div><div class="body">Global fintech funding fell 29% to $11 billion in Q3, its lowest in two years.</div><a class="open" href="https://finainews.com/payments/fintech-funding-hits-2-year-low-in-q3/?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Finshots</div><div class="body">Foreign investors have pulled over ₹3 lakh crore out of Indian stocks this year, and some want the long-term capital gains tax cut to win them back. Finshots says it wouldn&#x27;t help much. When India raised the tax in 2024, foreign money kept flowing in, and the real drivers now are a weak rupee, falling valuations and better returns at home. A cut would mostly cost the government revenue.</div></article>
+<article class="card"><div class="meta">Entrackr</div><div class="body">Shadowfax&#x27;s quarterly profit grew about five times to Rs 68 crore on 57% revenue growth.</div></article>
+<article class="card"><div class="meta">Entrackr</div><div class="body">Pine Labs crossed Rs 800 crore in quarterly revenue, and profit rose 6.5 times to Rs 39 crore.</div></article>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">The Fed held rates at 3.75% to 4.00%, with two members voting for a hike. Chair Kevin Warsh also said the Fed will set rates at fewer meetings from 2027, and markets put the odds of a December hike at about 85%.</div></article>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">Apple launched its first touchscreen Mac, an OLED MacBook Pro from $2,899, reversing a stance both Steve Jobs and Tim Cook held.</div></article>
+<article class="card"><div class="meta">ByteByteGo</div><div class="body">A walkthrough of how data moves between parts of a system: pulling, polling, pushing, long polling, WebSockets, message queues and change data capture, and how to pick between them.</div></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
