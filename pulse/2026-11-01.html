@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .section{width:80%;max-width:820px;margin:18px auto 0;font-size:12.5px;font-weight:700;
+    letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">26 stories</div></header>
+<main>
+<h2 class="section">For you</h2>
+<article class="card"><div class="meta">GPUs &amp; Capacity</div><div class="body">The money behind AI compute got shakier this week. OpenAI cut its new funding round target to $20 billion, down from earlier talk of $30 billion, and has only about $11 billion lined up so far after a lukewarm response from some big investors. On Friday the Nasdaq 100 slid into correction, neocloud and chip stocks fell, and Intel dropped 28.6% for its worst day in 50 years (yesterday&#x27;s digest had it at over 20%). If the biggest GPU buyers raise less money, expect neoclouds to slow their buildouts and GPU prices and capacity to loosen over the next few quarters.  (also in Morning Brew)</div><a class="open" href="https://techcrunch.com/2026/10/31/openai-reportedly-lowers-funding-target-for-new-round/" target="_blank" rel="noopener">Open ↗</a></article>
+<h2 class="section">AI</h2>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">A little-known group called GrootTeam released a family of open-weight reasoning models under the MIT license, built on top of DeepSeek V4.1-Flash. The largest has 280 billion parameters but uses only about 16 billion for each token, which keeps it cheap to run. The team says it edges out GLM-5.3-Flash and DeepSeek&#x27;s own V4-Flash on average across 16 benchmarks, but they ran every test themselves, so wait for independent results.  (via r/LocalLLaMA)</div><a class="open" href="https://huggingface.co/GrootTeam/Groot-280B-A16B-261023" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">A paper called Glance lets one model do both jobs in a RAG pipeline: it ranks the retrieved passages and then writes the answer. It reuses the work it already did reading the context, so you don&#x27;t need a separate reranker model sitting in GPU memory. That&#x27;s a small but real saving for anyone serving these pipelines.</div><a class="open" href="https://tldr.takara.ai/p/2610.40454" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">VeriCUA treats checking an agent&#x27;s work as its own exploration task: a verifier agent pokes around the desktop, phone or browser to confirm the job really got done.</div><a class="open" href="https://tldr.takara.ai/p/2610.40578" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">A federal judge let the NAACP&#x27;s lawsuit against xAI go forward. It says xAI ran at least 35 gas turbines at its Colossus data center near Memphis without Clean Air Act permits. xAI argued the turbines were mobile and exempt, and the judge rejected that. It&#x27;s a warning to anyone powering a data center with on-site generators to get around grid delays.</div><a class="open" href="https://techcrunch.com/2026/10/31/judge-allows-naacp-lawsuit-over-xai-data-center-pollution-to-move-forward/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">New Apple CEO John Ternus told Wired that Apple won&#x27;t &quot;ship AI for AI&#x27;s sake,&quot; and pushed back on the idea that agents will make apps unnecessary.</div><a class="open" href="https://techcrunch.com/2026/10/31/apple-ceo-says-the-company-doesnt-want-to-ship-ai-for-ais-sake/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Arca, a wealth management firm that just raised $48.5 million led by General Catalyst, explains how agents do most of its background work while human advisors make the final calls. Their line is that &quot;agents prompt people more than people prompt agents.&quot;</div><a class="open" href="https://latent.space/p/arca/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">Security researchers at Parameter Labs found a way to take over ChatGPT accounts through a shared link. They chained a bug in a math keyboard widget with a YouTube embed that OpenAI&#x27;s security rules allowed, which broke out of the sandbox that HTML previews run in. Anyone signed in who opened the link could have their private chats read or actions taken as them. OpenAI fixed it and paid a $5,000 bounty, which Simon Willison called cheap for a bug this serious.</div><a class="open" href="https://simonwillison.net/2026/Oct/31/how-we-took-over-chatgpt-accounts/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">Betelgeuse, a hobby inference engine, runs Qwen 3.8 Flash Next at 4-bit at 24 tokens a second with the model&#x27;s experts kept in ordinary DDR4 memory next to a 12GB RTX 3060.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xkh2ns/betelgeuse_running_qwen_38_flash_next_iq4_xs_at/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">The developer who put a RISC-V CPU inside Qwen&#x27;s weights has now compiled a tiny neural chip into Qwen 3.5-4B and run Karpathy&#x27;s small stories260k model on it. It&#x27;s an LLM running inside an LLM, a stunt, but a clever one.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xkiuut/an_llm_inside_an_llm_same_guy_who_put_a_riskv_cpu/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">AstrBot is trending on GitHub. It&#x27;s an open-source platform for running AI agent chatbots inside messaging apps.</div><a class="open" href="https://github.com/AstrBotDevs/AstrBot" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">In a benchmark where vision models play Pokemon Red, Grok 4.20 spent about 700 turns stuck in the starting house. Its own notes kept saying it was going in circles, and it still couldn&#x27;t break the loop. It&#x27;s a nice example of how knowing you&#x27;re stuck isn&#x27;t the same as getting unstuck.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xkr521/grok_420_spent_700_turns_stuck_in_reds_house_in/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">One user argues 64GB machines are now a sweet spot for local agentic coding, after ten days running a 27B model with long context on an M4 Max.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xksj75/64gb_isnt_the_dead_zone_anymore_if_you_run_agents/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">Users are finding that Qwen 3.8 Flash Next, which looked strong at coding, gets lost on general research questions.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xkjrdl/please_tell_me_qwen38flashnext_can_be_made_to_be/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">A Verge writer built a $50 DIY version of Meta&#x27;s Muse Charm AI gadget with vibe-coded firmware.</div><a class="open" href="https://www.theverge.com/gadgets/1013375/muse-charm-gadgets-preview-waveshare-esp32-claude-vibe-code" target="_blank" rel="noopener">Open ↗</a></article>
+<h2 class="section">From your inbox</h2>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">Hackers stole $6.3 billion from Binance in about 20 minutes, the biggest crypto theft ever and four times last year&#x27;s Bybit hack. Binance says attackers may have got in through an engineer&#x27;s laptop, and analysts suspect the same North Korean group. About $3 billion has been frozen, withdrawals are paused, and Binance says it will cover the losses from company funds.</div></article>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">Reddit plans to make most of the site login-only, after Google&#x27;s AI Overviews cut its search traffic. Along with a weak Q4 forecast, that sent its stock down 29%, its worst day since going public.</div></article>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">High fuel prices driven by the wars in Iran and Ukraine gave Chevron and Exxon huge Q3 profits, $9.9 billion and $15.4 billion, and both stocks hit records.</div></article>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">Affordable Care Act premiums are on track to rise 13% next year. Separately, new US I Bonds pay 5.51%.</div></article>
+<article class="card"><div class="meta">Entrackr</div><div class="body">Boba Bhai, the Bengaluru tea chain, more than doubled its revenue in FY26 as it opened dozens of stores, but its losses doubled too.</div></article>
+<article class="card"><div class="meta">Entrackr</div><div class="body">Yulu, the EV bike rental company, made Rs 281 crore in revenue in FY26 and cut its loss by 23% to about Rs 97 crore.</div></article>
+<article class="card"><div class="meta">Entrackr</div><div class="body">28 Indian startups raised $115 million this week, mostly in early-stage rounds.</div></article>
+<article class="card"><div class="meta">Finshots</div><div class="body">Apple&#x27;s first foldable, the iPhone Duo, is cracking. Some inner screens showed lines and cracks within hours of purchase. Apple is replacing them without saying why, and one theory is a hinge support bar that doesn&#x27;t retract when the phone closes.</div></article>
+<article class="card"><div class="meta">Finshots</div><div class="body">A short history of the weekend. The Saturday half-holiday came from British factories trying to stop workers skipping Mondays, and Henry Ford made the two-day weekend standard partly so his workers would have time to drive, and buy, his cars.</div></article>
+<article class="card"><div class="meta">ByteByteGo</div><div class="body">A quick tour of what changed from GPT-2 to GPT-6. It goes from plain text prediction, to RLHF, to built-in reasoning, and now to a 1-million-token context and the ability to take new instructions mid-thought.</div></article>
+<article class="card"><div class="meta">ByteByteGo</div><div class="body">An explainer on how GPUs work inside. It covers how the many small parallel cores share caches, and why running thousands of threads hides slow memory access.</div></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
