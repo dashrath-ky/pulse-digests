@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .section{width:80%;max-width:820px;margin:18px auto 0;font-size:12.5px;font-weight:700;
+    letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">23 stories</div></header>
+<main>
+<h2 class="section">For you</h2>
+<article class="card"><div class="meta">GPUs &amp; Capacity</div><div class="body">SemiAnalysis says the political fight over data centers is now coming from both US parties, and it puts 2028 capacity at risk. Texas regulators froze new permits on September 21, including permits for power generated on site, while the state audits its grid queue. Texas is close to 30% of the roughly 62 GW the US is expected to add in 2028, and most of that hasn&#x27;t started building yet. About three quarters of 2027 capacity is already under construction, so next year looks safe. If pro-pause candidates win in Tuesday&#x27;s midterms, up to about 30 GW of 2028 builds could stall. That would keep GPU capacity tight and expensive well past 2027.</div><a class="open" href="https://newsletter.semianalysis.com/p/the-datacenter-backlash-goes-bipartisan" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Inference Serving</div><div class="body">vLLM shipped v0.33.0 as a final release, following the second release candidate that fixed support for AMD&#x27;s MI350 GPUs. The release notes didn&#x27;t load on GitHub, so read them before you bump the version in images.</div><a class="open" href="https://github.com/vllm-project/vllm/releases/tag/v0.33.0" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Inference Serving</div><div class="body">Berth is a small open-source GPU manager written in Go. It hands out a single GPU through leases, priorities and a queue. When a new job needs the card, Berth waits for the current one to finish, frees its memory and then passes the card on. It&#x27;s a hobby-scale version of the GPU sharing problem that cluster schedulers deal with.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xlmu81/liveswap_cuda_workloads_llamacpp_comfyui_strata/" target="_blank" rel="noopener">Open ↗</a></article>
+<h2 class="section">AI</h2>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">SemiAnalysis launched GDPx, a hard benchmark that tests frontier models on the work that&#x27;s worth the most money. It covers chip design, quant trading, law, finance, biology, cyber and AI research itself.</div><a class="open" href="https://newsletter.semianalysis.com/p/gdpx-measuring-frontier-model-capabilities" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">JetBrains released Mellum2.1, a small reasoning model for code. It ships with an extra layer that guesses the next token ahead of time, which inference engines can use to decode 1.4 to 1.8 times faster with no change in output.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xln8f2/jetbrainsmellum2112ba25bthinkingmtp_hugging_face/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">Reflection, the lab behind Beam, its first open-weight model, is doing an AMA on r/LocalLLaMA on Tuesday, Nov 3, from 8 to 11am PT.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xlmkk4/ama_announcement_reflection_the_lab_behind_behind/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">GPT-5.6 Sol, running in Codex on a low thinking setting, finished a full game of Factorio with no enemies in 13.5 hours of game time. It played through a small Python library that gives it the same limits a human player has.</div><a class="open" href="https://ryanmadden.net/gpt-56-beats-factorio/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">Researchers put teams of hundreds of AI agents into Minecraft to see if they&#x27;d build a civilization. Many of the 50-agent teams never got there and drowned in their own bureaucracy instead.</div><a class="open" href="https://www.tomshardware.com/tech-industry/artificial-intelligence/ai-agent-swarms-unleashed-in-minecraft-to-build-a-thriving-civilization-50-agent-teams-fail-after-falling-into-paralyzing-bureaucracy" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">A security startup called Cathedral got into internal systems at Anthropic in under 12 hours. It saw employee records, salaries, job offers and internal messages about Anthropic&#x27;s models. This was an approved test under Anthropic&#x27;s outside-researcher program. Cathedral used AI agents to find holes in the business software Anthropic uses for admin and sales work.</div><a class="open" href="https://www.indiatoday.in/technology/news/story/ai-startup-hacks-anthropic-in-12-hours-gains-access-to-employee-details-and-internal-messages-3025452-2026-10-26" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Users report that Claude Code and Opus 5.5 now refuse to help reverse-engineer, decompile or mod video games, even for harmless work. Anthropic hasn&#x27;t explained the change, which comes after the GTA6 leaks. Separately, some users say they were blocked for requests that touch on training larger models.  (also in Mashable)</div><a class="open" href="https://www.tomshardware.com/tech-industry/artificial-intelligence/anthropics-ai-model-is-now-blocking-attempts-at-video-game-recreation-and-cloning-users-also-claim-non-malicious-generic-reverse-engineering-tasks-are-blocked" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">OpenAI may start calling its data centers &quot;AI compute campuses.&quot;</div><a class="open" href="https://techcrunch.com/2026/11/01/openai-might-rebrand-its-data-centers-as-ai-compute-campuses/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">In an update to yesterday&#x27;s Proton story, the CEO called off the company-wide &quot;re-interviews&quot; where staff would have had to explain how much they use AI. He cancelled them a day after 404 Media&#x27;s investigation came out.</div><a class="open" href="https://www.404media.co/protons-ceo-cancels-ai-re-interviews/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">JetBrains open-sourced ThinkRail, a coding environment built around an agent. It keeps separate workspaces for each task and gives the agent lasting notes about your project, which it calls living specs.</div><a class="open" href="https://github.com/JetBrains/thinkrail" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">Ghostty, the fast native terminal app, is trending on GitHub again. Its core is also available as a library called libghostty for building other terminals.</div><a class="open" href="https://github.com/ghostty-org/ghostty" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">One developer runs 8 coding agents at once, each with 250K tokens of context, on two RTX 3090s, at over 600 tokens a second in total.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xlk43x/8_agents_250k_context_concurrently_on_two_3090s/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">Kyle Kingsbury of Jepsen warns that LLMs are wearing down trust in documentation and software. The signs we used to read as proof of a mature project are now easy to fake.</div><a class="open" href="https://simonwillison.net/2026/Nov/1/kyle-kingsbury/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">Nolan Lawson looks at what JavaScript frameworks cost once AI is writing the code.</div><a class="open" href="https://nolanlawson.com/2026/10/28/the-ai-cost-of-javascript-frameworks/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">AI-generated fan wikis full of mistakes are ranking first on Google for game questions, pushing out real community wikis.</div><a class="open" href="https://www.eurogamer.net/ai-fan-wikis-errors-complicating-games-culture" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">Simon Willison&#x27;s Python 3.15 tip: if you get a strange dependency error, delete the uv.lock file first. Old lock files often pin a package that has no 3.15 wheel yet.</div><a class="open" href="https://simonwillison.net/2026/Nov/1/delete-uv-lock-first/" target="_blank" rel="noopener">Open ↗</a></article>
+<h2 class="section">From your inbox</h2>
+<article class="card"><div class="meta">Finshots</div><div class="body">China&#x27;s AI stock bubble may have already popped. The STAR 50 index of AI stocks fell 40% in four months and wiped out about $480 billion. State funds and retail traders had pushed valuations to around 250 times earnings, and price wars are now squeezing profits. Finshots compares it to the 1990s fiber build-out, with one difference: unused cable lasts for decades, but GPUs lose their value fast.</div></article>
+<article class="card"><div class="meta">Lenny&#x27;s Newsletter</div><div class="body">Hector Serrano joined Wispr Flow at 19 and built its paid creator-ad engine. It has 50 creators making 500 to 600 ads a month, paid as a share of ad spend. Wispr&#x27;s revenue grew 30x in a year, and it raised at a $2 billion valuation.</div><a class="open" href="https://www.youtube.com/watch?v=KzS5Qs7vSMg&amp;feature=youtu.be" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">Ironman racing is booming with young people. There were 250,000 registrants in 2025, and under-30 participation rose 35%. One race in Wales brings its town about $9.7 million a year.</div></article>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">&quot;Darecations,&quot; trips built around brutal physical challenges, are taking off. Searches for marathons abroad rose more than 12x, and the extreme sports tourism market could reach about $100 billion by 2034.</div></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
