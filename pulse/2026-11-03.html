@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .section{width:80%;max-width:820px;margin:18px auto 0;font-size:12.5px;font-weight:700;
+    letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">35 stories</div></header>
+<main>
+<h2 class="section">For you</h2>
+<article class="card"><div class="meta">GPUs &amp; Kubernetes</div><div class="body">NVIDIA published its Kubernetes setup for Vera Rubin NVL72 racks, packaged as version-pinned &quot;recipes&quot; from its AI Cluster Runtime. The training recipe pulls in 14 parts, including GPU Operator, the DRA driver (dynamic resource allocation, the newer Kubernetes way to hand out GPUs) with IMEX compute domains, the KAI gang scheduler and NVSentinel health checks, and it needs Kubernetes 1.34.1 or newer on Ubuntu 26.04 arm64. It&#x27;s still marked Preview: inference performance isn&#x27;t validated yet because vLLM images aren&#x27;t built on CUDA 13.4, and MIG isn&#x27;t covered. This is the reference stack customers will expect KubeRay and our node setup to work alongside on Rubin.</div><a class="open" href="https://developer.nvidia.com/blog/making-kubernetes-ai-ready-for-nvidia-vera-rubin-on-day-one/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">GPUs &amp; Kubernetes</div><div class="body">NVIDIA also shipped two tools for keeping big training runs alive. Attribution traces a cascade of NCCL errors across ranks back to the one GPU or network fault that started it, and automated workload recovery restarts the job around bad hardware. Both overlap with what a scheduler has to do when a node dies mid-run. <a href="https://developer.nvidia.com/blog/diagnose-distributed-ai-workload-failures-with-nvidia-attribution/" target="_blank" rel="noopener">more</a> ()</div><a class="open" href="https://developer.nvidia.com/blog/keep-distributed-training-running-with-automated-workload-recovery/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Cloud capacity &amp; pricing</div><div class="body">Oracle Cloud will offer Google&#x27;s TPUs, the first cloud outside Google to do so. Separately, Oracle filed to raise $20 billion, half stock and half bonds, to pay for its AI buildout. TPUs showing up on a second cloud makes them a more realistic option next to NVIDIA GPUs. <a href="https://www.rtinsights.com/real-time-decisions/real-time-analytics-news-for-the-week-ending-october-31/?utm_source=tldrit" target="_blank" rel="noopener">more</a> ()</div><a class="open" href="https://www.cnbc.com/2026/11/02/oracle-files-to-sell-20-billion-in-new-stock-bonds-to-finance-ai-buildout.html" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Cloud capacity &amp; pricing</div><div class="body">Google Cloud spend caps are now generally available. When a project hits its cap, usage of that service is paused rather than resources being deleted, AI services trip the cap within minutes, and caps now reset on their own at the start of each month. Reserved capacity (Provisioned Throughput) is never cut off, and there&#x27;s a new API to set caps per project.</div><a class="open" href="https://cloud.google.com/blog/topics/cost-management/google-cloud-spend-caps-now-generally-available?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Cloud capacity &amp; pricing</div><div class="body">Andy Jassy said on Amazon&#x27;s earnings call that Bedrock could grow as big as EC2. His bet is that companies will keep switching models as prices move, so one place to run many vendors&#x27; models wins.</div><a class="open" href="https://www.crn.com/news/ai/2026/amazon-q3-earnings-ceo-jassy-says-bedrock-could-become-as-big-as-ec2?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<h2 class="section">AI</h2>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">A pull request in Alibaba&#x27;s Qwen Code repo leaked the names of upcoming models: qwen4-max, qwen4-coder-plus and an omni model called qwen4-omni-120b, all with 262K context. Qwen4 hasn&#x27;t launched, but this suggests it&#x27;s close.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xmitzx/alibabas_qwen_code_repo_just_leaked_qwen4max/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">OpenAI released GPT-Rosalind-6, a reasoning model for biology and drug discovery. It refuses fewer dual-use biology questions, so it&#x27;s only available to vetted scientists and institutions.</div><a class="open" href="https://deploymentsafety.openai.com/gpt-rosalind-6" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">Liquid AI&#x27;s LFM3-1.7B fits in 3.6 GB of GPU memory with no real quality loss, and benchmarks ahead of MiniCPM5-2B with twice the context.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xme6c5/lfm317b_quantization_report_36_gb_vram_lossless/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">A team sparsified the attention in Qwen 3.8 27B with no measured accuracy loss and stretched context to 10 million tokens, where most retrieval tasks still work.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xmbj0v/new_sparse_attention_method_for_ultralong_context/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">New research says LLMs can read and edit neural network weights directly. In one demo, GPT-6 Astra edited a Qwen model&#x27;s weights and lifted its MATH-500 score from 7.9% to 48.1%. <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xm6jow/sparks_of_weightspace_programming_llms_can/" target="_blank" rel="noopener">more</a> ()</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xma0tw/gpt6_astra_edits_qwen_weights_math500_79_to_481/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">Realtime-Bench shows today&#x27;s models are bad at tasks where waiting costs you, like live games or auctions.</div><a class="open" href="https://jack-clark.net/2026/11/02/import-ai-479-spacewar-low-latency-tasks-versus-llms-genie-4/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Anthropic&#x27;s updated IPO filing shows $17 billion in Q3 revenue and $33 billion for the first nine months, about 12 times last year. Growth is slowing, though: Q3 was up 47% on Q2, after more than doubling in each of the first two quarters. It also lists about $895 billion in future commitments, almost all for compute from Amazon, Google, SpaceX and smaller GPU clouds, and the roadshow is about to start.  (also in FT, Hacker News)</div><a class="open" href="https://www.cnbc.com/2026/11/02/anthropic-ant-s-1-quarter-financials.html" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">The same filing warns that Anthropic may soon hit its own threshold for AI sharply speeding up its research, and that capabilities could outrun safety work. It hasn&#x27;t said any current model crosses that line, and it&#x27;s considering changes to its scaling policy to keep humans in charge.</div><a class="open" href="https://techcrunch.com/2026/11/02/anthropic-warns-that-its-very-close-to-rsi-capability-aka-self-building-ai/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">The New York Times and other publishers sued Brave, saying its browser scraped paywalled articles and sold them to AI companies including Anthropic and Perplexity.  (also in The Verge)</div><a class="open" href="https://techcrunch.com/2026/11/02/new-york-times-and-other-outlets-sue-web-browser-brave-over-alleged-content-scraping/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">China issued its first export controls on frontier AI, through commerce ministry Announcement No. 48.</div><a class="open" href="https://labs.cloudsecurityalliance.org/research/csa-research-note-china-ai-export-controls-announcement-48-2/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Usage limits are tightening across AI chat apps. Musk throttled Grok Bot because costs were &quot;unsustainably high,&quot; and OpenAI is merging ChatGPT&#x27;s Chat and Work tabs while ending unlimited chats. <a href="https://techcrunch.com/2026/11/02/elon-musk-throttles-grok-bot-limits-due-to-unsustainably-high-costs/" target="_blank" rel="noopener">more</a> ()</div><a class="open" href="https://techcrunch.com/2026/11/02/openai-is-finally-merging-chatgpts-chat-and-work-tabs/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">OpenAI launched a Grid Protectors Program, pitching its data center campuses as a way to keep local power reliable and bills down. It&#x27;s a response to data centers becoming a campaign issue.  (also in The Verge)</div><a class="open" href="https://openai.com/index/grid-protectors-program" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Token bills are getting personal. Anthropic&#x27;s internal AI use, priced at retail, now costs more than its payroll, and Garry Tan says he spends up to $200K a year on tokens. <a href="https://www.businessinsider.com/anthropic-claude-internal-ai-use-exceeds-employee-pay-tokens-2026-11" target="_blank" rel="noopener">more</a> ()</div><a class="open" href="https://techcrunch.com/2026/11/02/y-combinators-garry-tan-uses-ai-agents-so-much-he-spends-up-to-200k-a-year-on-tokens/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Funding: Trajectory raised $45 million to let non-engineers train models, and 42AI came out of stealth with $62.5 million for a model that predicts human behavior. <a href="https://techcrunch.com/2026/11/02/trajectory-raises-45m-to-make-ai-model-training-accessible-to-nontechnical-experts/" target="_blank" rel="noopener">more</a> ()</div><a class="open" href="https://techcrunch.com/2026/11/02/42ai-comes-out-of-stealth-with-62-5m-and-a-world-model-that-can-predict-human-behavior/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">OpenAI built Pando, a Git-compatible backend, because Codex pushed its code volume past what normal Git hosting handles.</div><a class="open" href="https://openai.com/index/scaling-git-at-openai" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">Simon Willison&#x27;s llm CLI hit 0.37, with GPT-6.1 models and an easy way to add any OpenAI-compatible endpoint.</div><a class="open" href="https://simonwillison.net/2026/Nov/2/llm/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">A guest post on Terence Tao&#x27;s blog argues mathematicians should drop ego about who proves what, now that AI contributes to proofs.</div><a class="open" href="https://terrytao.wordpress.com/2026/11/02/egoless-mathematics-in-the-ai-era/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">A critic says Meta&#x27;s Muse agent is really a surveillance network: it reads messages, email and finances, and profiles people who never installed it.</div><a class="open" href="https://paulfwalsh.substack.com/p/metas-muse-ai-agent-is-a-commercial" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">Amazon is reportedly canceling GPU orders from buyers and, rarely, closing their accounts, with Tim Sweeney among those hit.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xm8o8g/amazon_is_allegedly_canceling_gpu_orders_and_in/" target="_blank" rel="noopener">Open ↗</a></article>
+<h2 class="section">From your inbox</h2>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">AI-found bugs are arriving faster than PostgreSQL maintainers can check fixes, pushing Postgres 19 past its usual fall release. Meanwhile Linux 7.4 drew nearly 20,000 commits in its merge window alone, a record. <a href="https://www.phoronix.com/news/PostgreSQL-19-Late?utm_source=tldrit" target="_blank" rel="noopener">more</a> ()</div><a class="open" href="https://www.phoronix.com/news/Linux-7.4-Merge-Window?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">GitHub added three IP ranges for webhook deliveries. Static firewall allowlists need updating.</div><a class="open" href="https://github.blog/changelog/2026-10-29-webhook-ip-ranges-added-to-the-meta-api/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">Five years after the fork, a look at who really steers OpenSearch and how far it has drifted from Elasticsearch.</div><a class="open" href="https://thenewstack.io/opensearch-foundation-aws-elasticsearch/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech</div><div class="body">ICE, the NYSE&#x27;s owner, will run regulated US markets for perpetual futures built on Hyperliquid and is taking a stake in the operator.</div><a class="open" href="https://decrypt.co/382149/hyperliquid-hype-jumps-nyse-owner-ice-perpetual-futures-us?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech</div><div class="body">Private equity firm CD&amp;R is reportedly working on a $40 billion take-private of Global Payments.</div><a class="open" href="https://www.finextra.com/newsarticle/48681/pe-firm-cdr-targets-buyout-of-40bn-global-payments---ft" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech</div><div class="body">Polymarket paused trading after a $2.65 million exploit through a third-party provider, then resumed.</div><a class="open" href="https://www.theblock.co/news/defi/2026-10-29-polymarket-exploit-2-5-million-cancel-only-mode-432158" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Entrackr</div><div class="body">Indian startup funding fell 47.5% in October to $678 million, as big rounds dried up.</div></article>
+<article class="card"><div class="meta">Entrackr</div><div class="body">Q2 results were mostly good: Capillary Technologies grew revenue 51% and swung to a Rs 22 crore profit, MobiKwik posted its best-ever quarterly profit at Rs 11.8 crore, and TBO Tek grew revenue 52%. Edtech Vedantu grew 17% in FY26 and narrowed its losses.</div></article>
+<article class="card"><div class="meta">ByteByteGo</div><div class="body">How NVIDIA&#x27;s Nemotron 3 Super stays efficient: it mixes Mamba layers with Transformer layers in a mixture-of-experts design.</div><a class="open" href="https://developer.nvidia.com/blog/inside-nvidia-nemotron-3-techniques-tools-and-data-that-make-it-efficient-and-accurate/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">Update on ACA premiums: open enrollment started, and a 40-year-old on a bronze plan will pay $511 a month, 34% more than in 2025. Eleven insurers are leaving the marketplaces, including Cigna in all 11 of its states.</div></article>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">In-N-Out is weighing a move into Arkansas, Mississippi and Oklahoma.</div></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
