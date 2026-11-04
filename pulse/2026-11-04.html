@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .section{width:80%;max-width:820px;margin:18px auto 0;font-size:12.5px;font-weight:700;
+    letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">35 stories</div></header>
+<main>
+<h2 class="section">For you</h2>
+<article class="card"><div class="meta">Ray &amp; Serving</div><div class="body">Ray 2.60 is out, and several changes touch how clusters scale. Autoscaler V2 can now scale down pending nodes that no demand needs anymore (off by default), KubeRay gets idle-termination options, and Ray Serve can start new replicas before stopping old ones during a rollout. Ray LLM moves to vLLM 0.29 with LoRA for prefill/decode split deployments. Watch for the breaking change in Serve&#x27;s root_path handling, which now returns 404 for requests that still include the prefix.</div><a class="open" href="https://github.com/ray-project/ray/releases/tag/ray-2.60.0" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">GPUs &amp; Capacity</div><div class="body">SemiAnalysis says SpaceX, now merged with xAI, is turning into the world&#x27;s biggest AI cloud. It raised its 2027 target to about 13 gigawatts, with 3.6 GW already under construction, and it built 210 MW at Colossus 2 in 91 days. The datacenter planned at its TeraFab chip fab in Texas may be rented to outside customers, which would make SpaceX a new GPU supplier for everyone else.</div><a class="open" href="https://newsletter.semianalysis.com/p/elon-is-doing-it-again-spacex-will" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">GPUs &amp; Capacity</div><div class="body">Anthropic&#x27;s updated IPO filing shows how much compute is eating its revenue. Compute was 58% of revenue in Q3, up from 48%, and $5 billion of its $10 billion quarterly bill came from short-term deals, which cost much more than multi-year ones. It pays SpaceX $1.25 billion a month and is also renting from Nscale, Akamai and Volta. Even the richest labs are buying spot-like capacity at a premium.</div><a class="open" href="https://techcrunch.com/2026/11/03/anthropic-is-still-grappling-with-the-economics-of-compute/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">GPUs &amp; Capacity</div><div class="body">Data center builders are using old jet engines as power plants because the wait for grid hookups and new turbines runs for years. They&#x27;re less efficient and dirtier, but power, not chips, is now what holds back new capacity.</div><a class="open" href="https://techcrunch.com/2026/11/03/data-centers-are-turning-to-old-jet-engines-as-the-wait-for-power-grows/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Rivals</div><div class="body">Fal, which runs image, video and audio models for customers, raised $1.3 billion led by Bessemer, with Nvidia joining, and doubled its valuation to $16 billion since April. It passed $800 million in annualized revenue this year. TechCrunch notes that inference companies like Baseten, Fireworks and Modal still run thin margins because renting GPUs is so expensive.</div><a class="open" href="https://techcrunch.com/2026/11/03/ai-inference-startup-fal-doubles-its-valuation-to-16b-as-demand-surges/" target="_blank" rel="noopener">Open ↗</a></article>
+<h2 class="section">AI</h2>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">Update on yesterday&#x27;s weight-space paper, where a model edited another model&#x27;s raw weights: it isn&#x27;t just a frontier trick. Simon Willison got Qwen 3.8 27B on his laptop to interpret model weights, and a Redditor got DeepSeek V4.1 Flash to identify what small RL networks do from their weights alone.  (also on r/LocalLLaMA)</div><a class="open" href="https://simonwillison.net/2026/Nov/3/qwen-can-interpret-model-weights/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">Deep Principle released Hydrogen-1.0, a science research assistant built on GLM-5.3.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xnervh/deepprinciplehydrogen10_hugging_face/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">A new paper finds the Muon optimizer&#x27;s lead over AdamW flips after fine-tuning once you pretrain on enough data. Bigger models flip sooner.</div><a class="open" href="https://tldr.takara.ai/p/2611.03633" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">AllenAI&#x27;s StateBench tests whether models can keep track of how things change across a long document.</div><a class="open" href="https://huggingface.co/blog/allenai/statebench" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Off-balance-sheet AI debt at US tech giants nearly doubled in six months to about $3.2 trillion, per Nikkei. These are lease and purchase commitments for data centers, now about 80% of the companies&#x27; assets, and investors are getting nervous.  (also Bloomberg opinion)</div><a class="open" href="https://asia.nikkei.com/business/technology/artificial-intelligence/us-tech-giants-hidden-ai-debt-swells-90-to-3.2tn-in-6-months" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Anthropic is building FlashProve, a system that lets anyone check that a response really came from the model it claims to be from.</div><a class="open" href="https://techcrunch.com/2026/11/03/anthropic-is-working-on-a-system-to-prove-ai-models-identity/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Google will switch off Search entirely for K-12 schools that turn off its AI tools, because AI is now built into Search. AI will be off by default for students, but admins can&#x27;t keep Search while dropping Gemini.  (also in Ars Technica, TechCrunch, NYT)</div><a class="open" href="https://www.theverge.com/tech/1025411/google-turn-off-search-ai-features" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">OpenAI says ChatGPT now handles about a fifth as many searches as Google.</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1025482/openai-says-chatgpt-is-catching-up-to-google-in-search" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Apple now lets any third-party app plug into Siri AI in the iOS 27.3 developer preview, including &quot;app skills&quot; that chain several actions together.</div><a class="open" href="https://www.theverge.com/tech/1025694/apple-siri-ai-third-party-apps" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Revolut says it cut its AI coding costs 10x by dropping Claude and self-hosting open models.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xn568h/british_fintech_revolut_slashes_ai_coding_costs/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">After Ukrainian drone strikes hit AI data centers, Russian tech firms are moving them underground, and the Kremlin is making operators reserve capacity for state emergencies.</div><a class="open" href="https://arstechnica.com/ai/2026/11/russia-looks-to-hide-data-centers-underground-as-ukrainian-drones-strike-back/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Users report that Postman quietly installs plugins, hooks and an MCP connection into other coding agents like Codex and Claude Code. Worth checking your machine if you use it.</div><a class="open" href="https://github.com/postmanlabs/postman-app-support/issues/14370" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">HN users say OpenAI is quietly turning model training on Codex chats back on. Check the &quot;Improve the model for everyone&quot; setting.</div><a class="open" href="https://news.ycombinator.com/item?id=50352757" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">Basalt 0.2.0, a Blackwell-only inference engine for Qwen 3.8 Flash Next, hits 300 tokens a second on a consumer 5090 plus 5060 Ti.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xn4qn1/basalt_020_qwen_38_flash_next_nvfp4_300_ts_prose/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">Octomind is an open-source Rust coding agent harness that runs as a CLI, daemon or editor agent, with guardrails set in config instead of approval prompts.</div><a class="open" href="https://github.com/Muvon/octomind" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">Hugging Face Transformers introduced Model Integration Contracts, a defined spec for how new models plug into the library.</div><a class="open" href="https://huggingface.co/blog/transformers-mic" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">Google DeepMind staff are protesting a lifetime ban on criticizing the company, asking for freedom to talk about what they know about AI.</div><a class="open" href="https://www.washingtonpost.com/technology/2026/11/03/google-deepmind-staff-protest-lifetime-ban-criticizing-company/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">A Salesforce research engineer who spends about $3,000 a month on tokens writes up how their AI use changed in a year.</div><a class="open" href="https://ben.stolovitz.com/posts/how-use-ai-oct-2026/" target="_blank" rel="noopener">Open ↗</a></article>
+<h2 class="section">From your inbox</h2>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">WorkOS disclosed a breach of an internal sales app on October 30. The attackers used an AI-driven offensive toolkit to automate scanning and exploitation, and got business contacts and snippets of customer conversations.</div><a class="open" href="https://workos.com/security/bulletins/october-30th-2026-data-security-incident?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">Over 1,000 internet-facing GitLab servers are still open to an actively exploited, max-severity remote code execution bug (CVE-2026-97229) in the CI/CD regex compiler. Patch if you self-host.</div><a class="open" href="https://www.bleepingcomputer.com/news/security/over-1-000-gitlab-servers-vulnerable-to-code-execution-attacks/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">Gartner warns that token-based pricing could push AI ops costs more than 50% over budget by 2027.</div><a class="open" href="https://www.itpro.com/infrastructure/ai-is-crucial-to-infrastructure-and-it-operations-but-only-if-its-done-right-gartner-report-says?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">ServiceNow and OpenAI are bringing ServiceNow workflows into ChatGPT.</div><a class="open" href="https://investor.servicenow.com/news/news-details/2026/ServiceNow-and-OpenAI-accelerate-enterprise-AI-from-models-and-operations-to-cybersecurity-and-agentic-development/default.aspx?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">ByteByteGo</div><div class="body">Netflix built an agent that reads production profiler output and proposes fixes. It found a regex using 46% of one service&#x27;s CPU, which it made 22x faster with a lookup table, and a metrics counter lookup that ate 66% of another&#x27;s CPU. Every change still goes through the normal test and canary pipeline.</div><a class="open" href="https://p99conf.io/session/the-autonomous-performance-agent-a-netflix-production-story/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">Marvell agreed to buy Lumentum, which makes the lasers that move data between AI chips, for $115 billion. It&#x27;s the second-biggest tech deal ever, and both stocks fell sharply on bubble worries.</div></article>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">Palantir&#x27;s US commercial revenue grew 148% and beat its government revenue for the first time. Total revenue nearly doubled to $2.31 billion.  (also in TechCrunch)</div><a class="open" href="https://techcrunch.com/2026/11/03/hiding-inside-palantirs-skyrocketing-quarter-is-a-foreboding-signal/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">Hackers put fridges in dozens of European supermarkets into defrost mode through a remote control system, hitting 122°F in some. There have been 20+ such attacks this year.</div></article>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">US midterms are today, with 40+ data-center measures on local ballots and a California wealth tax on billionaires.</div></article>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">Gallup says US worker engagement fell to 29%, a 15-year low, with the biggest drop at companies rolling out AI.</div></article>
+<article class="card"><div class="meta">Entrackr</div><div class="body">Jewellery brand GIVA raised $100 million led by Multiples PE. Snitch grew revenue 68% to Rs 835 crore in FY26 with a Rs 27 crore loss, and robotics startup Armatrix raised a Rs 67 crore seed.</div></article>
+<article class="card"><div class="meta">Finshots</div><div class="body">How astrology became a billion-dollar app business in India. AstroTalk, now a unicorn, grew revenue 55% to Rs 1,823 crore in FY26 and profit 10x, mostly from young users asking about love and marriage.</div></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
