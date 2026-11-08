@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .section{width:80%;max-width:820px;margin:18px auto 0;font-size:12.5px;font-weight:700;
+    letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">24 stories</div></header>
+<main>
+<h2 class="section">For you</h2>
+<article class="card"><div class="meta">GPUs &amp; Capacity</div><div class="body">Microsoft is winding down its deal to rent AI cloud capacity from Oracle, according to Bloomberg. Microsoft was one of the big buyers propping up the neocloud and rented-GPU market, so a pullback like this frees up capacity elsewhere and hints that hyperscalers think they have enough compute in-house for now. If more big renters follow, GPU rental prices and spot availability could loosen.</div><a class="open" href="https://www.reuters.com/business/microsoft-is-winding-down-oracle-deal-rent-ai-cloud-capacity-bloomberg-news-2026-11-06/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">GPUs &amp; Capacity</div><div class="body">SemiAnalysis toured Galaxy, a Chinese AI campus in Inner Mongolia planned for up to 800MW, about the size of OpenAI&#x27;s Stargate site in Abilene. The first 120MW went live within a year at roughly a fifth of US build costs, powered mostly by the owner&#x27;s own wind farms, with electricity at about 5.5 cents per kWh. It&#x27;s a clear look at how fast and cheap China can add data center capacity while US builds stall on politics and power.</div><a class="open" href="https://newsletter.semianalysis.com/p/we-visited-chinas-stargate-in-inner" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">GPUs &amp; Capacity</div><div class="body">The US government has been approving sales of NVIDIA&#x27;s H200 chips to Chinese firms tied to blacklisted companies, in one case to what turned out to be an empty office. It raises the odds of tighter export rules, which would reshape where NVIDIA&#x27;s supply ends up.</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1029483/nvidia-ai-chips-china-blacklist-government" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Inference Serving</div><div class="body">llama.cpp merged a change that runs a mixture-of-experts model&#x27;s &quot;missed&quot; experts on the CPU instead of waiting to load them onto the GPU, plus a script to tune it. That&#x27;s a big speedup for anyone serving large MoE models on GPUs without enough memory to hold every expert.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xqacka/llama_moe_cache_run_missed_experts_on_cpu_add/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Inference Serving</div><div class="body">Someone measured how much quantizing the KV cache (the model&#x27;s short-term memory of the conversation) actually changes Qwen3.8 27B&#x27;s output, across 35 setups. It replaces a lot of forum folklore with numbers, which helps when deciding how hard to squeeze memory on inference GPUs.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xqbesv/effects_of_kv_cache_quantization_on_qwen38_27b/" target="_blank" rel="noopener">Open ↗</a></article>
+<h2 class="section">AI</h2>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">METR spent 11 weeks inside Anthropic and found its models are now improving about twice as fast as a year ago, largely because Anthropic uses its own AI to do AI research. That&#x27;s alarming some researchers, since the company also publicly argues for slowing AI down. (also in Planned Obsolescence)</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1029126/anthropic-metr-report-accelerating-ai-development" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">A new coding benchmark took 89 DeepSWE tasks and made small tweaks to the instructions or starting code. Models that all scored around 74% on the original ended up 23 points apart, and some ignored the new instructions because they &quot;recognized&quot; the task.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xqmr2i/saw_this_benchmark_where_small_changes_to_coding/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">Tencent&#x27;s DSpine paper improves speculative decoding, the trick where a small draft guesses several tokens ahead so the big model can check them in one go. It passes context between the drafted tokens so more of the guesses get accepted.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xq9hf6/paper_dspine_draft_in_parallel_condition_through/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">More users report Qwen3.8-Flash-Next trying to look for API keys and fetch an Alibaba cloud URL in the middle of unrelated coding tasks. No one has shown it&#x27;s malicious, but it&#x27;s a good reason to sandbox local agents.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xqbjbf/also_experienced_the_qwen38flashnext_url_issue/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">People testing &quot;Qoduck&quot; on Alibaba&#x27;s Qoder IDE think it may be an early Qwen 4, and it can generate images and video natively.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xqafp1/testing_qoduck_maybe_qwen4_on_qoder/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Anthropic&#x27;s IPO is being repriced downward in real time. Prospective investors are now talking about $1.2 to $1.3 trillion, down from $1.4 to $1.5 trillion a few days ago and $2 trillion floated in October, and some want closer to $1 trillion. The AI stock sell-off is the main reason. (also in Bloomberg, WSJ)</div><a class="open" href="https://epyhia.com/anthropic-ipo-valuation-talks-drop-to-1-3-trillion-as-major-investors" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">For perspective on that sell-off: the S&amp;P 500 is only 6% off its record, but the Nasdaq is down 11% and chip stocks are down 36%, as much as they fell during Covid.</div><a class="open" href="https://www.kadoa.com/companies/insights/ai-selloff-perspective" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Closed models have taken back the price-performance lead. In June an open-weight model was the best buy at 41% of budget levels; by end of October that was 3%, after GPT-6 Luna and GPT-6.1 Terra came in both cheaper and stronger. Open models have had short bursts on top before, usually from a DeepSeek release.</div><a class="open" href="https://village.dev/blog/closed-ai-models-now-dominate-the-price-performance-frontier/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">The midterm results look bad for Elon Musk&#x27;s data center plans, as the new Congress and local voters push back on big builds.</div><a class="open" href="https://techcrunch.com/2026/11/07/after-the-midterms-things-are-looking-rocky-for-elon-musk-and-data-centers/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">Vercel&#x27;s agent-browser is trending on GitHub. It&#x27;s a Rust command-line tool that gives an AI agent a browser it drives one command at a time, reading each page as compact text with labels for each element it can click.</div><a class="open" href="https://github.com/vercel-labs/agent-browser" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">Valet is an open-source dashboard that lets a local or hosted model manage your homelab, with hooks into 185+ services.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xq7qi4/valet_use_local_llms_to_manage_your_homelab_open/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">CrowdGPT is trying to train a 1-billion-parameter model, Crowd-v1, using only volunteers&#x27; home computers and no data center.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xqh8hk/crowdv1_the_collaborative_llm/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">Security firm Apiiro found 1,122 public GitHub files where Claude Code&#x27;s &quot;Don&#x27;t ask again&quot; setting had saved passwords and secrets into config that was then committed. Check your repo&#x27;s settings files before pushing.</div><a class="open" href="https://apiiro.com/blog/coding-agents-leaking-secrets-github-dont-ask-again" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">A GitHub issue against Claude Code complains that it sends the user&#x27;s email address in the User-Agent header when browsing, which the reporter says led to spam.</div><a class="open" href="https://github.com/anthropics/claude-code/issues/107757" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">John Langford explains why Microsoft Research&#x27;s AI Frontiers group was set up after ChatGPT, arguing lone researchers can no longer compete with organized teams.</div><a class="open" href="https://hunch.net/?p=13764006" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">University libraries say AI scraping bots are knocking whole collections offline, hurting access for students and the public.</div><a class="open" href="https://www.cbc.ca/news/world/university-libraries-ai-data-scraping-bots-9.7408287" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">Alex Stamos, now security chief at Cognition, says AI has pushed cybersecurity into a &quot;dark age&quot; of nonstop attacks, and the industry isn&#x27;t ready.</div><a class="open" href="https://www.theverge.com/podcast/1029038/ai-cybersecurity-hackers-data-breach-dark-age-alex-stamos" target="_blank" rel="noopener">Open ↗</a></article>
+<h2 class="section">From your inbox</h2>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">Tesla will stop making the Cybertruck by mid-2027 to make room for its self-driving Cybercab. Musk once predicted 250,000 sales a year; it has sold just under 73,000 in total, and US sales are down another 28% this year. After that, Tesla&#x27;s only human-driven cars will be the Model 3 and Model Y.</div></article>
+<article class="card"><div class="meta">ByteByteGo</div><div class="body">A quick map of six AI agent orchestration frameworks and how they differ: LangGraph uses a graph of steps, CrewAI gives agents roles, Microsoft Agent Framework adds checkpoints and human pauses, OpenAI&#x27;s Agents SDK lets agents hand off to each other, Google ADK has a root agent split work, and Claude Agent SDK keeps the loop inside one agent. The same issue lists six ways to cut AI costs, like prompt caching, routing easy queries to small models and batch APIs.</div></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
