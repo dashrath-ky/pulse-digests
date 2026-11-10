@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .section{width:80%;max-width:820px;margin:18px auto 0;font-size:12.5px;font-weight:700;
+    letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">32 stories</div></header>
+<main>
+<h2 class="section">For you</h2>
+<article class="card"><div class="meta">Cluster &amp; Workload Control</div><div class="body">OpenAI wrote up Control Room, its central system for tracking every model workload running across its research infrastructure. Its main job is to find a running job fast and stop it when there&#x27;s a safety or security concern. It&#x27;s essentially a kill switch with a full inventory behind it, which is the same &quot;know what runs where, and be able to stop it&quot; problem a cluster control plane has to solve.</div><a class="open" href="https://openai.com/index/control-room" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Cluster &amp; Workload Control</div><div class="body">Meta extended the LLDB debugger so one session can follow a program as it hops between CPU code and GPU kernels. That&#x27;s hard because the two sides use different instruction sets, memory and execution models, and the GPU is driven through a runtime living inside the host process. Useful if you ever chase a bug that starts in Python and dies in a kernel.</div><a class="open" href="https://engineering.fb.com/2026/11/09/developer-tools/extending-lldb-to-debug-applications-that-span-cpus-and-gpus/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">GPUs &amp; Capacity</div><div class="body">Follow-up on Crusoe selling its unfinished Wyoming site: Google has now announced a $17 billion campus there, its first in the state. It will run on natural-gas fuel cells with carbon capture and air cooling. Power, not chips, keeps deciding where new capacity can land.  (also in TLDR IT)</div><a class="open" href="https://www.datacenterdynamics.com/en/news/google-announces-17bn-data-center-campus-in-cheyenne-wyoming/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">GPUs &amp; Capacity</div><div class="body">A new article compares big data-center GPUs on batch inference using Kimi K3 and three other models. The general lesson holds: bigger batches make each request slower but push more total tokens through. The surprise is that AMD&#x27;s MI455x came out on top.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xs4eyc/if_you_want_to_learn_about_batch_inferencing/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">GPUs &amp; Capacity</div><div class="body">Someone built an inference engine that runs one model across NVIDIA and AMD GPUs at the same time, using CUDA and ROCm side by side. Today vLLM only handles all-NVIDIA or all-AMD setups, and llama.cpp&#x27;s Vulkan path is slow at prefill. They report up to 48% faster than the Vulkan route.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xsaurn/cudarocm_dualbackends_llm_inference_for/" target="_blank" rel="noopener">Open ↗</a></article>
+<h2 class="section">AI</h2>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">Anthropic released Claude Fable 5.2 and Mythos 5.2, which are the same model with different safeguards. Fable is open to everyone, while Mythos goes only to vetted cyber and life-sciences programs. It beats Opus 5.5 on coding and agent benchmarks (about 70% vs 62% on FrontierSWE v2), is up to 30% faster than 5.1, and costs $8 in and $40 out per million tokens. Anthropic says it deliberately held back AI-research skills like kernel tuning to about Opus 5.5&#x27;s level, given the recent worry about AI speeding up its own development.  (also in TechCrunch, Simon Willison)</div><a class="open" href="https://www.anthropic.com/claude-fable-and-mythos-5-2" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">Meta released Muse Ember, a small, cheap model meant for the high-volume grunt work of agents: tool calls, routing, extraction and coding subtasks. At 10 cents per million input tokens, it&#x27;s priced well under Haiku and Luna. Meta pitches it as a pair with its larger Muse Wonder, where Wonder plans and Ember does the volume.</div><a class="open" href="https://techcrunch.com/2026/11/09/meta-releases-muse-ember-a-new-lightweight-model-for-agent-execution/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">OpenAI introduced GPT-6 Cyber, a security model for finding vulnerabilities and checking patches, locked to approved customers in its Daybreak Red program.  (also in TLDR IT)</div><a class="open" href="https://openai.com/index/introducing-gpt-6-cyber/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">An AI science startup, Physical Superintelligence, proved a quantum computing conjecture that had been open since 2008, about when quantum computers can be exponentially faster than normal ones.</div><a class="open" href="https://jack-clark.net/2026/11/09/import-ai-480-self-sustaining-space-economies-ai-for-science-progress-and-meta-builds-perfect-hands-for-a-superintelligence/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">A side-by-side run of the two top locally runnable mixture-of-experts models found Qwen 3.8 Flash Next generating about 350 tokens a second against DeepSeek V4.1 Flash&#x27;s 94.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xs7ffm/same_prompt_deepseek_v41_flash_vs_qwen_38_fn_94/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">What changed in the Jensen Huang story: Nvidia stock fell more than 4% after the board opened its probe, and law firms are racing to file securities suits. Huang dropped out of the ElevenLabs Summit and Anthropic&#x27;s CEO Forum. Wired reports he hired a scandal-focused PR firm a year before going public, and a short seller had flagged his ties to the Megaspeed executive six months ago.  (also in The Verge, Ars Technica, Morning Brew)</div><a class="open" href="https://techcrunch.com/2026/11/09/the-race-is-on-to-sue-nvidia/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Anthropic is pushing ahead with its IPO despite the Nasdaq sell-off. The Wall Street Journal says it will set a price range this week and could start trading Thursday or Friday next week.</div><a class="open" href="https://techcrunch.com/2026/11/09/anthropic-reportedly-plans-to-move-forward-with-ipo-plans/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Anthropic also bought $3.4 billion worth of natural gas turbines to power its own data centers.</div><a class="open" href="https://techcrunch.com/2026/11/09/anthropic-joins-ais-natural-gas-frenzy-buys-3-4b-worth-of-turbines/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">OpenAI is buying Pierre Computer Company, whose Git hosting tech already sits under Codex, to help humans and coding agents work in the same repos at once.  (also in TLDR IT)</div><a class="open" href="https://www.infoworld.com/article/4245719/openai-buys-tiny-software-developer-to-improve-codex.html?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Handshake&#x27;s AI training-data business went from launch to $1 billion in annualized revenue in about a year. Latent Space digs into what frontier labs are actually buying.</div><a class="open" href="https://latent.space/p/handshake/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Menlo Ventures estimates enterprise AI spend will hit $177 billion this year, up 5.4x. Agents now drive 80% of OpenRouter token use, and Anthropic plus OpenAI take 86% of enterprise API spend.  (also in TLDR Fintech)</div><a class="open" href="https://menlovc.com/perspective/2026-the-state-of-enterprise-ai/?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Scott Wiener, who wrote California&#x27;s AI safety bills, won Nancy Pelosi&#x27;s House seat and could now shape federal AI rules.</div><a class="open" href="https://www.technologyreview.com/2026/11/09/1148182/nancy-pelosis-replacement-is-ready-to-regulate-ai/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">Vercel&#x27;s agent-desktop lets an AI agent use desktop apps on Mac, Windows and Linux by reading the accessibility tree instead of screenshots. Every button gets an ID the agent can click.</div><a class="open" href="https://github.com/vercel-labs/agent-desktop" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">NVIDIA&#x27;s auto-ontology builds a map of what your enterprise data means and where it lives, so agents answering data questions get the right numbers. It plugs into agents over MCP.</div><a class="open" href="https://github.com/NVIDIA/auto-ontology" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">ThumbFree is a free voice-typing keyboard for Android and iPhone that runs NVIDIA&#x27;s Parakeet speech model on the phone, so it works offline.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xs8hfw/free_opensource_voice_typing_for_any_app_on/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">An MIT Tech Review reporter in Virginia&#x27;s Data Center Alley argues the growing backlash against data centers is mostly about electricity bills.</div><a class="open" href="https://www.technologyreview.com/2026/11/09/1148194/the-backlash-about-data-centers-might-really-just-be-about-electricity/" target="_blank" rel="noopener">Open ↗</a></article>
+<h2 class="section">From your inbox</h2>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">AI is making attacks cheaper and faster, so a16z argues defense has to work at machine speed too: take things off the open internet, segment networks, patch virtually and move to memory-safe code.</div><a class="open" href="https://a16z.com/defense-in-depth-rebuilt-for-machine-speed/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">Python is dropping its experimental JIT compiler for now because it was too hard to maintain.</div><a class="open" href="https://www.infoworld.com/article/4245298/python-is-de-jitted-but-still-de-lovely.html?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">NTT Data signed up for as much as 900MW of Bloom Energy fuel cells for its data centers, starting 2027, another sign operators are making their own power.</div><a class="open" href="https://www.datacenterdynamics.com/en/news/ntt-data-signs-900mw-fuel-cell-supply-deal-with-bloom-energy/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">Four UK regulators said companies stay responsible for whatever their AI agents do.</div><a class="open" href="https://www.infoworld.com/article/4245776/enterprises-must-take-blame-for-their-ai-agents-mistakes-say-regulators-3.html?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech</div><div class="body">Anthropic launched Claude Personal Finance for paid US users. It connects bank accounts through Plaid to track spending, but it&#x27;s read-only and can&#x27;t move money.</div><a class="open" href="https://www.pymnts.com/news/artificial-intelligence/2026/anthropic-launches-claude-personal-finance-ahead-of-nasdaq-listing/?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech</div><div class="body">Visa tested 22 AI models on shopping tasks and only 57% passed. Worse, more than half the failures still told the user to buy something.</div><a class="open" href="https://usa.visa.com/about-visa/newsroom/press-releases.releaseId.22936.html?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech</div><div class="body">Revolut finished a round valuing it at $115 billion, with Coatue, T. Rowe Price and Baillie Gifford coming in.</div><a class="open" href="https://www.revolut.com/news/revolut_completes_fundraising_process_establishing_115_billion_valuation/?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">ByteByteGo</div><div class="body">LinkedIn&#x27;s in-house AI code reviewer covers over 40,000 PRs a week and usually comments before any human opens the PR. A vendor tool was too generic and a single model hallucinated, so they built several reviewer agents whose findings have to be confirmed by each other, plus layered company, repo and per-change rules.</div><a class="open" href="https://www.linkedin.com/blog/engineering/ai/high-signal-ai-code-review-that-adapts-to-your-codebase-at-scale" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">Chip stocks are still down 29% over five weeks. CoreWeave, down 41% this year, reports earnings tomorrow, and October inflation data lands the same day ahead of an expected December rate hike.</div></article>
+<article class="card"><div class="meta">Finshots</div><div class="body">Defence is shifting from governments owning weapons to renting software and satellites from companies like SpaceX, Palantir and Anduril. The catch: when SpaceX capped Starshield speeds in Ukraine, a private software change disrupted live air defence. India&#x27;s new procurement rules now give successful startup prototypes an automatic pilot order and five years of contracts.</div></article>
+<article class="card"><div class="meta">Lenny&#x27;s Newsletter</div><div class="body">William Imoh built a native iOS and Android language tutor with Codex despite never writing Swift or Kotlin. Real-time voice is good enough now, but a 30-minute session still costs $3 to $5.</div><a class="open" href="https://www.chatprd.ai/how-i-ai/william-imoh-built-a-norwegian-tutor-that-refuses-to-speak-english" target="_blank" rel="noopener">Open ↗</a></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
