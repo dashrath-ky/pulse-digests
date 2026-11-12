@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .section{width:80%;max-width:820px;margin:18px auto 0;font-size:12.5px;font-weight:700;
+    letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">35 stories</div></header>
+<main>
+<h2 class="section">For you</h2>
+<article class="card"><div class="meta">GPUs &amp; Capacity</div><div class="body">CoreWeave&#x27;s Q3 shows how tight and pricey GPU capacity has become. Revenue was $3.66 billion, up 168% from a year ago, but it lost $709 million and paid $846 million in interest in one quarter. Rather than borrow at today&#x27;s high bond yields, it now asks customers to pay up front (about $9 billion expected in the next three months) and sells shorter contracts. Prices rose about 25% in July and another 10% later in the quarter, and short-term capacity now goes for over $40 million per megawatt a year, roughly double the rate on four- and five-year deals. For anyone buying GPUs on demand or planning around spot, expect short-term capacity to keep getting more expensive.</div><a class="open" href="https://techcrunch.com/2026/11/11/coreweave-turns-to-customer-prepayments-shorter-contracts-to-fund-ai-growth/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">GPUs &amp; Capacity</div><div class="body">What changed in the Jensen Huang story: the Wall Street Journal says Nvidia&#x27;s board met as soon as Wednesday to decide whether to oust him, and the New York Times reported a second affair, with a senior Nvidia executive who reports to him. The stock fell about 8% after hours. Congress is also preparing to subpoena him, and shareholders filed a class action. Nvidia has no succession plan and is working with an outside firm to find candidates. Finshots points out why this matters beyond the stock: Nvidia has about $279 billion in supply commitments and has offered up to $105 billion in guarantees for an OpenAI data center in Ohio, so a long leadership crisis could ripple into GPU supply and data center financing.  (also in TechCrunch, Finshots, Morning Brew, r/LocalLLaMA)</div><a class="open" href="https://techcrunch.com/2026/11/11/nvidias-stock-drops-as-board-reportedly-preps-to-oust-ceo-jensen-huang/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">GPUs &amp; Capacity</div><div class="body">An InfoWorld piece argues the &quot;AWS is sold out of AI capacity through 2027&quot; talk is overblown. Large training runs are tight, but normal inference and fine-tuning capacity is still available, so check with the provider directly before panicking.</div><a class="open" href="https://www.infoworld.com/article/4246540/panic-over-cloud-capacity-is-out-of-hand.html?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">GPUs &amp; Capacity</div><div class="body">Microsoft is lobbying against a proposed US ban on Chinese optical transceivers, the parts that connect servers in a data center. It warns other suppliers can&#x27;t fill the gap, so new data centers could be delayed and already-bought GPUs could sit idle.</div><a class="open" href="https://www.reuters.com/business/media-telecom/microsoft-presses-trump-scuttle-expected-ban-chinese-data-center-technology-2026-11-10/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Multi-chip AI</div><div class="body">What&#x27;s new on Anthropic&#x27;s IPO: the roadshow video explains how it trains and serves Claude across all four big chip families, AWS Trainium, Google TPUs, NVIDIA and AMD. It only started on AMD this year, and says its own model got Claude running there in three days with Claude writing almost all the GPU code. Filings also put the target valuation at $1.4 trillion under the ticker &quot;ANT&quot;. It&#x27;s a strong signal that running one workload across mixed accelerators is becoming normal, which is the kind of scheduling problem Ray is built for.  (also in Morning Brew)</div><a class="open" href="https://simonwillison.net/2026/Nov/11/anthropic-ipo-roadshow/" target="_blank" rel="noopener">Open ↗</a></article>
+<h2 class="section">AI</h2>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">Google launched Gemini Decision 1, joining a new kind of model that doesn&#x27;t write text. You ask it yes/no, multiple-choice or scoring questions and it returns an answer or a probability, in about 200 milliseconds. It costs 10 cents per million input tokens with free output, the same as OpenAI&#x27;s decision model, while startup Jev is still cheaper at 4.2 cents. Gemini&#x27;s edge is that it takes text, images, audio, video and PDFs. These &quot;system one&quot; models were the main theme of the AI Engineer Code summit this week.  (also in Latent Space)</div><a class="open" href="https://simonwillison.net/2026/Nov/11/gemini-decisions-api/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">DeepMind released AlphaGenome 2, which predicts how a change in DNA affects specific cell types. That gives researchers a sharper view of where diseases start.  (also in The Verge)</div><a class="open" href="https://deepmind.google/blog/alphagenome-2-deciphering-how-cells-read-dna-to-better-understand-disease/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">NVIDIA released Alpamayo 2 Edge, an open self-driving model that takes in six cameras and was trained with reinforcement learning.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xtmeif/open_source_self_driving_is_here/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">Unsloth shipped a new version of its quantization method (shrinking models to run on less memory) for Qwen3.8-27B and DeepSeek V4.1 Flash, claiming 10-15% better accuracy than other quants of the same size.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xtmcoe/unsloth_dynamic_v31_released_for_qwen3827b/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">A study of 1.26 million Chatbot Arena votes suggests AI isn&#x27;t getting dumber. The same fixed models lost ground over time because people judging them got pickier.</div><a class="open" href="https://tldr.takara.ai/p/2611.14333" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">Open models keep moving away from full attention, where every word looks at every other word, toward cheaper hybrids that mostly look nearby.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xtvxtp/architecture_trends_from_full_to_local_attention/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">OpenAI&#x27;s quarterly revenue reportedly crossed $10 billion for the first time, up almost 50% from $6.7 billion in Q2.</div><a class="open" href="https://techcrunch.com/2026/11/11/openais-quarterly-revenue-reportedly-crosses-10b-for-the-first-time/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">TSMC will put $1 billion into AI labs: $500 million into OpenAI and $500 million into Anthropic shares at the IPO price. The chipmaker that builds everyone&#x27;s AI chips now owns a piece of its biggest end customers.</div><a class="open" href="https://arstechnica.com/ai/2026/11/taiwans-chipmaking-giant-tsmc-to-invest-1b-in-anthropic-openai/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Mercor, which pays experts to create AI training data, raised $750 million at a $20 billion valuation. It&#x27;s now at a $3 billion annual revenue run rate, up from $1 billion in February.</div><a class="open" href="https://latent.space/p/ainews-mercor-750m-series-d-at-20b-valuation-3b-run-rate/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">British AI chip startup Fractile raised $720 million, making it one of the best-funded challengers in custom inference chips.</div><a class="open" href="https://techcrunch.com/2026/11/11/with-720m-round-britains-fractile-gets-a-leg-up-in-the-race-for-ai-chips/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Meta&#x27;s longtime infrastructure chief Santosh Janardhan is stepping down. Dave Brown, who spent 19 years running compute at AWS, takes over.</div><a class="open" href="https://techcrunch.com/2026/11/11/meta-is-losing-its-longtime-head-of-infrastructure/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">United Airlines won&#x27;t let personal AI agents book flights, citing privacy and security rules.</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1031623/united-unauthorized-ai-agents" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">AWS released an official local emulator for its services, so you can run tests without a real account. It was written in Rust largely by AI agents, with nearly 30,000 commits in three weeks. It still needs Docker on Mac and Windows.</div><a class="open" href="https://simonwillison.net/2026/Nov/11/aws-emulator/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">herdr is trending on GitHub: a terminal tool that runs several coding agents in split panes and lets you detach and come back later.</div><a class="open" href="https://github.com/herdrdev/herdr" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">Inflect v3 is a tiny, Apache-licensed text-to-speech model, just 34 million parameters, that runs on a CPU.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xtzwxf/i_released_inflect_v3_lightweight_local_tts_in/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">Someone voltage-glitched an 8GB NVIDIA mining card into a full 80GB A100, and it runs about 18% faster than a retail one. The memory was always there, just fused off.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xu1dkz/someone_voltageglitched_a_cmp_170hx_mining_card/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">Microsoft filed a patent to train AI models on volunteers&#x27; idle gaming GPUs in exchange for credits. Home internet latency is the obvious problem.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xtowe4/microsoft_files_a_patent_application_to_train_ai/" target="_blank" rel="noopener">Open ↗</a></article>
+<h2 class="section">From your inbox</h2>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">ChatGPT Enterprise is now sold through AWS Marketplace, so companies can pay for it out of their existing AWS spend commitments.</div><a class="open" href="https://openai.com/index/chatgpt-enterprise-aws-marketplace/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">Cisco is adding Anthropic&#x27;s Claude Mythos to its AI Defense product to attack-test companies&#x27; AI agents.</div><a class="open" href="https://blogs.cisco.com/ai/cisco-ai-defense-to-add-anthropics-claude-mythos-for-ai-red-teaming?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">IBM&#x27;s Kubecost now breaks out Kubernetes network costs in more detail, including AWS NAT gateway and cross-zone traffic.</div><a class="open" href="https://newsroom.ibm.com/2026-11-09-apptio-expands-portfolio-to-help-enterprises-connect-ai-spending-to-business-value?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">CloudWatch Logs now lets you set log retention once for a whole account or by name prefix.</div><a class="open" href="https://aws.amazon.com/about-aws/whats-new/2026/11/amazon-cloudwatch-log-retention/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">Price hikes are pushing IT leaders to look for exits from SAP, VMware and Oracle Java, but they warn migration costs often eat the license savings.</div><a class="open" href="https://www.cio.com/article/4244939/it-leaders-seek-alternatives-for-sap-vmware-and-java.html?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">ByteByteGo</div><div class="body">GitHub&#x27;s Octoverse says more than 40% of pull requests in September started as an agent&#x27;s first draft, up from 17% in March.</div><a class="open" href="https://github.blog/news-insights/octoverse/octoverse-commits-pushes-reach-new-highs-in-2026-as-developers-build-with-agents/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">ByteByteGo</div><div class="body">Anthropic replaced Git in its monorepo with an in-house system called Scion. Seven engineers did it in five months, and it uses 200 times less CPU and memory than the Git mirrors it replaced.</div><a class="open" href="https://www.anthropic.com/engineering/redesigning-source-control" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">ByteByteGo</div><div class="body">GitHub made Copilot Fusion, which picks the model for each task, generally available and says it comes close to the best coding model at about half the cost.</div><a class="open" href="https://github.blog/news-insights/company-news/github-universe-2026-evolving-every-layer-of-the-stack/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">ByteByteGo</div><div class="body">PHP shipped emergency fixes for two bugs, nicknamed &quot;PHP2Shell&quot;, that let anyone run code on a server without logging in.</div><a class="open" href="https://www.php.net/archive/2026.php#2026-10-21-5" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">US prices rose 0.4% in October, with groceries jumping the most since April. A Fed rate hike in December now looks almost certain, possibly a half-point.</div></article>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">Amazon&#x27;s Ring unveiled a $250 indoor security drone that flies set routes around your home, plus a $1,000 patrol robot for businesses.</div></article>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">Beehiiv dropped internal job titles for its 130 staff after one &quot;director&quot; title led to 15 hours of meetings.</div></article>
+<article class="card"><div class="meta">Entrackr</div><div class="body">Primetrace, the company behind the Kutumb app, tripled revenue to Rs 405 crore in FY26 and grew profit nearly sixfold. Rental startup RentoMojo also posted 53% revenue growth in its first quarter as a listed company.</div></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
