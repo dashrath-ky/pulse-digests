@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .section{width:80%;max-width:820px;margin:18px auto 0;font-size:12.5px;font-weight:700;
+    letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">35 stories</div></header>
+<main>
+<h2 class="section">For you</h2>
+<article class="card"><div class="meta">GPUs &amp; Capacity</div><div class="body">What&#x27;s new in the Nvidia story is the money. Under Jensen Huang, Nvidia joined 105 funding rounds this year, often as the biggest check, and it backed GPU clouds like CoreWeave, Crusoe and Lambda. One VC says infrastructure startups that needed $100 to $500 million of GPUs often raised about half of it from Nvidia. Interim CEO Colette Kress is expected to be more careful, and Morning Brew notes Nvidia has also guaranteed about $100 billion in data center leases. If Nvidia pulls back, GPU clouds get pricier money, and that tends to show up later as tighter capacity and higher prices.  (also in The Verge, Morning Brew, Finshots, r/LocalLLaMA)</div><a class="open" href="https://techcrunch.com/2026/11/13/jensen-huangs-departure-blasts-big-hole-in-ai-startup-funding-vcs-and-founders-say/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">GPUs &amp; Capacity</div><div class="body">A new analysis found signs that Moonshot&#x27;s Kimi K3 and DeepSeek&#x27;s V4 were trained on Nvidia Blackwell chips, which are banned from export to China. Epoch AI estimates about 2 million advanced chips reached China through hidden routes in 2024 and 2025, and about 600,000 legal H200s are reportedly sitting in Hong Kong waiting for import approval. Expect this to speed up stricter export rules, such as licenses that GPUs must check before they run.</div><a class="open" href="https://techcrunch.com/2026/11/13/export-banned-nvidia-chips-are-behind-chinas-most-powerful-ai-models-uh-oh-jensen/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Inference Serving</div><div class="body">NVIDIA showed a 753-billion-parameter model, GLM-5.3, served with vLLM across two DGX Station desktops linked by a 400 Gb/s network. The 464 GB of weights don&#x27;t fit on one GB300, so each machine holds half and they split every layer between them (tensor parallelism). Throughput peaked around 600 tokens per second at 16 concurrent requests and then dropped at 32. It&#x27;s a useful reference for how multi-node vLLM behaves when a model is just too big for one box.</div><a class="open" href="https://developer.nvidia.com/blog/when-one-gpu-isnt-enough-serving-glm-5-3-across-two-nvidia-dgx-stations-with-vllm/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Rivals</div><div class="body">Databricks relaunched Genie as an always-on AI coworker that runs long enterprise tasks on a schedule or trigger, chases missing inputs and asks for approval. Permissions, tool access and spending caps all run through Unity Catalog and its gateway, which keeps the agent inside Databricks&#x27; own platform.</div><a class="open" href="https://www.databricks.com/blog/new-genie-autonomous-ai-complex-enterprise-work?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<h2 class="section">AI</h2>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">Salesforce released SOV-Transcribe-1, an open-weight speech-to-text model that ranks first among open models on Artificial Analysis and lets you steer the transcription with plain-language instructions.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xvst4u/salesforcesovereignintelligencesovtranscribe1/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">DeepSeek v4.1 Flash is the first open model to score above 1% on SWE-sweep, a brutal benchmark where a model gets a large repo full of unknown bugs and must find and fix them with no hints.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xvcgxq/deepseek_flash_max_is_the_first_model_to_reach_1/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">A paper shows a malicious model can guess your age or gender from normal chats and hide that guess in its output using invisible characters or word choice, so you leak it just by sharing the text.</div><a class="open" href="https://tldr.takara.ai/p/2611.17280" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">Another paper finds that RAG systems often cite a source for a fact they actually pulled from memory, in up to 16% of claims, and bigger models do it more.</div><a class="open" href="https://tldr.takara.ai/p/2611.17161" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">OpenAI launched ChatGPT Wallet, which lets its agents buy things for you. The agent never sees your real card number, and every purchase needs your approval with Face ID or a fingerprint. It starts with US Pro subscribers.  (also in TechCrunch, The Verge)</div><a class="open" href="https://openai.com/index/introducing-chatgpt-wallet" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">LangChain raised $300 million at a $3 billion valuation, more than double last year. It has moved from a developer library to a platform for managing AI agents in production.</div><a class="open" href="https://techcrunch.com/2026/11/13/ai-agent-startup-langchain-hits-3b-valuation/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">The WSJ reports Huang privately called his interim successor Colette Kress &quot;a deer in the headlights&quot; earlier this year, which won&#x27;t help confidence in the handover.</div><a class="open" href="https://techcrunch.com/2026/11/13/jensen-huang-didnt-show-confidence-in-his-successor-report-says/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Amazon wants to build a catalog of every product sold anywhere online, even ones it doesn&#x27;t sell, so people and AI agents shop through Amazon instead of Reddit or Google.</div><a class="open" href="https://www.theverge.com/tech/1033697/amazon-world-product-graph-ai-search" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">ElevenLabs launched ElevenAI, a meeting note-taker and dictation app for teams.</div><a class="open" href="https://techcrunch.com/2026/11/13/elevenlabs-new-app-combines-meeting-note-taking-and-dictation-for-teams/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">llama.cpp hit version 1.0. The headline is a stability promise: breaking changes to its C API will now come only with a major version bump, which makes it much safer to build products on. It supports over 150 model architectures and ships through Docker, Homebrew, Debian and more.</div><a class="open" href="https://huggingface.co/blog/ggml-org/llama-cpp-v1" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">Google open-sourced &quot;elephant-goldfish-model&quot;, a plugin for coding assistants where one agent drafts a spec with full context and fresh reviewers critique it with no memory of the chat.</div><a class="open" href="https://github.com/google/elephant-goldfish-model" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">AMD&#x27;s experimental hrx-loom toolchain let one developer build fast kernels for 51 popular models on Strix Halo chips without touching the inference engine.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xvcmm0/i_built_speedy_strix_halo_kernels_for_the_top51/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">Someone got Qwen3.5-9B running on a PS4&#x27;s GPU at 31 to 39 tokens per second, using the model&#x27;s built-in draft head to guess tokens ahead.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xvbn2m/qwen359b_running_on_a_ps4s_gpu_offline_using_its/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">OpenAI Foundation board member Paul Christiano told a Toronto audience that an AI accident is the most likely way most of them will die, and that an AI takeover could be months away.</div><a class="open" href="https://arstechnica.com/ai/2026/11/ai-is-the-most-likely-reason-youll-die-openai-board-member-warns/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">The Verge&#x27;s hands-on with Claude Duet, Anthropic&#x27;s consumer agent, found it jumpy but genuinely helpful for work tasks.</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1032518/claude-duet-ai-agent-hands-on" target="_blank" rel="noopener">Open ↗</a></article>
+<h2 class="section">From your inbox</h2>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">A Microsoft 365 outage on November 12 took down email, parts of Teams and the Intune admin tools for hours, after failing server health checks overwhelmed a backend process.  (also in Hacker Newsletter, Morning Brew)</div><a class="open" href="https://www.theregister.com/saas/2026/11/12/microsoft-struggling-to-fix-massive-cloud-outage-thats-taken-down-email-and-intune/5309531?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">Anthropic donated MCP and Agent Skills to the Linux Foundation&#x27;s Agentic AI Foundation, and Google is backing them as shared open standards for agents.</div><a class="open" href="https://opensource.googleblog.com/2026/11/scaling-ai-agents-open-standards-mcp-aaif.html?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">Apple&#x27;s Claris is previewing Harbor, which turns a fleet of Apple silicon Macs into private on-prem AI servers. Separately, Apple has its own Mac app coming to make running local models easy.</div><a class="open" href="https://www.computerworld.com/article/4247680/claris-harbor-could-turn-mac-fleets-into-on-prem-ai-servers.html?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">AWS Cloud WAN now has flow logs, so you can see traffic across VPCs, accounts and regions without stitching logs together.</div><a class="open" href="https://aws.amazon.com/about-aws/whats-new/2026/11/aws-cloud-wan-flow-logs/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">Gartner expects AI to create 10.6 million jobs and cut 8.9 million by 2030, with another 5 million hires simply delayed.</div><a class="open" href="https://www.computerworld.com/article/4247895/ai-related-job-creation-to-outpace-losses-by-2030-says-gartner.html?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">a16z argues we&#x27;re entering a &quot;business-to-agent&quot; economy, where companies need to sell to AI agents acting for customers.</div><a class="open" href="https://www.a16z.news/p/welcome-to-the-b2a-economy?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Hacker Newsletter</div><div class="body">Val Town, the hosted platform for small JavaScript scripts and APIs, is shutting down.</div><a class="open" href="https://blog.val.town/winding-down?utm_source=hackernewsletter&amp;utm_medium=email&amp;utm_term=startup_news" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Hacker Newsletter</div><div class="body">Jane Street is changing its software engineering interviews a little to account for AI.</div><a class="open" href="https://blog.janestreet.com/software-engineering-interviews-are-changing-a-little/?utm_source=hackernewsletter&amp;utm_medium=email&amp;utm_term=working" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Hacker Newsletter</div><div class="body">Yogurt is a free, private, open-source alternative to the Granola meeting-notes app.</div><a class="open" href="https://github.com/FrigadeHQ/yogurt?utm_source=hackernewsletter&amp;utm_medium=email&amp;utm_term=show_hn" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Hacker Newsletter</div><div class="body">Blender 5.3 is out with Gaussian splat support.</div><a class="open" href="https://www.blender.org/download/releases/5-3/?utm_source=hackernewsletter&amp;utm_medium=email&amp;utm_term=design" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Entrackr</div><div class="body">Paytm&#x27;s payments arm got the RBI&#x27;s in-principle nod for a wallet licence. Separately, the IT ministry is looking into home services apps collecting first-person video from gig workers to train physical AI models.</div></article>
+<article class="card"><div class="meta">Finshots</div><div class="body">China is paying its own people to shop, with subsidies on phones and EVs, because job worries, an ageing population and the property slump keep households from spending.</div></article>
+<article class="card"><div class="meta">Finshots</div><div class="body">Defence is turning into a subscription business: startups like Anduril keep their designs and rent them to militaries. Indian defence-tech funding more than doubled to $282.5 million in 2025, but renting means someone else can change your system overnight.</div></article>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">US existing home sales fell 5.5% in October to their lowest in 16 years, with mortgage rates still above 7%.</div></article>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">Burberry is beating the luxury slump by leaning on cheaper items and its trench coat, with US sales up 11%.</div></article>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">ESPN will pay $1.7 billion over five years for the College Football Playoff, which grows from 12 to 24 teams in 2027.</div></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
