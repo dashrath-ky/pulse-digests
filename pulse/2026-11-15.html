@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .section{width:80%;max-width:820px;margin:18px auto 0;font-size:12.5px;font-weight:700;
+    letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">27 stories</div></header>
+<main>
+<h2 class="section">For you</h2>
+<article class="card"><div class="meta">GPUs &amp; Capacity</div><div class="body">The US Commerce Department is reportedly close to a rule that would stop Chinese AI firms from renting advanced Nvidia GPUs in data centers outside China. Today&#x27;s export controls cover shipping chips, but renting capacity from a cloud abroad has been a gap, and reports say Tencent, Alibaba and ByteDance have such offshore deals in places like Malaysia and Singapore. The rule isn&#x27;t published yet and its legal footing is contested, while a separate bill giving Commerce clear power over remote access passed the House and still needs the Senate. If it lands, clouds in Southeast Asia lose big Chinese tenants, which could free up or reprice GPU capacity in those regions.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xwmnkw/rasa_will_cause_total_chaos_to_open_llms_and/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">GPUs &amp; Capacity</div><div class="body">SemiAnalysis estimates that more than 1.5 gigawatts of export-banned Nvidia hardware reached China in recent years, not counting the China-specific H20 and H800. Analysts say smuggling at that scale may be the real reason behind Jensen Huang&#x27;s exit, and SemiAnalysis claims Commerce reached a similar number. More pressure on chip tracking means more paperwork and slower supply for everyone buying top-end GPUs.</div><a class="open" href="https://www.tomshardware.com/tech-industry/artificial-intelligence/mass-smuggling-of-nvidia-ai-gpus-could-be-the-underlying-cause-of-jensen-huangs-departure-analysts-claim-more-than-1-5-gigawatts-of-banned-chips-tracked-to-china-despite-export-controls" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">GPUs &amp; Capacity</div><div class="body">What&#x27;s new on Nvidia&#x27;s startup investments: a report now alleges Nvidia used that funding to create scarcity, backing AI startups that then spent the money buying its GPUs.</div><a class="open" href="https://www.techpowerup.com/354814/nvidia-allegedly-engineered-scarcity-by-funding-ai-startups-to-buy-its-gpus" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Inference Serving</div><div class="body">SGLang announced its 1.0 release at the SGLang Summit, a week after llama.cpp did the same. A 1.0 usually signals API stability, which matters if you build serving on top of it.</div><a class="open" href="https://latent.space/p/ainews-the-no-ai-slop-manifesto/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Inference Serving</div><div class="body">vLLM put out a fourth release candidate for v0.34.0, so the final release should be close.</div><a class="open" href="https://github.com/vllm-project/vllm/releases/tag/v0.34.0rc4" target="_blank" rel="noopener">Open ↗</a></article>
+<h2 class="section">AI</h2>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">Nex-AGI released Nex-N2.6, a 321-billion-parameter open model built on GLM-5.3-Flash for computer use, coding and long tool-using tasks. It mainly fixes the earlier version&#x27;s habit of reasoning in circles.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xw9mpa/nexaginexn26_hugging_face/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">Local-model fans are praising Liquid AI&#x27;s LFM2.5-24B-A2B, which only uses 2 billion parameters per word, as the best mix of speed and smarts for running agent tasks on normal hardware. It isn&#x27;t a coding model.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xwgiow/lfm2524ba2b_hermes_is_awesome/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">AI helped decode Kurt Gödel&#x27;s 1,009 pages of notes, mostly in an obsolete shorthand, and they reportedly hold hundreds of proved theorems he never published.</div><a class="open" href="https://www.theguardian.com/science/2026/nov/13/kurt-godel-notebooks-ai-helps-unlock-hidden-discoveries-man-who-transformed-maths" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">Someone built a working Rust and CUDA version of Qualcomm&#x27;s Leech lattice quantization, squeezing Qwen3 models to about 2.7 bits per weight with better quality than the usual 2-bit format, though slower.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xwerbo/qwen3_4b_8b_14b_at_27_bits_per_weight_with_leech/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">tiny-voca is a fully open text-to-speech model with just 4.5 million parameters (18 MB) that runs in the browser about 70 times faster than real time.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xw7zrg/tinyvoca_a_fully_open_45mparameter_tts_code/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">What&#x27;s new in the Jensen Huang story: a petition asking Nvidia to bring him back passed 115,000 signatures, including about 6,000 current employees, Elon Musk, Garry Tan and Tim Sweeney. It won&#x27;t bind the board, but it shows how much of Nvidia&#x27;s identity was tied to him.  (also in The Verge)</div><a class="open" href="https://techcrunch.com/2026/11/14/elon-musk-other-tech-execs-sign-petition-calling-on-nvidia-to-reinstate-jensen-huang/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Asian governments are reacting too. Some rushed to confirm their chip supply deals still stand, others are watching local projects or pushing ongoing investigations.</div><a class="open" href="https://techcrunch.com/2026/11/14/asian-governments-react-to-nvidia-ceo-jensen-huangs-exit/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Nvidia&#x27;s security chief quietly left in August, and a former intelligence officer says the leaks behind the scandal are the kind most corporate security teams can&#x27;t catch.</div><a class="open" href="https://techcrunch.com/2026/11/14/where-was-nvidias-security-team/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">OpenAI broke up its standalone robotics team. Researchers moved to the main research group and hardware people to the applied side, since its general models now run robots directly.</div><a class="open" href="https://fortune.com/2026/11/13/openai-disbands-robotics-team-as-its-general-models-start-running-robots/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">What changed in the Google schools fight: Chicago Public Schools said it will simply switch search engines rather than accept Gemini as the price of keeping Google Search.  (also in NPR)</div><a class="open" href="https://www.techspot.com/news/114532-chicago-schools-tell-google-they-can-live-without.html" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">Meta open-sourced Astryx, the design system behind 13,000+ of its internal apps, with 150+ accessible React components and a CLI, pitched as built for people and coding agents together.</div><a class="open" href="https://github.com/meta/astryx" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">Plannotator, trending on GitHub, gives you one inbox to review and annotate the plans, diffs and artifacts your coding agents produce, then send feedback back to them.</div><a class="open" href="https://github.com/backnotprop/plannotator" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">tandem.cpp, a patch set for llama.cpp, now runs DeepSeek-V4.1-Flash on a 64 GB PC with a 16 GB GPU by keeping the busiest experts on the GPU, and it added AMD support.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xwan2j/update_tandemcpp_deepseekv41_on_a_64_gb_pc_with_a/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">Simon Willison&#x27;s datasette-llm now talks to any OpenAI-compatible endpoint, so you can point Datasette&#x27;s agent at a local model in one command.</div><a class="open" href="https://simonwillison.net/2026/Nov/14/datasette-llm/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">Nathan Lambert argues Huang&#x27;s exit is a big blow to American open models, which Nvidia funded heavily. His fix is to build a real frontier-level US open lab, and his bigger worry is clumsy state and national rules on open models.</div><a class="open" href="https://www.interconnects.ai/p/open-source-ai-without-jensen" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">Speakers at the AIE CODE conference co-signed a &quot;No AI Slop&quot; manifesto, meant as a shared reference for teams arguing about low-effort AI output at work. It hit the Hacker News front page.</div><a class="open" href="https://latent.space/p/ainews-the-no-ai-slop-manifesto/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">The Economist&#x27;s lead editorial says you should expect an AI crash.</div><a class="open" href="https://www.economist.com/leaders/2026/11/12/why-you-should-expect-an-ai-crash" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">Helen Toner, the former OpenAI board member who voted to fire Sam Altman, says AI safety can&#x27;t depend on trusting any one CEO.</div><a class="open" href="https://www.theverge.com/podcast/1032907/helen-toner-openai-cset-ai-safety-policy-interview" target="_blank" rel="noopener">Open ↗</a></article>
+<h2 class="section">From your inbox</h2>
+<article class="card"><div class="meta">ByteByteGo</div><div class="body">A clear walk through how Kubernetes keeps an app running: you declare the desired state, the API server stores it in etcd, controllers keep reality matching it, and the scheduler picks a node for each pod.</div></article>
+<article class="card"><div class="meta">ByteByteGo</div><div class="body">Their rule of thumb on agents: start with a single agent and move to multiple only when context size or reliability becomes the bottleneck, because coordination isn&#x27;t free.</div></article>
+<article class="card"><div class="meta">Finshots</div><div class="body">The Netherlands is closing prisons because it doesn&#x27;t have enough prisoners. It handles minor crimes with fines, community service and rehab, so its prison population fell from about 20,000 in 2006 to 12,570, and old prisons became hotels and cinemas.</div></article>
+<article class="card"><div class="meta">Finshots</div><div class="body">A 1987 Kannada film song by Vijaya Anand, with a young A.R. Rahman on keyboards, ended up on a radio station in GTA: Liberty City Stories via a bootleg cassette and David Byrne&#x27;s record label.</div></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
