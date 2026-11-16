@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .section{width:80%;max-width:820px;margin:18px auto 0;font-size:12.5px;font-weight:700;
+    letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">25 stories</div></header>
+<main>
+<h2 class="section">For you</h2>
+<article class="card"><div class="meta">Inference Serving</div><div class="body">vLLM shipped the final v0.34.0 release, a day after the fourth release candidate. The release notes hadn&#x27;t loaded on GitHub at the time of writing, so check them before bumping the version in Ray Serve or Anyscale images.</div><a class="open" href="https://github.com/vllm-project/vllm/releases/tag/v0.34.0" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">GPUs &amp; Capacity</div><div class="body">Congress is moving to tighten AI chip export rules after the Nvidia spy scandal. Both Democrats and Republicans back several bills, and they want Huang and other Nvidia leaders to testify. Together with the Commerce rule on renting GPUs abroad covered yesterday, this points to more friction in where top-end GPUs can be sold and run.</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1033984/congress-export-rules-ai-chips-china" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">GPUs &amp; Capacity</div><div class="body">TechCrunch&#x27;s Equity podcast asks whether Nvidia&#x27;s trouble spreads to the rest of AI. Nvidia holds roughly 80% of the AI GPU market and has about $99 billion in investments plus $36 billion in cloud service commitments, including stakes in CoreWeave and Nebius. If leadership turmoil slows that money, the GPU clouds it props up feel it first.</div><a class="open" href="https://techcrunch.com/2026/11/15/is-bad-news-for-jensen-huang-also-bad-news-for-the-ai-industry/" target="_blank" rel="noopener">Open ↗</a></article>
+<h2 class="section">AI</h2>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">OpenAI says GPT-6 Astra helped turn a candidate lattice definition of the Standard Model of particle physics into a detailed proof. It&#x27;s a rare claim of an AI doing real work on an open problem in theoretical physics.</div><a class="open" href="https://openai.com/index/step-toward-defining-the-standard-model" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">OpenAI also launched a separate science blog for findings and first-hand accounts from researchers using its models.</div><a class="open" href="https://openai.com/index/our-new-blog-for-science" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">Villanova2 is a new family of EU-built open models for English, Italian, German, Spanish and French. The headline model is a mixture-of-experts with 15.5 billion parameters, of which only about 4 billion are active per token, plus small 2B and vision versions.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xx1rbk/villanova2_a_villanovaai_collection/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">A blurred benchmark screenshot has people guessing that Zhipu is about to release a new GLM model.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xwy3ka/probable_glm_model/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">Axiomic Labs released X3Guard, a tiny 150-million-parameter model that flags harmful or adversarial prompts in tens of milliseconds, even on a phone.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xwyp7w/x3guard_a_150m_parameter_prompt_guard/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">What&#x27;s new in the Huang story: The Verge reports he might be plotting a return to Nvidia. Megaspeed, the Nvidia customer at the center of the spy allegations, now says Alice Huang hasn&#x27;t worked there since August 2025.</div><a class="open" href="https://www.theverge.com/tech/1033999/jensen-huang-return-nvidia-megaspeed" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Apple started a health study through a new app where people ask medical questions and rate the AI&#x27;s answers. It&#x27;s run with OpenEvidence, a clinical AI tool that doctors use, and aims to learn how useful these answers really are.  (also in TechCrunch)</div><a class="open" href="https://www.theverge.com/tech/1033355/apples-new-study-looks-to-improve-the-effectiveness-of-ai-health-tools" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Indian chip startup Bharat Semi raised a $24 million seed round for AI-enabled sensors and already has design wins with companies like General Atomics.</div><a class="open" href="https://techcrunch.com/2026/11/15/indian-chip-startup-bharat-semi-lands-24m-seed-round-as-it-eyes-global-ai-sensor-market/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">A llama.cpp pull request speeds up 2-bit models on CPUs with newer Intel and AMD vector instructions, giving about 1.3x faster prompt processing.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xx0fqn/cpuonly_boost_for_q2_0_on_avxvnni_pull_request/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">One developer got prompt processing for a mixture-of-experts model offloaded to CPU from 345 to 466 tokens per second on a single 3090, just by tuning how memory copies run between CPU and GPU.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xx1owx/moe_offload_on_a_3090_prefill_345_466_ts_by/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">Basalt 0.4.0, a local inference engine, now runs Qwen 3.8 27B at up to 770 tokens per second on an RTX 5090 and adds routing between several models.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xx1cu9/basalt_040_more_models_still_as_fast_qwen_27b_up/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">inside-llm is a new open-source tool that shows what a model does as it generates, and can compare two quantized versions to find the exact token where they start to differ.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xx7qbf/i_have_created_a_tool_to_observe_what_happens/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">Simon Willison released Datasette 1.0a43, with streaming exports and a security fix for private stored queries that could leak their title and SQL. He&#x27;s leaning on Claude to push the 1.0 milestone, now 53% done.</div><a class="open" href="https://simonwillison.net/2026/Nov/15/datasette/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">Datasette Apps, small sandboxed web apps that run SQL against your data, can now link to each other through URL fragments.</div><a class="open" href="https://simonwillison.net/2026/Nov/15/datasette-apps/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">Sure, a community fork of the abandoned Maybe Finance personal finance app, is trending on GitHub.</div><a class="open" href="https://github.com/we-promise/sure" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">A useful tip: most &quot;abliterated&quot; (uncensored) models differ from the original by a tiny change that fits in a small LoRA adapter. You can apply it at runtime to a model you already have instead of downloading hundreds of gigabytes.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xxawbh/why_download_abliterated_flash_next_models_when/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">A developer who fine-tuned small Qwen models for 3D work argues that a specialized 4B model is enough for most real tasks.</div><a class="open" href="https://www.reddit.com/r/LocalLLaMA/comments/1xxfv69/im_starting_to_think_a_specialized_4b_is_enough/" target="_blank" rel="noopener">Open ↗</a></article>
+<h2 class="section">From your inbox</h2>
+<article class="card"><div class="meta">Finshots</div><div class="body">The rupee recovered to ₹93.63, its best in six months, after hitting about ₹96 in March. The RBI helped by selling dollars straight to state oil companies so they stop competing for them in the market, and foreign investors bought nearly $6 billion of Indian stocks in ten days. But a strong dollar, a $39.9 billion trade deficit in October and 90% dependence on imported oil mean the recovery isn&#x27;t secure yet.</div></article>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">Arion Press, a 50-year-old San Francisco shop, hand-prints three books a year and sold out its $3,500 and $10,000 annual subscriptions for the first time, backed by tech names like Salesforce co-founder Parker Harris.</div></article>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">Literary tourism is booming: 57% of travelers have booked or would book a trip inspired by a book, and EF Ultimate Break now sells a Percy Jackson tour through Greece and Italy.</div></article>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">Silent book clubs, where people just show up and read their own books quietly, grew from 260 chapters before the pandemic to more than 2,300 in 74 countries.</div></article>
+<article class="card"><div class="meta">Lenny&#x27;s Newsletter</div><div class="body">Lenny interviews Mona Sarantakos on how Meta launched Muse, which he calls the most successful consumer product of the year.</div><a class="open" href="https://www.youtube.com/watch?v=WY0cdD4gNoQ&amp;feature=youtu.be" target="_blank" rel="noopener">Open ↗</a></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
