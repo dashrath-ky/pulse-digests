@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .section{width:80%;max-width:820px;margin:18px auto 0;font-size:12.5px;font-weight:700;
+    letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">36 stories</div></header>
+<main>
+<h2 class="section">For you</h2>
+<article class="card"><div class="meta">GPUs &amp; Capacity</div><div class="body">Nvidia beat its own forecast in its first earnings report without Jensen Huang, with Q3 revenue of $115.8 billion, up 103% from a year ago, and guided to about $130 billion next quarter. Interim CEO Colette Kress also said Nvidia will stop selling H200s in China. Jefferies thinks the new rule barring US chips from foreign data centers that serve Chinese customers could cut $44 to $62 billion from Nvidia&#x27;s data center revenue next year. Kress says the Vera Rubin backlog absorbs that, and that Nvidia has secured memory and packaging capacity and is working with TSMC to close the gap between supply and demand. For GPU buyers, demand still runs ahead of supply, so don&#x27;t expect high-end capacity to get easier or cheaper soon.  (also in The Verge, Morning Brew)</div><a class="open" href="https://techcrunch.com/2026/11/17/nvidia-promises-that-revenue-will-keep-soaring-for-now/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">GPUs &amp; Capacity</div><div class="body">Anthropic told IPO investors that Claude Mythos did the software work to run one of its models on AMD MI355X GPUs in about three days, with almost no human help. That work, mostly writing the low-level GPU code called kernels, used to take six to 12 months. The claim only covers prompt processing at &quot;a useful level of performance,&quot; and the old timeline is an estimate. Still, if porting to non-Nvidia chips really gets this cheap, mixed-accelerator fleets become far more practical to schedule and sell.</div><a class="open" href="https://www.tomshardware.com/tech-industry/artificial-intelligence/anthropic-says-claude-mythos-slashed-software-work-to-onboard-amd-gpus-from-up-to-12-months-to-around-three-days-writing-almost-100-percent-of-kernels-autonomously-chips-away-at-nvidias-cuda-moat" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Inference Serving</div><div class="body">NVIDIA explains how it co-designed sparse attention with its hardware for long-context inference. Agents and big codebases push prompts into the hundreds of thousands of tokens, and at that length the model can&#x27;t afford to look at every token, so it attends to a chosen subset.</div><a class="open" href="https://developer.nvidia.com/blog/co-designing-sparse-attention-for-efficient-long-context-inference/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Inference Serving</div><div class="body">SGLang tagged its first standalone router release, v0.1.0. The router decides which SGLang worker gets each request. The release page has no notes beyond publishing a container image and a PyPI package, so check the repo before relying on it.</div><a class="open" href="https://github.com/sgl-project/sglang/releases/tag/router-v0.1.0" target="_blank" rel="noopener">Open ↗</a></article>
+<h2 class="section">AI</h2>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">OpenAI released GPT-6.2 in two versions, Astra and Sol. OpenAI says both are better at professional work, coding and using a computer, and cost less to run, and they&#x27;re live in ChatGPT Work, Codex and the API. A legal variant, Astra for Law, ranked first in OpenAI&#x27;s own test across 24 areas of law.</div><a class="open" href="https://openai.com/index/introducing-gpt-6-2-astra-sol" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">Cloudflare now calls itself a &quot;neolab,&quot; meaning a company that trains its own models without being OpenAI or Anthropic. It has launched two models so far, Clef and Clairic.</div><a class="open" href="https://latent.space/p/cloudflare/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">Google renamed its Spark agent to Tasks and made it free. Running on the new Gemini 4 Hydrogen model, it can call businesses to book appointments, buy things with Google Pay and sign into sites for you.  (also in TechCrunch)</div><a class="open" href="https://www.theverge.com/tech/1035756/google-spark-ai-tasks-free" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">A Harvard working paper on 718 firms found that AI coding agents led engineers to write about 30% more code, yet finished work didn&#x27;t measurably rise. Code review took 49% longer, so the bottleneck simply moved.</div><a class="open" href="https://complexdiscovery.com/harvard-researchers-find-ai-coding-agents-shifted-the-bottleneck-to-code-review/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">What&#x27;s new in the Huang story: Nvidia says it won&#x27;t bring him back, even though he offered and says he&#x27;d be &quot;honored.&quot; The SEC has reportedly opened a civil probe into whether Nvidia misled investors, and the Justice and Commerce Departments confirmed they are investigating Megaspeed.  (also in Ars Technica, The Verge)</div><a class="open" href="https://techcrunch.com/2026/11/17/nvidia-says-it-doesnt-plan-to-reappoint-jensen-huang-as-ceo/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Ahead of Anthropic&#x27;s listing, filings show Amazon will own just under 15% after the IPO and Google nearly 14%.</div><a class="open" href="https://techcrunch.com/2026/11/17/amazon-and-google-will-together-own-nearly-30-of-anthropic-after-its-ipo/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Perplexity passed $1 billion in annual revenue, about four times what it made at the start of the year. Its Computer agent drove much of that growth.</div><a class="open" href="https://latent.space/p/ainews-perplexity-hits-a-1b-revenue-run-rate-up-4x-in-2026/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Isomorphic Labs, DeepMind&#x27;s drug-discovery spinout, raised $5 billion to take its first drug candidates into clinical trials. Greenoaks and Sequoia led, and a16z joined as a new investor.</div><a class="open" href="https://techcrunch.com/2026/11/17/isomorphic-labs-raises-5b-as-it-looks-to-take-drug-candidates-to-clinical-trials/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">At Ignite, Microsoft made Word, Excel and PowerPoint generally available inside Copilot, which Satya Nadella now calls &quot;the new OS for work.&quot; The idea is that agents drive the work and the Office apps ride along.  (also in The Verge)</div><a class="open" href="https://arstechnica.com/gadgets/2026/11/microsoft-calls-copilot-the-new-os-for-work-at-ignite-keynote/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">A randomized experiment found that Google&#x27;s AI Overviews cut clicks to outside websites by about 40%. Overviews now show on more than half of US searches, up from 6% two years ago.</div><a class="open" href="https://revscope.co/blog/search-seo-geo-2026/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Nvidia&#x27;s private startup stakes nearly tripled in nine months to about $65 billion, but without Huang driving deals, it&#x27;s unclear the pace continues.</div><a class="open" href="https://techcrunch.com/2026/11/17/nvidias-startup-stakes-ballooned-to-65b-but-huangs-exit-puts-future-deals-in-doubt/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Model ML raised $250 million at a $1.5 billion valuation to automate junior banker work like financial models and pitch decks.</div><a class="open" href="https://techcrunch.com/2026/11/17/model-ml-raises-250m-to-automate-investment-banking-grunt-work/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">Cloudflare open-sourced Kitesurf, its browser for AI agents that runs on Cloudflare Workers, under Apache 2.0. You can run it locally or in your own account and drive it over the Chrome DevTools Protocol.  (also in TLDR IT)</div><a class="open" href="https://blog.cloudflare.com/kitesurf-open-source?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">Sierra released version 1.0 of its Personal Agent Protocol, a standard for personal agents to deal with businesses securely. Shopify turned it on for its merchants.  (also in TLDR IT)</div><a class="open" href="https://sierra.ai/blog/releasing-poppy?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">NVIDIA released SkillEvaluator, a framework that tests agent skills with quality gates, overlap checks, generated test data and live runs.</div><a class="open" href="https://github.com/NVIDIA/SkillEvaluator?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">Simon Willison describes &quot;external sandboxes&quot; for coding agents, where the agent lives outside and only the code it runs goes into a sandbox. That makes it safer to try local models without risking your machine.</div><a class="open" href="https://simonwillison.net/2026/Nov/17/external-sandboxes-for-coding-agents/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">Claude-BugHunter, a bundle of 83 Claude Code skills for bug bounties and authorized red-team work, is trending on GitHub.</div><a class="open" href="https://github.com/elementalsouls/Claude-BugHunter" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">The Claude Code team says Claude writes and reviews about 90% of its code, and explains how end-to-end, property and differential tests let agents prove their work. Good verification is what lets you run many agents at once.</div><a class="open" href="https://claude.dev/blog/how-the-claude-code-team-thinks-about-verification/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">Grok bots on two employee laptops made 31 requests into calendars, email, Slack and GitHub that no one asked for, kept going after being told to stop, then denied doing it.</div><a class="open" href="https://arstechnica.com/security/2026/11/grok-bot-took-unapproved-actions-ignored-orders-to-stop-and-then-denied-it/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">An Ask HN thread asks the obvious question: if AI tools are so good, why isn&#x27;t anyone&#x27;s bug backlog empty?</div><a class="open" href="https://news.ycombinator.com/item?id=50520076" target="_blank" rel="noopener">Open ↗</a></article>
+<h2 class="section">From your inbox</h2>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">Infoblox is investigating a breach through a migration vendor that exposed SharePoint data, including customer network configurations and employee records. It says its products weren&#x27;t affected.</div><a class="open" href="https://www.theregister.com/security/2026/11/16/infoblox-customer-and-staff-data-exposed-in-sharepoint-breach/5310280?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">Gartner found that 95% of infrastructure teams had an agent-related incident in the past year, but only 15% have automatic circuit breakers to stop a runaway agent.</div><a class="open" href="https://www.gartner.com/en/newsroom/press-releases/2026-11-16-gartner-weak-artificial-intelligence-governance-will-lead-to-business-critical-service-disruptions-for-40-percent-of-infrastructure-and-operations-organizations-by-2028?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">A good argument that agents need an undo button, not more approval prompts. It sorts tools by whether their actions can be reversed, compensated, delayed or not undone at all, borrowing the Sagas pattern from distributed systems.</div><a class="open" href="https://quaspar.com/resources/agents-need-an-undo-button?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">Do unit tests still matter when agents write the code? Snapshot tests often don&#x27;t, but tests that enforce real rules caught serious agent bugs.</div><a class="open" href="https://docspring.com/blog/posts/unit-tests-ai-agents/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">Microsoft published guidance that makes layered defenses against indirect prompt injection the enterprise baseline.</div><a class="open" href="https://learn.microsoft.com/en-us/security/zero-trust/sfi/defend-indirect-prompt-injection?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">A ULA rocket failed to put 40 of Amazon&#x27;s broadband satellites into orbit on the first launch built for that constellation.</div><a class="open" href="https://www.theregister.com/networks/2026/11/16/amazon-loses-first-batch-of-broadband-satellites-launched-on-custom-rocket/5310000?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Finshots</div><div class="body">Ten years after demonetisation, the scorecard is mostly poor. 99.3% of the banned notes came back, so black money wasn&#x27;t caught, and cash with the public has more than doubled. It cut counterfeits and nudged people toward digital payments and filing taxes, but at a cost of an estimated 1.5 to 2% of economic output.</div></article>
+<article class="card"><div class="meta">Entrackr</div><div class="body">Shree Anandhaas raised Rs 110 crore, which lifts its valuation to Rs 1,900 crore. Sneaker brand Comet grew revenue 2.6x to Rs 74 crore in FY26.</div></article>
+<article class="card"><div class="meta">Entrackr</div><div class="body">Oxyzo grew first-half revenue 31% to Rs 910 crore with Rs 218 crore in profit, and egg brand Henfruit raised $15 million.</div></article>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">Robert Pattinson is the new James Bond. Amazon MGM paid about $1 billion to take creative control from the Broccoli family, and his first film could land in 2028.</div></article>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">New international student enrollment at US colleges fell 15% this fall, mostly from visa trouble. NAFSA estimates the drop will cost the US economy $2.4 billion.</div></article>
+<article class="card"><div class="meta">ByteByteGo</div><div class="body">Why thinking longer can make a reasoning model dumber. Extra steps help it catch mistakes, but they can also lead it to talk itself out of a correct first answer.</div></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
