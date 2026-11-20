@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .section{width:80%;max-width:820px;margin:18px auto 0;font-size:12.5px;font-weight:700;
+    letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">34 stories</div></header>
+<main>
+<h2 class="section">For you</h2>
+<article class="card"><div class="meta">Inference &amp; RL Infrastructure</div><div class="body">NVIDIA explained how Dynamo, its serving layer, speeds up the rollout phase of reinforcement learning, where the model generates lots of answers before each training step. Its router sends each request to a worker that already has the right prompt cached, it ships new weights GPU to GPU as small deltas instead of full checkpoints, and it reroutes work when a worker dies. CoreWeave says weight updates got up to 15x faster. It plugs into verl, NeMo RL, Slime and prime-rl, with SGLang as the engine, and the post doesn&#x27;t mention Ray. That&#x27;s the RL post-training stack Ray users run today, so it&#x27;s worth knowing what Dynamo is competing to own.</div><a class="open" href="https://developer.nvidia.com/blog/reducing-rollout-bottlenecks-in-reinforcement-learning-with-nvidia-dynamo/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Cloud &amp; Networking</div><div class="body">AWS made its multicloud Interconnect with Azure generally available. You can now set up a private link between AWS and Azure from the console or API, instead of building the networking yourself. It&#x27;s live in N. Virginia, Frankfurt and Sydney, and AWS says Google Cloud and Oracle get the same experience, though it doesn&#x27;t say those are GA yet.</div><a class="open" href="https://aws.amazon.com/about-aws/whats-new/2026/11/aws-announces-AWS-interconnect-multicloud-azure-ga/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Cloud &amp; Networking</div><div class="body">Microsoft signed a bigger deal with Intel: a multi-year supply of Xeon server chips, plus Intel&#x27;s packaging tech for Azure&#x27;s own custom chips.</div><a class="open" href="https://www.intel.com/content/www/us/en/newsroom/news/corporate/microsoft-azure-infrastructure-collaboration.html?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Security &amp; Databases</div><div class="body">A critical Java bug nicknamed &quot;Java4Shell&quot; can let attackers run code on servers without logging in. It sits in OpenJDK&#x27;s Base64 decoder and hits OpenJDK 17.0.6 and later on x86 CPUs with a particular AVX-512 feature turned on. Researchers showed it against Jenkins, Kafka, Elasticsearch, Keycloak, Jira and Confluence. Patch to Oracle&#x27;s November builds, or start the JVM with AVX-512 disabled until you can. (also in TLDR IT)</div><a class="open" href="https://www.theregister.com/security/2026/11/18/oracle-reveals-fix-this-asap-grade-java4shell-bug-that-allows-attacks-on-many-third-party-apps/5310661?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Security &amp; Databases</div><div class="body">PostgreSQL 19 is out, two months late because the team was busy fixing a wave of AI-found security bugs. The standout feature is a new WAIT FOR LSN command, which lets an app reading from a replica wait until it has caught up with a write it just made. That&#x27;s &quot;read-your-writes&quot; without sending every read to the primary.</div><a class="open" href="https://simonwillison.net/2026/Nov/19/postgresql-19/" target="_blank" rel="noopener">Open ↗</a></article>
+<h2 class="section">AI</h2>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">Google&#x27;s Gemini 4 pricing got even more confusing with Neon. Right now Neon is the most expensive at $3 per million input tokens, because Carbon is half price until December 1, when it doubles to $4.</div><a class="open" href="https://simonwillison.net/2026/Nov/18/llm-gemini/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">ChatGPT now transcribes your voice live as you talk, and the old 10-minute recording limit is gone. It&#x27;s rolling out on every plan.</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1037634/openai-chatgpt-live-dictation" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">A paper asks whether an LLM can write a small, readable program per search topic to judge relevance, instead of calling a frontier model for every document. The answer looks like yes for a lot of cases, which makes evals cheaper and repeatable.</div><a class="open" href="https://tldr.takara.ai/p/2611.24849" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">Google Research built a game you can only win with a quantum computer, as a cleaner way to show quantum advantage.</div><a class="open" href="https://research.google/blog/a-game-you-cannot-win-unless-you-have-a-quantum-computer/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">What changed since yesterday: Anthropic is now trading on Nasdaq as &quot;ANT&quot;. It opened at $111.50, 33% above the $83 IPO price, after raising about $81 billion, the biggest IPO ever. Each of the seven founders took home about $280 million, and pledges tied to the listing could send up to $156 billion to charity. At the opening bell Dario Amodei said Anthropic will keep pacing AI development regardless of market pressure.  (also in The Verge, TLDR Fintech)</div><a class="open" href="https://techcrunch.com/2026/11/19/anthropic-hits-nasdaq-exchanges-at-110-27-above-ipo-price/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">A sharper take on the same IPO: Anthropic has huge compute commitments, and Amazon and Google, its biggest backers and suppliers, profit either way. The listing is the first real public test of AI&#x27;s circular financing.</div><a class="open" href="https://techcrunch.com/2026/11/19/anthropics-ipo-puts-ais-circular-financing-boom-to-the-test/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">What&#x27;s new in the Nvidia story: the stock sits around $150, almost 40% below its October 6 high, and Tuesday&#x27;s post-earnings bump is gone despite interim CEO Colette Kress saying &quot;we&#x27;ve got this&quot;.</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1038063/nvidia-stock-market-price-earnings" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Apple is hiring someone to lead an AI agent that can browse the web, work across apps and write code. That puts it up against Meta&#x27;s Muse, OpenAI&#x27;s Dots and Google&#x27;s Tasks.  (also in TechCrunch)</div><a class="open" href="https://www.theverge.com/tech/1038227/apple-ai-agent-engineer-job-listing" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Gemini&#x27;s Mac app can now use your computer, filling in forms and running multi-step tasks across files, apps and the web.  (also in TechCrunch)</div><a class="open" href="https://www.theverge.com/tech/1037902/google-gemini-macos-ai-computer-use" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Meta plans to charge $300 for Muse Charm, a small Tamagotchi-like AI gadget.</div><a class="open" href="https://techcrunch.com/2026/11/19/metas-new-muse-charm-device-may-cost-300/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Security experts think the recent run of outages at airlines, banks and productivity apps may share a cause: AI agents doing unexpected things inside those systems.</div><a class="open" href="https://techcrunch.com/2026/11/19/these-tech-outages-are-giving-y2k-ai-agent-style/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Four Baltimore teens are suing their school and police after an AI gun detector flagged a bag of Doritos as a weapon.</div><a class="open" href="https://arstechnica.com/tech-policy/2026/11/traumatized-teens-sue-school-cops-after-doritos-bag-triggers-ai-gun-alert/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Canva added a switch to turn off its generative AI features and show less AI-made content in its library.</div><a class="open" href="https://www.theverge.com/ai-artificial-intelligence/1037126/canva-ai-features-off-button" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">OpenAI described Performance Factory, a set of Codex-driven workflows that find and fix slowdowns in ChatGPT on their own.</div><a class="open" href="https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">ffmpeg-skill is trending on GitHub. It gives coding agents like Claude Code or Cursor a local video editor built on FFmpeg, and the agent checks its own output. No cloud, no API keys.</div><a class="open" href="https://github.com/kajisho5/ffmpeg-skill" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">NVIDIA walks through using agents to write tool-call parsers in Rust, the code that turns a model&#x27;s half-streamed, messy tool-call output into clean structured calls.</div><a class="open" href="https://developer.nvidia.com/blog/build-tool-calling-parsers-in-rust-with-ai-agents/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">Claire Vo, who runs ChatPRD, says token fraud has gotten bad. Groups abuse free trials of AI products to get free model usage, often to resell it or build businesses on top.</div><a class="open" href="https://simonwillison.net/2026/Nov/20/token-fraud-is-here-and-its-bad/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">Latent Space talks to Linear&#x27;s COO Cristina Cordova about how the company&#x27;s go-to-market changed after its CEO declared &quot;issue tracking is dead&quot;.</div><a class="open" href="https://latent.space/p/linear-scaling/" target="_blank" rel="noopener">Open ↗</a></article>
+<h2 class="section">From your inbox</h2>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">Microsoft and a group of companies launched an AI transparency initiative to set open standards so enterprises can check what AI agents actually do.</div><a class="open" href="https://news.microsoft.com/source/2026/11/17/microsoft-and-organizations-across-industries-launch-ai-transparency-initiative-to-strengthen-enterprise-trust-in-ai-models-and-agents?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">Windows&#x27; endpoint security platform is now generally available. It lets security vendors protect PCs without leaning so hard on kernel drivers, the kind of code behind the 2024 CrowdStrike crash.</div><a class="open" href="https://blogs.windows.com/windowsexperience/2026/11/17/windows-security-at-ignite-2026-start-secure-protect-what-matters-prepare-for-ai/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">As agents make fast operational decisions, the lines between CIO, CISO and chief risk officer are blurring, and companies need explicit rules for who owns which call.</div><a class="open" href="https://www.cio.com/article/4249210/ai-is-blurring-the-lines-between-cio-ciso-and-cro.html?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech</div><div class="body">Plaid launched Agent Detection, which tells banks whether a login or payment comes from a person or an AI agent, and which AI provider is behind it.</div><a class="open" href="https://plaid.com/blog/agent-detection-agentic-finance/?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech</div><div class="body">Block&#x27;s comeback came from cutting over 40% of staff, focusing on Square and Cash App, and using its bank charter to grow lending. Cash App now originates $19 billion in consumer loans a quarter, which also means more credit risk.</div><a class="open" href="https://dwaynegefferie.substack.com/p/blocks-turnaround-strategy?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech</div><div class="body">Revolut&#x27;s US bank will lead with credit cards and Amex-level perks while keeping lending under 10% of its balance sheet. The catch is that card perks only pay off through lending.</div><a class="open" href="https://fintechtakes.com/p/can-revolut-dominate-the-u-s-without-taking-risk?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech</div><div class="body">Separately, an Italian court put Revolut&#x27;s Italian operations under supervision for a year after finding €41.9 million moved through it by suspected criminals with no suspicious-activity reports filed.</div><a class="open" href="https://www.reuters.com/business/finance/italian-court-places-revolut-unit-under-supervision-over-money-laundering-2026-11-16/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech</div><div class="body">Blue J raised $176 million at over $700 million valuation for AI agents that check tax returns and draft replies to IRS notices.</div><a class="open" href="https://fintech.global/2026/11/16/blue-j-lands-176m-to-put-ai-agents-on-tax-desks/?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech</div><div class="body">Klarna hired Robinhood&#x27;s Chris Koegel as CFO from January.</div><a class="open" href="https://www.finextra.com/newsarticle/48754/klarna-taps-robinhood-vp-chris-koegel-as-cfo" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR Fintech</div><div class="body">Should Tesla and SpaceX merge? Shared projects like Terafab argue yes, but very different growth rates and margins argue for partnerships instead.</div><a class="open" href="https://www.mostlymetrics.com/p/should-tesla-and-spacex-merge?utm_source=tldrfintech" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Finshots</div><div class="body">Liquor stocks are falling because Indian customs stopped bulk Scotch shipments at the ports. The India-UK trade deal cut whisky duty from 150% to 75%, and companies already dropped prices by up to 7%. But customs says bulk Scotch at 62-66% alcohol is a &quot;concentrate&quot;, not whisky, so it owes 162.5%. Allied Blenders (Officer&#x27;s Choice) is most exposed, and the odd result is that importing finished bottles could become cheaper than blending in India.</div></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
