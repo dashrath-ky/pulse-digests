@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .section{width:80%;max-width:820px;margin:18px auto 0;font-size:12.5px;font-weight:700;
+    letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">35 stories</div></header>
+<main>
+<h2 class="section">For you</h2>
+<article class="card"><div class="meta">GPUs &amp; Capacity</div><div class="body">Nvidia says Vera Rubin NVL72 racks are now running in Azure data centers as a preview, though there are no VM names, regions or GA dates yet. Azure Local, Microsoft&#x27;s on-prem flavor, will also support RTX PRO 6000 Blackwell GPUs and Jetson boards. One detail worth noting: Microsoft AI uses NVIDIA Dynamo for the rollout step of reinforcement learning, the same pattern Nvidia pitched earlier this week. Rubin capacity showing up on a hyperscaler is the first real signal of when customers will start asking for it.  (also in TLDR IT)</div><a class="open" href="https://blogs.nvidia.com/blog/microsoft-ignite-accelerated-computing-azure-windows-pcs?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">GPUs &amp; Capacity</div><div class="body">OVHcloud announced 55 products at its Paris summit, including plans to offer Nvidia B300 and Rubin R200 GPUs from European data centers. Another sovereign-cloud GPU source for EU customers who can&#x27;t use the US hyperscalers.</div><a class="open" href="https://www.cloudcomputing-news.net/news/ovhcloud-cloud-ai-products-europe-sovereignty/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">GPUs &amp; Capacity</div><div class="body">Nvidia will stop selling H200 chips in China, and Bloomberg reports it approached Arm CEO Rene Haas about replacing the ousted Jensen Huang.  (also in Morning Brew)</div><a class="open" href="https://techcrunch.com/podcast/the-fallout-from-nvidias-jensen-huang-scandal-continues/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Rivals &amp; Platforms</div><div class="body">Palo Alto Networks is buying Applied Compute for $4.5 billion in stock. Applied Compute builds tools to train and serve customized open-weight models, across public and sovereign clouds. A security giant paying that much for a training-and-serving platform shows how hot this layer still is, and it puts a new, well-funded player next to Anyscale&#x27;s rivals.</div><a class="open" href="https://investors.paloaltonetworks.com/news-releases/news-release-details/palo-alto-networks-acquire-applied-compute-bringing-secure-open?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Cloud &amp; Policy</div><div class="body">Trump threatened a &quot;tremendous tax&quot; on US companies that build AI data centers abroad, even as US states and cities restrict new ones at home. If it sticks, it squeezes where new GPU capacity can land.</div><a class="open" href="https://www.theverge.com/policy/1038892/trump-foreign-data-centers-tax" target="_blank" rel="noopener">Open ↗</a></article>
+<h2 class="section">AI</h2>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">Two mathematicians claimed proofs of the Riemann Hypothesis within hours of each other. Anthropic&#x27;s Levent Alpöge says he proved it, and the more general version, working with Claude, and released 1.3GB of Lean code (machine-checked proof) instead of a paper. Elliot Glazer confirmed the formal statement is right and puts the odds of a Lean bug under 1%. The second claim, from Alessandro Masullo, is fully human and still a 940-page draft. Latent Space&#x27;s line sums it up: the AI proof is &quot;probably correct but incomprehensible,&quot; the human one &quot;understandable&quot; but likely flawed.  (also in TechCrunch, The Verge, Simon Willison)</div><a class="open" href="https://latent.space/p/ainews-riemann-hypothesis-proved-twice-independently/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">Anthropic also says Claude solved two open problems in black hole physics, using holographic duality, a tool for studying quantum gravity.</div><a class="open" href="https://www.anthropic.com/research/claude-black-hole-physics" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">Thinking Machines released Inkling 2 Mini, an open-weights model under Apache 2.0 built to run on your own machine.</div><a class="open" href="https://huggingface.co/blog/inkling2mini" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">Microsoft announced seven new in-house models at Ignite, pitched on price-performance.</div><a class="open" href="https://microsoft.ai/news/microsoft-ignite-2026/?utm_source=hackernewsletter&amp;utm_medium=email&amp;utm_term=data" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">METR updated its famous &quot;time horizon&quot; chart. Coding ability keeps growing exponentially, but models lag on tasks that need judgment.</div><a class="open" href="https://www.technologyreview.com/2026/11/20/1149399/the-most-misunderstood-graph-in-ai-just-got-a-major-update/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">Architect Labs says its AI systems designed and verified Frostbite, a general-purpose CPU with a brand-new instruction set.</div><a class="open" href="https://architectlabs.com/blog/frostbite" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">OpenAI wrote up how it fights adversarial distillation, where someone trains a copycat model on a frontier model&#x27;s outputs and ships it without the safeguards.</div><a class="open" href="https://openai.com/index/combatting-adversarial-distillation" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">What changed since yesterday: Anthropic closed its first day at $97.17, up 17% from the $83 IPO price, then slid on day two as a wider AI sell-off hit. The Nasdaq erased all its 2026 gains and closed 5% below where it started the year, while the Dow and S&amp;P 500 fell into correction. The $81 billion raise is officially the largest IPO ever.  (also in Latent Space, Morning Brew)</div><a class="open" href="https://www.theguardian.com/business/2026/nov/20/global-stock-markets-slump-anthropic-ipo-ai-sell-off" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">A researcher planted 2 million tripwire &quot;canaries&quot; in requests sent through AI broker services like OpenRouter and Vercel, and found sensitive data leaking widely down the chain. Worth reading if your app sends user data through any model router.</div><a class="open" href="https://arstechnica.com/security/2026/11/a-leaky-ai-supply-chain-is-exposing-secret-user-data-at-an-alarming-rate/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Signal will block the AI agents built into iOS 27 and Android from reading its screen, like it did with Windows Recall.  (also in The Verge)</div><a class="open" href="https://signal.org/blog/protecting-your-privacy/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Meta is rethinking its 2030 net-zero goal after record emissions growth from AI data centers.</div><a class="open" href="https://arstechnica.com/ai/2026/11/meta-reconsiders-2030-net-zero-goal-amid-record-emissions-from-ai-data-centers/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">What changed in the Google schools story: hundreds of Google workers petitioned leadership to drop the rule that cuts schools off from search if they turn off Gemini.</div><a class="open" href="https://www.motherjones.com/politics/2026/11/google-alphabet-union-school-ai-protest-gemini-workers-petition/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">A court ruled that police can&#x27;t use AI-generated &quot;probable cause&quot; to justify a search under the 4th Amendment.</div><a class="open" href="https://www.techdirt.com/2026/11/19/court-tells-cops-that-the-4th-amendment-doesnt-cover-ai-generated-probable-cause/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">Google open-sourced Sashiko, a Gemini-powered agent that reviews Linux kernel patches. It does about 1,200 reviews a day, splits bug finding from verification, and merged commits it reviewed needed 35% fewer follow-up fixes.  (also in TLDR IT)</div><a class="open" href="https://cloud.google.com/blog/products/application-development/lessons-from-building-sashiko-an-agentic-code-review-system?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">Microsoft launched Agent Controls, a managed Azure service to set and enforce policies on what AI agents may do, built on an open spec.</div><a class="open" href="https://commandline.microsoft.com/introducing-agent-controls-an-enterprise-control-plane-for-agent-behavior/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">db-branch gives AI agents and CI their own database copy in seconds using ZFS snapshots.</div><a class="open" href="https://github.com/db-branch/db-branch?utm_source=hackernewsletter&amp;utm_medium=email&amp;utm_term=data" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">Someone asked 65 AI models the same everyday questions, ten times each, and found they mostly give everyone the same answer. 69% of suggested startup names started with &quot;Nex&quot;.</div><a class="open" href="https://a90.com/experiments/same-advice/" target="_blank" rel="noopener">Open ↗</a></article>
+<h2 class="section">From your inbox</h2>
+<article class="card"><div class="meta">Hacker Newsletter</div><div class="body">Wiz found unauthenticated remote code execution bugs in Nginx&#x27;s HTTP/2 handling. If you run Nginx anywhere, check for the patch.</div><a class="open" href="https://www.wiz.io/blog/nginx-http2-rce-vulnerabilities?utm_source=hackernewsletter&amp;utm_medium=email&amp;utm_term=code" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Hacker Newsletter</div><div class="body">Google Project Zero will now disclose bugs 90 days after reporting them, fixed or not.</div><a class="open" href="https://projectzero.google/2026/11/disclosure-policy.html?utm_source=hackernewsletter&amp;utm_medium=email&amp;utm_term=code" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Hacker Newsletter</div><div class="body">OpenAI disbanded its robotics team because its general models are now good enough to run robots.</div><a class="open" href="https://fortune.com/2026/11/13/openai-disbands-robotics-team-as-its-general-models-start-running-robots/?utm_source=hackernewsletter&amp;utm_medium=email&amp;utm_term=startup_news" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Hacker Newsletter</div><div class="body">Bending Spoons is buying Mailchimp.</div><a class="open" href="https://investors.bendingspoons.com/newsroom/bending-spoons-to-acquire-mailchimp?utm_source=hackernewsletter&amp;utm_medium=email&amp;utm_term=startup_news" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Hacker Newsletter</div><div class="body">SpaceX caught Starship with the tower at the end of Flight 15.</div><a class="open" href="https://www.spacex.com/launches/starship-flight-15?utm_source=hackernewsletter&amp;utm_medium=email&amp;utm_term=watching" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Hacker Newsletter</div><div class="body">Carnegie Mellon is putting its computer science courses on YouTube for free.</div><a class="open" href="https://www.cs.cmu.edu/learn/?utm_source=hackernewsletter&amp;utm_medium=email&amp;utm_term=watching" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">Workday is setting up an Irish company with an EU-citizen board to run its EU sovereign cloud, which sits on AWS&#x27;s European Sovereign Cloud.</div><a class="open" href="https://investor.workday.com/news-and-events/press-releases/news-details/2026/Workday-Advances-EU-Sovereign-Cloud-with-New-EU-Based-Operating-Company-and-Added-Safeguards-for-Customer-Data-and-Services/default.aspx?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">TLDR IT</div><div class="body">CloudFront Functions can now make network calls, so small edge scripts can call an API and act on the answer.</div><a class="open" href="https://aws.amazon.com/about-aws/whats-new/2026/11/cloudfront-functions-network-calls/?utm_source=tldrit" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">Hackers got into third-party vendors used by Chase, Mastercard and Visa. Names and emails may have leaked, but no card or account numbers.</div></article>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">Walmart raised its yearly forecast after e-commerce sales jumped 17%, helped by price cuts on 8,000 items.</div></article>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">Costco is selling out of generators as people panic-buy after the Microsoft outage and the FAA ground stop.</div></article>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">After the Democrats&#x27; midterm wave, Elon Musk says he isn&#x27;t MAGA and felt &quot;pretty foolish&quot; giving $500 million to Republicans who lost.</div></article>
+<article class="card"><div class="meta">Finshots</div><div class="body">The rupee climbed back to ₹93.63, its best in six months, on strong exports and $6 billion of foreign buying in early November. Finshots asks whether the RBI fixed anything or just bought time.</div></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
