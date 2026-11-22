@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d0f14; --card:#ffffff; --line:#e4e7ec; --ink:#16191f;
+    --muted:#8a919e; --dim:#6b7280; --card-accent:#1a56db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100%;
+    background:radial-gradient(120% 80% at 50% -10%, #171a24 0%, var(--bg) 55%);
+    color:#e8eaed;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:baseline;justify-content:space-between;
+    width:80%;max-width:820px;margin:0 auto;padding:16px 2px 6px}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#f3f5f9}
+  .counter{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+  main{display:flex;flex-direction:column;gap:12px;padding:10px 0 44px;counter-reset:card}
+  .card{
+    width:80%;max-width:820px;margin:0 auto;position:relative;counter-increment:card;
+    display:flex;flex-direction:column;gap:5px;
+    padding:12px 16px;
+    background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.18), 0 10px 22px -18px rgba(0,0,0,.6);
+  }
+  /* per-card index (1..N) so you can remember where you stopped reading */
+  .card::before{
+    content:counter(card);
+    position:absolute;top:10px;right:12px;
+    font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--dim);
+    background:#f1f3f7;border:1px solid var(--line);border-radius:999px;
+    min-width:22px;height:18px;padding:0 6px;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .card{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:#b9c8e6;
+    box-shadow:0 2px 4px rgba(0,0,0,.2), 0 16px 32px -16px rgba(26,86,219,.5);
+    transform:translateY(-2px)}
+  .card[data-collapsed] .body,.card[data-collapsed] .open{display:none}
+
+  .open{align-self:flex-start;margin-top:2px;cursor:pointer;
+    font-size:12px;font-weight:650;text-decoration:none;color:var(--card-accent);
+    background:#eef2fb;border:1px solid #d5e0f7;border-radius:999px;padding:3px 10px;
+    transition:background .15s}
+  .open:hover{background:#e2eaf9}
+
+  .section{width:80%;max-width:820px;margin:18px auto 0;font-size:12.5px;font-weight:700;
+    letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+
+  .meta{font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--card-accent);padding-right:34px}
+  .body{font-size:18px;line-height:1.5;color:var(--ink);font-weight:420}
+  .body strong{font-weight:680}
+  .body a{color:var(--card-accent);text-underline-offset:2px}
+
+  footer{text-align:center;padding:8px;color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="brand">Pulse</div><div class="counter">22 stories</div></header>
+<main>
+<h2 class="section">For you</h2>
+<article class="card"><div class="meta">GPUs &amp; Capacity</div><div class="body">Nvidia is giving off two very different signals. On paper the business is booming: last quarter&#x27;s revenue was $115.8 billion, double a year ago, and it expects about $130 billion next quarter. Interim CEO Colette Kress says Nvidia has locked in memory and packaging capacity and is working with TSMC to close the gap between supply and demand. Meanwhile the stock fell 14% on Friday after federal regulators said they&#x27;re looking into its accounting, its seventh weekly loss in a row, and Elon Musk and a petition are pushing for Jensen Huang to come back. For GPU capacity planning, the supply story looks steady for now. The turmoil is about leadership and investor trust, not chips running short.  (also in Morning Brew)</div><a class="open" href="https://techcrunch.com/2026/11/21/a-tale-of-two-nvidias/" target="_blank" rel="noopener">Open ↗</a></article>
+<h2 class="section">AI</h2>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">What changed in the Gemini 4 story: Google has already retired Argon, its Gemini 4 model from just six weeks ago, as Neon becomes the fourth Gemini 4 model in seven weeks. Latent Space points out the names follow atomic numbers, which is why the midtier Neon (10) is pricier than Carbon (6).</div><a class="open" href="https://latent.space/p/ainews-gemini-4-neon-gdm-s-opus-sol-contender/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">Simon Willison found that Gemini 4 Hydrogen and Neon have a hidden &quot;xhigh&quot; reasoning setting, and it matters a lot. On one test, Hydrogen at xhigh used six times the tokens and cost 23.6 cents instead of 4, but its output caught up with Neon. Worth knowing before you flip that switch in production.</div><a class="open" href="https://simonwillison.net/2026/Nov/20/llm-gemini/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Models &amp; Research</div><div class="body">AutoMaster is a paper where an AI agent runs post-training on its own: it studies where a model&#x27;s reasoning goes wrong, writes plain-language &quot;skills&quot; to steer it, and fine-tunes on the improved attempts.</div><a class="open" href="https://tldr.takara.ai/p/2611.26510" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">What changed with Signal: after blocking AI agents from reading its screen, it now also restricts screenshots on Android and iOS, like it already did on Windows. President Meredith Whittaker calls OS-level AI agents an &quot;existential threat,&quot; because whatever they capture leaves Signal&#x27;s control. Users can turn the block off, and she admits it doesn&#x27;t stop sneakier ways agents could grab app data.</div><a class="open" href="https://techcrunch.com/2026/11/21/signal-restricts-mobile-screenshots-as-it-confronts-existential-threat-of-ai-surveillance/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">UN talks on rules for autonomous weapons ended with countries only agreeing to &quot;start discussing options,&quot; even though the Red Cross wants binding rules within a year.</div><a class="open" href="https://www.theverge.com/tech/1039554/un-regulations-killer-robots" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">An actor licensed an AI version of his face to a microdrama startup, a deal that&#x27;s already common in China and that experts worry could spread to Hollywood.</div><a class="open" href="https://techcrunch.com/2026/11/21/is-selling-an-ai-version-of-your-face-to-this-microdrama-startup-the-future-of-hollywood/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">Chess.com used AI to help it add 10 classic games, from go and mahjong to sudoku, in a push to be much more than a chess site.</div><a class="open" href="https://www.theverge.com/games/1038099/chess-classic-games-expansion-ai" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Industry &amp; Business</div><div class="body">TechCrunch rounded up the AI agents that live in your text messages, from general assistants to ones built for families and travel.</div><a class="open" href="https://techcrunch.com/2026/11/21/all-the-ai-agents-that-can-live-in-your-text-messages/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Open Source &amp; Tools</div><div class="body">Graham Dumpleton, who wrote mod_wsgi 20 years ago, released Muru, a Rust server for running Python web apps. It handles TLS and static files itself so you don&#x27;t need a web server in front, and it does blue/green releases, canaries and instant rollback. It even has an MCP server so AI agents can deploy and roll back. It&#x27;s alpha, and built with heavy help from coding agents.</div><a class="open" href="https://simonwillison.net/2026/Nov/21/muru/" target="_blank" rel="noopener">Open ↗</a></article>
+<article class="card"><div class="meta">Community &amp; Opinion</div><div class="body">The Verge&#x27;s last episode in its AI series asks whether Anthropic can keep putting safety first now that it&#x27;s a public company answering to shareholders.</div><a class="open" href="https://www.theverge.com/podcast/1038701/anthropic-ipo-ai-safety-openai-nvidia-structure" target="_blank" rel="noopener">Open ↗</a></article>
+<h2 class="section">From your inbox</h2>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">Tech stocks crashed on Friday. The Nasdaq fell 5.6% and wiped out its gains for the year, and chipmakers took the worst of it, with AMD down 13% and Broadcom down 12%. Anthropic dropped 8.5% and nearly touched its $83 IPO price. Investors are worried about the cost of the AI buildout, higher rates and new Democratic regulators arriving in January. Anthropic options start trading Monday, which will show how much retail appetite is left.</div></article>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">GTA VI made $3.79 billion on its first day, almost five times what GTA V did in 2013.</div></article>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">What changed in the Mailchimp story: Bending Spoons is paying $3.68 billion. Intuit paid $12 billion for it in 2021.</div></article>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">Iceland&#x27;s Blue Lagoon went public on Nasdaq Iceland, raising about $115 million.</div></article>
+<article class="card"><div class="meta">Morning Brew</div><div class="body">YouTube dropped out of bidding for the 2030 World Cup TV rights, leaving Fox, Netflix and Amazon.</div></article>
+<article class="card"><div class="meta">ByteByteGo</div><div class="body">A simple explainer of how Claude&#x27;s text watermark likely works. At each word, a secret key plus the last few words decide which candidate words are &quot;allowed.&quot; Detection counts how often a text picks allowed words, and AI text hits far more often than chance.</div></article>
+<article class="card"><div class="meta">ByteByteGo</div><div class="body">Open weights vs closed models in seven tradeoffs. The useful one: self-hosting only wins on cost at high volume once you count the ops work, and closed models retire versions on the vendor&#x27;s schedule.</div></article>
+<article class="card"><div class="meta">ByteByteGo</div><div class="body">A walkthrough of what happens inside Redis for one command, from parsing to running it on a single thread to writing it to disk or replicas.</div></article>
+<article class="card"><div class="meta">ByteByteGo</div><div class="body">A quick refresher on nine distributed systems patterns, including leader election, quorum reads and writes, and sagas.</div></article>
+<article class="card"><div class="meta">Finshots</div><div class="body">Two local governments in Peru gave native stingless bees legal rights, the first insects to get them. Finshots explains &quot;legal personhood,&quot; and notes a 2019 Haryana court ruling that made animals legal entities, which technically gives bullock carts the right of way.</div></article>
+<article class="card"><div class="meta">Finshots</div><div class="body">Why India hasn&#x27;t made its own open-world blockbuster, even though Rockstar&#x27;s Bengaluru studio helped build GTA VI. The problem is money: Indian gaming runs on mobile ads, and a 2021 PwC study found 74% of Indian gamers would rather watch ads than pay. Studios like Nodding Heads (Raji) show the way is selling premium games to global PC and console players.</div></article>
+</main>
+<footer>tap a card to collapse · tap Open to read the article</footer>
+<script>
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    c.addEventListener('click',()=>c.toggleAttribute('data-collapsed'));
+  });
+</script>
+</body>
+</html>
